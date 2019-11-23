@@ -2,8 +2,8 @@
 $info=[
     'fields'=>[
         'id'=>new tfield('id'),
-        'login'=>new tfield('text',['maxlen'=>20]),
-        'email'=>new tfield('text',['maxlen'=>50]),
+        'name'=>new tfield('text',['maxlen'=>50])),
+        'descr'=>new tfield('bigtext',['maxlen'=>2500]),
         'passw'=>new tfield('password'),
     ]
 ];
