@@ -17,7 +17,13 @@ namespace modules\restbox\table {
 			
 		}
 		
-		
+	}
+
+	class tfield {
+		function __construct($_class,$_PARAMS=[])
+		{
+			
+		}
 	}
 
 }
