@@ -31,9 +31,16 @@ namespace modules\restbox {
 			$args=[];
 			$opts=[];
 			$this->call_event('onload',$args,$opts);
+		
+			$res = $this->call_event('getresult',$args,$opts);
+			$this->result_out($res);
 		}
-		
-		
+
+		function result_out($_res)
+		{
+			echo json_encode($_res);
+		}
+				
 	}
 
 }
