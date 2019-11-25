@@ -30,10 +30,15 @@ namespace modules\restbox\route {
 			//
 	
 		}
+
+		function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
+		{
+
+		}
         
         function restbox_onload($args)
         {
-            echo "<h2>..LOADING..</h2>";
+            echo "<h2>..LOADING..{$this->_MOD_NAME}</h2>";
         }
 	}
 

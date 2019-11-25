@@ -1,6 +1,7 @@
 <?php
 namespace modules\restbox\table {
 	use Core;
+	require_once '/inc/ft_basic.php';
 
 	class Module extends \Core\Module
 	{
@@ -17,7 +18,13 @@ namespace modules\restbox\table {
 			
 		}
 		
-		
+	}
+
+	class tfield {
+		function __construct($_class,$_PARAMS=[])
+		{
+			
+		}
 	}
 
 }
