@@ -28,16 +28,18 @@ namespace modules\restbox {
 		function AfterLoad()
 		{
 			//
-			$args=[];
 			$opts=[];
+			$_json_res=[];
+			$args=[];
 			$this->call_event('onload',$args,$opts);
-		
+			$args=['json_result'=>&$_json_res];
 			$res = $this->call_event('getresult',$args,$opts);
-			$this->result_out($res);
+			$this->result_out($_json_res);
 		}
 
 		function result_out($_res)
-		{
+		{			
+			header("Content-type: application/json; charset=utf-8");
 			echo json_encode($_res);
 		}
 				

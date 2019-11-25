@@ -36,9 +36,14 @@ namespace modules\restbox\route {
 
 		}
         
-        function restbox_onload($args)
+        function restbox_onload(&$args)
         {
-            echo "<h2>..LOADING..{$this->_MOD_NAME}</h2>";
+            
+		}
+		
+		function restbox_getresult(&$args)
+        {
+            $args['json_result'] = ['mess'=>"..LOADING..{$this->_MOD_NAME}"];
         }
 	}
 
