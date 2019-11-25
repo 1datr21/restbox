@@ -22,6 +22,21 @@ namespace modules\restbox\db\mysql {
 		{
 			$this->_CONNECTION = mysqli_connect($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
 		}
+
+		function create_table()
+		{
+
+		}
+
+		function query($_query)
+		{
+			mysqli_query($this->_CONNECTION,$_query);
+		}
+
+		function fetch_object()
+		{
+
+		}
 	}
 
 }
