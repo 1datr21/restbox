@@ -33,7 +33,9 @@ namespace modules\restbox\route {
 
 		function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
 		{
-
+			$route_res = ['query'=>$route,
+					'result'=>['text'=>'Per aspera ad astra']];
+			return $route_res;
 		}
         
         function restbox_onload(&$args)
@@ -43,7 +45,7 @@ namespace modules\restbox\route {
 		
 		function restbox_getresult(&$args)
         {
-            $args['json_result'] = ['mess'=>"..LOADING..{$this->_MOD_NAME}"];
+            $args['json_result'] = $this->get_obj_by_route('hello');
         }
 	}
 
