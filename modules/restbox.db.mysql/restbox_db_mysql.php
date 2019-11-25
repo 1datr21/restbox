@@ -33,9 +33,9 @@ namespace modules\restbox\db\mysql {
 			mysqli_query($this->_CONNECTION,$_query);
 		}
 
-		function fetch_object()
+		function fetch_object($res)
 		{
-
+			return mysqli_fetch_assoc($res);
 		}
 	}
 
