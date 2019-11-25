@@ -11,13 +11,17 @@ namespace modules\restbox\db\mysql {
 		VAR $_CURR_CONF_DIR;
 		VAR $_CONF_PATH;
 		VAR $_SETTINGS;
+		VAR $_CONNECTION;
 		
 		function __construct($_PARAMS)
 		{
 			
 		}
 		
-		
+		private function connect($_dbcfg)
+		{
+			$this->_CONNECTION = mysqli_connect($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+		}
 	}
 
 }
