@@ -34,7 +34,7 @@ namespace modules\restbox {
 			$this->call_event('onload',$args,$opts);
 			$args=['json_result'=>&$_json_res];
 			$res = $this->call_event('getresult',$args,$opts);
-			$this->result_out($_json_res);
+			//$this->result_out($_json_res);
 		}
 
 		function result_out($_res)
