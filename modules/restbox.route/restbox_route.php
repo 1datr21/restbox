@@ -31,6 +31,11 @@ namespace modules\restbox\route {
 	
 		}
 
+		function register_route($route)
+		{
+
+		}
+
 		function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
 		{
 			$route_res = ['query'=>$route,
