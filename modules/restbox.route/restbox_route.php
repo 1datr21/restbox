@@ -39,10 +39,13 @@ namespace modules\restbox\route {
 		function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
 		{
 			//$this->
-			$opts=['query'=>$route,];
+			$opts=['query'=>$route,'onhandle'=>function($modname,$ev_res,$_continue)
+			{
+
+			}];
 			$_json_res=[];
 			$args=[];
-			$this->call_event('onquery',$args,$opts);
+			$query_res = $this->call_event('onquery',$args,$opts);
 
 			$route_res = ['query'=>$route,
 					'result'=>['text'=>'Per aspera ad astra']];
