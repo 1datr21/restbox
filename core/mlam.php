@@ -321,11 +321,29 @@ namespace Core {
 			// ������������
 			$ev_results = [];
 			$_continue = true;
+			do{
+				$next = $this->make_event_loop($_event,$mod_keys,$opts,$ev_results);
+			} while(count($next)>0);
+			return $ev_results;
+		}
+
+		private function make_event_loop($_event,&$mod_keys,$opts,&$ev_results)
+		{
+			$_mods_next =[];
+			$_continue = true;
 			foreach ($mod_keys as $idx => $modname)
 			{
 				$mod_obj = $this->_MODULES_OBJS[$modname];
 				$ev_func_name = $this->event_function_name($_event);
-				if(method_exists($mod_obj, $ev_func_name))
+				$waiter_func_name = $ev_func_name."_waiter";
+				// call waiter 
+				$exe_ev = true;
+				if(method_exists($mod_obj, $waiter_func_name))
+				{
+					$exe_ev = $mod_obj->$waiter_func_name($_params);
+				}
+				// exe method
+				if($exe_ev && method_exists($mod_obj, $ev_func_name))
 				{
 					$ev_res = $mod_obj->$ev_func_name($_params);
 					if(isset($opts['onhandle']))
@@ -336,8 +354,13 @@ namespace Core {
 					if(!$_continue)
 						break;
 				}
+				if(!$exe_ev) // add to next loops
+				{
+					$_mods_next[]=$modname;
+				}
 			}
-			return $ev_results;
+
+			return $_mods_next;
 		}
 	
 		function call_event_sess($_event,$_params=[],$priority=null)

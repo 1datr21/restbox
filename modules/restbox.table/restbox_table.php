@@ -20,7 +20,7 @@ namespace modules\restbox\table {
 
 		function restbox_route_onquery(&$eargs)
 		{
-		//	echo "On query";
+			echo "On query";
 		}
 
 		
