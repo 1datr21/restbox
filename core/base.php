@@ -83,7 +83,7 @@ namespace Core {
 		
 		public function call_event($_ev,$_params,$opts=[])
 		{
-			$this->MLAM->call_event($this->_MOD_NAME.".".$_ev,$_params,$opts);
+			return $this->MLAM->call_event($this->_MOD_NAME.".".$_ev,$_params,$opts);
 		}
 		
 		public function call_event_sess($_ev,$_params,$priorities=null)

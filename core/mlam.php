@@ -320,6 +320,7 @@ namespace Core {
 			}
 			// ������������
 			$ev_results = [];
+			$_continue = true;
 			foreach ($mod_keys as $idx => $modname)
 			{
 				$mod_obj = $this->_MODULES_OBJS[$modname];
@@ -329,9 +330,11 @@ namespace Core {
 					$ev_res = $mod_obj->$ev_func_name($_params);
 					if(isset($opts['onhandle']))
 					{
-						$opts['onhandle']($modname,$ev_res);	
+						$opts['onhandle']($modname,$ev_res,$_continue);	
 					}
 					$ev_results[$modname]=$ev_res;
+					if(!$_continue)
+						break;
 				}
 			}
 			return $ev_results;
