@@ -287,13 +287,15 @@ namespace Core {
 		}
 
 		// call event
-		function call_event($_event,$_params=[],$priority=null)
+		function call_event($_event,$_params=[],$opts=[])
 		{
 			$mod_keys = array_keys($this->_MODULES_OBJS);
 			$mod_keys_new = [];
-			if($priority!=null) // ���� ����� ��������� ��������� �������
+			def_options(['priority'=>null],$opts);
+
+			if($opts['priority']!=null) // ���� ����� ��������� ��������� �������
 			{			
-				foreach ($priority as $pr_element)
+				foreach ($opts['priority'] as $pr_element)
 				{
 					if(is_mask($pr_element))
 					{
@@ -325,6 +327,10 @@ namespace Core {
 				if(method_exists($mod_obj, $ev_func_name))
 				{
 					$ev_res = $mod_obj->$ev_func_name($_params);
+					if(isset($opts['onhandle']))
+					{
+						$opts['onhandle']($modname,$ev_res);	
+					}
 					$ev_results[$modname]=$ev_res;
 				}
 			}
