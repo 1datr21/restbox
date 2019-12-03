@@ -32,9 +32,9 @@ namespace modules\restbox {
 			$_json_res=[];
 			$args=[];
 			$this->call_event('onload',$args,$opts);
-			$args=['json_result'=>&$_json_res];
+			$args=['route'=>$_GET['q']];
 			$res = $this->call_event('getresult',$args,$opts);
-			//$this->result_out($_json_res);
+			$this->result_out($res[ $this->_L_SETTINGS['rbrouter']]);
 		}
 
 		function result_out($_res)

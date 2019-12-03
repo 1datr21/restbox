@@ -270,7 +270,7 @@ namespace Core {
 				if(($mod->get_mod_name()!=$module)&&(!in_array($mod,$called_list)))
 				{
 				//	$this->call_event($mod,$eventname,$module,$called_list,$args, $eopts);
-					$this->call_event_for_module($mod,$eventname,$args);
+					$ev_res = $this->call_event_for_module($mod,$eventname,$args);
 				}
 			}
 			return $args;
@@ -282,8 +282,10 @@ namespace Core {
 			if(method_exists($mod_obj, $ev_func_name))
 				{
 					$ev_res = $mod_obj->$ev_func_name($_params);
-					$ev_results[$modname]=$ev_res;
+					return $ev_res;
+					//$ev_results[$modname]=$ev_res;
 				}
+			return null;
 		}
 
 		// call event
@@ -322,12 +324,17 @@ namespace Core {
 			$ev_results = [];
 			$_continue = true;
 			do{
-				$next = $this->make_event_loop($_event,$mod_keys,$opts,$ev_results);
+				$next = $this->make_event_loop($_event,$mod_keys,$_params,$opts,$ev_results);
 			} while(count($next)>0);
+
+		//	echo "events : ";
+		//	print_r($ev_results);
+
+
 			return $ev_results;
 		}
 
-		private function make_event_loop($_event,&$mod_keys,$opts,&$ev_results)
+		private function make_event_loop($_event,&$mod_keys,$_params,$opts,&$ev_results)
 		{
 			$_mods_next =[];
 			$_continue = true;

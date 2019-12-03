@@ -39,19 +39,23 @@ namespace modules\restbox\route {
 		function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
 		{
 			//$this->
-			$opts=['query'=>$route,'onhandle'=>function($modname,$ev_res,$_continue)
+			$qres=null;
+			$opts=['query'=>$route,'onhandle'=>function($modname,$ev_res,$_continue) use (&$qres)
 			{
+			//	print_r($ev_res);
 				if($ev_res!=null)
 				{
 					$_continue = false;
+					$qres = $ev_res;
 				}
 			}];
 			$_json_res=[];
 			$args=[];
 			$query_res = $this->call_event('onquery',$args,$opts);
-
+	
 			$route_res = ['query'=>$route,
-					'result'=>['text'=>'Per aspera ad astra']];
+					'result'=> $qres,//['text'=>'Per aspera ad astra']
+				];
 			return $route_res;
 		}
         
@@ -61,8 +65,10 @@ namespace modules\restbox\route {
 		}
 		
 		function restbox_getresult(&$args)
-        {
-            $args['json_result'] = $this->get_obj_by_route('hello');
+        {			
+		//	print_r($args);
+
+			return $this->get_obj_by_route($args['route']);
         }
 	}
 
