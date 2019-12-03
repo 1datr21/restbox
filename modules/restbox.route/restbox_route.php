@@ -41,7 +41,10 @@ namespace modules\restbox\route {
 			//$this->
 			$opts=['query'=>$route,'onhandle'=>function($modname,$ev_res,$_continue)
 			{
-
+				if($ev_res!=null)
+				{
+					$_continue = false;
+				}
 			}];
 			$_json_res=[];
 			$args=[];
