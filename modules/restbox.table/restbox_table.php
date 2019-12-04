@@ -20,9 +20,11 @@ namespace modules\restbox\table {
 
 		function restbox_route_onquery(&$eargs)
 		{
+			
 			return [
 				'message'=>'Hello',
-				'date'=>time()		
+				'date'=>time(),
+				'num'=>rand(0,100),		
 			];
 		}
 

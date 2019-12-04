@@ -66,16 +66,26 @@ namespace modules\restbox\route {
             
 		}
 
-		function query($arg_str)
+		function query($arg_str) // call this function from other units and configs
 		{
-
+			$query_segments = explode(';',$arg_str);
+			$response = [];
+			foreach($query_segments as $q_str) 
+			{				
+				$_res_obj = $this->get_obj_by_route($q_str);
+				$response[]=[
+					'query'=>$q_str,
+					'response'=>$_res_obj,
+				];
+			}
+			return $response;
 		}
 		
 		function restbox_getresult(&$args)
         {			
 		//	print_r($args);
 
-			return $this->get_obj_by_route($args['route']);
+			return $this->query($args['route']);
         }
 	}
 
