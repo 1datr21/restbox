@@ -66,6 +66,10 @@ namespace modules\restbox\route {
             
 		}
 
+		/* Format  
+		?q=tables/users::q1;tables/task
+		query1[::key1];query2[::key2];...queryN[::keyN]
+		*/
 		function query($arg_str) // call this function from other units and configs
 		{
 			$query_segments = explode(';',$arg_str);
@@ -75,14 +79,25 @@ namespace modules\restbox\route {
 			foreach($query_segments as $q_str) 
 			{				
 				$matches=[];
-				preg_match_all( "#^(.+)\:\:([[:alnum:]]+)$#Uis",$q_str,$matches);
-				print_r($matches);
+				if(preg_match_all( "#^(.+)\:\:([[:alnum:]]+)$#Uis",$q_str,$matches))
+				{
+					$q_str = $matches[1][0];
+					$_q_id = $matches[2][0];
+				}
 
 				$_res_obj = $this->get_obj_by_route($q_str);
-				$response[]=[
+				
+				$_new_query_obj=[
 					'query'=>$q_str,
 					'response'=>$_res_obj,
 				];
+				if(isset($_q_id))
+				{
+					$_new_query_obj['key']=$_q_id;
+					unset($_q_id);
+				}
+
+				$response[]=$_new_query_obj;
 			}
 			return $response;
 		}
