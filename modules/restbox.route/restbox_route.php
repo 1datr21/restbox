@@ -36,7 +36,7 @@ namespace modules\restbox\route {
 
 		}
 
-		function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
+		private function get_obj_by_route($route,$add_data=[]) // получить результат отдельного запроса
 		{
 			//$this->
 			$qres=null;
@@ -53,15 +53,22 @@ namespace modules\restbox\route {
 			$args=[];
 			$query_res = $this->call_event('onquery',$args,$opts);
 	
+			return $qres;
+			/*
 			$route_res = ['query'=>$route,
 					'result'=> $qres,//['text'=>'Per aspera ad astra']
 				];
-			return $route_res;
+			return $route_res; */
 		}
         
         function restbox_onload(&$args)
         {
             
+		}
+
+		function query($arg_str)
+		{
+
 		}
 		
 		function restbox_getresult(&$args)
