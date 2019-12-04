@@ -35,8 +35,8 @@ namespace modules\restbox {
 			$args=['route'=>$_GET['q']];
 			$res = $this->call_event('getresult',$args,$opts);
 
-			//print_r($res);
-			$this->result_out($res[ $this->_L_SETTINGS['rbrouter']]);
+			print_r($res);
+			//$this->result_out($res[ $this->_L_SETTINGS['rbrouter']]);
 		}
 
 		function result_out($_res)

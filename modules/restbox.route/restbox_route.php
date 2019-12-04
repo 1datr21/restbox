@@ -69,9 +69,15 @@ namespace modules\restbox\route {
 		function query($arg_str) // call this function from other units and configs
 		{
 			$query_segments = explode(';',$arg_str);
+
+			
 			$response = [];
 			foreach($query_segments as $q_str) 
 			{				
+				$matches=[];
+				preg_match_all( "#^(.+)\:\:([[:alnum:]]+)$#Uis",$q_str,$matches);
+				print_r($matches);
+
 				$_res_obj = $this->get_obj_by_route($q_str);
 				$response[]=[
 					'query'=>$q_str,
