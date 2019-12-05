@@ -21,11 +21,21 @@ namespace modules\restbox\db {
 			{
 				$module_drv = "restbox.db.".$rb_info['connection']['drv'];
 				$conn = $this->exe_mod_func($module_drv,'connect',$rb_info['connection']);
+				if(is_array($conn))
+				{
+					if(isset($conn['error']))
+					{
+						$this->exe_mod_func('restbox','out_error',$conn['error']);
+					}
+				}
+
 				$this->_CONNECTIONS[]=$conn;
 				if(count($this->_CONNECTIONS)==1)
 				{
 					$this->_DEF_CONN_IDX=0;
 				}
+
+				return count($this->_CONNECTIONS)-1;
 			}
 			//mul_dbg($rb_info,true,true);
 		}

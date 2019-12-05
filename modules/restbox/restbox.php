@@ -72,6 +72,13 @@ namespace modules\restbox {
 			$this->result_out($res[ $this->_L_SETTINGS['rbrouter']]);
 		}
 
+		public function out_error($_err)
+		{
+			$_err_box=['error'=>$_err];
+			$this->result_out($_err_box);
+			exit();
+		}
+
 		function result_out($_res)
 		{			
 			header("Content-type: application/json; charset=utf-8");

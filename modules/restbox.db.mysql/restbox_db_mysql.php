@@ -1,8 +1,9 @@
 <?php
 namespace modules\restbox\db\mysql {
 	use Core;
+    use Exception;
 
-	class Module extends \Core\Module
+class Module extends \Core\Module
 	{
 		VAR $_CONF;
 		VAR $_EP;
@@ -18,9 +19,28 @@ namespace modules\restbox\db\mysql {
 			
 		}
 		
-		private function connect($_dbcfg)
+		public function connect($_dbcfg)
 		{
-			$_CONNECTION = new mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+			error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+			try
+			{
+				def_options(['create_if_not_exists'=>false],$_dbcfg);
+				if($_dbcfg['create_if_not_exists'])
+				{
+					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+				}
+				else
+				{
+					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
+					if(mysqli_connect_errno())
+					{
+						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
+					}
+				}
+			}
+			catch(Exception $ex) {}
+			error_reporting(E_ALL);
+			return $_CONNECTION;
 		}
 
 		function create_table()

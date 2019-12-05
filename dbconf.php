@@ -3,8 +3,11 @@
         'drv'=>'mysql',
         'host'=>'localhost',
         'user'=>'root',
-        'passw'=>'123456',
-        'prefix' =>"",
+    //    'passw'=>'',
+      'passw'=>'123456',
+        'dbname'=>'tms',
+        'prefix' =>"tms_",
+    //    'create_if_not_exists'=>true,
         'charset'=>"cp1251",
     ];
 ?>
