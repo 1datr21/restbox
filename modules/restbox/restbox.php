@@ -13,6 +13,7 @@ namespace modules\restbox {
 		VAR $_SETTINGS;
 		VAR $_CONFIG;
 		VAR $_CFG_DIR;
+		VAR $_CFG_INFO;
 		
 		function __construct($_PARAMS)
 		{
@@ -50,7 +51,7 @@ namespace modules\restbox {
 
 		function get_settings()
 		{
-			$stngs = $this->_SETTINGS;
+			$stngs = $this->_CFG_INFO;
 			$stngs['CFG_DIR'] = $this->_CFG_DIR;
 			return $stngs;
 		}

@@ -1,0 +1,17 @@
+
+				
+	12-05-2019 23:08:40.000000: Array
+(
+    [connection] => Array
+        (
+            [drv] => mysql
+            [host] => localhost
+            [user] => root
+            [passw] => 123456
+            [prefix] => 
+            [charset] => cp1251
+        )
+
+    [usertable] => users
+    [CFG_DIR] => ./restbox/tms
+)

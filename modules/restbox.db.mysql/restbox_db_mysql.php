@@ -20,7 +20,7 @@ namespace modules\restbox\db\mysql {
 		
 		private function connect($_dbcfg)
 		{
-			$this->_CONNECTION = mysqli_connect($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+			$_CONNECTION = new mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
 		}
 
 		function create_table()
