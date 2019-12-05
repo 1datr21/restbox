@@ -1,10 +1,10 @@
 <?php
     $dbconn = [
         'drv'=>'mysql',
-        'host'=>'localhost',
+        'host'=>'p:localhost',
         'user'=>'root',
     //    'passw'=>'',
-      'passw'=>'123456',
+        'passw'=>'123456',
         'dbname'=>'tms',
         'prefix' =>"tms_",
     //    'create_if_not_exists'=>true,

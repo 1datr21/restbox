@@ -29,6 +29,7 @@ namespace modules\restbox\db {
 					}
 				}
 
+				
 				$this->_CONNECTIONS[]=$conn;
 				if(count($this->_CONNECTIONS)==1)
 				{

@@ -72,7 +72,7 @@ namespace modules\restbox {
 			$this->result_out($res[ $this->_L_SETTINGS['rbrouter']]);
 		}
 
-		public function out_error($_err)
+		public function out_error($_err) // out errors
 		{
 			$_err_box=['error'=>$_err];
 			$this->result_out($_err_box);

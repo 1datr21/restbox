@@ -39,7 +39,7 @@ class Module extends \Core\Module
 				}
 			}
 			catch(Exception $ex) {}
-			error_reporting(E_ALL);
+			error_reporting(E_ALL);  //
 			return $_CONNECTION;
 		}
 
