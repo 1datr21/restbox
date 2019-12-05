@@ -139,7 +139,7 @@ function _array_diff($arrA,$arrB)
 	return $newarray;
 }
 
-// устанавливает опции по умолчанию $defs для массива $opt_array
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ $defs пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ $opt_array
 function def_options($defs,&$opt_array)
 {
 	foreach ($defs as $defkey => $defval)
@@ -170,10 +170,10 @@ function ximplode($delimeter,$array,$prefix,$suffix,$options=NULL)
 	return $str;
 }
 /*
- *    $arr - массив, возможно ассоциативный, возможно структур
- * 	  $delimeter - разделитель
- *    $template - шаблон. ключи - индексы из струтуры, специальные ключи - {%val} - значение (если не структурами) {idx} - индекс
- *    $onelement - событие с параметрами &$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter
+ *    $arr - пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+ * 	  $delimeter - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+ *    $template - пїЅпїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ - {%val} - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) {idx} - пїЅпїЅпїЅпїЅпїЅпїЅ
+ *    $onelement - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ &$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter
  * */
 function xx_implode($arr,$delimeter,$template,$onelement=NULL)
 {
@@ -333,7 +333,7 @@ function url_seg_add()
 
 
 
-// создать файл рекурсивно полностью
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 function x_file_put_contents($filename,$data,$flags=0,$context=null)
 {
 	$parent_path = dirname($filename);
@@ -349,7 +349,7 @@ function file_put_contents_ifne($filename,$data,$flags=0,$context=null)
 	if(!file_exists($filename))
 		x_file_put_contents($filename, $data,$flags,$context);
 }
-// создать папку рекурсивно полностью
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 function x_mkdir($path)
 {
 //	mul_dbg("creating dir ".$path);
@@ -369,10 +369,11 @@ function x_mkdir($path)
 	}
 }
 
-function mul_dbg($var,$print_r=true)
+function mul_dbg($var,$print_r=true,$overcase=false)
 {
 	GLOBAL $_MUL_DBG_WORK;
-	if($_MUL_DBG_WORK)
+//	print_r($_MUL_DBG_WORK);
+	if($_MUL_DBG_WORK | $overcase)
 	{
 		$file_dbg = url_seg_add(__DIR__,'debug.txt');
 		
@@ -402,7 +403,7 @@ function mul_dbg($var,$print_r=true)
 		x_file_put_contents($file_dbg, $content);
 	}
 }
-// добавить точку перед директорией 
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
 function dir_dotted($dir)
 {
 	if((substr($dir,0,2)=='./') || (substr($dir,0,3)=='../'))
@@ -412,8 +413,8 @@ function dir_dotted($dir)
 	return url_seg_add('./', $dir);
 }
 /*
- * 	$array1 - массив	
- *  $ev_onelement - функция function(&$element) return true or false $element - массив с ключами index и value
+ * 	$array1 - пїЅпїЅпїЅпїЅпїЅпїЅ	
+ *  $ev_onelement - пїЅпїЅпїЅпїЅпїЅпїЅпїЅ function(&$element) return true or false $element - пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ index пїЅ value
  * */
 function filter_array($array1,$ev_onelement)
 {
@@ -456,8 +457,8 @@ function get_files_in_folder($dir_path,$opts=array())
 	def_options(array('dirs'=>false,'basename'=>false,'without_ext'=>false), $opts);
 	$d = dir(convert_slash($dir_path));
 	$result=array();
-	//	echo "Дескриптор: " . $d->handle . "\n";
-	//	echo "Путь: " . $d->path . "\n";
+	//	echo "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " . $d->handle . "\n";
+	//	echo "пїЅпїЅпїЅпїЅ: " . $d->path . "\n";
 	while (false !== ($entry = $d->read())) {
 		if(($entry!="..")&&($entry!="."))
 		{
@@ -624,7 +625,7 @@ function add_keypair(&$arr,$key,$val)
 	}
 	$arr[$key][]=$val;
 }
-// Найти файл
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 function find_file($search, $dir_path=".", $rootonly=FALSE)
 {
 	if(!file_exists($dir_path))
@@ -633,8 +634,8 @@ function find_file($search, $dir_path=".", $rootonly=FALSE)
 	}
 	$d = dir($dir_path);
 	$result=array();
-//	echo "Дескриптор: " . $d->handle . "\n";
-//	echo "Путь: " . $d->path . "\n";
+//	echo "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: " . $d->handle . "\n";
+//	echo "пїЅпїЅпїЅпїЅ: " . $d->path . "\n";
 	while (false !== ($entry = $d->read())) {
 		if(($entry!="..")&&($entry!="."))
 		{			

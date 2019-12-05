@@ -21,7 +21,7 @@ namespace Core {
 
 		}
 
-		public function mod_func($mod,$func,$params=[])
+		public function exe_mod_func($mod,$func,$params=[])
 		{
 			return $this->MLAM->exe_function($mod,$func,$params);
 		}
