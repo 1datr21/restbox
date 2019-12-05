@@ -47,6 +47,13 @@ namespace modules\restbox {
 
 			$res = $this->call_event('after_load_config',$args,$opts);
 		}
+
+		function get_settings()
+		{
+			$stngs = $this->_SETTINGS;
+			$stngs['CFG_DIR'] = $this->_CFG_DIR;
+			return $stngs;
+		}
 			
 		function AfterLoad()
 		{

@@ -17,7 +17,11 @@ namespace modules\restbox\db {
 			
 		}
 		
-		
+		function restbox_after_load_config($args)
+		{
+			$rb_info = $this->exe_mod_func('restbox','get_settings');
+			
+		}
 	}
 
 }
