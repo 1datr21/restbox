@@ -54,11 +54,6 @@ namespace modules\restbox\route {
 			$query_res = $this->call_event('onquery',$args,$opts);
 	
 			return $qres;
-			/*
-			$route_res = ['query'=>$route,
-					'result'=> $qres,//['text'=>'Per aspera ad astra']
-				];
-			return $route_res; */
 		}
         
         function restbox_onload(&$args)
@@ -69,7 +64,7 @@ namespace modules\restbox\route {
 		/* Format  
 		?q=tables/users::q1;tables/task
 		query1[::key1];query2[::key2];...queryN[::keyN]
-		*/
+s		*/
 		function query($arg_str) // call this function from other units and configs
 		{
 			$query_segments = explode(';',$arg_str);
