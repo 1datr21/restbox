@@ -7,7 +7,8 @@
     //    'passw'=>'123456',
         'dbname'=>'tmsic',
         'prefix' =>"tms_",
-    //    'create_if_not_exists'=>true,
-        'charset'=>"cp1251",
+        'create_if_not_exists'=>true,
+        'charset'=>"utf8",
+        'collation'=>'utf8_general_ci',
     ];
 ?>

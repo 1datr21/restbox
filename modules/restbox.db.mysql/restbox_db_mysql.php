@@ -28,7 +28,13 @@ class Module extends \Core\Module
 				if($_dbcfg['create_if_not_exists'])
 				{
 					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+					if(!$_CONNECTION->select_db($_dbcfg['dbname']))
+					{
+						$this->create_db($_CONNECTION,$_dbcfg);
+					}
+
 					$_CONNECTION->select_db($_dbcfg['dbname']);
+
 					if(mysqli_connect_errno())
 					{
 						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
@@ -48,9 +54,11 @@ class Module extends \Core\Module
 			return $_CONNECTION;
 		}
 
-		function create_db($params)
+		function create_db($conn,$params)
 		{
-			$query = "CREATE DATABASE mydatabase CHARACTER SET utf8 COLLATE utf8_general_ci";
+			$_query = "CREATE DATABASE {$params['dbname']} CHARACTER SET {$params['charset']} COLLATE {$params['collation']} ";
+		//	mul_dbg($_query);
+			$conn->query($_query);
 		}
 
 		function query($_query)
