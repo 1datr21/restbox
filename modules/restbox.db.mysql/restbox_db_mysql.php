@@ -48,9 +48,9 @@ class Module extends \Core\Module
 			return $_CONNECTION;
 		}
 
-		function create_table()
+		function create_db($params)
 		{
-
+			$query = "CREATE DATABASE mydatabase CHARACTER SET utf8 COLLATE utf8_general_ci";
 		}
 
 		function query($_query)
