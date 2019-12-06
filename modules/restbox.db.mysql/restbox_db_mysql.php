@@ -28,6 +28,7 @@ class Module extends \Core\Module
 				if($_dbcfg['create_if_not_exists'])
 				{
 					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+					$_CONNECTION->select_db($_dbcfg['dbname']);
 				}
 				else
 				{
