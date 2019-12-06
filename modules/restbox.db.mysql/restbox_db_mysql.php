@@ -29,6 +29,10 @@ class Module extends \Core\Module
 				{
 					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
 					$_CONNECTION->select_db($_dbcfg['dbname']);
+					if(mysqli_connect_errno())
+					{
+						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
+					}
 				}
 				else
 				{
