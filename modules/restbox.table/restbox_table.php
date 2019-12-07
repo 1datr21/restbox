@@ -26,6 +26,7 @@ namespace modules\restbox\table {
 		function read_route($route_str,$route_ptrn)
 		{
 			$_map = $this->route_ptr_map($route_ptrn);
+			$exploded = explode('/',$route_str);
 		}
 
 		function route_ptr_map($r_ptrn)
