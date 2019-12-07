@@ -369,13 +369,14 @@ function x_mkdir($path)
 	}
 }
 
-function mul_dbg($var,$print_r=true,$overcase=false)
+function print_dbg($var,$print_r=true,$overcase=false)
 {
 	GLOBAL $_MUL_DBG_WORK;
 //	print_r($_MUL_DBG_WORK);
 	if($_MUL_DBG_WORK | $overcase)
 	{
-		$file_dbg = url_seg_add(__DIR__,'debug.txt');
+	//	$file_dbg = url_seg_add(__DIR__,'debug.txt');
+		$file_dbg = './debug.txt';
 		
 		if(is_string($var))
 		{
