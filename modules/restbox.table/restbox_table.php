@@ -22,10 +22,13 @@ namespace modules\restbox\table {
 
 /*
 		tables/:table:/[:id:]	
+
+		tables/table:users/id:1
 */
 		function read_route($route_str,$route_ptrn)
 		{
 			$_map = $this->route_ptr_map($route_ptrn);
+			//print_dbg($_map);
 			$exploded = explode('/',$route_str);
 		}
 
@@ -75,9 +78,26 @@ namespace modules\restbox\table {
 				];
 				
 			}
-
-		//	print_dbg($res_map);
-			return $res_map;
+		
+			$str_base="";
+			$vars=[];
+			foreach($res_map as $_map_elem)
+			{
+				if(!$_map_elem['var'])
+				{
+					if($str_base =="")
+						$str_base = $_map_elem['seg_name'];
+					else
+						$str_base = $str_base."/".$_map_elem['seg_name'];
+				}
+				else
+				{
+					unset($_map_elem['var']);
+					$vars[]=$_map_elem;
+				}
+			}
+			//print_dbg($str_base);
+			return ['base'=>$str_base,'vars'=>$vars];
 		}
 
 		function restbox_route_onquery(&$eargs)

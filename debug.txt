@@ -1,26 +1,22 @@
 
 				
-	12-07-2019 23:24:30.000000: Array
+	12-08-2019 00:24:12.000000: Array
 (
-    [0] => Array
+    [base] => tables
+    [vars] => Array
         (
-            [seg_name] => tables
-            [required] => 1
-            [var] => 
-        )
+            [0] => Array
+                (
+                    [seg_name] => table
+                    [required] => 1
+                )
 
-    [1] => Array
-        (
-            [seg_name] => table
-            [required] => 1
-            [var] => 1
-        )
+            [1] => Array
+                (
+                    [seg_name] => id
+                    [required] => 
+                )
 
-    [2] => Array
-        (
-            [seg_name] => id
-            [required] => 
-            [var] => 1
         )
 
 )
