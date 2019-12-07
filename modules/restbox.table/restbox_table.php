@@ -22,7 +22,8 @@ namespace modules\restbox\table {
 
 		function restbox_route_onquery(&$eargs)
 		{
-			
+			print_dbg($eargs);
+
 			return [
 				'message'=>'Hello',
 				'date'=>time(),
