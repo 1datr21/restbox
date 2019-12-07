@@ -25,21 +25,34 @@ namespace modules\restbox\table {
 */
 		function read_route($route_str,$route_ptrn)
 		{
-			
+			$this->route_ptr_map($route_ptrn);
 		}
 
 		function route_ptr_map($r_ptrn)
 		{
+			$res_map = [];
 			$exploded = explode('/',$r_ptrn);
 			foreach($exploded as $expl)
 			{
-				
+				$map=[];
+				preg_match_all("#\[(.+)\]#Uis",$expl,$map);
+				if(count($map[0])==0)
+				{
+					$res_map[] = ['content'=>$expl,'type'=>'const'];	
+				}
+				else
+				{
+					print_dbg($map);	
+					preg_match_all("#:(.+):#Uis",$expl,$map);
+					//sscanf($expl,":%s:",$map);
+				}
 			}
 		}
 
 		function restbox_route_onquery(&$eargs)
 		{
 			//print_dbg($eargs);
+			$this->read_route($eargs['route'],'tables/:table:/[:id:]');
 
 			return [
 				'message'=>'Hello',
