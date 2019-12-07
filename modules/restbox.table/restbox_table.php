@@ -20,6 +20,23 @@ namespace modules\restbox\table {
 			
 		}
 
+/*
+		tables/:table:/[:id:]	
+*/
+		function read_route($route_str,$route_ptrn)
+		{
+			
+		}
+
+		function route_ptr_map($r_ptrn)
+		{
+			$exploded = explode('/',$r_ptrn);
+			foreach($exploded as $expl)
+			{
+				
+			}
+		}
+
 		function restbox_route_onquery(&$eargs)
 		{
 			//print_dbg($eargs);
