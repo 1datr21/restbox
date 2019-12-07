@@ -2,6 +2,8 @@
 namespace modules\restbox\table {
 	use Core;
 	require_once '/inc/ft_basic.php';
+	require_once '/inc/ft_id.php';
+	require_once '/inc/ft_text.php';
 
 	class Module extends \Core\Module
 	{
