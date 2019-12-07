@@ -40,6 +40,7 @@ namespace modules\restbox\route {
 		{
 			//$this->
 			$qres=null;
+			
 			$opts=['query'=>$route,'onhandle'=>function($modname,$ev_res,$_continue) use (&$qres)
 			{
 			//	print_r($ev_res);
@@ -50,7 +51,7 @@ namespace modules\restbox\route {
 				}
 			}];
 			$_json_res=[];
-			$args=[];
+			$args=['route'=>$route];
 			$query_res = $this->call_event('onquery',$args,$opts);
 	
 			return $qres;

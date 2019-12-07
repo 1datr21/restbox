@@ -30,9 +30,7 @@ namespace modules\restbox {
 		}
 		
 		function load_config()
-		{
-			
-
+		{	
 			include "./conf.php";
 			
 			$this->_SETTINGS = $settings;
