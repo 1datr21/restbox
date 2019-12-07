@@ -25,7 +25,7 @@ namespace modules\restbox\table {
 */
 		function read_route($route_str,$route_ptrn)
 		{
-			$this->route_ptr_map($route_ptrn);
+			$_map = $this->route_ptr_map($route_ptrn);
 		}
 
 		function route_ptr_map($r_ptrn)
@@ -36,30 +36,47 @@ namespace modules\restbox\table {
 			{
 				$map=[];
 				preg_match_all("#\[(.+)\]#Uis",$expl,$map);
-				$_required=false;
+				$_required=true;
 				$_var = false;
 				$seg_name = '';
-			//	print_dbg($map);
+
+				//print_dbg($map);
+
 				if(count($map[0])==0)
 				{
-					$_required = true;
+					
 					$seg_name = $expl; 
+					
 				//	$res_map[] = ['content'=>$expl,'type'=>'const'];	
 				}
 				else
-				{						
-					preg_match_all("#:(.+):#Uis",$expl,$map);
-					print_dbg($map);
-					if(count($map[0])==0)
-					{
-						$_var = true;
-					}
-					else
-					{
-						$seg_name = $map[1][0]; 
-					}					
+				{
+					$_required = false;
+					$expl = $map[1][0];
 				}
+										
+				preg_match_all("#:(.+):#Uis",$expl,$map);
+				//	print_dbg($map);
+				if(count($map[0])==0)
+				{
+					
+				}
+				else
+				{
+					$seg_name = $map[1][0]; 
+					$_var = true;
+				}	
+				
+				$res_map[] = [
+					'seg_name'=>$seg_name,
+					'required'=>$_required,
+					'var'=>$_var
+				];
+				
 			}
+
+		//	print_dbg($res_map);
+			return $res_map;
 		}
 
 		function restbox_route_onquery(&$eargs)

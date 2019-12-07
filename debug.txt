@@ -1,56 +1,26 @@
 
 				
-	12-07-2019 22:50:19.000000: Array
+	12-07-2019 23:24:30.000000: Array
 (
     [0] => Array
         (
+            [seg_name] => tables
+            [required] => 1
+            [var] => 
         )
 
     [1] => Array
         (
+            [seg_name] => table
+            [required] => 1
+            [var] => 1
         )
 
-)
-
-				
-	12-07-2019 22:50:19.000000: Array
-(
-    [0] => Array
+    [2] => Array
         (
-        )
-
-    [1] => Array
-        (
-        )
-
-)
-
-				
-	12-07-2019 22:50:19.000000: Array
-(
-    [0] => Array
-        (
-            [0] => [:id:]
-        )
-
-    [1] => Array
-        (
-            [0] => :id:
-        )
-
-)
-
-				
-	12-07-2019 22:57:50.000000: Array
-(
-    [0] => Array
-        (
-            [0] => :id:
-        )
-
-    [1] => Array
-        (
-            [0] => id
+            [seg_name] => id
+            [required] => 
+            [var] => 1
         )
 
 )
