@@ -36,15 +36,28 @@ namespace modules\restbox\table {
 			{
 				$map=[];
 				preg_match_all("#\[(.+)\]#Uis",$expl,$map);
+				$_required=false;
+				$_var = false;
+				$seg_name = '';
+			//	print_dbg($map);
 				if(count($map[0])==0)
 				{
-					$res_map[] = ['content'=>$expl,'type'=>'const'];	
+					$_required = true;
+					$seg_name = $expl; 
+				//	$res_map[] = ['content'=>$expl,'type'=>'const'];	
 				}
 				else
-				{
-					print_dbg($map);	
+				{						
 					preg_match_all("#:(.+):#Uis",$expl,$map);
-					//sscanf($expl,":%s:",$map);
+					print_dbg($map);
+					if(count($map[0])==0)
+					{
+						$_var = true;
+					}
+					else
+					{
+						$seg_name = $map[1][0]; 
+					}					
 				}
 			}
 		}
