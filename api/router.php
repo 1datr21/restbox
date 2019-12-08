@@ -13,12 +13,10 @@ namespace Core {
 		
 		function match($req_str)
 		{
-			$_result=array();
-			
-			print_dbg($this->_MAP);
+			$_varlist=array();
 			
 			$pos_base = strpos($req_str, $this->_MAP['base']);
-			//print_dbg($pos_base);
+		
 			if ($pos_base === false) 
 				return FALSE;
 		
@@ -28,27 +26,35 @@ namespace Core {
 			foreach($segments as $seg)
 			{
 				$_pieces = explode(':',$seg);
-				if(count($_pieces)>0)
+
+				if(count($_pieces)>1)
 				{
 					if(isset($this->_MAP['vars'][$_pieces[0]]))
-						$_result[$_pieces[0]]=$_pieces[1];
+						$_varlist[$_pieces[0]]=$_pieces[1];
 				}
 				else
 				{
-				/*	foreach($this->_MAP['vars'] as $var => $_required) 
+					foreach($this->_MAP['vars'] as $var => $_required) 
 					{
-						print_dbg("<<".$var);
-
-						if(!isset($_result[$var]))
+						if(!isset($_varlist[$var]))
 						{
-							$_result[$var] = $seg;
+							$_varlist[$var] = $seg;
 						}
-					} */
+					} 
 				}
-			//	print_dbg($_pieces);
+			}
+
+			foreach($this->_MAP['vars'] as $var => $_required) {
+				if($_required)
+				{
+					if(empty($_varlist[$var])) 
+						return false;
+				}
 			}
 			
-			return $_result;
+			return [
+				'path'=> $this->_MAP['base'],
+				'vars'=> $_varlist ];
 		}
 		
 		function route_ptr_map($r_ptrn)
