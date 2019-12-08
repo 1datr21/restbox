@@ -32,7 +32,7 @@ namespace modules\restbox\table {
 			//print_dbg($eargs);
 			$router = new Router('tables/one/:table:/[:id:]');
 			$_res = $router->match($eargs['route']);
-			print_dbg($_res);
+		//	print_dbg($_res);
 			//$this->read_route($eargs['route'],'tables/:table:/[:id:]');
 
 			return [

@@ -31,18 +31,21 @@ namespace Core {
 				if(count($_pieces)>0)
 				{
 					if(isset($this->_MAP['vars'][$_pieces[0]]))
-					$_result[$_pieces[0]]=$_pieces[1];
+						$_result[$_pieces[0]]=$_pieces[1];
 				}
 				else
 				{
-					foreach($this->_MAP['vars'] as $var => $_required) {
+				/*	foreach($this->_MAP['vars'] as $var => $_required) 
+					{
+						print_dbg("<<".$var);
+
 						if(!isset($_result[$var]))
 						{
-							
+							$_result[$var] = $seg;
 						}
-					}
+					} */
 				}
-				print_dbg($_pieces);
+			//	print_dbg($_pieces);
 			}
 			
 			return $_result;
