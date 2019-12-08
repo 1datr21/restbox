@@ -24,7 +24,6 @@ namespace modules\restbox\table {
 
 /*
 		tables/:table:/[:id:]	
-
 		tables/table:users/id:1
 */
 		
