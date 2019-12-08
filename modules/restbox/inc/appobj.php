@@ -14,6 +14,11 @@ namespace modules\restbox {
         {
 
         }
+
+        function ExeAction($_req_params)
+        {
+
+        }
     }
 
 }
