@@ -14,7 +14,9 @@ namespace Core {
 		function match($req_str)
 		{
 			$_result=array();
-			//print_dbg($this->_MAP);
+			
+			print_dbg($this->_MAP);
+			
 			$pos_base = strpos($req_str, $this->_MAP['base']);
 			//print_dbg($pos_base);
 			if ($pos_base === false) 
@@ -22,9 +24,21 @@ namespace Core {
 		
 			$str_end = substr($req_str,strlen($this->_MAP['base'])+1);
 			$segments = explode('/',$str_end);
+			
 			foreach($segments as $seg)
 			{
-				print_dbg(">> ".$seg );
+				$_pieces = explode(':',$seg);
+				if(count($_pieces)>0)
+				{
+					$_result[$_pieces[0]]=$_pieces[1];
+				}
+				else
+				{
+				/*	foreach(){
+
+					}*/
+				}
+				print_dbg($_pieces);
 			}
 			
 			return $_result;
