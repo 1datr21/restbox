@@ -3,7 +3,7 @@
 require_once $_BASEDIR.'/core/base.php';
 require_once $_BASEDIR.'/api/index.php';
 require_once $_BASEDIR.'/core/mlam.php';
-require_once $_BASEDIR.'/core/router.php';
+require_once $_BASEDIR.'/api/router.php';
 use \Core as Core;
 use \Core\MLAM;
 
