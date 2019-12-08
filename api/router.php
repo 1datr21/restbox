@@ -14,8 +14,8 @@ namespace Core {
 		function match($req_str)
 		{
 			$_result=array();
-
-
+			print_dbg($this->_MAP);
+			//strpos($mystring, $findme);
 		
 			return $_result;
 		}
