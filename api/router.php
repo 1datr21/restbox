@@ -30,13 +30,17 @@ namespace Core {
 				$_pieces = explode(':',$seg);
 				if(count($_pieces)>0)
 				{
+					if(isset($this->_MAP['vars'][$_pieces[0]]))
 					$_result[$_pieces[0]]=$_pieces[1];
 				}
 				else
 				{
-				/*	foreach(){
-
-					}*/
+					foreach($this->_MAP['vars'] as $var => $_required) {
+						if(!isset($_result[$var]))
+						{
+							
+						}
+					}
 				}
 				print_dbg($_pieces);
 			}
@@ -105,7 +109,7 @@ namespace Core {
 					else
 					{
 						unset($_map_elem['var']);
-						$vars[]=$_map_elem;
+						$vars[$_map_elem['seg_name']]=$_map_elem['required'];
 					}
 			}
 				//print_dbg($str_base);
