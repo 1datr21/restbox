@@ -28,8 +28,14 @@ namespace modules\restbox\table {
 		function read_route($route_str,$route_ptrn)
 		{
 			$_map = $this->route_ptr_map($route_ptrn);
-			//print_dbg($_map);
+			
+			print_dbg($_map);
+			
 			$exploded = explode('/',$route_str);
+			foreach($exploded as $_expl)
+			{
+
+			}
 		}
 
 		function route_ptr_map($r_ptrn)
