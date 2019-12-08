@@ -4,9 +4,9 @@ namespace modules\restbox\table {
 
    class ObjTable extends restbox\AppObject {
    
-        function __construct($params=[])
+        function __construct($_req_params,$cfg_info=[])
         {
-           parent::__construct($params);
+           parent::__construct($_req_params,$cfg_info);
         }
 
         static function getKey($_req_params) // key to object map
@@ -16,7 +16,9 @@ namespace modules\restbox\table {
 
         function ExeAction($_req_params)
         {
-
+          //  print_dbg($this->CFG_INFO['CFG_DIR']);
+         //   include $this->CFG_INFO['CFG_DIR']."/".$_req_params['vars']['table'].".php";
+            return ['xxx'=>'123456'];
         }
    }
 }

@@ -3,9 +3,9 @@ namespace modules\restbox\table {
 	use Core;
 	use Core\Router as Router;
 
-	require_once '/inc/ft_basic.php';
-	require_once '/inc/ft_id.php';
-	require_once '/inc/ft_text.php';
+	require_once '/inc/ftypes/ft_basic.php';
+	require_once '/inc/ftypes/ft_id.php';
+	require_once '/inc/ftypes/ft_text.php';
 	require_once '/inc/obj_table.php';
 
 	class Module extends \Core\Module
@@ -36,19 +36,25 @@ namespace modules\restbox\table {
 			if($_query!==false)
 			{
 				$_o_key = ObjTable::getKey($_query);
-				print_dbg("key : ".$_o_key);
-				if(!$this->exe_mod_func('restbox.route','obj_exists',$_o_key))
+				if($this->exe_mod_func('restbox.route','obj_exists',$_o_key))
 				{
-					$this->exe_mod_func('restbox.route','add_obj', new ObjTable($_query), $_o_key);
+					$_obj = $this->exe_mod_func('restbox.route','get_obj', $_o_key);
 				}
-			}
-			//print_dbg($_res);
+				else
+				{
+					$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+					$_obj = $this->exe_mod_func('restbox.route','add_obj', new ObjTable($_query, $_cfg_info), $_o_key);
+				}
 
-			return [
+				$res_obj = $_obj->ExeAction($_query);
+			}
+			return $res_obj;
+
+		/*	return [
 				'message'=>'Hello',
 				'date'=>time(),
 				'num'=>rand(0,100),		
-			];
+			];*/
 		}	
 	}
 

@@ -5,9 +5,11 @@ namespace modules\restbox {
 
     class AppObject
     {
-        function __construct($_req_params)
+        VAR $CFG_INFO;
+
+        function __construct($_req_params,$cfg_info=[])
         {
-            
+            $this->CFG_INFO = $cfg_info;    
         }
 
         static function getKey($_req_params) // key to object map

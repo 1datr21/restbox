@@ -62,9 +62,15 @@ namespace modules\restbox\route {
 			return (isset($this->_OBJ_BUF[$o_key]));
 		}
 
+		public function get_obj($o_key)
+		{
+			return $this->_OBJ_BUF[$o_key];
+		}
+
 		public function add_obj($obj, $o_key)
 		{
 			$this->_OBJ_BUF[$o_key] = $obj;
+			return $this->_OBJ_BUF[$o_key];
 		}
 
         function restbox_onload(&$args)
