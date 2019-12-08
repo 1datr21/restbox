@@ -37,7 +37,10 @@ namespace modules\restbox\table {
 			{
 				$_o_key = ObjTable::getKey($_query);
 				print_dbg("key : ".$_o_key);
-				$this->exe_mod_func('get_or_add_obj',$_o_key)	
+				if(!$this->exe_mod_func('restbox.route','obj_exists',$_o_key))
+				{
+					$this->exe_mod_func('restbox.route','add_obj', new ObjTable($_query), $_o_key);
+				}
 			}
 			//print_dbg($_res);
 

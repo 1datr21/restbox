@@ -1,5 +1,8 @@
 <?php
+
+
 namespace modules\restbox {
+	require_once '/inc/appobj.php';
 	use Core;
 
 	class Module extends \Core\Module
@@ -23,10 +26,7 @@ namespace modules\restbox {
 			parent::__construct($_PARAMS);
 			
 			GLOBAL $_MUL_DBG_WORK;
-		//	print_r($_MUL_DBG_WORK);
-
-			
-			
+		//	print_r($_MUL_DBG_WORK);	
 		}
 		
 		function load_config()

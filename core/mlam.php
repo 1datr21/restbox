@@ -64,7 +64,7 @@ namespace Core {
 			return url_seg_add($_BASEDIR,"./modules/$mod/".strtr($mod,'.','_').".php");
 		}
 
-		function exe_function($_mod,$func,$params=[])
+		function exe_function($_mod,$func,...$params)
 		{
 			return $this->_MODULES_OBJS[$_mod]->$func($params);
 		}
@@ -326,10 +326,6 @@ namespace Core {
 			do{
 				$next = $this->make_event_loop($_event,$mod_keys,$_params,$opts,$ev_results);
 			} while(count($next)>0);
-
-		//	echo "events : ";
-		//	print_r($ev_results);
-
 
 			return $ev_results;
 		}
