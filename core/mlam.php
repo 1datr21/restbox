@@ -64,9 +64,20 @@ namespace Core {
 			return url_seg_add($_BASEDIR,"./modules/$mod/".strtr($mod,'.','_').".php");
 		}
 
-		function exe_function($_mod,$func,...$params)
+		function exe_function($_mod,$func,$params)
 		{
-			return $this->_MODULES_OBJS[$_mod]->$func($params);
+			$_param_arr = [];
+			foreach($params as $idx => $val)
+			{
+				$_param_arr[]='$params['.$idx.']';
+			}
+			$fun_res = null;
+			print_dbg($params);
+			$str_eval = '$fun_res = $this->_MODULES_OBJS[$_mod]->$func('.implode(',',$_param_arr).');';
+			print_dbg($str_eval);
+			eval($str_eval);
+			return $fun_res;
+			//return $this->_MODULES_OBJS[$_mod]->$func($params);
 		}
 		// ������� ������ ������
 		function load_module($mod)

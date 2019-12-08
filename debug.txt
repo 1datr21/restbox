@@ -1,7 +1,43 @@
 
 				
-	12-08-2019 22:02:35.000000: key : table/users
+	12-08-2019 22:56:35.000000: Array
+(
+    [0] => restbox
+    [1] => get_settings
+)
+
 				
-	12-08-2019 22:03:10.000000: key : table/users
+	12-08-2019 22:56:35.000000: $fun_res = $this->_MODULES_OBJS[$_mod]->$func($params[0],$params[1]);
 				
-	12-08-2019 22:19:14.000000: key : table/users
+	12-08-2019 22:56:35.000000: Array
+(
+    [0] => restbox.db.mysql
+    [1] => connect
+    [2] => Array
+        (
+            [drv] => mysql
+            [host] => p:localhost
+            [user] => root
+            [passw] => 
+            [dbname] => tmsic
+            [prefix] => tms_
+            [create_if_not_exists] => 1
+            [charset] => utf8
+            [collation] => utf8_general_ci
+        )
+
+)
+
+				
+	12-08-2019 22:56:35.000000: $fun_res = $this->_MODULES_OBJS[$_mod]->$func($params[0],$params[1],$params[2]);
+				
+	12-08-2019 22:56:35.000000: Array
+(
+    [0] => restbox
+    [1] => out_error
+    [2] => Connect failed: %s
+Access denied for user ''@'localhost' (using password: YES)
+)
+
+				
+	12-08-2019 22:56:35.000000: $fun_res = $this->_MODULES_OBJS[$_mod]->$func($params[0],$params[1],$params[2]);

@@ -21,9 +21,12 @@ namespace Core {
 
 		}
 
-		public function exe_mod_func($mod,$func,...$params)
+		public function exe_mod_func($mod,$func,$args=[])
 		{
-			return $this->MLAM->exe_function($mod,$func,$params);
+			$args = func_get_args();
+			unset($args[0]);
+			unset($args[1]);
+			return $this->MLAM->exe_function($mod,$func,$args);
 		}
 		
 		public function onload_basic()
