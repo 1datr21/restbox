@@ -63,6 +63,8 @@ namespace modules\restbox {
 			$_json_res=[];
 			$args=[];
 			$this->call_event('onload',$args,$opts);
+			if(!isset($_GET['q']))
+				$_GET['q']="";
 			$args=['route'=>$_GET['q']];
 			$res = $this->call_event('getresult',$args,$opts);
 
