@@ -21,7 +21,12 @@ namespace Core {
 				return FALSE;
 		
 			$str_end = substr($req_str,strlen($this->_MAP['base'])+1);
-			print_dbg(">> ".$str_end );
+			$segments = explode('/',$str_end);
+			foreach($segments as $seg)
+			{
+				print_dbg(">> ".$seg );
+			}
+			
 			return $_result;
 		}
 		
