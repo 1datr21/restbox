@@ -6,6 +6,7 @@ namespace modules\restbox\table {
 	require_once '/inc/ft_basic.php';
 	require_once '/inc/ft_id.php';
 	require_once '/inc/ft_text.php';
+	require_once '/inc/obj_table.php';
 
 	class Module extends \Core\Module
 	{
@@ -34,7 +35,9 @@ namespace modules\restbox\table {
 			$_query = $router->match($eargs['route']);
 			if($_query!==false)
 			{
-				
+				$_o_key = ObjTable::getKey($_query);
+				print_dbg($_o_key);
+
 			}
 			//print_dbg($_res);
 
