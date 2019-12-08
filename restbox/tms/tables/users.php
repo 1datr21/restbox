@@ -1,4 +1,5 @@
 <?php
+
 $info=[
     'fields'=>[
         'id'=>new tfield('id'),
@@ -7,4 +8,6 @@ $info=[
         'passw'=>new tfield('password'),
     ]
 ];
+
+
 ?>

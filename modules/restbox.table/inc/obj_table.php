@@ -1,6 +1,7 @@
 <?php
 namespace modules\restbox\table {
     use modules\restbox as restbox;
+    
 
    class ObjTable extends restbox\AppObject {
    
@@ -17,7 +18,7 @@ namespace modules\restbox\table {
         function ExeAction($_req_params)
         {
           //  print_dbg($this->CFG_INFO['CFG_DIR']);
-         //   include $this->CFG_INFO['CFG_DIR']."/".$_req_params['vars']['table'].".php";
+        //    include $this->CFG_INFO['CFG_DIR']."/tables/".$_req_params['vars']['table'].".php";
             return ['xxx'=>'123456'];
         }
    }
