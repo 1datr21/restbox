@@ -5,14 +5,14 @@ namespace modules\restbox {
 
     class AppObject
     {
-        function __construct()
+        function __construct($_req_params)
         {
             
         }
 
-        static function getKey()
+        static function getKey($_req_params) // key to object map
         {
-            
+
         }
     }
 

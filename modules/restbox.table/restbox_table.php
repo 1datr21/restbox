@@ -31,8 +31,12 @@ namespace modules\restbox\table {
 		{
 			//print_dbg($eargs);
 			$router = new Router('tables/:table:/[:id:]');
-			$_res = $router->match($eargs['route']);
-			print_dbg($_res);
+			$_query = $router->match($eargs['route']);
+			if($_query!==false)
+			{
+				
+			}
+			//print_dbg($_res);
 
 			return [
 				'message'=>'Hello',

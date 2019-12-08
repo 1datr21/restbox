@@ -11,6 +11,7 @@ namespace modules\restbox\route {
 		VAR $_CURR_CONF_DIR;
 		VAR $_CONF_PATH;
 		VAR $_SETTINGS;
+		VAR $_OBJ_BUF;
 		
 		function __construct($_PARAMS)
 		{
@@ -27,8 +28,7 @@ namespace modules\restbox\route {
 			
 		function AfterLoad()
 		{
-			//
-	
+			//	
 		}
 
 		function register_route($route)
@@ -56,7 +56,12 @@ namespace modules\restbox\route {
 	
 			return $qres;
 		}
-        
+		
+		public function add_obj($obj, $o_key)
+		{
+			$this->_OBJ_BUF[$o_key] = $obj;
+		}
+
         function restbox_onload(&$args)
         {
             
