@@ -15,9 +15,22 @@ namespace modules\restbox\table {
             return "tables/".$_req_params['vars']['table'];
         }
 
-        static function get_ns_name($_req_params)
+        static function GetRoutePatterns()
         {
-            return 'tables\\'.$_req_params['vars']['table'];
+            return [
+                    'tables/:table:'=>'view',
+                    'tables/:table:/:id:'=>'item',
+                ];
+        }
+
+        function view($_request)
+        {
+
+        }
+
+        function item($_request)
+        {
+
         }
 
         function ExeAction($_req_params)

@@ -51,12 +51,6 @@ namespace modules\restbox\table {
 				$res_obj = $_obj->ExeAction($_query);
 			}
 			return $res_obj;
-
-		/*	return [
-				'message'=>'Hello',
-				'date'=>time(),
-				'num'=>rand(0,100),		
-			];*/
 		}	
 	}
 

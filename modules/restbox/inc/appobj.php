@@ -17,6 +17,19 @@ namespace modules\restbox {
 
         }
 
+        static function GetRoutePatterns()
+        {
+
+        }
+        // search the request and action
+        static function FindPattern($req_str)
+        {
+            $_res=[];
+            $patterns = self::GetRoutePatterns();
+
+            return null;
+        }
+
         function ExeAction($_req_params)
         {
 
