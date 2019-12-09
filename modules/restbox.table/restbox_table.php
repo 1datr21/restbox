@@ -33,6 +33,7 @@ namespace modules\restbox\table {
 			//print_dbg($eargs);
 			$router = new Router('tables/:table:/[:id:]');
 			$_query = $router->match($eargs['route']);
+			$res_obj = [];
 			if($_query!==false)
 			{
 				$_o_key = ObjTable::getKey($_query);
