@@ -7,6 +7,7 @@ namespace modules\restbox\table {
 	require_once '/inc/ftypes/ft_id.php';
 	require_once '/inc/ftypes/ft_text.php';
 	require_once '/inc/obj_table.php';
+	
 
 	class Module extends \Core\Module
 	{
