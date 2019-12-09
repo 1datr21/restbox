@@ -2,8 +2,9 @@
 namespace modules\restbox\table {
 	use Core;
 	use Core\Router as Router;
+    use modules\restbox\AppObject;
 
-	require_once '/inc/ftypes/ft_basic.php';
+require_once '/inc/ftypes/ft_basic.php';
 	require_once '/inc/ftypes/ft_id.php';
 	require_once '/inc/ftypes/ft_text.php';
 	require_once '/inc/obj_table.php';
@@ -32,6 +33,7 @@ namespace modules\restbox\table {
 		function restbox_route_onquery(&$eargs)
 		{
 			//print_dbg($eargs);
+		//	ObjTable::FindPattern($eargs['route']);
 			$router = new Router('tables/:table:/[:id:]');
 			$_query = $router->match($eargs['route']);
 			$res_obj = [];

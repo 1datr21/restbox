@@ -1,7 +1,8 @@
 <?php
 
 namespace modules\restbox {
-	use Core;
+    use Core;
+    use Core\Router as Router;
 
     class AppObject
     {
@@ -24,9 +25,16 @@ namespace modules\restbox {
         // search the request and action
         static function FindPattern($req_str)
         {
-            $_res=[];
             $patterns = self::GetRoutePatterns();
-
+            foreach($patterns as $ptrn => $_action)
+            {
+                $router = new Router($ptrn);
+                $_match = $router->match($req_str);
+                if($_match!==false)
+                {
+                    return [ 'action'=>$_action, 'request' => $_match ];
+                }
+            }
             return null;
         }
 
