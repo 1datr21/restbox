@@ -7,10 +7,12 @@ namespace modules\restbox {
     class AppObject
     {
         VAR $CFG_INFO;
+        VAR $P_MODULE;
 
-        function __construct($_req_params,$cfg_info=[])
+        function __construct($_req_params,$cfg_info=[],$pmodule=null)
         {
-            $this->CFG_INFO = $cfg_info;    
+            $this->CFG_INFO = $cfg_info;
+            $this->P_MODULE = $pmodule;    
         }
 
         static function getKey($_req_params) // key to object map
@@ -23,10 +25,10 @@ namespace modules\restbox {
 
         }
         // search the request and action
-        static function FindPattern($req_str)
+        static function FindPattern($req_str,$ptrn_list)
         {
-            $patterns = self::GetRoutePatterns();
-            foreach($patterns as $ptrn => $_action)
+            
+            foreach($ptrn_list as $ptrn => $_action)
             {
                 $router = new Router($ptrn);
                 $_match = $router->match($req_str);

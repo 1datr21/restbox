@@ -29,6 +29,11 @@ require_once '/inc/ftypes/ft_basic.php';
 		tables/:table:/[:id:]	
 		tables/table:users/id:1
 */
+		function call_obj(&$eargs,$obj_class)
+		{
+			$ptrn_list = $obj_class::GetRoutePatterns();
+			$_request = AppObject::FindPattern($eargs['route'],$ptrn_list);
+		}
 		
 		function restbox_route_onquery(&$eargs)
 		{

@@ -5,9 +5,9 @@ namespace modules\restbox\table {
 
    class ObjTable extends restbox\AppObject {
    
-        function __construct($_req_params,$cfg_info=[])
+        function __construct($_req_params,$cfg_info=[],$pmodule=null)
         {
-           parent::__construct($_req_params,$cfg_info);
+           parent::__construct($_req_params,$cfg_info,$pmodule);
         }
 
         static function getKey($_req_params) // key to object map
