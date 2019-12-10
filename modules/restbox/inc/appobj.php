@@ -37,7 +37,7 @@ namespace modules\restbox {
                     return [ 'action'=>$_action, 'request' => $_match ];
                 }
             }
-            return null;
+            return false;
         }
 
         function ExeAction($_req_params)
