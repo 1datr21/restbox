@@ -28,6 +28,7 @@ namespace modules\restbox\table {
         function view($_request)
         {
             include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
+            $this->call_mod_func('restbox.db', 'query',"SELECT * FROM {$_request['vars']['table']}");
             return ['view'=>1];
         }
 

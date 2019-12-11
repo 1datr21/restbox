@@ -22,7 +22,7 @@ namespace modules\restbox {
 				else
 				{
 					$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-					$_obj = $this->exe_mod_func('restbox.route','add_obj', new $obj_class($_request['request'], $_cfg_info), $_o_key);
+					$_obj = $this->exe_mod_func('restbox.route','add_obj', new $obj_class($_request['request'], $_cfg_info, $this), $_o_key);
 				}
 
 			//	print_dbg($_request);

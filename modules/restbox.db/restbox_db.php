@@ -14,6 +14,11 @@ namespace modules\restbox\db {
 		{
 			
 		}
+
+		public function query($qargs,$conn_id=null,$params=[])
+		{
+		//	print_dbg($qargs);
+		}
 		
 		function restbox_after_load_config($args)
 		{

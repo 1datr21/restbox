@@ -5,7 +5,7 @@ namespace modules\restbox\table {
 	use modules\restbox\AppObject;
 	use modules\restbox\RBModule as RBModule;
 
-require_once '/inc/ftypes/ft_basic.php';
+	require_once '/inc/ftypes/ft_basic.php';
 	require_once '/inc/ftypes/ft_id.php';
 	require_once '/inc/ftypes/ft_text.php';
 	require_once '/inc/obj_table.php';

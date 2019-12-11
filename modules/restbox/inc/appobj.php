@@ -20,6 +20,27 @@ namespace modules\restbox {
 
         }
 
+        function call_mod_func($mod, $func)
+        {
+            $args_str='';
+            $args = func_get_args();
+            $_arg_arr=[];
+			foreach($args as $idx => $val)
+			{
+                if($idx>=2)
+                {
+                    $_arg_arr[]='$args['.$idx.']';
+                }
+            }
+            $result = null;
+            $eval_code = '$result = $this->P_MODULE->exe_mod_func($mod,$func,'.implode(',',$_arg_arr).');';
+        //    print_dbg($eval_code);
+            eval($eval_code);
+         //   $this->P_MODULE->exe_mod_func($mod,$func,$args_str);
+            //$this->MLAM->exe_function($mod,$func,$args);
+            return $result;
+        }
+
         static function GetRoutePatterns()
         {
 
