@@ -12,6 +12,8 @@ namespace modules\restbox\table {
 
         static function getKey($_req_params) // key to object map
         {
+         //   print_dbg($_req_params);
+
             return "tables/".$_req_params['vars']['table'];
         }
 
@@ -25,7 +27,8 @@ namespace modules\restbox\table {
 
         function view($_request)
         {
-
+            include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
+            return ['view'=>1];
         }
 
         function item($_request)
@@ -33,13 +36,5 @@ namespace modules\restbox\table {
 
         }
 
-        function ExeAction($_req_params)
-        {
-            include $this->CFG_INFO['CFG_DIR']."/tables/".$_req_params['vars']['table'].".php";
-            
-            $_info_obj = $info->getInfo();
-            
-            return $_info_obj;
-        }
    }
 }

@@ -1,9 +1,10 @@
 <?php
 namespace modules\restbox\db\mysql {
 	use Core;
-    use Exception;
+	use Exception;
+	use modules\restbox\RBModule as RBModule;
 
-class Module extends \Core\Module
+	class Module  extends RBModule 
 	{
 		VAR $_CONF;
 		VAR $_EP;

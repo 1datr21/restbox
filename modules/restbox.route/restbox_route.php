@@ -1,8 +1,9 @@
 <?php
 namespace modules\restbox\route {
 	use Core;
+	use modules\restbox\RBModule as RBModule;
 
-	class Module extends \Core\Module
+	class Module extends RBModule 
 	{
 		VAR $_CONF;
 		VAR $_EP;

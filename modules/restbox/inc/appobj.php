@@ -40,7 +40,17 @@ namespace modules\restbox {
             return false;
         }
 
-        function ExeAction($_req_params)
+        function ExeAction($_action,$_req_params)
+        {
+            if(method_exists($this,$_action))
+            {
+                $this->beforeAction($_req_params);
+                return $this->$_action($_req_params);
+            }
+            return null;
+        }
+
+        function beforeAction($_req_params)
         {
 
         }

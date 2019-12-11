@@ -2,8 +2,9 @@
 
 
 namespace modules\restbox {
-	require_once '/inc/appobj.php';
+	require_once '/inc/appobj.php';	
 	require_once '/inc/obj_description.php';
+	require_once '/inc/rbmodule.php';
 	use Core;
 
 	class Module extends \Core\Module
