@@ -92,11 +92,17 @@ namespace modules\restbox\db {
         function query($_query_args)
         {
             $prepared = $this->prepare_query($_query_args);
+            return $this->exec_query($prepared);
         }
 
         function prepare_query($sql)
         {
             return strtr($sql,['@+'=>$this->_CONFIG['prefix']]);
+        }
+
+        function exec_query($_query)
+        {
+
         }
     }
 }
