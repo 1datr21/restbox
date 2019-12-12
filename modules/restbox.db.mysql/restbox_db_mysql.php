@@ -3,8 +3,9 @@ namespace modules\restbox\db\mysql {
 	use Core;
 	use Exception;
 	use modules\restbox\RBModule as RBModule;
+	use modules\restbox\db\RBDBDriver as RBDBDriver;
 
-	class Module  extends RBModule 
+	class Module  extends RBDBDriver // RBModule 
 	{
 		VAR $_CONF;
 		VAR $_EP;
@@ -62,9 +63,9 @@ namespace modules\restbox\db\mysql {
 			$conn->query($_query);
 		}
 
-		function query($_query)
+		function query($conn,$_query)
 		{
-			mysqli_query($this->_CONNECTION,$_query);
+			$conn->query($_query);
 		}
 
 		function fetch_object($res)

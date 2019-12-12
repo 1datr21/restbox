@@ -2,6 +2,7 @@
 namespace modules\restbox\db {
 	use Core;
 	use modules\restbox\RBModule as RBModule;
+	require_once '/inc/rbdbdriver.php';
 
 	class Module extends RBModule 
 	{
@@ -18,6 +19,13 @@ namespace modules\restbox\db {
 		public function query($qargs,$conn_id=null,$params=[])
 		{
 		//	print_dbg($qargs);
+		}
+
+	
+
+		function query_text_select($_params)
+		{
+
 		}
 		
 		function restbox_after_load_config($args)
