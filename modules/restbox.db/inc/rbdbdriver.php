@@ -67,7 +67,7 @@ namespace modules\restbox\db {
 			error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 			try
 			{
-				
+				$this->_CONNECTED = false;
 				if($_dbcfg['create_if_not_exists'])
 				{
 					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
@@ -82,6 +82,10 @@ namespace modules\restbox\db {
 					{
 						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
 					}
+					else
+					{
+						$this->_CONNECTED = true;
+					}
 				}
 				else
 				{
@@ -89,6 +93,10 @@ namespace modules\restbox\db {
 					if(mysqli_connect_errno())
 					{
 						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
+					}
+					else 
+					{
+						$this->_CONNECTED = true;	
 					}
 				}
 			}
