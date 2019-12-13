@@ -104,7 +104,12 @@ namespace modules\restbox\db {
 			error_reporting(E_ALL);  //
 			return $_CONNECTION;
         }
-        
+		
+		function get_error()
+		{
+
+		}
+		
         function query($_query_args)
         {
             $prepared = $this->prepare_query($_query_args);

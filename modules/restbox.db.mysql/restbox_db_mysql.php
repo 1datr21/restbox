@@ -1,5 +1,10 @@
 <?php
+
+
 namespace modules\restbox\db\mysql {
+
+	require_once '/inc/conn_mysqli.php';
+	
 	use Core;
 	use Exception;
 	use modules\restbox\RBModule as RBModule;
