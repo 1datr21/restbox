@@ -27,7 +27,12 @@ namespace modules\restbox\db {
 
 			}
 			$query = "";
-        }
+		}
+		
+		public function get_conn_class_name()
+		{
+			
+		}
 
         public function connect($_dbcfg)
         {
@@ -47,11 +52,14 @@ namespace modules\restbox\db {
 
     class RBDBConnection {
 
-        VAR $_CONFIG;
+		VAR $_CONFIG;
+		VAR $_CONNECTED;
 
         function __construct($_params)
         {
-            $this->_CONFIG = $_params;    
+			def_options(['create_if_not_exists'=>false],$_params);
+			$this->_CONFIG = $_params;   
+			$this->_CONNECTED = $this->connect($_params);
         }
 
         public function connect($_dbcfg)
@@ -59,7 +67,7 @@ namespace modules\restbox\db {
 			error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 			try
 			{
-				def_options(['create_if_not_exists'=>false],$_dbcfg);
+				
 				if($_dbcfg['create_if_not_exists'])
 				{
 					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
