@@ -22,8 +22,13 @@ namespace modules\restbox\db {
 			{
 				$this->exe_mod_func('restbox','out_error',['mess'=>'Connection not exists']);
 			}
-			return $this->_CONNECTIONS[$conn_id]->query($qargs);
+			return ['qres'=>$this->_CONNECTIONS[$conn_id]->query($qargs) ,'conn_id'=>$conn_id ];
 		}	
+
+		public function fetch_object($res)
+		{
+			return $this->_CONNECTIONS[$res['conn_id']]->fetch_object($res['qres']);
+		}
 
 		function query_text_select($_params)
 		{

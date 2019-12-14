@@ -31,9 +31,9 @@ namespace modules\restbox\db\mysql {
         
         function exec_query($_query)
         {
-            print_dbg($_query);
+            //print_dbg($_query);
             $res = $this->_CONNECTION->query($_query);
-            print_dbg($res);
+            //print_dbg($res);
              return $res;
  		}
         

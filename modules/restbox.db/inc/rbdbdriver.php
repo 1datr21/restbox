@@ -132,7 +132,11 @@ namespace modules\restbox\db {
 		function get_err_no()
 		{
             
-        }
+		}
+		
+		function fetch_object($res){
+
+		}
 		
         function query($_query_args)
         {
@@ -147,6 +151,8 @@ namespace modules\restbox\db {
 
         function prepare_query($sql)
         {
+		//	print_dbg('_CONFIG:');
+		//	print_dbg($this->_CONFIG);
             return strtr($sql,['@+'=>$this->_CONFIG['prefix']]);
         }
 
