@@ -23,6 +23,8 @@ namespace Core {
 			$str_end = substr($req_str,strlen($this->_MAP['base'])+1);
 			$segments = explode('/',$str_end);
 			
+			if(count($segments)>count($this->_MAP['vars'] ))
+				return false;
 			foreach($segments as $seg)
 			{
 				$_pieces = explode(':',$seg);
@@ -37,12 +39,14 @@ namespace Core {
 					foreach($this->_MAP['vars'] as $var => $_required) 
 					{
 						if(!isset($_varlist[$var]))
-						{
+						{							
 							$_varlist[$var] = $seg;
+							break;
 						}
+
 					} 
 				}
-			}
+			}		
 
 			foreach($this->_MAP['vars'] as $var => $_required) {
 				if($_required)

@@ -61,6 +61,7 @@ namespace modules\restbox {
 
         function ExeAction($_action,$_req_params)
         {
+           // print_dbg('action :'.$_action);
             if(method_exists($this,$_action))
             {
                 $this->beforeAction($_req_params);

@@ -64,7 +64,15 @@ namespace modules\restbox\table {
 
         function item($_request)
         {
-
+            include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
+        //    print_dbg($_request);
+            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_request['vars']['table']}` WHERE id={$_request['vars']['id']}");
+            $rows=[];
+            while($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            {
+                $rows[]=$row;
+            }
+            return $rows;    
         }
 
    }
