@@ -26,57 +26,14 @@ namespace modules\restbox\db\mysql {
 			
 		}
 		
-		public function connect($_dbcfg)
+		function restbox_db_get_db_drivers()
 		{
-			error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
-			try
-			{
-				def_options(['create_if_not_exists'=>false],$_dbcfg);
-				if($_dbcfg['create_if_not_exists'])
-				{
-					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
-					if(!$_CONNECTION->select_db($_dbcfg['dbname']))
-					{
-						$this->create_db($_CONNECTION,$_dbcfg);
-					}
+			return ['mysql'=>'modules\restbox\db\mysql\MySQLiConnection'];
+		}	
 
-					$_CONNECTION->select_db($_dbcfg['dbname']);
+		
 
-					if(mysqli_connect_errno())
-					{
-						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
-					}
-				}
-				else
-				{
-					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
-					if(mysqli_connect_errno())
-					{
-						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
-					}
-				}
-			}
-			catch(Exception $ex) {}
-			error_reporting(E_ALL);  //
-			return $_CONNECTION;
-		}
-
-		function create_db($conn,$params)
-		{
-			$_query = "CREATE DATABASE {$params['dbname']} CHARACTER SET {$params['charset']} COLLATE {$params['collation']} ";
-		//	mul_dbg($_query);
-			$conn->query($_query);
-		}
-
-		function query($conn,$_query)
-		{
-			$conn->query($_query);
-		}
-
-		function fetch_object($res)
-		{
-			return mysqli_fetch_assoc($res);
-		}
+		
 	}
 
 }

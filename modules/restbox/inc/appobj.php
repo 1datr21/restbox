@@ -34,6 +34,7 @@ namespace modules\restbox {
             }
             $result = null;
             $eval_code = '$result = $this->P_MODULE->exe_mod_func($mod,$func,'.implode(',',$_arg_arr).');';
+            eval($eval_code);
 
             return $result;
         }

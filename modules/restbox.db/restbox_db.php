@@ -16,19 +16,60 @@ namespace modules\restbox\db {
 			
 		}
 
-		public function query($qargs,$conn_id=null,$params=[])
+		public function query($qargs,$params=[],$conn_id=0)
 		{
-		//	print_dbg($qargs);
-		}
-
-	
+			if(!isset($this->_CONNECTIONS[$conn_id]))
+			{
+				$this->exe_mod_func('restbox','out_error',['mess'=>'Connection not exists']);
+			}
+			return $this->_CONNECTIONS[$conn_id]->query($qargs);
+		}	
 
 		function query_text_select($_params)
 		{
 
 		}
+
+		public function connect($conn_info,$conn_id=0)
+		{			
+			change_key('drv','driver',$conn_info);
+			//print_dbg($conn_info);
+			$_drv_class = null;
+			$opts=['onhandle'=>function($modname,$ev_res,&$_continue) use (&$conn_info,&$_drv_class)
+			{
+
+				//print_dbg($ev_res." = ".$conn_info['driver']);
+				if( isset($ev_res[$conn_info['driver']] ))
+				{
+					$_continue = false;
+					$_drv_class = $ev_res[$conn_info['driver']];
+					//print_dbg($ev_res);
+				}
+			}];
+			$_json_res=[];
+			$args=['conn_info'=>$conn_info,];
+			$query_res = $this->call_event('get_db_drivers',$args,$opts);
+
+			//try to connect it
+			$db_conn = new $_drv_class($conn_info);
+			if($db_conn->isConnected())
+			{
+				$this->_CONNECTIONS[$conn_id] = $db_conn;
+			}
+			else
+			{
+				$this->exe_mod_func('restbox','out_error',$db_conn->getError());
+			}
+			//print_dbg($this->_CONNECTIONS);
+		}
+
+		public function connection_exists($conn_id)
+		{
+			
+			return isset($this->_CONNECTIONS[$conn_id]);
+		}
 		
-		function restbox_after_load_config($args)
+	/*	function restbox_after_load_config($args)
 		{
 			$rb_info = $this->exe_mod_func('restbox','get_settings');
 			if(isset($rb_info['connection']))
@@ -54,6 +95,7 @@ namespace modules\restbox\db {
 			}
 			//mul_dbg($rb_info,true,true);
 		}
+		*/
 	}
 
 }

@@ -54,67 +54,96 @@ namespace modules\restbox\db {
 
 		VAR $_CONFIG;
 		VAR $_CONNECTED;
+		VAR $_CONNECTION;
+		VAR $_ERRORS;
 
         function __construct($_params)
         {
 			def_options(['create_if_not_exists'=>false],$_params);
 			$this->_CONFIG = $_params;   
-			$this->_CONNECTED = $this->connect($_params);
+			$this->_CONNECTED = $this->connect($_params);			
+			
         }
 
-        public function connect($_dbcfg)
+		function restbox_db_get_db_drivers()
+		{
+			return [];
+		}	
+
+		function isConnected()
+		{
+			return $this->_CONNECTED;
+		}
+		
+		function get_err_mess()
+		{
+          
+        }
+
+		public function connect($_dbcfg)
 		{
 			error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 			try
 			{
-				$this->_CONNECTED = false;
+				def_options(['create_if_not_exists'=>false],$_dbcfg);
 				if($_dbcfg['create_if_not_exists'])
 				{
-					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
-					if(!$_CONNECTION->select_db($_dbcfg['dbname']))
+					$this->_CONNECTION = $this->make_connection($_dbcfg);// new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+					if(!$this->_CONNECTION->select_db($_dbcfg['dbname']))
 					{
-						$this->create_db($_CONNECTION,$_dbcfg);
+						$this->create_db($this->_CONNECTION,$_dbcfg);
 					}
-
-					$_CONNECTION->select_db($_dbcfg['dbname']);
-
+					$this->_CONNECTION->select_db($_dbcfg['dbname']);
 					if(mysqli_connect_errno())
 					{
-						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
-					}
-					else
-					{
-						$this->_CONNECTED = true;
+						$this->gen_error(); 
+						return false;
 					}
 				}
 				else
 				{
-					$_CONNECTION = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
+					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
 					if(mysqli_connect_errno())
 					{
-						return ['error'=>"Connect failed: %s\n". mysqli_connect_error()];
-					}
-					else 
-					{
-						$this->_CONNECTED = true;	
+						$this->gen_error();
+						return false;
 					}
 				}
 			}
-			catch(Exception $ex) {}
+			catch(Exception $ex) {
+				return false;
+			}
 			error_reporting(E_ALL);  //
-			return $_CONNECTION;
-        }
-		
-		function get_error()
-		{
-
+			return true;
 		}
+
+		function getError($err_idx=null)
+		{
+			if($err_idx==null)
+				$err_idx=count($this->_ERRORS)-1;
+			return $this->_ERRORS[$err_idx];
+		}
+
+		function gen_error()
+		{
+			$this->_ERRORS[]=['message'=>"Connection failed ". $this->get_err_mess(),'errno'=>$this->get_err_no()];
+		}
+
+		function get_err_no()
+		{
+            
+        }
 		
         function query($_query_args)
         {
             $prepared = $this->prepare_query($_query_args);
             return $this->exec_query($prepared);
-        }
+		}
+		
+		function make_connection($_settings)
+		{
+
+		}
 
         function prepare_query($sql)
         {
@@ -124,6 +153,16 @@ namespace modules\restbox\db {
         function exec_query($_query)
         {
 
-        }
+		}
+		
+		function create_db($dbname,$_settings)
+		{
+
+		}
+
+		function select_db($dbname)
+		{
+
+		}
     }
 }
