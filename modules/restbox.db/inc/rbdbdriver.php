@@ -53,10 +53,16 @@ namespace modules\restbox\db {
 				'page'=>1,
 				'where'=>1,
 			],$_params);
+
+			$res_arr = [];
+
 			if($_params['use_page'])
 			{
                 $q_total = "SELECT COUNT(*) as t_count FROM @+{$_params['table']} WHERE {$_params['where']}";
-                $res = $this->query($q_total);
+				$res = $this->query($q_total);
+				
+				$res_row = $this->fetch_object($res);
+
                 
                 $l_0 = $_params['page_size']*($_params['page']-1);
                 $q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
@@ -66,7 +72,8 @@ namespace modules\restbox\db {
 				$q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']}";
 
 			}
-			$query = "";
+
+			return $res_arr;
 		}
 
 		function restbox_db_get_db_drivers()
