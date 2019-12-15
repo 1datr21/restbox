@@ -59,22 +59,22 @@ namespace modules\restbox\db {
 
 			if($_params['use_page'])
 			{
-                $q_total = "SELECT COUNT(*) as t_count FROM @+{$_params['table']} WHERE {$_params['where']}";
+                $q_total = "SELECT COUNT(*) as t_count FROM `@+{$_params['table']}` WHERE {$_params['where']}";
 				$res = $this->query($q_total);
 				
 				$res_row = $this->fetch_object($res);
-				$res_arr['total_count'] = $res_row['t_count'];
+				$res_arr['total_count'] = (int)$res_row['t_count'];
 				$res_arr['page'] = $_params['page'];
 				$res_arr['page_size'] = $_params['page_size'];
 				
                 
                 $l_0 = $_params['page_size']*($_params['page']-1);
-                $q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
+                $q_page = "SELECT * FROM `@+{$_params['table']}` WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
 				
 			}
 			else
 			{
-				$q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']}";
+				$q_page = "SELECT * FROM `@+{$_params['table']}` WHERE {$_params['where']}";
 
 			}
 
@@ -85,6 +85,11 @@ namespace modules\restbox\db {
 			}
 
 			return $res_arr;
+		}
+
+		function get_one($params)
+		{
+
 		}
 
 		function restbox_db_get_db_drivers()
