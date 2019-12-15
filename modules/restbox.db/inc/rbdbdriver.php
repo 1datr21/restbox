@@ -143,6 +143,11 @@ namespace modules\restbox\db {
             $prepared = $this->prepare_query($_query_args);
             return $this->exec_query($prepared);
 		}
+
+		function build_query($qargs)
+		{
+
+		}
 		
 		function make_connection($_settings)
 		{
