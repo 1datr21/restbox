@@ -22,7 +22,7 @@ namespace modules\restbox\table {
         static function GetRoutePatterns()
         {
             return [
-                    'tables/:table:'=>'view',
+                    'tables/:table:/[:page:]'=>'view',
                     'tables/:table:/:id:'=>'item',
                 ];
         }
@@ -53,8 +53,7 @@ namespace modules\restbox\table {
         function view($_request)
         {
             include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
-            return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'] ]);
-            
+            return $this->call_mod_func('restbox.db', 'query_select', $_request['vars']);
         }
 
         function item($_request)

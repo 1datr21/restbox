@@ -87,7 +87,7 @@ namespace modules\restbox\db {
 			return $res_arr;
 		}
 
-		function get_one($params)
+		function get_one($id_val,$tbl_info)
 		{
 
 		}
