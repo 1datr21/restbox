@@ -78,10 +78,10 @@ namespace modules\restbox\db {
 
 			}
 
-			$res = $this->query($q_page);
+			$res = $this->query($q_page); // get the page items
 			while($_row = $this->fetch_object($res))
 			{
-				$res_arr['items'][]=$_row;
+				$res_arr['items'][]=$_row;//
 			}
 
 			return $res_arr;
