@@ -6,28 +6,7 @@ namespace modules\restbox\db {
 
 	class RBDBDriver extends RBModule 
     {
-        function query_select($_params)
-		{
-			def_options([
-				'page_size'=>20,
-				'use_page'=>true,
-                'chunk_by'=>0,
-                'page'=>1,
-			],$_params);
-			if($_params['use_page'])
-			{
-                $q_total = "SELECT COUNT(*) as t_count FROM @+".$_params['table']."";
-                
-                
-                $l_0 = $_params['page_size']*($_params['page']-1);
-                $q_page = "SELECT COUNT(*) as t_count FROM @+".$_params['table']." LIMIT {$l_0 },{$_params['page_size']}";
-			}
-			else
-			{
-
-			}
-			$query = "";
-		}
+       
 		
 		public function get_conn_class_name()
 		{
@@ -63,7 +42,31 @@ namespace modules\restbox\db {
 			$this->_CONFIG = $_params;   
 			$this->_CONNECTED = $this->connect($_params);			
 			
-        }
+		}
+		
+		function query_select($_params)
+		{
+			def_options([
+				'page_size'=>20,
+				'use_page'=>true,
+                'chunk_by'=>0,
+				'page'=>1,
+				'where'=>1,
+			],$_params);
+			if($_params['use_page'])
+			{
+                $q_total = "SELECT COUNT(*) as t_count FROM @+{$_params['table']} WHERE {$_params['where']}";
+                $res = $this->query($q_total);
+                
+                $l_0 = $_params['page_size']*($_params['page']-1);
+                $q_page = "SELECT COUNT(*) as t_count FROM @+{$_params['table']} WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
+			}
+			else
+			{
+
+			}
+			$query = "";
+		}
 
 		function restbox_db_get_db_drivers()
 		{
@@ -147,6 +150,12 @@ namespace modules\restbox\db {
 		function build_query($qargs)
 		{
 
+		}
+
+		function build_query_select($qargs)
+		{
+			$res_sql = "SELECT * FROM {$qargs['table']}";
+			return $res_sql;s
 		}
 		
 		function make_connection($_settings)
