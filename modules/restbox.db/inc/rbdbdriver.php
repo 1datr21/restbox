@@ -59,10 +59,11 @@ namespace modules\restbox\db {
                 $res = $this->query($q_total);
                 
                 $l_0 = $_params['page_size']*($_params['page']-1);
-                $q_page = "SELECT COUNT(*) as t_count FROM @+{$_params['table']} WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
+                $q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
 			}
 			else
 			{
+				$q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']}";
 
 			}
 			$query = "";
@@ -155,7 +156,7 @@ namespace modules\restbox\db {
 		function build_query_select($qargs)
 		{
 			$res_sql = "SELECT * FROM {$qargs['table']}";
-			return $res_sql;s
+			return $res_sql;
 		}
 		
 		function make_connection($_settings)
