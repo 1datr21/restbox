@@ -53,13 +53,8 @@ namespace modules\restbox\table {
         function view($_request)
         {
             include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
-            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_request['vars']['table']}`");
-            $rows=[];
-            while($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
-            {
-                $rows[]=$row;
-            }
-            return $rows;
+            return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'] ]);
+            
         }
 
         function item($_request)

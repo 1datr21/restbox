@@ -55,6 +55,7 @@ namespace modules\restbox\db {
 			],$_params);
 
 			$res_arr = [];
+			$res_arr['items'] = [];
 
 			if($_params['use_page'])
 			{
@@ -62,15 +63,25 @@ namespace modules\restbox\db {
 				$res = $this->query($q_total);
 				
 				$res_row = $this->fetch_object($res);
-
+				$res_arr['total_count'] = $res_row['t_count'];
+				$res_arr['page'] = $_params['page'];
+				$res_arr['page_size'] = $_params['page_size'];
+				
                 
                 $l_0 = $_params['page_size']*($_params['page']-1);
                 $q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']} LIMIT {$l_0 },{$_params['page_size']}";
+				
 			}
 			else
 			{
 				$q_page = "SELECT * FROM @+{$_params['table']} WHERE {$_params['where']}";
 
+			}
+
+			$res = $this->query($q_page);
+			while($_row = $this->fetch_object($res))
+			{
+				$res_arr['items'][]=$_row;
 			}
 
 			return $res_arr;

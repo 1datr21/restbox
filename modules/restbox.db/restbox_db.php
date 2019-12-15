@@ -16,6 +16,12 @@ namespace modules\restbox\db {
 			
 		}
 
+
+		public function query_select($_params,$conn_id=0)
+		{
+			return $this->_CONNECTIONS[$conn_id]->query_select($_params);
+		}
+
 		public function query($qargs,$params=[],$conn_id=0)
 		{
 			if(!isset($this->_CONNECTIONS[$conn_id]))
