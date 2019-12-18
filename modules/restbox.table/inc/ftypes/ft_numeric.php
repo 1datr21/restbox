@@ -6,4 +6,9 @@ class ft_numeric {
     {
         
     }
+
+    function validate()
+    {
+        
+    }
 }
