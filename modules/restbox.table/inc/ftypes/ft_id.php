@@ -1,12 +1,11 @@
 <?php 
 namespace modules\restbox\table {
-    class ft_id
+    class ft_id extends fieldttype_base
     {
-        VAR $fldname;
-
-        function __construct($_fldname='id')
+       
+        function __construct($params=[],$_fldname='id')
         {
-            
+            parent::__construct($params,$_fldname);
         }
     }
 

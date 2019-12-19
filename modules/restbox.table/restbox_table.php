@@ -8,13 +8,15 @@ namespace modules\restbox\table {
 	use modules\restbox\RBModule as RBModule;
 
 	require_once '/inc/ftypes/ft_basic.php';
+	require_once '/inc/obj_table.php';
+/*	
 	require_once '/inc/ftypes/ft_id.php';
 	require_once '/inc/ftypes/ft_text.php';
 	require_once '/inc/ftypes/ft_password.php';
-	require_once '/inc/obj_table.php';
+	
 
 	use modules\restbox\table\ft_id as ft_id;
-	
+*/	
 
 	class Module extends RBModule 
 	{
@@ -36,10 +38,13 @@ namespace modules\restbox\table {
 		tables/:table:/[:id:]	
 		tables/table:users/id:1
 */
+		function AfterLoad()
+		{
 		
+		}
+
 		function restbox_route_onquery(&$eargs)
-		{		
-			$this->gather_ftypes();
+		{				
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\table\ObjTable');
 			
 			return $obj_res;
@@ -48,23 +53,61 @@ namespace modules\restbox\table {
 		function gather_ftypes()
 		{
 		//	print_dbg($this->MLAM->module_list(),true,true);
+			if(!empty($this->_F_TYPES)) 
+				return;
+			$ns_def = 'modules\\restbox\\table\\';
+			$F_TYPES = [
+					'id'=>['file'=>'/inc/ftypes/ft_id.php','ns'=>$ns_def,'class'=>'ft_id'],
+					'text'=>['file'=>'/inc/ftypes/ft_text.php','ns'=>$ns_def,'class'=>'ft_text'],
+					'password'=>['file'=>'/inc/ftypes/ft_password.php','ns'=>$ns_def,'class'=>'ft_password']
+				];
+			$params=[];
+			$obj = $this;
+			$this->call_event('get_f_types',$params,['onhandle'=>function($modname,$ev_res,&$_continue) use (&$F_TYPES)
+				{
+					foreach($ev_res as $ftname => $eritem)
+					{
+						if(substr($eritem['ns'],-strlen($eritem['ns'])+1)=='//')
+							$eritem['ns']=$eritem['ns']."\\";
+						
+						$eritem['file']= url_seg_add("./modules/$modname",$eritem['file']);
+						$F_TYPES[$modname.".".$ftname]=$eritem;
+					}
+				}
+			]);
+
+			$this->_F_TYPES = $F_TYPES;
+			//print_dbg($this->_F_TYPES);		
+		}
+
+		function load_ftype($ftname,$ftparams)
+		{			
+			$this->gather_ftypes();	
+			//print_dbg($ftparams);
+
+			if(isset($this->_F_TYPES[$ftparams->_ftype]))
+			{
+				//print_dbg($this->_F_TYPES[$ftparams->_ftype]);
+
+				require_once $this->_F_TYPES[$ftparams->_ftype]['file'];
+
+				$ftclass = strtr(url_seg_add($this->_F_TYPES[$ftparams->_ftype]['ns'],$this->_F_TYPES[$ftparams->_ftype]['class']),['/'=>'\\']);
+
+				return new $ftclass($ftparams->_info,$ftname);
+
+			}
+			return null;
 		}
 	}
 
 	class tfield {
-		VAR $field_info;
-		function __construct($_class,$_PARAMS=[])
-		{
+		VAR $_info;
+		VAR $_ftype;
 
-			if(strpos($_class,'\\')===false)
-			{
-				$_classname = 'modules\restbox\table\ft_'.$_class;
-			}
-			else
-			{
-				$_classname = $_class;
-			}
-			$this->field_info = new $_classname($_PARAMS);
+		function __construct($_ftype,$_PARAMS=[])
+		{			
+			$this->_info = $_PARAMS;
+			$this->_ftype = $_ftype;
 		}
 	}
 

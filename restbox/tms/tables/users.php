@@ -11,6 +11,7 @@
         'login'=>new tfield('text',['maxlen'=>20]),
         'email'=>new tfield('text',['maxlen'=>50]),
         'passw'=>new tfield('password'),
+        'status'=>new tfield('addfields.enum',['values'=>['student','prepod','admin']]),
     ]
 ]);
 

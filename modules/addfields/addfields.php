@@ -31,7 +31,15 @@ namespace modules\addfields {
 		{
 		//	
 		//	print_dbg(">> Hello ",true,true);
-		}
+        }
+        
+        function restbox_table_get_f_types($_args)
+        {
+            //$ns_def = 'modules\\restbox\\table\\';
+			return [
+					'enum'=>['file'=>'/inc/enum.php','ns'=>'modules\\addfields\\','class'=>'ft_enum'],
+				];
+        }
 		
 		
 				

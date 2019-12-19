@@ -1,14 +1,9 @@
 <?php 
 namespace modules\restbox\table {
 
-    class ft_text
+    class ft_text extends fieldttype_base
     {
-        VAR $fldname;
-
-        function __construct($_fldname='id')
-        {
-            
-        }
+        
     }
 
 }

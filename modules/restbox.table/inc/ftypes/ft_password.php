@@ -1,11 +1,9 @@
 <?php
 namespace modules\restbox\table {
 
-    class ft_password
+    class ft_password extends fieldttype_base
     {
-        VAR $fldname;
-
-        function __construct($_fldname='id')
+        function OnConstruct(&$params_)
         {
             
         }
