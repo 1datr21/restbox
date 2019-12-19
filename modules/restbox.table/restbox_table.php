@@ -59,6 +59,7 @@ namespace modules\restbox\table {
 			$F_TYPES = [
 					'id'=>['file'=>'/inc/ftypes/ft_id.php','ns'=>$ns_def,'class'=>'ft_id'],
 					'text'=>['file'=>'/inc/ftypes/ft_text.php','ns'=>$ns_def,'class'=>'ft_text'],
+					'bigtext'=>['file'=>'/inc/ftypes/ft_bigtext.php','ns'=>$ns_def,'class'=>'ft_bigtext'],
 					'password'=>['file'=>'/inc/ftypes/ft_password.php','ns'=>$ns_def,'class'=>'ft_password']
 				];
 			$params=[];

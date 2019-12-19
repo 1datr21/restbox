@@ -48,13 +48,10 @@ namespace modules\restbox\db {
 			$_drv_class = null;
 			$opts=['onhandle'=>function($modname,$ev_res,&$_continue) use (&$conn_info,&$_drv_class)
 			{
-
-				//print_dbg($ev_res." = ".$conn_info['driver']);
 				if( isset($ev_res[$conn_info['driver']] ))
 				{
 					$_continue = false;
-					$_drv_class = $ev_res[$conn_info['driver']];
-					//print_dbg($ev_res);
+					$_drv_class = $ev_res[$conn_info['driver']];					
 				}
 			}];
 			$_json_res=[];

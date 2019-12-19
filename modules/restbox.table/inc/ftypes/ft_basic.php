@@ -17,5 +17,15 @@ namespace modules\restbox\table {
         {
 
         }
+
+        function OnAlter_std($_args)
+        {
+
+        }
+
+        function OnCreate_std($_args)
+        {
+            
+        }
     }
 }

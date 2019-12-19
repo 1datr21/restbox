@@ -7,6 +7,14 @@ namespace modules\restbox\table {
         {
             parent::__construct($params,$_fldname);
         }
+
+        function OnCreate_std($_args)
+        {
+            return [
+                'fld_seg'=>"`{$this->fldname}` bigint(20) NOT NULL",
+                'add_queries'=>[]
+            ];
+        }
     }
 
 

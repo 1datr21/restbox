@@ -50,10 +50,10 @@ namespace modules\restbox\table {
             $this->connect_db($_db_info);
         }
 
-        function build_info($info)
+        function build_info($info,$tname)
         {
             
-            $res = new TableMap();
+            $res = new TableMap($tname);
             foreach($info->_info['fields'] as $fld => $fldinfo)
             {
                 //$this->call_mod_func('')
@@ -67,9 +67,9 @@ namespace modules\restbox\table {
         {
             include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
         //    print_dbg($info);
-            $info_obj = $this->build_info($info);
-            print_dbg($info_obj);
-            return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'] ]);
+            $info_obj = $this->build_info($info,$_request['vars']['table']);
+            //print_dbg($info_obj);
+            return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'], '#table_params'=>$info_obj]);
             
         }
 
@@ -90,7 +90,19 @@ namespace modules\restbox\table {
 
     class TableMap {
 
+        VAR $TNAME;
         VAR $FIELDS = [];
+
+        function __construct($tbl_name)
+        {
+            $this->TNAME = $tbl_name;
+        }
+
+        function getName()
+        {
+            return $this->TNAME;
+        }
+
         function add_field($fldname,$finfo)
         {
             $this->FIELDS[$fldname] = $finfo;

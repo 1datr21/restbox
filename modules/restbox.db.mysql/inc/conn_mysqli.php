@@ -22,7 +22,13 @@ namespace modules\restbox\db\mysql {
         {
             return new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
 
-        }     
+        }   
+        
+        function get_result_count($result)
+		{
+            return $result->num_rows;
+		}
+
 
         function fetch_object($res)
 		{
@@ -37,12 +43,12 @@ namespace modules\restbox\db\mysql {
              return $res;
  		}
         
-        function create_db($conn,$params)
+      /*  function create_db($conn,$params)
 		{
 			$_query = "CREATE DATABASE {$params['dbname']} CHARACTER SET {$params['charset']} COLLATE {$params['collation']} ";
 		//	mul_dbg($_query);
 			$conn->query($_query);
-		}
+		}*/
     }
 
 }

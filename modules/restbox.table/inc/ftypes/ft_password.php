@@ -5,7 +5,7 @@ namespace modules\restbox\table {
     {
         function OnConstruct(&$params_)
         {
-            
+            def_options(['length'=>6, 'method'=>'md5'],$params_);
         }
     }
 
