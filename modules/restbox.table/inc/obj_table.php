@@ -22,7 +22,7 @@ namespace modules\restbox\table {
         static function GetRoutePatterns()
         {
             return [
-                    'tables/:table:/[:page:]'=>'view',
+                    'tables/:table:'=>'view',
                     'tables/:table:/:id:'=>'item',
                 ];
         }
@@ -50,10 +50,27 @@ namespace modules\restbox\table {
             $this->connect_db($_db_info);
         }
 
+        function build_info($info,$tname)
+        {
+            
+            $res = new TableMap($tname);
+            foreach($info->_info['fields'] as $fld => $fldinfo)
+            {
+                //$this->call_mod_func('')
+               $fld_obj = $this->P_MODULE->load_ftype($fld,$fldinfo);
+               $res->add_field($fld,$fld_obj);
+            }
+            return $res;
+        }
+
         function view($_request)
         {
             include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
-            return $this->call_mod_func('restbox.db', 'query_select', $_request['vars']);
+        //    print_dbg($info);
+            $info_obj = $this->build_info($info,$_request['vars']['table']);
+            //print_dbg($info_obj);
+            return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'], '#table_params'=>$info_obj]);
+            
         }
 
         function item($_request)
@@ -70,4 +87,25 @@ namespace modules\restbox\table {
         }
 
    }
+
+    class TableMap {
+
+        VAR $TNAME;
+        VAR $FIELDS = [];
+
+        function __construct($tbl_name)
+        {
+            $this->TNAME = $tbl_name;
+        }
+
+        function getName()
+        {
+            return $this->TNAME;
+        }
+
+        function add_field($fldname,$finfo)
+        {
+            $this->FIELDS[$fldname] = $finfo;
+        }
+    }
 }

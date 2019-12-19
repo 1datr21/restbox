@@ -38,7 +38,11 @@ namespace modules\restbox\db {
 
         function __construct($_params)
         {
-			def_options(['create_if_not_exists'=>false],$_params);
+			def_options([
+				'create_if_not_exists'=>false,
+				'ENGINE'=>'InnoDB',
+
+			],$_params);
 			$this->_CONFIG = $_params;   
 			$this->_CONNECTED = $this->connect($_params);			
 			
@@ -56,6 +60,14 @@ namespace modules\restbox\db {
 
 			$res_arr = [];
 			$res_arr['items'] = [];
+
+			$table_map = $_params['#table_params'];
+			if( !$this->table_exists($table_map->getName()) )
+			{
+				print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
+				$this->create_db($table_map);
+			}
+
 
 			if($_params['use_page'])
 			{
@@ -87,7 +99,48 @@ namespace modules\restbox\db {
 			return $res_arr;
 		}
 
-		function get_one($id_val,$tbl_info)
+		function create_db($table_params)
+		{
+			$sql="CREATE TABLE IF NOT EXISTS `@+{$table_params->getName()}` (";
+			$i=0;
+			$q_ext = [];
+			foreach($table_params->FIELDS as $fld => $finfo) 
+			{
+				$_args=['table'=>$table_params->getName()];
+				$res = $finfo->OnCreate_std($_args);
+				if(!empty($res['fld_seg'] ))
+				{
+					if($i>0) 
+						$sql = $sql .",". $res['fld_seg'] ;
+					else  
+						$sql = $sql .$res['fld_seg'] ;
+					$i++;
+				}
+				if(!empty($res['add_queries']))
+				{
+					foreach($res['add_queries'] as $q)
+					{
+						$q_ext[]=$q;
+					}
+				}
+			}
+			$sql = $sql.") ENGINE={$this->_CONFIG['ENGINE']} DEFAULT CHARSET={$this->_CONFIG['charset']}";
+			/*
+			CREATE TABLE IF NOT EXISTS `tablica` (
+  `id` bigint(20) NOT NULL,
+  `name` text NOT NULL,
+  `descr` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `tablica`
+  ADD PRIMARY KEY (`id`);
+
+			*/
+			print_dbg($sql);
+			$this->query($sql);
+		}
+
+		function get_one($params)
 		{
 
 		}
@@ -105,7 +158,19 @@ namespace modules\restbox\db {
 		function get_err_mess()
 		{
           
-        }
+		}
+		
+		function table_exists($table)
+		{
+			$res = $this->query("SHOW TABLES LIKE '@+".$table."'");
+			return ($this->get_result_count($res) > 0);
+
+		}
+
+		function get_result_count($res)
+		{
+
+		}
 
 		public function connect($_dbcfg)
 		{
@@ -199,10 +264,7 @@ namespace modules\restbox\db {
 
 		}
 		
-		function create_db($dbname,$_settings)
-		{
-
-		}
+		
 
 		function select_db($dbname)
 		{

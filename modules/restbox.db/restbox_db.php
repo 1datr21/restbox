@@ -48,13 +48,10 @@ namespace modules\restbox\db {
 			$_drv_class = null;
 			$opts=['onhandle'=>function($modname,$ev_res,&$_continue) use (&$conn_info,&$_drv_class)
 			{
-
-				//print_dbg($ev_res." = ".$conn_info['driver']);
 				if( isset($ev_res[$conn_info['driver']] ))
 				{
 					$_continue = false;
-					$_drv_class = $ev_res[$conn_info['driver']];
-					//print_dbg($ev_res);
+					$_drv_class = $ev_res[$conn_info['driver']];					
 				}
 			}];
 			$_json_res=[];
@@ -79,34 +76,7 @@ namespace modules\restbox\db {
 			
 			return isset($this->_CONNECTIONS[$conn_id]);
 		}
-		
-	/*	function restbox_after_load_config($args)
-		{
-			$rb_info = $this->exe_mod_func('restbox','get_settings');
-			if(isset($rb_info['connection']))
-			{
-				$module_drv = "restbox.db.".$rb_info['connection']['drv'];
-				$conn = $this->exe_mod_func($module_drv,'connect',$rb_info['connection']);
-				if(is_array($conn))
-				{
-					if(isset($conn['error']))
-					{
-						$this->exe_mod_func('restbox','out_error',$conn['error']);
-					}
-				}
-
-				
-				$this->_CONNECTIONS[]=$conn;
-				if(count($this->_CONNECTIONS)==1)
-				{
-					$this->_DEF_CONN_IDX=0;
-				}
-
-				return count($this->_CONNECTIONS)-1;
-			}
-			//mul_dbg($rb_info,true,true);
-		}
-		*/
+			
 	}
 
 }
