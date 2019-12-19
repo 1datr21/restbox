@@ -35,6 +35,7 @@ namespace modules\restbox\db {
 		VAR $_CONNECTED;
 		VAR $_CONNECTION;
 		VAR $_ERRORS;
+		VAR $P_MODULE;
 
         function __construct($_params)
         {
@@ -101,6 +102,8 @@ namespace modules\restbox\db {
 			return $res_arr;
 		}
 
+		
+
 		function create_db($table_params)
 		{
 			$sql="CREATE TABLE IF NOT EXISTS `@+{$table_params->getName()}` (";
@@ -109,6 +112,7 @@ namespace modules\restbox\db {
 			foreach($table_params->FIELDS as $fld => $finfo) 
 			{
 				$_args=['table'=>$table_params->getName()];
+				
 				// create if standart
 				$res = $finfo->OnCreate_std($_args);
 				if(!empty($res['fld_seg'] ))
