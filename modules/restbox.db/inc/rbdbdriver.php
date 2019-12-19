@@ -107,6 +107,7 @@ namespace modules\restbox\db {
 			foreach($table_params->FIELDS as $fld => $finfo) 
 			{
 				$_args=['table'=>$table_params->getName()];
+				// create if standart
 				$res = $finfo->OnCreate_std($_args);
 				if(!empty($res['fld_seg'] ))
 				{
@@ -138,6 +139,12 @@ ALTER TABLE `tablica`
 			*/
 			print_dbg($sql);
 			$this->query($sql);
+
+			foreach($q_ext as $query)
+			{
+				$query=strtr($query,['[table]'=>$table_params->getName()]);
+				$this->query($query);
+			}
 		}
 
 		function get_one($params)
@@ -180,7 +187,7 @@ ALTER TABLE `tablica`
 				def_options(['create_if_not_exists'=>false],$_dbcfg);
 				if($_dbcfg['create_if_not_exists'])
 				{
-					$this->_CONNECTION = $this->make_connection($_dbcfg);// new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw']);
+					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
 					if(!$this->_CONNECTION->select_db($_dbcfg['dbname']))
 					{
 						$this->create_db($this->_CONNECTION,$_dbcfg);
@@ -254,8 +261,6 @@ ALTER TABLE `tablica`
 
         function prepare_query($sql)
         {
-		//	print_dbg('_CONFIG:');
-		//	print_dbg($this->_CONFIG);
             return strtr($sql,['@+'=>$this->_CONFIG['prefix']]);
         }
 

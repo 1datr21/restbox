@@ -7,6 +7,14 @@ namespace modules\restbox\table {
         {
             def_options(['length'=>6, 'method'=>'md5'],$params_);
         }
+
+        function OnCreate_std($_args)
+        {
+            return [
+                'fld_seg'=>"`{$this->fldname}` text NOT NULL ",
+                'add_queries'=>[]
+            ];
+        }
     }
 
 }

@@ -5,6 +5,7 @@ namespace modules\restbox\table {
        
         function __construct($params=[],$_fldname='id')
         {
+            //def_options();
             parent::__construct($params,$_fldname);
         }
 
@@ -12,7 +13,11 @@ namespace modules\restbox\table {
         {
             return [
                 'fld_seg'=>"`{$this->fldname}` bigint(20) NOT NULL",
-                'add_queries'=>[]
+                'add_queries'=>[
+                    'ALTER TABLE `@+[table]` ADD PRIMARY KEY (`$this->fldname`);'
+                    'ALTER TABLE `@+[table]` MODIFY `{$this->fldname}` bigint(20) NOT NULL AUTO_INCREMENT',
+                  'COMMIT;'
+                ]
             ];
         }
     }
