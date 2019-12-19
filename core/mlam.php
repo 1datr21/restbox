@@ -34,7 +34,6 @@ namespace Core {
 			foreach ($this->_MODULES_OBJS as $_modname => $mod_obj)
 			{
 				$this->_MODULES_OBJS[$_modname]->AfterLoad();
-				//$this->_AfterLoad($_modname);
 			}
 		}
 		
@@ -52,6 +51,12 @@ namespace Core {
 				$this->_AFTERLOAD_EXECUTED[]=$modname;
 			}
 		}
+
+		function module_list()
+		{
+			
+			return array_keys($this->_MODULES_OBJS);
+		}
 	
 		function get_mod_class_name($mod)
 		{
@@ -62,6 +67,12 @@ namespace Core {
 		{
 			GLOBAL $_BASEDIR;
 			return url_seg_add($_BASEDIR,"./modules/$mod/".strtr($mod,'.','_').".php");
+		}
+
+		private function settings_mod_file_name($mod)
+		{
+			GLOBAL $_BASEDIR;
+			return url_seg_add($_BASEDIR,"./modules/$mod/settings.php");
 		}
 
 		function exe_function($_mod,$func,$params)
@@ -91,6 +102,17 @@ namespace Core {
 				{
 					return false;
 				}
+
+				$_settings_file = $this->settings_mod_file_name($mod);
+				//print_dbg($_settings_file,true,true);
+				if(file_exists($_settings_file))
+					include $_settings_file;
+
+				if(isset($_require))
+				{
+					foreach($_require as $req_mod)
+					$this->load_module($req_mod);
+				}
 				
 				$_main_file = $this->main_mod_file_name($mod);
 				
@@ -108,6 +130,9 @@ namespace Core {
 				$mod_class = $this->get_mod_class_name($mod);
 				
 				$mod_settings = $mod_class::settings();
+				
+			//	print_dbg($mod_settings,true,true);
+
 				if($mod_settings['sess_save'])
 				{
 					$this->_MUST_SAVE[]=$mod;
@@ -185,7 +210,7 @@ namespace Core {
 		{
 			if(isset($this->_MODULES_OBJS[$mod_to]))
 			{
-				$mrthod = $this->method_name($mod_from,$evname);
+				$method = $this->method_name($mod_from,$evname);
 				return $this->_MODULES_OBJS[$mod_to]->$method($params);
 			}
 			else 
