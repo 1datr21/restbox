@@ -62,12 +62,14 @@ namespace modules\restbox\db {
 			$res_arr['items'] = [];
 
 			$table_map = $_params['#table_params'];
-			if( !$this->table_exists($table_map->getName()) )
+			if( $this->_CONFIG['create_if_not_exists'])
 			{
-				print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
-				$this->create_db($table_map);
+				if( !$this->table_exists($table_map->getName()) )
+				{
+					//print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
+					$this->create_db($table_map);
+				}
 			}
-
 
 			if($_params['use_page'])
 			{
@@ -126,23 +128,14 @@ namespace modules\restbox\db {
 				}
 			}
 			$sql = $sql.") ENGINE={$this->_CONFIG['ENGINE']} DEFAULT CHARSET={$this->_CONFIG['charset']}";
-			/*
-			CREATE TABLE IF NOT EXISTS `tablica` (
-  `id` bigint(20) NOT NULL,
-  `name` text NOT NULL,
-  `descr` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `tablica`
-  ADD PRIMARY KEY (`id`);
-
-			*/
-			print_dbg($sql);
+			
+			//print_dbg($sql);
 			$this->query($sql);
 
 			foreach($q_ext as $query)
 			{
 				$query=strtr($query,['[table]'=>$table_params->getName()]);
+			//	print_dbg($query);
 				$this->query($query);
 			}
 		}
