@@ -59,7 +59,7 @@ namespace modules\restbox\db {
 			$query_res = $this->call_event('get_db_drivers',$args,$opts);
 
 			//try to connect it
-			$db_conn = new $_drv_class($conn_info);
+			$db_conn = new $_drv_class($conn_info,$this);
 			if($db_conn->isConnected())
 			{
 				$this->_CONNECTIONS[$conn_id] = $db_conn;

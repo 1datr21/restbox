@@ -42,13 +42,7 @@ namespace modules\restbox\db\mysql {
             //print_dbg($res);  
              return $res;
  		}
-        
-      /*  function create_db($conn,$params)
-		{
-			$_query = "CREATE DATABASE {$params['dbname']} CHARACTER SET {$params['charset']} COLLATE {$params['collation']} ";
-		//	mul_dbg($_query);
-			$conn->query($_query);
-		}*/
+   
     }
 
 }

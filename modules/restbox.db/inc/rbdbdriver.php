@@ -37,14 +37,15 @@ namespace modules\restbox\db {
 		VAR $_ERRORS;
 		VAR $P_MODULE;
 
-        function __construct($_params)
+        function __construct($_params, $p_module=null)
         {
 			def_options([
 				'create_if_not_exists'=>false,
 				'ENGINE'=>'InnoDB',
 
 			],$_params);
-			$this->_CONFIG = $_params;   
+			$this->_CONFIG = $_params;  
+			$this->P_MODULE = $p_module; 
 			$this->_CONNECTED = $this->connect($_params);			
 			
 		}
@@ -112,9 +113,21 @@ namespace modules\restbox\db {
 			foreach($table_params->FIELDS as $fld => $finfo) 
 			{
 				$_args=['table'=>$table_params->getName()];
+				$res = null;
 				
+				$args = ['table'=>$table_params->getName(),'finfo'=>$finfo,'driver'=>$this];
+				$opts=['onhandle'=>function($modname,$ev_res,&$_continue) use (&$res)
+				{
+					$res = $ev_res;
+					$_continue = false;
+					
+				}];
+				$_json_res=[];
+				$query_res = $this->P_MODULE->call_event('onCreateTable',$args,$opts);
+
 				// create if standart
-				$res = $finfo->OnCreate_std($_args);
+				if($res===null)
+					$res = $finfo->OnCreate_std($_args);
 				if(!empty($res['fld_seg'] ))
 				{
 					if($i>0) 
