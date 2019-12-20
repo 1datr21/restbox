@@ -254,11 +254,33 @@ function x_make_str($str,$ptrn)
 	{
 		$ptrn=array('%val'=>$ptrn);
 	}
+
+	//print_dbg($ptrn2);
+	//print_dbg($str);
 	$str_res = strtr($str,$ptrn2);
+//	print_dbg($str_res);
 	
 	$str_res = exe_php_str($str_res,$ptrn);
 	//mul_dbg($res);
 	return $str_res;
+}
+
+/*
+"{%key} - {%val}" or  "{%key} : {%val['name']}"
+*/
+function transform_array($arr,$template)
+{
+	$newarr=[];
+	
+	$eval_str = '$newline = "'.strtr($template,["{%"=>'{$']).'";';
+
+	foreach($arr as $key => $val)
+	{
+		$newline='';
+		eval($eval_str);
+		$newarr[]= $newline;
+	}
+	return $newarr;
 }
 
 function exe_php_str($code_str,$addition_vars=array())
