@@ -9,14 +9,6 @@ namespace modules\restbox\table {
 
 	require_once '/inc/ftypes/ft_basic.php';
 	require_once '/inc/obj_table.php';
-/*	
-	require_once '/inc/ftypes/ft_id.php';
-	require_once '/inc/ftypes/ft_text.php';
-	require_once '/inc/ftypes/ft_password.php';
-	
-
-	use modules\restbox\table\ft_id as ft_id;
-*/	
 
 	class Module extends RBModule 
 	{
@@ -61,7 +53,13 @@ namespace modules\restbox\table {
 					'text'=>['file'=>'/inc/ftypes/ft_text.php','ns'=>$ns_def,'class'=>'ft_text'],
 					'bigtext'=>['file'=>'/inc/ftypes/ft_bigtext.php','ns'=>$ns_def,'class'=>'ft_bigtext'],
 					'password'=>['file'=>'/inc/ftypes/ft_password.php','ns'=>$ns_def,'class'=>'ft_password'],
-					'enum'=>['file'=>'/inc/ftypes/ft_enum.php','ns'=>$ns_def,'class'=>'ft_enum']
+					'int'=>['file'=>'/inc/ftypes/ft_int.php','ns'=>$ns_def,'class'=>'ft_int'],
+					'float'=>['file'=>'/inc/ftypes/ft_float.php','ns'=>$ns_def,'class'=>'ft_float'],
+					'datetime'=>['file'=>'/inc/ftypes/ft_datetime.php','ns'=>$ns_def,'class'=>'ft_datetime'],
+					'date'=>['file'=>'/inc/ftypes/ft_datetime.php','ns'=>$ns_def,'class'=>'ft_datetime'],
+					'enum'=>['file'=>'/inc/ftypes/ft_enum.php','ns'=>$ns_def,'class'=>'ft_enum'],
+					'set'=>['file'=>'/inc/ftypes/ft_set.php','ns'=>$ns_def,'class'=>'ft_set'],
+					'bool'=>['file'=>'/inc/ftypes/ft_bool.php','ns'=>$ns_def,'class'=>'ft_bool'],
 				];
 			$params=[];
 			$obj = $this;

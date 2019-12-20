@@ -43,16 +43,11 @@ namespace modules\addfields {
 		
 		function restbox_db_onCreateTable($args)
 		{
-			//print_dbg(">> [".get_class($args['finfo'])."]");
 			if(get_class($args['finfo'])=="modules\\addfields\\ft_enum")
 			{
-			//	$_fld_str = " `status` ENUM('val1','','val2','val3') NOT NULL ";
-			// ALTER TABLE `tms_users` CHANGE `status` `status` ENUM('val1','','val2','val3') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'val1';
-				//print_dbg( xx_implode($args['finfo']->PARAMS['values'],',',"'{%val}'") );
 				return [
 					'fld_seg'=>"`{$args['finfo']->fldname}` ENUM(".implode(',',transform_array( $args['finfo']->PARAMS['values'] ,"'{%val}'")).") NOT NULL"
 				];
-				//print_dbg( $args['finfo']);
 			}
 			
 		}

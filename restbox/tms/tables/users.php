@@ -12,6 +12,9 @@
         'email'=>new tfield('text',['maxlen'=>50]),
         'passw'=>new tfield('password'),
         'status'=>new tfield('enum',['values'=>['student','prepod','admin'],'default'=>'student']),
+        'birthday'=>new tfield('datetime'),
+    //    'age'=>new tfield('int',['unsigned'=>true]),
+    //    'money'=>new tfield('float'),
     ]
 ]);
 

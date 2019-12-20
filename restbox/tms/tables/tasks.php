@@ -10,7 +10,8 @@
         'id'=>new tfield('id'),
         'name'=>new tfield('text',['maxlen'=>50]),
         'descr'=>new tfield('bigtext',['maxlen'=>2500]),
-        
+        'options'=>new tfield('set',['values'=>['important','attached','group','slow'],'default'=>['slow','attached']]),
+        'active'=>new tfield('bool'),
     ]
 ]);
 ?>
