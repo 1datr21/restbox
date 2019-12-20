@@ -60,7 +60,8 @@ namespace modules\restbox\table {
 					'id'=>['file'=>'/inc/ftypes/ft_id.php','ns'=>$ns_def,'class'=>'ft_id'],
 					'text'=>['file'=>'/inc/ftypes/ft_text.php','ns'=>$ns_def,'class'=>'ft_text'],
 					'bigtext'=>['file'=>'/inc/ftypes/ft_bigtext.php','ns'=>$ns_def,'class'=>'ft_bigtext'],
-					'password'=>['file'=>'/inc/ftypes/ft_password.php','ns'=>$ns_def,'class'=>'ft_password']
+					'password'=>['file'=>'/inc/ftypes/ft_password.php','ns'=>$ns_def,'class'=>'ft_password'],
+					'enum'=>['file'=>'/inc/ftypes/ft_enum.php','ns'=>$ns_def,'class'=>'ft_enum']
 				];
 			$params=[];
 			$obj = $this;
