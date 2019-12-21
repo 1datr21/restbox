@@ -18,6 +18,11 @@ namespace modules\restbox\table {
 
         }
 
+        function get_fields()
+        {
+            return [$this->fldname];
+        }
+
         function OnAlter_std($_args)
         {
 

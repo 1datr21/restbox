@@ -60,6 +60,7 @@ namespace modules\restbox\table {
 					'enum'=>['file'=>'/inc/ftypes/ft_enum.php','ns'=>$ns_def,'class'=>'ft_enum'],
 					'set'=>['file'=>'/inc/ftypes/ft_set.php','ns'=>$ns_def,'class'=>'ft_set'],
 					'bool'=>['file'=>'/inc/ftypes/ft_bool.php','ns'=>$ns_def,'class'=>'ft_bool'],
+					'file'=>['file'=>'/inc/ftypes/ft_file.php','ns'=>$ns_def,'class'=>'ft_file'],
 				];
 			$params=[];
 			$obj = $this;
