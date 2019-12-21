@@ -1,7 +1,7 @@
 {
     "githubPullRequests.remotes": [
         "origin",
-        git remote "upstream",
+        "upstream",
         "https://1datr21:LRshN12n@github.com/1datr21/restbox.git"
     ]
 }
