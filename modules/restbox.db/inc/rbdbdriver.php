@@ -64,14 +64,7 @@ namespace modules\restbox\db {
 			$res_arr['items'] = [];
 
 			$table_map = $_params['#table_params'];
-			if( $this->_CONFIG['create_if_not_exists'])
-			{
-				if( !$this->table_exists($table_map->getName()) )
-				{
-					//print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
-					$this->create_table($table_map);
-				}
-			}
+			$this->dispatch_table($table_map);
 
 			if($_params['use_page'])
 			{
@@ -101,6 +94,116 @@ namespace modules\restbox\db {
 			}
 
 			return $res_arr;
+		}
+
+		// dispatch table fields
+		function dispatch_table($table_map)
+		{
+			if( $this->_CONFIG['create_if_not_exists'])
+			{
+				if( !$this->table_exists($table_map->getName()) )
+				{
+					//print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
+					$this->create_table($table_map);
+				}
+				else
+				{
+					$need_fields = $table_map->get_need_fields();
+
+					$existing_fields = $this->get_fields($table_map->getName());
+					// remove columns
+					$flds=[];
+					foreach($existing_fields as $ex_fld)
+					{
+						if(!in_array( $ex_fld['Field'],$need_fields))
+						{
+							$this->delete_field($table_map->getName(),$ex_fld['Field']);// OnDropField()
+						}
+						else
+						{
+							$flds[]=$ex_fld;
+						}
+					}
+					$existing_fields = $flds;
+
+					foreach($table_map->FIELDS as $fld => $finfo) 
+					{
+						if(!in_array($fld,$existing_fields))
+						{
+						
+							
+						}
+					}
+								
+			//print_dbg($sql);
+		//	$this->query($sql);
+
+			
+				}
+			}
+		}
+
+		function add_column($finfo,$fldafter=null)
+		{
+	/*
+	ALTER TABLE `tms_users`	ADD COLUMN `range` INT NULL AFTER `avatar_mime`;
+	*/
+			$_args=['table'=>$table_map->getName()];
+			$res = null;
+
+			$args = ['table'=>$table_map->getName(),'finfo'=>$finfo,'driver'=>$this];
+			$opts=['onhandle'=>function($modname,$ev_res,&$_continue) use (&$res)
+			{
+				$res = $ev_res;
+				$_continue = false;
+				
+			}];
+			$_json_res=[];
+			$query_res = $this->P_MODULE->call_event('onCreateTable',$args,$opts);
+
+			// create if standart
+			if($res===null)
+				$res = $finfo->OnCreate_std($_args);
+
+			$i=0;
+			if(!empty($res['fld_seg'] ))
+			{
+				if($i>0) 
+					$sql = $sql .",". $res['fld_seg'] ;
+				else  
+					$sql = $sql .$res['fld_seg'] ;
+				$i++;
+			}
+			if(!empty($res['add_queries']))
+			{
+				foreach($res['add_queries'] as $q)
+				{
+					$q_ext[]=$q;
+				}
+			}
+
+			foreach($q_ext as $query)
+				{
+					$query=strtr($query,['[table]'=>$table_params->getName()]);
+				//	print_dbg($query);
+					$this->query($query);
+				}
+		}
+
+		function delete_field($table,$fld)
+		{
+			$this->query("ALTER TABLE `@+$table` DROP COLUMN `$fld`");	
+		}
+
+		function get_fields($_table)
+		{
+			$res = $this->query("DESCRIBE `@+{$_table}`");
+			$rows=[];
+			while($row=$this->fetch_object($res))
+			{
+				$rows[]=$row;
+			}
+			return $rows;
 		}
 
 		function create_db($_CONN, $_dbcfg)

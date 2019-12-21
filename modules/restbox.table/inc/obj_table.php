@@ -107,5 +107,24 @@ namespace modules\restbox\table {
         {
             $this->FIELDS[$fldname] = $finfo;
         }
+
+        function OnDropField()
+        {
+            
+        }
+
+        function get_need_fields()
+        {
+            $res_arr=[];
+            foreach($this->FIELDS as $fld => $fld_obj)
+            {
+                $flds = $fld_obj->get_fields();
+                foreach($flds as $fld)
+                {
+                    $res_arr[]=$fld;
+                }
+            }
+            return $res_arr;
+        }
     }
 }
