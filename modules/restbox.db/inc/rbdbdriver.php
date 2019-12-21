@@ -69,7 +69,7 @@ namespace modules\restbox\db {
 				if( !$this->table_exists($table_map->getName()) )
 				{
 					//print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
-					$this->create_db($table_map);
+					$this->create_table($table_map);
 				}
 			}
 
@@ -103,10 +103,17 @@ namespace modules\restbox\db {
 			return $res_arr;
 		}
 
-		
-
-		function create_db($table_params)
+		function create_db($_CONN, $_dbcfg)
 		{
+			$sql="CREATE DATABASE `{$_dbcfg['dbname']}` COLLATE '{$_dbcfg['collation']}' ";
+			//print_dbg($sql);
+			$this->query($sql);
+		}
+
+		function create_table($table_params)
+		{
+			//print_dbg($table_params);
+
 			$sql="CREATE TABLE IF NOT EXISTS `@+{$table_params->getName()}` (";
 			$i=0;
 			$q_ext = [];
@@ -200,7 +207,14 @@ namespace modules\restbox\db {
 					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
 					if(!$this->_CONNECTION->select_db($_dbcfg['dbname']))
 					{
+						//print_dbg('create DB');
+						$cfg_without_name = $_dbcfg;
+						unset($cfg_without_name['dbname']);
+
+						$this->_CONNECTION = $this->make_connection($cfg_without_name);// 
 						$this->create_db($this->_CONNECTION,$_dbcfg);
+
+						$this->_CONNECTION = $this->make_connection($_dbcfg);// connect existing db
 					}
 					$this->_CONNECTION->select_db($_dbcfg['dbname']);
 					if(mysqli_connect_errno())
