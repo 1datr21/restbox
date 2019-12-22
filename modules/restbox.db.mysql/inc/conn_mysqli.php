@@ -33,7 +33,13 @@ namespace modules\restbox\db\mysql {
         function fetch_object($res)
 		{
 			return mysqli_fetch_assoc($res);
+        }
+        
+        function last_insert_id()
+		{
+			return mysqli_insert_id($this->_CONNECTION);
 		}
+
         
         function exec_query($_query)
         {

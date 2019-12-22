@@ -20,6 +20,7 @@ namespace modules\restbox\db\mysql {
 
         function make_connection($_dbcfg)
         {
+         //   new PDO("mysql:host=$host;dbname=$dbname", $_dbcfg['user'],$_dbcfg['passw']);
             return new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
 
         }   
@@ -33,6 +34,11 @@ namespace modules\restbox\db\mysql {
         function fetch_object($res)
 		{
 			return mysqli_fetch_assoc($res);
+        }
+        
+        function last_insert_id()
+		{
+			return mysqli_insert_id($this->_CONNECTION);
 		}
         
         function exec_query($_query)

@@ -147,6 +147,11 @@ namespace modules\restbox\db {
 			}
 		}
 
+		function last_insert_id()
+		{
+			
+		}
+
 		function add_column($finfo,$table_map,$fld_prev=null)
 		{
 	/*
