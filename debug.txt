@@ -1,80 +1,9 @@
 
 				
-	12-22-2019 21:36:07.000000: Array
-(
-    [0] => Array
-        (
-            [Field] => id
-            [Type] => bigint(20)
-            [Null] => NO
-            [Key] => PRI
-            [Default] => 
-            [Extra] => auto_increment
-        )
-
-    [1] => Array
-        (
-            [Field] => login
-            [Type] => text
-            [Null] => NO
-            [Key] => 
-            [Default] => 
-            [Extra] => 
-        )
-
-    [2] => Array
-        (
-            [Field] => email
-            [Type] => text
-            [Null] => NO
-            [Key] => 
-            [Default] => 
-            [Extra] => 
-        )
-
-    [3] => Array
-        (
-            [Field] => passw
-            [Type] => text
-            [Null] => NO
-            [Key] => 
-            [Default] => 
-            [Extra] => 
-        )
-
-    [4] => Array
-        (
-            [Field] => status
-            [Type] => enum('student','prepod','admin')
-            [Null] => NO
-            [Key] => 
-            [Default] => student
-            [Extra] => 
-        )
-
-    [5] => Array
-        (
-            [Field] => birthday
-            [Type] => date
-            [Null] => NO
-            [Key] => 
-            [Default] => 
-            [Extra] => 
-        )
-
-)
-
+	12-22-2019 22:04:58.000000: ALTER TABLE `@+users` ADD COLUMN  `avatar` longblob NOT NULL , `avatar_mime` text NOT NULL  AFTER `birthday`
 				
-	12-22-2019 21:36:07.000000: ALTER TABLE `@+users` ADD COLUMN  `id` bigint(20) NOT NULL AFTER ``
+	12-22-2019 22:04:58.000000: ALTER TABLE `tms_users` ADD COLUMN  `avatar` longblob NOT NULL , `avatar_mime` text NOT NULL  AFTER `birthday`
 				
-	12-22-2019 21:36:08.000000: ALTER TABLE `@+users` ADD COLUMN  `login` text NOT NULL  AFTER `id`
+	12-22-2019 22:04:59.000000: SELECT COUNT(*) as t_count FROM `tms_users` WHERE 1
 				
-	12-22-2019 21:36:08.000000: ALTER TABLE `@+users` ADD COLUMN  `email` text NOT NULL  AFTER `login`
-				
-	12-22-2019 21:36:08.000000: ALTER TABLE `@+users` ADD COLUMN  `passw` text NOT NULL  AFTER `email`
-				
-	12-22-2019 21:36:08.000000: ALTER TABLE `@+users` ADD COLUMN  `status` ENUM('student','prepod','admin') NOT NULL DEFAULT 'student' AFTER `passw`
-				
-	12-22-2019 21:36:08.000000: ALTER TABLE `@+users` ADD COLUMN  `birthday` Date  NOT NULL  AFTER `status`
-				
-	12-22-2019 21:36:08.000000: ALTER TABLE `@+users` ADD COLUMN  `avatar` longblob NOT NULL , `avatar_mime` text NOT NULL  AFTER `birthday`
+	12-22-2019 22:04:59.000000: SELECT * FROM `tms_users` WHERE 1 LIMIT 0,20

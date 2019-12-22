@@ -127,11 +127,11 @@ namespace modules\restbox\db {
 					$existing_fields = $flds;
 
 					print_dbg($existing_fields);
-					
+					$exst_field_list = assoc_array_cut($existing_fields,"Field");
 					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
 					{
-						if(!in_array($fld,$existing_fields))
+						if(!in_array($fld,$exst_field_list))
 						{
 						
 							$this->add_column($finfo,$table_map,$fld_prev);
