@@ -13,7 +13,7 @@
         'passw'=>new tfield('password'),
         'status'=>new tfield('enum',['values'=>['student','prepod','admin'],'default'=>'student']),
         'birthday'=>new tfield('datetime'),
-    //    'avatar'=>new tfield('file',['mode'=>'blob']),
+        'avatar'=>new tfield('file',['mode'=>'blob']),
    
     ]
 ]);

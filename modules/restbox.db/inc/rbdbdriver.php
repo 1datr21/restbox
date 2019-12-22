@@ -126,13 +126,15 @@ namespace modules\restbox\db {
 					}
 					$existing_fields = $flds;
 
+					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
 					{
 						if(!in_array($fld,$existing_fields))
 						{
 						
-							$this->add_column($finfo);
+							$this->add_column($finfo,$table_map,$fld_prev);
 						}
+						$fld_prev = $fld;
 					}
 								
 			//print_dbg($sql);
@@ -143,7 +145,7 @@ namespace modules\restbox\db {
 			}
 		}
 
-		function add_column($finfo,$fldafter=null)
+		function add_column($finfo,$table_map,$fld_prev=null)
 		{
 	/*
 	ALTER TABLE `tms_users`	ADD COLUMN `range` INT NULL AFTER `avatar_mime`;
@@ -165,7 +167,7 @@ namespace modules\restbox\db {
 			if($res===null)
 				$res = $finfo->OnCreate_std($_args);
 
-			$i=0;
+	/*		$i=0;
 			if(!empty($res['fld_seg'] ))
 			{
 				if($i>0) 
@@ -173,7 +175,8 @@ namespace modules\restbox\db {
 				else  
 					$sql = $sql .$res['fld_seg'] ;
 				$i++;
-			}
+			}*/
+			$q_ext=[];
 			if(!empty($res['add_queries']))
 			{
 				foreach($res['add_queries'] as $q)
@@ -182,9 +185,12 @@ namespace modules\restbox\db {
 				}
 			}
 
+			$_str = "ALTER TABLE `@+{$table_map->getName()}` ADD COLUMN  {$res['fld_seg']} AFTER `{$fld_prev}`";
+			$this->query($_str);
+
 			foreach($q_ext as $query)
 				{
-					$query=strtr($query,['[table]'=>$table_params->getName()]);
+					$query=strtr($query,['[table]'=>$table_map->getName()]);
 				//	print_dbg($query);
 					$this->query($query);
 				}
