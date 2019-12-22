@@ -126,6 +126,8 @@ namespace modules\restbox\db {
 					}
 					$existing_fields = $flds;
 
+					print_dbg($existing_fields);
+					
 					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
 					{
@@ -186,6 +188,7 @@ namespace modules\restbox\db {
 			}
 
 			$_str = "ALTER TABLE `@+{$table_map->getName()}` ADD COLUMN  {$res['fld_seg']} AFTER `{$fld_prev}`";
+			print_dbg($_str);
 			$this->query($_str);
 
 			foreach($q_ext as $query)
