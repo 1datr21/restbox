@@ -3,7 +3,7 @@ namespace modules\restbox\table {
 
     class ft_datetime extends fieldttype_base
     {
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             /*
             ALTER TABLE `tms_users` ADD `dtt` DATETIME NOT NULL AFTER `money`;            

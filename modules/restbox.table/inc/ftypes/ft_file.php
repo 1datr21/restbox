@@ -3,7 +3,7 @@ namespace modules\restbox\table {
 
     class ft_file extends fieldttype_base
     {
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             switch($this->PARAMS['mode']){
                 case 'blob' : $seg = "`{$this->fldname}` longblob NOT NULL , `{$this->fldname}_mime` text NOT NULL ";break;
@@ -12,6 +12,22 @@ namespace modules\restbox\table {
             return [
                 'fld_seg'=>$seg,
                 'add_queries'=>[]
+            ];
+        }
+
+        function OnCreateNewFld_std($_args)
+        {
+            $q_add = [];
+            switch($this->PARAMS['mode']){
+                case 'blob' :
+                    $q_add[]= "ALTER TABLE `@+[table]` ADD COLUMN `{$this->fldname}_mime` text NOT NULL AFTER `{$this->fldname}`";
+                    $seg = "`{$this->fldname}` longblob NOT NULL  ";
+                    break;
+                case 'url' : $seg = "`{$this->fldname}` text NOT NULL ";break;
+            }
+            return [
+                'fld_seg'=>$seg,
+                'add_queries'=>$q_add
             ];
         }
 

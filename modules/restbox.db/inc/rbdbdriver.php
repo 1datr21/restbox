@@ -126,7 +126,7 @@ namespace modules\restbox\db {
 					}
 					$existing_fields = $flds;
 
-					print_dbg($existing_fields);
+				//	print_dbg($existing_fields);
 					$exst_field_list = assoc_array_cut($existing_fields,"Field");
 					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
@@ -163,21 +163,12 @@ namespace modules\restbox\db {
 				
 			}];
 			$_json_res=[];
-			$query_res = $this->P_MODULE->call_event('onCreateTable',$args,$opts);
+			$query_res = $this->P_MODULE->call_event('OnCreateNewFld_std',$args,$opts);
 
 			// create if standart
 			if($res===null)
-				$res = $finfo->OnCreate_std($_args);
+				$res = $finfo->OnCreateNewFld_std($_args);
 
-	/*		$i=0;
-			if(!empty($res['fld_seg'] ))
-			{
-				if($i>0) 
-					$sql = $sql .",". $res['fld_seg'] ;
-				else  
-					$sql = $sql .$res['fld_seg'] ;
-				$i++;
-			}*/
 			$q_ext=[];
 			if(!empty($res['add_queries']))
 			{
@@ -188,15 +179,15 @@ namespace modules\restbox\db {
 			}
 
 			$_str = "ALTER TABLE `@+{$table_map->getName()}` ADD COLUMN  {$res['fld_seg']} AFTER `{$fld_prev}`";
-			print_dbg($_str);
+			//print_dbg($_str);
 			$this->query($_str);
 
 			foreach($q_ext as $query)
-				{
-					$query=strtr($query,['[table]'=>$table_map->getName()]);
+			{
+				$query=strtr($query,['[table]'=>$table_map->getName()]);
 				//	print_dbg($query);
-					$this->query($query);
-				}
+				$this->query($query);
+			}
 		}
 
 		function delete_field($table,$fld)
@@ -242,11 +233,11 @@ namespace modules\restbox\db {
 					
 				}];
 				$_json_res=[];
-				$query_res = $this->P_MODULE->call_event('onCreateTable',$args,$opts);
+				$query_res = $this->P_MODULE->call_event('OnCreateTable_std',$args,$opts);
 
 				// create if standart
 				if($res===null)
-					$res = $finfo->OnCreate_std($_args);
+					$res = $finfo->OnCreateTable_std($_args);
 				if(!empty($res['fld_seg'] ))
 				{
 					if($i>0) 

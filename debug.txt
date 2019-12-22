@@ -1,9 +1,0 @@
-
-				
-	12-22-2019 22:04:58.000000: ALTER TABLE `@+users` ADD COLUMN  `avatar` longblob NOT NULL , `avatar_mime` text NOT NULL  AFTER `birthday`
-				
-	12-22-2019 22:04:58.000000: ALTER TABLE `tms_users` ADD COLUMN  `avatar` longblob NOT NULL , `avatar_mime` text NOT NULL  AFTER `birthday`
-				
-	12-22-2019 22:04:59.000000: SELECT COUNT(*) as t_count FROM `tms_users` WHERE 1
-				
-	12-22-2019 22:04:59.000000: SELECT * FROM `tms_users` WHERE 1 LIMIT 0,20

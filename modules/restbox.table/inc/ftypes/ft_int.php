@@ -3,7 +3,7 @@ namespace modules\restbox\table {
 
     class ft_int extends fieldttype_base
     {
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             /*
             ALTER TABLE `tms_users` CHANGE `age` `age` BIGINT(20) UNSIGNED NOT NULL;

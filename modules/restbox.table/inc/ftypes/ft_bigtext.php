@@ -3,7 +3,7 @@ namespace modules\restbox\table {
 
     class ft_bigtext extends fieldttype_base
     {
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             return [
                 'fld_seg'=>"`{$this->fldname}` longtext NOT NULL ",

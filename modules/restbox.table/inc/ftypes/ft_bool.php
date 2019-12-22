@@ -3,7 +3,7 @@ namespace modules\restbox\table {
 
     class ft_bool extends fieldttype_base
     {
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             /*
            ALTER TABLE `tms_tasks` ADD `active` BOOLEAN NOT NULL AFTER `options`;

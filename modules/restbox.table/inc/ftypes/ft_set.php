@@ -12,7 +12,7 @@ namespace modules\restbox\table {
             def_options(['values'=>['item1']],$params_);
         }
 
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             $seg = "`{$this->fldname}` SET(".implode(',',transform_array( $this->PARAMS['values'] ,"'{%val}'")).") NOT NULL";
             if(isset($this->PARAMS['default']))

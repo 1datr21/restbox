@@ -23,12 +23,12 @@ namespace modules\restbox\table {
             return [$this->fldname];
         }
 
-        function OnAlter_std($_args)
+        function OnCreateNewFld_std($_args)
         {
-
+            return $this->OnCreateTable_std($_args);
         }
 
-        function OnCreate_std($_args)
+        function OnCreateTable_std($_args)
         {
             
         }
