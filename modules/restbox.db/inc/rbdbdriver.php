@@ -131,7 +131,7 @@ namespace modules\restbox\db {
 						if(!in_array($fld,$existing_fields))
 						{
 						
-							
+							$this->add_column($finfo);
 						}
 					}
 								
