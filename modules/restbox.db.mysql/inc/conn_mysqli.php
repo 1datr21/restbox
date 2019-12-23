@@ -7,6 +7,14 @@ namespace modules\restbox\db\mysql {
     
     class MySQLiConnection extends RBDBConnection {
 
+        function OnConstruct(&$_params)
+        {
+            def_options([
+				'create_if_not_exists'=>false,
+				'ENGINE'=>'InnoDB',
+
+			],$_params);
+        }
 
         function get_err_mess()
 		{
@@ -17,6 +25,11 @@ namespace modules\restbox\db\mysql {
 		{
             return mysqli_connect_errno();
         }
+
+        function hasError()
+		{
+			return mysqli_connect_errno();
+		}
 
         function make_connection($_dbcfg)
         {
@@ -41,7 +54,7 @@ namespace modules\restbox\db\mysql {
 		}
 
         
-        function exec_query($_query)
+        function exec_query($_query,$gen_error=true)
         {
            // print_dbg($_query);
             $res = $this->_CONNECTION->query($_query);

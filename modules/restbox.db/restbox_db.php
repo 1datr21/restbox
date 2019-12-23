@@ -28,7 +28,9 @@ namespace modules\restbox\db {
 			{
 				$this->exe_mod_func('restbox','out_error',['mess'=>'Connection not exists']);
 			}
-			return ['qres'=>$this->_CONNECTIONS[$conn_id]->query($qargs) ,'conn_id'=>$conn_id ];
+			$q_res = $this->_CONNECTIONS[$conn_id]->query($qargs);
+			
+			return ['qres'=>$q_res,'conn_id'=>$conn_id ];
 		}	
 
 		public function fetch_object($res)
@@ -60,12 +62,14 @@ namespace modules\restbox\db {
 
 			//try to connect it
 			$db_conn = new $_drv_class($conn_info,$this);
+			//print_dbg($db_conn->_ERRORS);
 			if($db_conn->isConnected())
 			{
 				$this->_CONNECTIONS[$conn_id] = $db_conn;
 			}
 			else
 			{
+				//print_dbg($db_conn->_ERRORS);
 				$this->exe_mod_func('restbox','out_error',$db_conn->getError());
 			}
 			//print_dbg($this->_CONNECTIONS);

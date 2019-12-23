@@ -2,7 +2,8 @@
 
 namespace modules\restbox\db {
 	use Core;
-	use modules\restbox\RBModule as RBModule;
+    use Exception;
+    use modules\restbox\RBModule as RBModule;
 
 	class RBDBDriver extends RBModule 
     {
@@ -39,16 +40,17 @@ namespace modules\restbox\db {
 
         function __construct($_params, $p_module=null)
         {
-			def_options([
-				'create_if_not_exists'=>false,
-				'ENGINE'=>'InnoDB',
-
-			],$_params);
+			$this->OnConstruct($_params);
 			$this->_CONFIG = $_params;  
 			$this->P_MODULE = $p_module; 
 			$this->_CONNECTED = $this->connect($_params);			
 			
 		}
+
+		function OnConstruct(&$_params)
+        {
+           
+        }
 		
 		function query_select($_params)
 		{
@@ -268,7 +270,7 @@ namespace modules\restbox\db {
 			{
 				$query=strtr($query,['[table]'=>$table_params->getName()]);
 			//	print_dbg($query);
-				$this->query($query);
+				$this->query($query, false);
 			}
 		}
 
@@ -312,8 +314,22 @@ namespace modules\restbox\db {
 				def_options(['create_if_not_exists'=>false],$_dbcfg);
 				if($_dbcfg['create_if_not_exists'])
 				{
+					
 					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
-					if(!$this->_CONNECTION->select_db($_dbcfg['dbname']))
+					if($this->isConnected())
+					{
+						//print_dbg("connected @");
+						return true;
+					}
+					
+				//	print_dbg('not connected');
+					if($this->hasError())
+					{
+					//	$this->gen_error(); 
+						
+						return false;
+					}
+					if(!$this->select_db($_dbcfg['dbname']))
 					{
 						//print_dbg('create DB');
 						$cfg_without_name = $_dbcfg;
@@ -325,18 +341,18 @@ namespace modules\restbox\db {
 						$this->_CONNECTION = $this->make_connection($_dbcfg);// connect existing db
 					}
 					$this->_CONNECTION->select_db($_dbcfg['dbname']);
-					if(mysqli_connect_errno())
+					if($this->hasError())
 					{
-						$this->gen_error(); 
+					//	$this->gen_error(); 
 						return false;
 					}
 				}
 				else
 				{
 					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
-					if(mysqli_connect_errno())
+					if($this->hasError())
 					{
-						$this->gen_error();
+					//	$this->gen_error();
 						return false;
 					}
 				}
@@ -348,6 +364,11 @@ namespace modules\restbox\db {
 			return true;
 		}
 
+		function hasError()
+		{
+			return false;
+		}
+
 		function getError($err_idx=null)
 		{
 			if($err_idx==null)
@@ -355,9 +376,11 @@ namespace modules\restbox\db {
 			return $this->_ERRORS[$err_idx];
 		}
 
-		function gen_error()
+		function gen_error($mess=null)//
 		{
-			$this->_ERRORS[]=['message'=>"Connection failed ". $this->get_err_mess(),'errno'=>$this->get_err_no()];
+			if($mess==null) 
+				$mess = $this->get_err_mess();
+			$this->_ERRORS[]=['message'=>$mess,'errno'=>$this->get_err_no()];
 		}
 
 		function get_err_no()
@@ -369,10 +392,21 @@ namespace modules\restbox\db {
 
 		}
 		
-        function query($_query_args)
+        function query($_query_args,$show_error=true)
         {
+		//	print_dbg($_query_args);
             $prepared = $this->prepare_query($_query_args);
-            return $this->exec_query($prepared);
+			$e_res = $this->exec_query($prepared,$show_error);
+			//print_dbg($e_res);
+			if($show_error)
+			{
+				if($e_res===false)
+				{
+				//	$this->P_MODULE->gen_error($this->getError());
+					$this->P_MODULE->exe_mod_func('restbox','out_error',$this->getError());
+				}
+			}
+			return $e_res;
 		}
 
 		function build_query($qargs)
@@ -396,7 +430,7 @@ namespace modules\restbox\db {
             return strtr($sql,['@+'=>$this->_CONFIG['prefix']]);
         }
 
-        function exec_query($_query)
+        function exec_query($_query,$gen_error=true)
         {
 
 		}
