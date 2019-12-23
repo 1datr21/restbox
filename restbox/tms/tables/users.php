@@ -8,9 +8,9 @@
     $info = new obj_description([
     'fields'=>[
         'id'=>new tfield('id'),
-        'login'=>new tfield('text',['maxlen'=>20]),
-        'email'=>new tfield('text',['maxlen'=>50]),
-        'passw'=>new tfield('password'),
+        'login'=>new tfield('text',['maxlen'=>20],'require'),
+        'email'=>new tfield('text',['maxlen'=>50],'require'),
+        'passw'=>new tfield('password','require'),
         'status'=>new tfield('enum',['values'=>['student','prepod','admin'],'default'=>'student']),
         'birthday'=>new tfield('datetime'),
         'avatar'=>new tfield('file',['mode'=>'blob']),

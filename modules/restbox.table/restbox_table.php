@@ -105,11 +105,27 @@ namespace modules\restbox\table {
 		VAR $_info;
 		VAR $_ftype;
 
-		function __construct($_ftype,$_PARAMS=[])
-		{			
-			$this->_info = $_PARAMS;
+		function __construct($_ftype,$_PARAMS=[],$require='null')
+		{						
+			if(is_array($_PARAMS))
+			{
+			}
+			else
+			{
+				$require = $_PARAMS;
+				$_PARAMS=[];
+			}
+			$req_map = ['no'=>false,'required'=>true,false=>false, true=>true];
+			if(isset($req_map[$require]))
+			{
+				$_PARAMS['require'] = $req_map[$require];
+			}
+			$this->_info = $_PARAMS;			
 			$this->_ftype = $_ftype;
 		}
+		
+		
+		
 	}
 
 }
