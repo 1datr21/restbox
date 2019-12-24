@@ -1,5 +1,5 @@
 <?php
- /*   $dbconn = [
+    $dbconn = [
         'drv'=>'mysql',
         'host'=>'p:localhost',
         'user'=>'root',
@@ -10,8 +10,9 @@
         'create_if_not_exists'=>true,
         'charset'=>"utf8",
         'collation'=>'utf8_general_ci',
-    ];*/
-    
+    ];
+   
+  /*
     $host = 'localhost';
     $db = 'tmsus';
     $charset='utf8';
@@ -29,5 +30,5 @@
         'charset'=>"utf8",
         'collation'=>'utf8_general_ci',
     ];
-    
+    */
 ?>
