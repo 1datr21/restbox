@@ -110,11 +110,9 @@ namespace modules\restbox\db {
 				}
 				else
 				{
-				//	print_dbg('table exists');
 					$need_fields = $table_map->get_need_fields();
 
 					$existing_fields = $this->get_fields($table_map->getName());
-				//	print_dbg($existing_fields);
 					// remove columns
 					$flds=[];
 					foreach($existing_fields as $ex_fld)
@@ -129,18 +127,15 @@ namespace modules\restbox\db {
 						}
 					}
 					$existing_fields = $flds;
-
 					
 					$exst_field_list = assoc_array_cut($existing_fields,"Field");
 				
 				//	print_dbg($exst_field_list);
-				
+					// add not existing fields
 					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
 					{
-						$need_for_fld = $finfo->get_fields();
-						
-					//	print_dbg($need_for_fld);
+						$need_for_fld = $finfo->get_fields();						
 
 						$must_add = false;
 						foreach($need_for_fld as $__fld)
@@ -170,11 +165,50 @@ namespace modules\restbox\db {
 			
 		}
 
-		function add_column($finfo,$table_map,$fld_prev=null,$errshow=false)
+		function change_column($finfo,$table_map,$errshow=false)
 		{
-	/*
-	ALTER TABLE `tms_users`	ADD COLUMN `range` INT NULL AFTER `avatar_mime`;
-	*/
+/* ALTER TABLE `tms_users`
+	CHANGE COLUMN `avatar_mime` `avatar_mime` VARCHAR(50) NOT NULL AFTER `avatar`;  */
+			$_args=['table'=>$table_map->getName()];
+			$res = null;
+
+			$args = ['table'=>$table_map->getName(),'finfo'=>$finfo,'driver'=>$this];
+			$opts=['onhandle'=>function($modname,$ev_res,&$_continue) use (&$res)
+			{
+				$res = $ev_res;
+				$_continue = false;
+				
+			}];
+			$_json_res=[];
+			$query_res = $this->P_MODULE->call_event('OnChangeFld_std',$args,$opts);
+
+			// create if standart
+			if($res===null)
+				$res = $finfo->OnChangeFld_std($_args);
+
+			$q_ext=[];
+			if(!empty($res['add_queries']))
+			{
+				foreach($res['add_queries'] as $q)
+				{
+					$q_ext[]=$q;
+				}
+			}
+
+			$_str = "ALTER TABLE `@+{$table_map->getName()}` ADD COLUMN  {$res['fld_seg']} AFTER `{$fld_prev}`";
+			//print_dbg($_str);
+			$this->query($_str,$errshow);
+
+			foreach($q_ext as $query)
+			{
+				$query=strtr($query,['[table]'=>$table_map->getName()]);
+				//	print_dbg($query);
+				$this->query($query);
+			}
+		}
+
+		function add_column($finfo,$table_map,$fld_prev=null,$errshow=false)
+		{	
 			$_args=['table'=>$table_map->getName()];
 			$res = null;
 

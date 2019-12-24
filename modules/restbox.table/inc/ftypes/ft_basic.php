@@ -32,5 +32,15 @@ namespace modules\restbox\table {
         {
             
         }
+
+        function OnChangeFld_std($_args)
+        {
+            return $this->OnCreateTable_std($_args);
+        }
+
+        function compare_fld($fld_map)
+        {
+
+        }
     }
 }

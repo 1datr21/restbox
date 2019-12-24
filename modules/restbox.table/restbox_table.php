@@ -61,6 +61,7 @@ namespace modules\restbox\table {
 					'set'=>['file'=>'/inc/ftypes/ft_set.php','ns'=>$ns_def,'class'=>'ft_set'],
 					'bool'=>['file'=>'/inc/ftypes/ft_bool.php','ns'=>$ns_def,'class'=>'ft_bool'],
 					'file'=>['file'=>'/inc/ftypes/ft_file.php','ns'=>$ns_def,'class'=>'ft_file'],
+					'ref'=>['file'=>'/inc/ftypes/ft_ref.php','ns'=>$ns_def,'class'=>'ft_ref'],
 				];
 			$params=[];
 			$obj = $this;
@@ -79,6 +80,13 @@ namespace modules\restbox\table {
 
 			$this->_F_TYPES = $F_TYPES;
 			//print_dbg($this->_F_TYPES);		
+		}
+
+		function load_table($_table)
+		{
+			include $this->CFG_INFO['CFG_DIR']."/tables/{$_table}.php";
+			//    print_dbg($info);
+			$info_obj = $this->build_info($info,$_table);
 		}
 
 		function load_ftype($ftname,$ftparams)

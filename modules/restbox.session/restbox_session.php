@@ -27,6 +27,11 @@ namespace modules\restbox\session {
 		
 		}
 
+		function gen_token()
+		{
+			
+		}
+
 		
 	}
 
