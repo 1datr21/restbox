@@ -81,7 +81,7 @@ namespace modules\restbox\db\mysql {
         
         function get_result_count($result)
 		{
-            return $result->num_rows;
+            return $result->rowCount();
 		}
 
 

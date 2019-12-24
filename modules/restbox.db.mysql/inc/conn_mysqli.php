@@ -33,8 +33,10 @@ namespace modules\restbox\db\mysql {
 
         function make_connection($_dbcfg)
         {
-            return new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
-
+            $conn = new \mysqli($_dbcfg['host'],$_dbcfg['user'],$_dbcfg['passw'],$_dbcfg['dbname']);
+            $this->_CONNECTED = !$this->hasError();
+            //print_dbg($conn);
+            return $conn;
         }   
         
         function get_result_count($result)

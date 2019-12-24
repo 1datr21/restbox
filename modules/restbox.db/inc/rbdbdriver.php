@@ -105,14 +105,16 @@ namespace modules\restbox\db {
 			{
 				if( !$this->table_exists($table_map->getName()) )
 				{
-					//print_dbg("TABLE ".$table_map->getName()." NOT EXISTS");
+				//	print_dbg('table not exists');
 					$this->create_table($table_map);
 				}
 				else
 				{
+				//	print_dbg('table exists');
 					$need_fields = $table_map->get_need_fields();
 
 					$existing_fields = $this->get_fields($table_map->getName());
+				//	print_dbg($existing_fields);
 					// remove columns
 					$flds=[];
 					foreach($existing_fields as $ex_fld)
@@ -128,16 +130,30 @@ namespace modules\restbox\db {
 					}
 					$existing_fields = $flds;
 
-				//	print_dbg($existing_fields);
+					
 					$exst_field_list = assoc_array_cut($existing_fields,"Field");
+				
+				//	print_dbg($exst_field_list);
+				
 					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
 					{
-						if(!in_array($fld,$exst_field_list))
-						{
+						$need_for_fld = $finfo->get_fields();
 						
-							$this->add_column($finfo,$table_map,$fld_prev);
+					//	print_dbg($need_for_fld);
+
+						$must_add = false;
+						foreach($need_for_fld as $__fld)
+						{
+							if(!in_array($__fld,$exst_field_list))
+							{
+								$must_add = true;
+							}
 						}
+
+						if($must_add)
+							$this->add_column($finfo,$table_map,$fld_prev);
+						
 						$fld_prev = $fld;
 					}
 								
@@ -154,7 +170,7 @@ namespace modules\restbox\db {
 			
 		}
 
-		function add_column($finfo,$table_map,$fld_prev=null)
+		function add_column($finfo,$table_map,$fld_prev=null,$errshow=false)
 		{
 	/*
 	ALTER TABLE `tms_users`	ADD COLUMN `range` INT NULL AFTER `avatar_mime`;
@@ -187,7 +203,7 @@ namespace modules\restbox\db {
 
 			$_str = "ALTER TABLE `@+{$table_map->getName()}` ADD COLUMN  {$res['fld_seg']} AFTER `{$fld_prev}`";
 			//print_dbg($_str);
-			$this->query($_str);
+			$this->query($_str,$errshow);
 
 			foreach($q_ext as $query)
 			{
@@ -318,7 +334,7 @@ namespace modules\restbox\db {
 					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
 					if($this->isConnected())
 					{
-						//print_dbg("connected @");
+						print_dbg("connected @");
 						return true;
 					}
 					

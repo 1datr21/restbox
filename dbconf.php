@@ -1,5 +1,5 @@
 <?php
-    $dbconn = [
+/*    $dbconn = [
         'drv'=>'mysql',
         'host'=>'p:localhost',
         'user'=>'root',
@@ -11,13 +11,12 @@
         'charset'=>"utf8",
         'collation'=>'utf8_general_ci',
     ];
-   
-  /*
+   */
+  
     $host = 'localhost';
     $db = 'tmsus';
     $charset='utf8';
-    $user='root';
-    
+    $user='root';    
 //    $passw='';    
     $passw='123456';
     $dbconn = [
@@ -30,5 +29,5 @@
         'charset'=>"utf8",
         'collation'=>'utf8_general_ci',
     ];
-    */
+    
 ?>
