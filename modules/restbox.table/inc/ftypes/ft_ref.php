@@ -28,8 +28,12 @@ namespace modules\restbox\table {
 
         function AfterConstruct()
         {
-            $_table = $this->_P_MODULE->load_table($this->PARAMS['table']);
-            print_dbg($_table);
+            $_table_info = $this->_P_MODULE->load_table($this->PARAMS['table']);
+            if(!empty($_table_info))
+            {
+                // get the field of id and it's type
+            }
+        //    print_dbg($_table);
         }
     }
 

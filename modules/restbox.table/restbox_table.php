@@ -4,7 +4,8 @@
 namespace modules\restbox\table {
 	use Core;
 	use Core\Router as Router;
-	use modules\restbox\AppObject;
+    use Exception;
+    use modules\restbox\AppObject;
 	use modules\restbox\RBModule as RBModule;
 
 	require_once '/inc/ftypes/ft_basic.php';
@@ -85,12 +86,20 @@ namespace modules\restbox\table {
 		function load_table($_table)
 		{
 			//print_dbg($this);
-			include $this->CFG_INFO = $this->exe_mod_func('restbox','get_settings');
-//			print_dbg($conf_info);
-			include $this->CFG_INFO['CFG_DIR']."/tables/{$_table}.php";
-			//    
-			$info_obj = $this->build_info($info,$_table);
-			print_dbg($info_obj);
+			try{
+				include $this->CFG_INFO = $this->exe_mod_func('restbox','get_settings');
+	//			print_dbg($conf_info);
+				include $this->CFG_INFO['CFG_DIR']."/tables/{$_table}.php";
+				//    
+				$info_obj = $this->build_info($info,$_table);
+
+				//print_dbg($info_obj);
+				return $info_obj;
+			}
+			catch(Exception $exc)
+			{
+				return null;
+			}
 		}
 
 		function build_info($info,$tname)
@@ -100,7 +109,7 @@ namespace modules\restbox\table {
             foreach($info->_info['fields'] as $fld => $fldinfo)
             {
                 //$this->call_mod_func('')
-               $fld_obj = $this->P_MODULE->load_ftype($fld,$fldinfo);
+               $fld_obj = $this->load_ftype($fld,$fldinfo);
                $res->add_field($fld,$fld_obj);
             }
             return $res;
