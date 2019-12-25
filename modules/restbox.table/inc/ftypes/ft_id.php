@@ -8,9 +8,11 @@ namespace modules\restbox\table {
             def_options([
                 'fld_type'=>'bigint',
                 'size'=>20,
+                
                 'AUTO_INCREMENT'=>true
             ],$params);
             parent::__construct($params,$_fldname);
+            $this->isID = true;
         }
 
         function OnCreateTable_std($_args)

@@ -6,6 +6,7 @@ namespace modules\restbox\table {
         VAR $fldname;
         VAR $PARAMS;
         VAR $_P_MODULE;
+        VAR $isID = false;
 
         function __construct($_params=[],$_fldname,$_p_module=null)
         {
@@ -23,7 +24,7 @@ namespace modules\restbox\table {
 
         function AfterConstruct()
         {
-            
+
         }
 
         function get_fields()
