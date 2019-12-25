@@ -84,10 +84,27 @@ namespace modules\restbox\table {
 
 		function load_table($_table)
 		{
+			//print_dbg($this);
+			include $this->CFG_INFO = $this->exe_mod_func('restbox','get_settings');
+//			print_dbg($conf_info);
 			include $this->CFG_INFO['CFG_DIR']."/tables/{$_table}.php";
-			//    print_dbg($info);
+			//    
 			$info_obj = $this->build_info($info,$_table);
+			print_dbg($info_obj);
 		}
+
+		function build_info($info,$tname)
+        {
+            
+            $res = new TableMap($tname);
+            foreach($info->_info['fields'] as $fld => $fldinfo)
+            {
+                //$this->call_mod_func('')
+               $fld_obj = $this->P_MODULE->load_ftype($fld,$fldinfo);
+               $res->add_field($fld,$fld_obj);
+            }
+            return $res;
+        }
 
 		function load_ftype($ftname,$ftparams)
 		{			
@@ -102,7 +119,7 @@ namespace modules\restbox\table {
 
 				$ftclass = strtr(url_seg_add($this->_F_TYPES[$ftparams->_ftype]['ns'],$this->_F_TYPES[$ftparams->_ftype]['class']),['/'=>'\\']);
 
-				return new $ftclass($ftparams->_info,$ftname);
+				return new $ftclass($ftparams->_info,$ftname,$this);
 
 			}
 			return null;

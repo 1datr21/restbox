@@ -22,8 +22,14 @@ namespace modules\restbox\table {
 
         function OnConstruct(&$params_)
         {
-            def_options(['_type'=>'bigint','_size'=>20,'unsigned'=>false],$params_);
+         //   def_options(['_type'=>'bigint','_size'=>20,'unsigned'=>false],$params_);
             //берем тип из таблицы
+        }
+
+        function AfterConstruct()
+        {
+            $_table = $this->_P_MODULE->load_table($this->PARAMS['table']);
+            print_dbg($_table);
         }
     }
 

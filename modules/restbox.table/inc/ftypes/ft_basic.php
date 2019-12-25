@@ -5,17 +5,25 @@ namespace modules\restbox\table {
         
         VAR $fldname;
         VAR $PARAMS;
+        VAR $_P_MODULE;
 
-        function __construct($_params=[],$_fldname)
+        function __construct($_params=[],$_fldname,$_p_module=null)
         {
             $this->OnConstruct($_params);
             $this->fldname = $_fldname;
             $this->PARAMS = $_params;    
+            $this->_P_MODULE =$_p_module;
+            $this->AfterConstruct();
         }
 
         function OnConstruct(&$params_)
         {
 
+        }
+
+        function AfterConstruct()
+        {
+            
         }
 
         function get_fields()
