@@ -247,6 +247,13 @@ namespace modules\restbox\db {
 			}
 		}
 
+		function query_insert($table,$item)
+		{
+			/*
+			INSERT INTO `tmsus`.`tms_users` (`login`, `email`) VALUES ('vasyan', 'thev@ya.ru');
+			*/
+		}
+
 		function delete_field($table,$fld)
 		{
 			$this->query("ALTER TABLE `@+$table` DROP COLUMN `$fld`");	
