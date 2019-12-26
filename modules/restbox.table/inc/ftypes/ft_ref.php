@@ -41,11 +41,7 @@ namespace modules\restbox\table {
                 
                 // get the field of id and it's type
             }
-        //    print_dbg($_table);
         }
-
     }
-
-
 }
 ?>
