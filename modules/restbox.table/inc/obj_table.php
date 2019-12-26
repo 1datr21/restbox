@@ -24,7 +24,7 @@ namespace modules\restbox\table {
             return [
                     'tables/:table:'=>'view',
                     'tables/one/:table:/:id:'=>'item',
-                    'tables/save/:table:'=>'item',
+                    'tables/save/:table:'=>'save',
                 ];
         }
 
@@ -82,20 +82,55 @@ namespace modules\restbox\table {
             //include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
 
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
-            $id_fld_name = $info_obj->get
+            $id_fld_name = $info_obj->get_id_field();
         //  get an item
-            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_request['vars']['table']}` WHERE id={$_request['vars']['id']}");
+            //$res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_request['vars']['table']}` WHERE id={$_request['vars']['id']}");
             $rows=[];
-            while($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
-            {
-                $rows[]=$row;
-            }
+            
+            $rows[]=$this->load_by_id($_request['vars']['table'], $_request['vars']['id']);
+            
             return $rows;    
+        }
+
+        function load_by_id($_table,$_id_val)
+        {
+            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_table}` WHERE id={$_id_val}");
+            if($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            {
+                return $row;
+            }   
+            return null;
         }
 
         function save($_request,$_post_data=[])
         {
+            print_dbg($_POST);
+            
+            $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
+            $arr_to_save=[];
+            $ID_fld = $info_obj->get_id_field();
+            if(!empty($_post_data[$ID_fld->fldname]))
+            {
+                // load by id
+                $item = $this->load_by_id($_request['vars']['table'], $_post_data[$ID_fld->fldname]);
+                foreach($info_obj->FIELDS as $fld)
+                {
+                    if($fld->fldname==$ID_fld->fldname) continue;                        
+                    $item[$fld->fldname]=$_post_data[$fld->fldname];
+                }
+            }
+            else
+            {
+                foreach($info_obj->FIELDS as $fld)
+                {
+                    if($fld->fldname==$ID_fld->fldname) continue;
+                    $item[$fld->fldname]=$_post_data[$fld->fldname];
+                }
+            }     
+            
+            print_dbg($item);
+            
             return true;
         }
 
