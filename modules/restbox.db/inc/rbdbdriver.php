@@ -254,6 +254,13 @@ namespace modules\restbox\db {
 			*/
 		}
 
+		function query_update($table,$item)
+		{
+			/*
+			UPDATE `tmsus`.`tms_users` SET `passw`='122' WHERE  `id`=1;
+			*/
+		}
+
 		function delete_field($table,$fld)
 		{
 			$this->query("ALTER TABLE `@+$table` DROP COLUMN `$fld`");	
