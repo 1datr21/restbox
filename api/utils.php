@@ -140,11 +140,11 @@ function _array_diff($arrA,$arrB)
 }
 
 // ������������� ����� �� ��������� $defs ��� ������� $opt_array
-function def_options($defs,&$opt_array)
+function def_options($defs,&$opt_array,$anyway=[])
 {
 	foreach ($defs as $defkey => $defval)
 	{
-		if(!isset($opt_array[$defkey]))
+		if(!isset($opt_array[$defkey]) || in_array($defkey,$anyway))
 			$opt_array[$defkey]=$defval;
 	}
 }

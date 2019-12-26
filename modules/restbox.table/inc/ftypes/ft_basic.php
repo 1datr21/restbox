@@ -27,6 +27,11 @@ namespace modules\restbox\table {
 
         }
 
+        function isID()
+        {
+            return $this->isID;
+        }
+
         function get_fields()
         {
             return [$this->fldname];

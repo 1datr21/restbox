@@ -28,14 +28,24 @@ namespace modules\restbox\table {
 
         function AfterConstruct()
         {
+
             $_table_info = $this->_P_MODULE->load_table($this->PARAMS['table']);
             if(!empty($_table_info))
             {
+                $id_fld = $_table_info->get_id_field();
+                if(!empty($id_fld))
+                {
+                    def_options($id_fld->PARAMS, $this->PARAMS,['fld_type','size']);
+                    //$this->PARAMS=$id_fld->PARAMS;
+                }
+                
                 // get the field of id and it's type
             }
         //    print_dbg($_table);
         }
+
     }
+
 
 }
 ?>

@@ -113,6 +113,17 @@ namespace modules\restbox\table {
             
         }
 
+        function get_id_field()
+        {
+            foreach($this->FIELDS as $fld => $fld_obj)
+            {
+                if($fld_obj->isID())
+                {
+                    return $fld_obj;
+                }
+            } 
+        }
+
         function get_need_fields()
         {
             $res_arr=[];
