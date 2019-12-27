@@ -47,6 +47,7 @@ namespace modules\restbox\table {
             
             $this->_CONN_ID = $_req_params['vars']['conn_id'];
             $_db_info = $rb_info['connections'][$this->_CONN_ID];
+         //   print_dbg('connectingg');
 
             $this->connect_db($_db_info);
         }
@@ -104,7 +105,7 @@ namespace modules\restbox\table {
 
         function save($_request,$_post_data=[])
         {
-            print_dbg($_POST);
+        //    print_dbg($_POST);
             
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
@@ -127,9 +128,11 @@ namespace modules\restbox\table {
                     if($fld->fldname==$ID_fld->fldname) continue;
                     $item[$fld->fldname]=$_post_data[$fld->fldname];
                 }
+                $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table']]);
             }     
             
-            print_dbg($item);
+            
+         //   print_dbg($item);
             
             return true;
         }

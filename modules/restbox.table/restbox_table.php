@@ -118,18 +118,14 @@ namespace modules\restbox\table {
 		function load_ftype($ftname,$ftparams)
 		{			
 			$this->gather_ftypes();	
-			//print_dbg($ftparams);
 
 			if(isset($this->_F_TYPES[$ftparams->_ftype]))
 			{
-				//print_dbg($this->_F_TYPES[$ftparams->_ftype]);
-
 				require_once $this->_F_TYPES[$ftparams->_ftype]['file'];
 
 				$ftclass = strtr(url_seg_add($this->_F_TYPES[$ftparams->_ftype]['ns'],$this->_F_TYPES[$ftparams->_ftype]['class']),['/'=>'\\']);
 
 				return new $ftclass($ftparams->_info,$ftname,$this);
-
 			}
 			return null;
 		}

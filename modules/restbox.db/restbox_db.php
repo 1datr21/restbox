@@ -33,6 +33,18 @@ namespace modules\restbox\db {
 			return ['qres'=>$q_res,'conn_id'=>$conn_id ];
 		}	
 
+		public function query_insert($qargs,$params=[],$conn_id=0)
+		{
+			if(!isset($this->_CONNECTIONS[$conn_id]))
+			{
+				$this->exe_mod_func('restbox','out_error',['mess'=>'Connection not exists']);
+			}
+			//print_dbg("query_insert");
+			$q_res = $this->_CONNECTIONS[$conn_id]->query_insert($qargs);
+			
+			return ['qres'=>$q_res,'conn_id'=>$conn_id ];
+		}	
+
 		public function fetch_object($res)
 		{
 			return $this->_CONNECTIONS[$res['conn_id']]->fetch_object($res['qres']);

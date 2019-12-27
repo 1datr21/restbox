@@ -247,8 +247,20 @@ namespace modules\restbox\db {
 			}
 		}
 
-		function query_insert($table,$item)
+		function query_insert($args)
 		{
+			$table = $args['table'];
+			$item = $args['item'];
+			$_sql = "INSERT INTO `@+$table`(".xx_implode($item,',',"`{idx}`").") VALUES(".xx_implode($item,',','\'{%val}\'',function(&$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter){
+			//	print_dbg($theval);
+				if(substr($theval['%val'],0,1)=='#')
+				{
+					$thetemplate = "{%val}";
+				}
+			}).")";
+
+		//	print_dbg($_sql);
+			$this->query($_sql);
 			/*
 			INSERT INTO `tmsus`.`tms_users` (`login`, `email`) VALUES ('vasyan', 'thev@ya.ru');
 			*/
