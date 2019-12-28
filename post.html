@@ -1,8 +1,21 @@
 <html>
+    <head>
+        <script src="/js/jquery.min.js" />
+        <script language="javascript">
+
+        </script>
+    </head>
 <body>
 <form method="post" action="http://restbox/?q=tables/save/users">
     LOgin: <input type="text" name="login"  />
     email: <input type="text" name="email"  />
+    <input type="submit" value="SEND"/>
+</form>
+
+<form method="post" action="http://restbox/?q=tables/save/users" id="load_one">
+    <input type="text" name="id" value="1" />
+    LOgin: <input type="text" name="login" value="wasya"  />
+    email: <input type="text" name="email"   />
     <input type="submit" value="SEND"/>
 </form>
 </body>

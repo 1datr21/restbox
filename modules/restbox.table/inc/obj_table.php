@@ -120,6 +120,12 @@ namespace modules\restbox\table {
                     if($fld->fldname==$ID_fld->fldname) continue;                        
                     $item[$fld->fldname]=$_post_data[$fld->fldname];
                 }
+                $res = $this->call_mod_func('restbox.db', 'query_update',[
+                    'item'=>$item,
+                    'table'=>$_request['vars']['table'],
+                    'idval'=>$_post_data[$ID_fld->fldname],
+                    'idfld'=>$ID_fld->fldname,
+                    ]);
             }
             else
             {
