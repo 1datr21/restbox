@@ -266,8 +266,10 @@ namespace modules\restbox\db {
 			*/
 		}
 
-		function query_update($table,$item)
+		function query_update($table,$item,$idval,$idfld='id')
 		{
+			$_sql = "UPDATE `@+{$table}` SET ".xx_implode($item,',',"`{idx}`='{%val}'")." WHERE  `{$idfld}`={$idval}";
+			$this->query($_sql);	
 			/*
 			UPDATE `tmsus`.`tms_users` SET `passw`='122' WHERE  `id`=1;
 			*/
