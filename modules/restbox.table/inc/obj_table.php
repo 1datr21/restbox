@@ -25,6 +25,7 @@ namespace modules\restbox\table {
                     'tables/:table:'=>'view',
                     'tables/one/:table:/:id:'=>'item',
                     'tables/save/:table:'=>'save',
+                    'tables/delete/:table:'=>'delete',
                 ];
         }
 
@@ -71,6 +72,17 @@ namespace modules\restbox\table {
             //print_dbg($info_obj);
             return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'], '#table_params'=>$info_obj]);
             
+        }
+
+        function delete($_request, $_post_data=[])
+        {
+            $_post_data=$_POST;
+            $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
+            if($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            {
+                return $row;
+            }   
+            return null;
         }
 
         function item($_request)
@@ -130,10 +142,6 @@ namespace modules\restbox\table {
                 }
                 $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table']]);
             }     
-            
-            
-         //   print_dbg($item);
-            
             return true;
         }
 
