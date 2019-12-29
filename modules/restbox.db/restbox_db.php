@@ -59,6 +59,11 @@ namespace modules\restbox\db {
 			return ['qres'=>$q_res,'conn_id'=>$conn_id ];
 		}
 
+		public function query_delete($table,$where_cond)
+		{
+
+		}
+
 		public function fetch_object($res)
 		{
 			return $this->_CONNECTIONS[$res['conn_id']]->fetch_object($res['qres']);
