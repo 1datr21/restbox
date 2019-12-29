@@ -28,7 +28,7 @@ namespace modules\restbox\db {
             { 
                 $where=self::q_where($where);
             }
-            return "DELETE FROM @+{$args['table']} WHERE $where";
+            return "DELETE FROM @+{$table} WHERE $where";
         }
     }
 }
