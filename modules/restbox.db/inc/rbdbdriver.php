@@ -264,7 +264,7 @@ namespace modules\restbox\db {
 		//	print_dbg($_sql);
 			$this->query($_sql);
 			/*
-			INSERT INTO `tmsus`.`tms_users` (`login`, `email`) VALUES ('vasyan', 'thev@ya.ru');
+			INSERT INTO `tmsus`.`tms_users` (`login`, `email`) VALUES ('vasyan', 'thev@ya.ru');  
 			*/
 		}
 

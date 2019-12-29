@@ -20,7 +20,7 @@ namespace modules\restbox\db {
 
         static function q_delete($table,$where)
         {
-            if(is_string($where))
+            if(is_string($where))  
             {
 
             }
