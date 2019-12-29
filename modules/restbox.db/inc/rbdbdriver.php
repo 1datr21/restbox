@@ -272,7 +272,7 @@ namespace modules\restbox\db {
 		{
 			$_sql = "UPDATE `@+{$table}` SET ".xx_implode($item,',',"`{idx}`='{%val}'")." WHERE  `{$idfld}`={$idval}";
 			$this->query($_sql);
-			print_dbg($_sql);	
+				
 			/*
 			UPDATE `tmsus`.`tms_users` SET `passw`='122' WHERE  `id`=1;
 			*/
@@ -280,7 +280,10 @@ namespace modules\restbox\db {
 
 		function query_delete($table,$where)
 		{
-			$this->query($sql = SQLBuilder::q_delete($table,$where));
+			$_sql = SQLBuilder::q_delete($table,$where);
+		//	print_dbg($_sql);
+			$this->query($_sql);
+			
 		}
 
 		function delete_field($table,$fld)
@@ -404,7 +407,7 @@ namespace modules\restbox\db {
 					$this->_CONNECTION = $this->make_connection($_dbcfg);// 
 					if($this->isConnected())
 					{
-						print_dbg("connected @");
+					//	print_dbg("connected @");
 						return true;
 					}
 					
