@@ -67,11 +67,6 @@ namespace modules\restbox\table {
 
         function view($_request)
         {
-            /*
-            include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
-        //    print_dbg($info);
-            $info_obj = $this->build_info($info,$_request['vars']['table']);
-*/
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             //print_dbg($info_obj);
             return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'], '#table_params'=>$info_obj]);
@@ -85,7 +80,6 @@ namespace modules\restbox\table {
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             $id_fld_name = $info_obj->get_id_field();
         //  get an item
-            //$res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_request['vars']['table']}` WHERE id={$_request['vars']['id']}");
             $rows=[];
             
             $rows[]=$this->load_by_id($_request['vars']['table'], $_request['vars']['id']);

@@ -279,7 +279,7 @@ namespace modules\restbox\db {
 
 		function query_delete($table,$where)
 		{
-			SQLBuilder::q_delete($table,$where);
+			$this->query($sql = SQLBuilder::q_delete($table,$where));
 		}
 
 		function delete_field($table,$fld)

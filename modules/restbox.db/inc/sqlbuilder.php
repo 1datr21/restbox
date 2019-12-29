@@ -18,12 +18,16 @@ namespace modules\restbox\db {
 
         }
 
-        static function q_delete($args)
+        static function q_delete($table,$where)
         {
-            if(is_string($args['where']))
-                $where = $args['where'];
-            else    
-                $where=self::q_where($args['where']);
+            if(is_string($where))
+            {
+
+            }
+            else   
+            { 
+                $where=self::q_where($where);
+            }
             return "DELETE FROM @+{$args['table']} WHERE $where";
         }
     }
