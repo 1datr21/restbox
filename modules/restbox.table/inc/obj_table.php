@@ -79,15 +79,13 @@ namespace modules\restbox\table {
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             $id_fld = $info_obj->get_id_field();
-            if($row = $this->call_mod_func('restbox.db', 
+            $this->call_mod_func('restbox.db', 
                 'query_delete',
                 $_request['vars']['table'],
                 $id_fld->fldname.'='.$_POST[$id_fld->fldname]
-                ))
-            {
-                return $row;
-            }   
-            return null;
+        );
+             
+            return [null];
         }
 
         function item($_request)
