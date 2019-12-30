@@ -105,7 +105,7 @@ namespace modules\restbox\table {
 		function build_info($info,$tname)
         {
             
-            $res = new TableMap($tname);
+            $res = new TableMap($tname,$info);
             foreach($info->_info['fields'] as $fld => $fldinfo)
             {
                 //$this->call_mod_func('')
