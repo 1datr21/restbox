@@ -16,7 +16,7 @@
         'avatar'=>new tfield('file',['mode'=>'blob']),
     ],
     'beforeSave'=>function(&$row) {
-        
+        print_dbg("aaa");
     }
 ]);
 
