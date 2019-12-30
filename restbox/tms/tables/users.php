@@ -15,9 +15,11 @@
         'birthday'=>new tfield('datetime'),
         'avatar'=>new tfield('file',['mode'=>'blob']),
     ],
-    'beforeSave'=>function(&$row) {
-        print_dbg("aaa");
-    }
+    'events'=>[
+        'beforeSave'=>function(&$row) {
+            print_dbg("aaa");
+        }
+    ]
 ]);
 
 

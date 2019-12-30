@@ -1,0 +1,2781 @@
+
+				
+	12-30-2019 18:54:22.000000: modules\restbox\table\TableMap Object
+(
+    [TNAME] => users
+    [FIELDS] => Array
+        (
+            [id] => modules\restbox\table\ft_id Object
+                (
+                    [fldname] => id
+                    [PARAMS] => Array
+                        (
+                            [fld_type] => bigint
+                            [size] => 20
+                            [AUTO_INCREMENT] => 1
+                        )
+
+                    [_P_MODULE] => 
+                    [isID] => 1
+                )
+
+            [login] => modules\restbox\table\ft_text Object
+                (
+                    [fldname] => login
+                    [PARAMS] => Array
+                        (
+                            [maxlen] => 20
+                        )
+
+                    [_P_MODULE] => modules\restbox\table\Module Object
+                        (
+                            [_CONF] => 
+                            [_EP] => 
+                            [_CONFIGS_AREA] => 
+                            [_NO_READ_CONFIG] => 
+                            [_CURR_CONF_DIR] => 
+                            [_CONF_PATH] => 
+                            [_SETTINGS] => 
+                            [_F_TYPES] => Array
+                                (
+                                    [id] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_id.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_id
+                                        )
+
+                                    [text] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_text.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_text
+                                        )
+
+                                    [bigtext] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bigtext.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bigtext
+                                        )
+
+                                    [password] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_password.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_password
+                                        )
+
+                                    [int] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_int.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_int
+                                        )
+
+                                    [float] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_float.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_float
+                                        )
+
+                                    [datetime] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [date] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [enum] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_enum.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_enum
+                                        )
+
+                                    [set] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_set.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_set
+                                        )
+
+                                    [bool] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bool.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bool
+                                        )
+
+                                    [file] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_file.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_file
+                                        )
+
+                                    [ref] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_ref.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_ref
+                                        )
+
+                                )
+
+                            [MLAM] => Core\MLAM Object
+                                (
+                                    [_BASE_DIR] => 
+                                    [_MODULES_OBJS] => Array
+                                        (
+                                            [restbox] => modules\restbox\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => Array
+                                                        (
+                                                            [curr_cfg] => tms
+                                                        )
+
+                                                    [_CONFIG] => tms
+                                                    [_CFG_DIR] => ./restbox/tms
+                                                    [_CFG_INFO] => Array
+                                                        (
+                                                            [connections] => Array
+                                                                (
+                                                                    [0] => Array
+                                                                        (
+                                                                            [drv] => pdo
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                        )
+
+                                                                )
+
+                                                            [usertable] => users
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                            [restbox.db] => modules\restbox\db\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONNECTIONS] => Array
+                                                        (
+                                                            [0] => modules\restbox\db\mysql\PDOConnection Object
+                                                                (
+                                                                    [_curr_ERROR] => 
+                                                                    [_CONFIG] => Array
+                                                                        (
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                            [driver] => pdo
+                                                                            [ENGINE] => InnoDB
+                                                                            [conn_opts] => Array
+                                                                                (
+                                                                                    [3] => 2
+                                                                                    [19] => 2
+                                                                                    [20] => 0
+                                                                                )
+
+                                                                        )
+
+                                                                    [_CONNECTED] => 1
+                                                                    [_CONNECTION] => PDO Object
+                                                                        (
+                                                                        )
+
+                                                                    [_ERRORS] => 
+                                                                    [P_MODULE] => modules\restbox\db\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [_DEF_CONN_IDX] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.mysql] => modules\restbox\db\mysql\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.mysql
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.pdo] => modules\restbox\db\pdo\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.pdo
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.route] => modules\restbox\route\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => Array
+                                                        (
+                                                            [tables/users] => modules\restbox\table\ObjTable Object
+                                                                (
+                                                                    [_CONN_ID] => 0
+                                                                    [CFG_INFO] => Array
+                                                                        (
+                                                                            [connections] => Array
+                                                                                (
+                                                                                    [0] => Array
+                                                                                        (
+                                                                                            [drv] => pdo
+                                                                                            [prefix] => tms_
+                                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                                            [user] => root
+                                                                                            [passw] => 
+                                                                                            [create_if_not_exists] => 1
+                                                                                            [charset] => utf8
+                                                                                            [collation] => utf8_general_ci
+                                                                                        )
+
+                                                                                )
+
+                                                                            [usertable] => users
+                                                                            [CFG_DIR] => ./restbox/tms
+                                                                        )
+
+                                                                    [P_MODULE] => modules\restbox\table\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.route
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.route
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.table] => modules\restbox\table\Module Object
+ *RECURSION*
+                                            [restbox.forms] => modules\restbox\forms\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.forms
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.forms
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.session] => modules\restbox\session\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_F_TYPES] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.session
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_SETTINGS] => Array
+                                        (
+                                            [enable_modules] => Array
+                                                (
+                                                    [0] => restbox.*
+                                                )
+
+                                            [mod_params] => Array
+                                                (
+                                                    [restbox] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_MUST_SAVE] => Array
+                                        (
+                                        )
+
+                                    [_LOADING_QUEUE] => Array
+                                        (
+                                        )
+
+                                    [_MODULES_DIR] => ./modules
+                                )
+
+                            [_MOD_NAME] => restbox.table
+                            [MODE] => 
+                            [_L_SETTINGS] => Array
+                                (
+                                )
+
+                            [_PATH] => 
+                            [_DEF_SETTINGS] => Array
+                                (
+                                )
+
+                            [CFG_INFO] => Array
+                                (
+                                    [connections] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [drv] => pdo
+                                                    [prefix] => tms_
+                                                    [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                    [user] => root
+                                                    [passw] => 
+                                                    [create_if_not_exists] => 1
+                                                    [charset] => utf8
+                                                    [collation] => utf8_general_ci
+                                                )
+
+                                        )
+
+                                    [usertable] => users
+                                    [CFG_DIR] => ./restbox/tms
+                                )
+
+                        )
+
+                    [isID] => 
+                )
+
+            [email] => modules\restbox\table\ft_text Object
+                (
+                    [fldname] => email
+                    [PARAMS] => Array
+                        (
+                            [maxlen] => 50
+                        )
+
+                    [_P_MODULE] => modules\restbox\table\Module Object
+                        (
+                            [_CONF] => 
+                            [_EP] => 
+                            [_CONFIGS_AREA] => 
+                            [_NO_READ_CONFIG] => 
+                            [_CURR_CONF_DIR] => 
+                            [_CONF_PATH] => 
+                            [_SETTINGS] => 
+                            [_F_TYPES] => Array
+                                (
+                                    [id] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_id.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_id
+                                        )
+
+                                    [text] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_text.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_text
+                                        )
+
+                                    [bigtext] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bigtext.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bigtext
+                                        )
+
+                                    [password] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_password.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_password
+                                        )
+
+                                    [int] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_int.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_int
+                                        )
+
+                                    [float] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_float.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_float
+                                        )
+
+                                    [datetime] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [date] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [enum] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_enum.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_enum
+                                        )
+
+                                    [set] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_set.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_set
+                                        )
+
+                                    [bool] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bool.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bool
+                                        )
+
+                                    [file] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_file.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_file
+                                        )
+
+                                    [ref] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_ref.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_ref
+                                        )
+
+                                )
+
+                            [MLAM] => Core\MLAM Object
+                                (
+                                    [_BASE_DIR] => 
+                                    [_MODULES_OBJS] => Array
+                                        (
+                                            [restbox] => modules\restbox\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => Array
+                                                        (
+                                                            [curr_cfg] => tms
+                                                        )
+
+                                                    [_CONFIG] => tms
+                                                    [_CFG_DIR] => ./restbox/tms
+                                                    [_CFG_INFO] => Array
+                                                        (
+                                                            [connections] => Array
+                                                                (
+                                                                    [0] => Array
+                                                                        (
+                                                                            [drv] => pdo
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                        )
+
+                                                                )
+
+                                                            [usertable] => users
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                            [restbox.db] => modules\restbox\db\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONNECTIONS] => Array
+                                                        (
+                                                            [0] => modules\restbox\db\mysql\PDOConnection Object
+                                                                (
+                                                                    [_curr_ERROR] => 
+                                                                    [_CONFIG] => Array
+                                                                        (
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                            [driver] => pdo
+                                                                            [ENGINE] => InnoDB
+                                                                            [conn_opts] => Array
+                                                                                (
+                                                                                    [3] => 2
+                                                                                    [19] => 2
+                                                                                    [20] => 0
+                                                                                )
+
+                                                                        )
+
+                                                                    [_CONNECTED] => 1
+                                                                    [_CONNECTION] => PDO Object
+                                                                        (
+                                                                        )
+
+                                                                    [_ERRORS] => 
+                                                                    [P_MODULE] => modules\restbox\db\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [_DEF_CONN_IDX] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.mysql] => modules\restbox\db\mysql\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.mysql
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.pdo] => modules\restbox\db\pdo\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.pdo
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.route] => modules\restbox\route\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => Array
+                                                        (
+                                                            [tables/users] => modules\restbox\table\ObjTable Object
+                                                                (
+                                                                    [_CONN_ID] => 0
+                                                                    [CFG_INFO] => Array
+                                                                        (
+                                                                            [connections] => Array
+                                                                                (
+                                                                                    [0] => Array
+                                                                                        (
+                                                                                            [drv] => pdo
+                                                                                            [prefix] => tms_
+                                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                                            [user] => root
+                                                                                            [passw] => 
+                                                                                            [create_if_not_exists] => 1
+                                                                                            [charset] => utf8
+                                                                                            [collation] => utf8_general_ci
+                                                                                        )
+
+                                                                                )
+
+                                                                            [usertable] => users
+                                                                            [CFG_DIR] => ./restbox/tms
+                                                                        )
+
+                                                                    [P_MODULE] => modules\restbox\table\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.route
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.route
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.table] => modules\restbox\table\Module Object
+ *RECURSION*
+                                            [restbox.forms] => modules\restbox\forms\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.forms
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.forms
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.session] => modules\restbox\session\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_F_TYPES] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.session
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_SETTINGS] => Array
+                                        (
+                                            [enable_modules] => Array
+                                                (
+                                                    [0] => restbox.*
+                                                )
+
+                                            [mod_params] => Array
+                                                (
+                                                    [restbox] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_MUST_SAVE] => Array
+                                        (
+                                        )
+
+                                    [_LOADING_QUEUE] => Array
+                                        (
+                                        )
+
+                                    [_MODULES_DIR] => ./modules
+                                )
+
+                            [_MOD_NAME] => restbox.table
+                            [MODE] => 
+                            [_L_SETTINGS] => Array
+                                (
+                                )
+
+                            [_PATH] => 
+                            [_DEF_SETTINGS] => Array
+                                (
+                                )
+
+                            [CFG_INFO] => Array
+                                (
+                                    [connections] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [drv] => pdo
+                                                    [prefix] => tms_
+                                                    [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                    [user] => root
+                                                    [passw] => 
+                                                    [create_if_not_exists] => 1
+                                                    [charset] => utf8
+                                                    [collation] => utf8_general_ci
+                                                )
+
+                                        )
+
+                                    [usertable] => users
+                                    [CFG_DIR] => ./restbox/tms
+                                )
+
+                        )
+
+                    [isID] => 
+                )
+
+            [passw] => modules\restbox\table\ft_password Object
+                (
+                    [fldname] => passw
+                    [PARAMS] => Array
+                        (
+                            [length] => 6
+                            [method] => md5
+                        )
+
+                    [_P_MODULE] => modules\restbox\table\Module Object
+                        (
+                            [_CONF] => 
+                            [_EP] => 
+                            [_CONFIGS_AREA] => 
+                            [_NO_READ_CONFIG] => 
+                            [_CURR_CONF_DIR] => 
+                            [_CONF_PATH] => 
+                            [_SETTINGS] => 
+                            [_F_TYPES] => Array
+                                (
+                                    [id] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_id.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_id
+                                        )
+
+                                    [text] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_text.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_text
+                                        )
+
+                                    [bigtext] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bigtext.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bigtext
+                                        )
+
+                                    [password] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_password.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_password
+                                        )
+
+                                    [int] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_int.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_int
+                                        )
+
+                                    [float] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_float.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_float
+                                        )
+
+                                    [datetime] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [date] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [enum] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_enum.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_enum
+                                        )
+
+                                    [set] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_set.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_set
+                                        )
+
+                                    [bool] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bool.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bool
+                                        )
+
+                                    [file] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_file.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_file
+                                        )
+
+                                    [ref] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_ref.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_ref
+                                        )
+
+                                )
+
+                            [MLAM] => Core\MLAM Object
+                                (
+                                    [_BASE_DIR] => 
+                                    [_MODULES_OBJS] => Array
+                                        (
+                                            [restbox] => modules\restbox\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => Array
+                                                        (
+                                                            [curr_cfg] => tms
+                                                        )
+
+                                                    [_CONFIG] => tms
+                                                    [_CFG_DIR] => ./restbox/tms
+                                                    [_CFG_INFO] => Array
+                                                        (
+                                                            [connections] => Array
+                                                                (
+                                                                    [0] => Array
+                                                                        (
+                                                                            [drv] => pdo
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                        )
+
+                                                                )
+
+                                                            [usertable] => users
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                            [restbox.db] => modules\restbox\db\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONNECTIONS] => Array
+                                                        (
+                                                            [0] => modules\restbox\db\mysql\PDOConnection Object
+                                                                (
+                                                                    [_curr_ERROR] => 
+                                                                    [_CONFIG] => Array
+                                                                        (
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                            [driver] => pdo
+                                                                            [ENGINE] => InnoDB
+                                                                            [conn_opts] => Array
+                                                                                (
+                                                                                    [3] => 2
+                                                                                    [19] => 2
+                                                                                    [20] => 0
+                                                                                )
+
+                                                                        )
+
+                                                                    [_CONNECTED] => 1
+                                                                    [_CONNECTION] => PDO Object
+                                                                        (
+                                                                        )
+
+                                                                    [_ERRORS] => 
+                                                                    [P_MODULE] => modules\restbox\db\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [_DEF_CONN_IDX] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.mysql] => modules\restbox\db\mysql\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.mysql
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.pdo] => modules\restbox\db\pdo\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.pdo
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.route] => modules\restbox\route\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => Array
+                                                        (
+                                                            [tables/users] => modules\restbox\table\ObjTable Object
+                                                                (
+                                                                    [_CONN_ID] => 0
+                                                                    [CFG_INFO] => Array
+                                                                        (
+                                                                            [connections] => Array
+                                                                                (
+                                                                                    [0] => Array
+                                                                                        (
+                                                                                            [drv] => pdo
+                                                                                            [prefix] => tms_
+                                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                                            [user] => root
+                                                                                            [passw] => 
+                                                                                            [create_if_not_exists] => 1
+                                                                                            [charset] => utf8
+                                                                                            [collation] => utf8_general_ci
+                                                                                        )
+
+                                                                                )
+
+                                                                            [usertable] => users
+                                                                            [CFG_DIR] => ./restbox/tms
+                                                                        )
+
+                                                                    [P_MODULE] => modules\restbox\table\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.route
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.route
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.table] => modules\restbox\table\Module Object
+ *RECURSION*
+                                            [restbox.forms] => modules\restbox\forms\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.forms
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.forms
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.session] => modules\restbox\session\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_F_TYPES] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.session
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_SETTINGS] => Array
+                                        (
+                                            [enable_modules] => Array
+                                                (
+                                                    [0] => restbox.*
+                                                )
+
+                                            [mod_params] => Array
+                                                (
+                                                    [restbox] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_MUST_SAVE] => Array
+                                        (
+                                        )
+
+                                    [_LOADING_QUEUE] => Array
+                                        (
+                                        )
+
+                                    [_MODULES_DIR] => ./modules
+                                )
+
+                            [_MOD_NAME] => restbox.table
+                            [MODE] => 
+                            [_L_SETTINGS] => Array
+                                (
+                                )
+
+                            [_PATH] => 
+                            [_DEF_SETTINGS] => Array
+                                (
+                                )
+
+                            [CFG_INFO] => Array
+                                (
+                                    [connections] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [drv] => pdo
+                                                    [prefix] => tms_
+                                                    [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                    [user] => root
+                                                    [passw] => 
+                                                    [create_if_not_exists] => 1
+                                                    [charset] => utf8
+                                                    [collation] => utf8_general_ci
+                                                )
+
+                                        )
+
+                                    [usertable] => users
+                                    [CFG_DIR] => ./restbox/tms
+                                )
+
+                        )
+
+                    [isID] => 
+                )
+
+            [status] => modules\restbox\table\ft_enum Object
+                (
+                    [fldname] => status
+                    [PARAMS] => Array
+                        (
+                            [values] => Array
+                                (
+                                    [0] => student
+                                    [1] => prepod
+                                    [2] => admin
+                                )
+
+                            [default] => student
+                        )
+
+                    [_P_MODULE] => modules\restbox\table\Module Object
+                        (
+                            [_CONF] => 
+                            [_EP] => 
+                            [_CONFIGS_AREA] => 
+                            [_NO_READ_CONFIG] => 
+                            [_CURR_CONF_DIR] => 
+                            [_CONF_PATH] => 
+                            [_SETTINGS] => 
+                            [_F_TYPES] => Array
+                                (
+                                    [id] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_id.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_id
+                                        )
+
+                                    [text] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_text.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_text
+                                        )
+
+                                    [bigtext] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bigtext.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bigtext
+                                        )
+
+                                    [password] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_password.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_password
+                                        )
+
+                                    [int] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_int.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_int
+                                        )
+
+                                    [float] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_float.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_float
+                                        )
+
+                                    [datetime] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [date] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [enum] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_enum.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_enum
+                                        )
+
+                                    [set] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_set.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_set
+                                        )
+
+                                    [bool] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bool.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bool
+                                        )
+
+                                    [file] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_file.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_file
+                                        )
+
+                                    [ref] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_ref.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_ref
+                                        )
+
+                                )
+
+                            [MLAM] => Core\MLAM Object
+                                (
+                                    [_BASE_DIR] => 
+                                    [_MODULES_OBJS] => Array
+                                        (
+                                            [restbox] => modules\restbox\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => Array
+                                                        (
+                                                            [curr_cfg] => tms
+                                                        )
+
+                                                    [_CONFIG] => tms
+                                                    [_CFG_DIR] => ./restbox/tms
+                                                    [_CFG_INFO] => Array
+                                                        (
+                                                            [connections] => Array
+                                                                (
+                                                                    [0] => Array
+                                                                        (
+                                                                            [drv] => pdo
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                        )
+
+                                                                )
+
+                                                            [usertable] => users
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                            [restbox.db] => modules\restbox\db\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONNECTIONS] => Array
+                                                        (
+                                                            [0] => modules\restbox\db\mysql\PDOConnection Object
+                                                                (
+                                                                    [_curr_ERROR] => 
+                                                                    [_CONFIG] => Array
+                                                                        (
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                            [driver] => pdo
+                                                                            [ENGINE] => InnoDB
+                                                                            [conn_opts] => Array
+                                                                                (
+                                                                                    [3] => 2
+                                                                                    [19] => 2
+                                                                                    [20] => 0
+                                                                                )
+
+                                                                        )
+
+                                                                    [_CONNECTED] => 1
+                                                                    [_CONNECTION] => PDO Object
+                                                                        (
+                                                                        )
+
+                                                                    [_ERRORS] => 
+                                                                    [P_MODULE] => modules\restbox\db\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [_DEF_CONN_IDX] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.mysql] => modules\restbox\db\mysql\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.mysql
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.pdo] => modules\restbox\db\pdo\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.pdo
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.route] => modules\restbox\route\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => Array
+                                                        (
+                                                            [tables/users] => modules\restbox\table\ObjTable Object
+                                                                (
+                                                                    [_CONN_ID] => 0
+                                                                    [CFG_INFO] => Array
+                                                                        (
+                                                                            [connections] => Array
+                                                                                (
+                                                                                    [0] => Array
+                                                                                        (
+                                                                                            [drv] => pdo
+                                                                                            [prefix] => tms_
+                                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                                            [user] => root
+                                                                                            [passw] => 
+                                                                                            [create_if_not_exists] => 1
+                                                                                            [charset] => utf8
+                                                                                            [collation] => utf8_general_ci
+                                                                                        )
+
+                                                                                )
+
+                                                                            [usertable] => users
+                                                                            [CFG_DIR] => ./restbox/tms
+                                                                        )
+
+                                                                    [P_MODULE] => modules\restbox\table\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.route
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.route
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.table] => modules\restbox\table\Module Object
+ *RECURSION*
+                                            [restbox.forms] => modules\restbox\forms\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.forms
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.forms
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.session] => modules\restbox\session\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_F_TYPES] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.session
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_SETTINGS] => Array
+                                        (
+                                            [enable_modules] => Array
+                                                (
+                                                    [0] => restbox.*
+                                                )
+
+                                            [mod_params] => Array
+                                                (
+                                                    [restbox] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_MUST_SAVE] => Array
+                                        (
+                                        )
+
+                                    [_LOADING_QUEUE] => Array
+                                        (
+                                        )
+
+                                    [_MODULES_DIR] => ./modules
+                                )
+
+                            [_MOD_NAME] => restbox.table
+                            [MODE] => 
+                            [_L_SETTINGS] => Array
+                                (
+                                )
+
+                            [_PATH] => 
+                            [_DEF_SETTINGS] => Array
+                                (
+                                )
+
+                            [CFG_INFO] => Array
+                                (
+                                    [connections] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [drv] => pdo
+                                                    [prefix] => tms_
+                                                    [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                    [user] => root
+                                                    [passw] => 
+                                                    [create_if_not_exists] => 1
+                                                    [charset] => utf8
+                                                    [collation] => utf8_general_ci
+                                                )
+
+                                        )
+
+                                    [usertable] => users
+                                    [CFG_DIR] => ./restbox/tms
+                                )
+
+                        )
+
+                    [isID] => 
+                )
+
+            [birthday] => modules\restbox\table\ft_datetime Object
+                (
+                    [fldname] => birthday
+                    [PARAMS] => Array
+                        (
+                            [mode] => date
+                            [unsigned] => 
+                        )
+
+                    [_P_MODULE] => modules\restbox\table\Module Object
+                        (
+                            [_CONF] => 
+                            [_EP] => 
+                            [_CONFIGS_AREA] => 
+                            [_NO_READ_CONFIG] => 
+                            [_CURR_CONF_DIR] => 
+                            [_CONF_PATH] => 
+                            [_SETTINGS] => 
+                            [_F_TYPES] => Array
+                                (
+                                    [id] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_id.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_id
+                                        )
+
+                                    [text] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_text.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_text
+                                        )
+
+                                    [bigtext] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bigtext.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bigtext
+                                        )
+
+                                    [password] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_password.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_password
+                                        )
+
+                                    [int] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_int.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_int
+                                        )
+
+                                    [float] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_float.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_float
+                                        )
+
+                                    [datetime] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [date] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [enum] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_enum.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_enum
+                                        )
+
+                                    [set] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_set.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_set
+                                        )
+
+                                    [bool] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bool.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bool
+                                        )
+
+                                    [file] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_file.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_file
+                                        )
+
+                                    [ref] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_ref.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_ref
+                                        )
+
+                                )
+
+                            [MLAM] => Core\MLAM Object
+                                (
+                                    [_BASE_DIR] => 
+                                    [_MODULES_OBJS] => Array
+                                        (
+                                            [restbox] => modules\restbox\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => Array
+                                                        (
+                                                            [curr_cfg] => tms
+                                                        )
+
+                                                    [_CONFIG] => tms
+                                                    [_CFG_DIR] => ./restbox/tms
+                                                    [_CFG_INFO] => Array
+                                                        (
+                                                            [connections] => Array
+                                                                (
+                                                                    [0] => Array
+                                                                        (
+                                                                            [drv] => pdo
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                        )
+
+                                                                )
+
+                                                            [usertable] => users
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                            [restbox.db] => modules\restbox\db\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONNECTIONS] => Array
+                                                        (
+                                                            [0] => modules\restbox\db\mysql\PDOConnection Object
+                                                                (
+                                                                    [_curr_ERROR] => 
+                                                                    [_CONFIG] => Array
+                                                                        (
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                            [driver] => pdo
+                                                                            [ENGINE] => InnoDB
+                                                                            [conn_opts] => Array
+                                                                                (
+                                                                                    [3] => 2
+                                                                                    [19] => 2
+                                                                                    [20] => 0
+                                                                                )
+
+                                                                        )
+
+                                                                    [_CONNECTED] => 1
+                                                                    [_CONNECTION] => PDO Object
+                                                                        (
+                                                                        )
+
+                                                                    [_ERRORS] => 
+                                                                    [P_MODULE] => modules\restbox\db\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [_DEF_CONN_IDX] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.mysql] => modules\restbox\db\mysql\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.mysql
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.pdo] => modules\restbox\db\pdo\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.pdo
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.route] => modules\restbox\route\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => Array
+                                                        (
+                                                            [tables/users] => modules\restbox\table\ObjTable Object
+                                                                (
+                                                                    [_CONN_ID] => 0
+                                                                    [CFG_INFO] => Array
+                                                                        (
+                                                                            [connections] => Array
+                                                                                (
+                                                                                    [0] => Array
+                                                                                        (
+                                                                                            [drv] => pdo
+                                                                                            [prefix] => tms_
+                                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                                            [user] => root
+                                                                                            [passw] => 
+                                                                                            [create_if_not_exists] => 1
+                                                                                            [charset] => utf8
+                                                                                            [collation] => utf8_general_ci
+                                                                                        )
+
+                                                                                )
+
+                                                                            [usertable] => users
+                                                                            [CFG_DIR] => ./restbox/tms
+                                                                        )
+
+                                                                    [P_MODULE] => modules\restbox\table\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.route
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.route
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.table] => modules\restbox\table\Module Object
+ *RECURSION*
+                                            [restbox.forms] => modules\restbox\forms\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.forms
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.forms
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.session] => modules\restbox\session\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_F_TYPES] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.session
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_SETTINGS] => Array
+                                        (
+                                            [enable_modules] => Array
+                                                (
+                                                    [0] => restbox.*
+                                                )
+
+                                            [mod_params] => Array
+                                                (
+                                                    [restbox] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_MUST_SAVE] => Array
+                                        (
+                                        )
+
+                                    [_LOADING_QUEUE] => Array
+                                        (
+                                        )
+
+                                    [_MODULES_DIR] => ./modules
+                                )
+
+                            [_MOD_NAME] => restbox.table
+                            [MODE] => 
+                            [_L_SETTINGS] => Array
+                                (
+                                )
+
+                            [_PATH] => 
+                            [_DEF_SETTINGS] => Array
+                                (
+                                )
+
+                            [CFG_INFO] => Array
+                                (
+                                    [connections] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [drv] => pdo
+                                                    [prefix] => tms_
+                                                    [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                    [user] => root
+                                                    [passw] => 
+                                                    [create_if_not_exists] => 1
+                                                    [charset] => utf8
+                                                    [collation] => utf8_general_ci
+                                                )
+
+                                        )
+
+                                    [usertable] => users
+                                    [CFG_DIR] => ./restbox/tms
+                                )
+
+                        )
+
+                    [isID] => 
+                )
+
+            [avatar] => modules\restbox\table\ft_file Object
+                (
+                    [fldname] => avatar
+                    [PARAMS] => Array
+                        (
+                            [mode] => blob
+                        )
+
+                    [_P_MODULE] => modules\restbox\table\Module Object
+                        (
+                            [_CONF] => 
+                            [_EP] => 
+                            [_CONFIGS_AREA] => 
+                            [_NO_READ_CONFIG] => 
+                            [_CURR_CONF_DIR] => 
+                            [_CONF_PATH] => 
+                            [_SETTINGS] => 
+                            [_F_TYPES] => Array
+                                (
+                                    [id] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_id.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_id
+                                        )
+
+                                    [text] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_text.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_text
+                                        )
+
+                                    [bigtext] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bigtext.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bigtext
+                                        )
+
+                                    [password] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_password.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_password
+                                        )
+
+                                    [int] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_int.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_int
+                                        )
+
+                                    [float] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_float.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_float
+                                        )
+
+                                    [datetime] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [date] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_datetime.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_datetime
+                                        )
+
+                                    [enum] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_enum.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_enum
+                                        )
+
+                                    [set] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_set.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_set
+                                        )
+
+                                    [bool] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_bool.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_bool
+                                        )
+
+                                    [file] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_file.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_file
+                                        )
+
+                                    [ref] => Array
+                                        (
+                                            [file] => /inc/ftypes/ft_ref.php
+                                            [ns] => modules\restbox\table\
+                                            [class] => ft_ref
+                                        )
+
+                                )
+
+                            [MLAM] => Core\MLAM Object
+                                (
+                                    [_BASE_DIR] => 
+                                    [_MODULES_OBJS] => Array
+                                        (
+                                            [restbox] => modules\restbox\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => Array
+                                                        (
+                                                            [curr_cfg] => tms
+                                                        )
+
+                                                    [_CONFIG] => tms
+                                                    [_CFG_DIR] => ./restbox/tms
+                                                    [_CFG_INFO] => Array
+                                                        (
+                                                            [connections] => Array
+                                                                (
+                                                                    [0] => Array
+                                                                        (
+                                                                            [drv] => pdo
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                        )
+
+                                                                )
+
+                                                            [usertable] => users
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                            [restbox.db] => modules\restbox\db\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONNECTIONS] => Array
+                                                        (
+                                                            [0] => modules\restbox\db\mysql\PDOConnection Object
+                                                                (
+                                                                    [_curr_ERROR] => 
+                                                                    [_CONFIG] => Array
+                                                                        (
+                                                                            [prefix] => tms_
+                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                            [user] => root
+                                                                            [passw] => 
+                                                                            [create_if_not_exists] => 1
+                                                                            [charset] => utf8
+                                                                            [collation] => utf8_general_ci
+                                                                            [driver] => pdo
+                                                                            [ENGINE] => InnoDB
+                                                                            [conn_opts] => Array
+                                                                                (
+                                                                                    [3] => 2
+                                                                                    [19] => 2
+                                                                                    [20] => 0
+                                                                                )
+
+                                                                        )
+
+                                                                    [_CONNECTED] => 1
+                                                                    [_CONNECTION] => PDO Object
+                                                                        (
+                                                                        )
+
+                                                                    [_ERRORS] => 
+                                                                    [P_MODULE] => modules\restbox\db\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [_DEF_CONN_IDX] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.mysql] => modules\restbox\db\mysql\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.mysql
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.db.pdo] => modules\restbox\db\pdo\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_CONNECTION] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.db.pdo
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.route] => modules\restbox\route\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => Array
+                                                        (
+                                                            [tables/users] => modules\restbox\table\ObjTable Object
+                                                                (
+                                                                    [_CONN_ID] => 0
+                                                                    [CFG_INFO] => Array
+                                                                        (
+                                                                            [connections] => Array
+                                                                                (
+                                                                                    [0] => Array
+                                                                                        (
+                                                                                            [drv] => pdo
+                                                                                            [prefix] => tms_
+                                                                                            [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                                                            [user] => root
+                                                                                            [passw] => 
+                                                                                            [create_if_not_exists] => 1
+                                                                                            [charset] => utf8
+                                                                                            [collation] => utf8_general_ci
+                                                                                        )
+
+                                                                                )
+
+                                                                            [usertable] => users
+                                                                            [CFG_DIR] => ./restbox/tms
+                                                                        )
+
+                                                                    [P_MODULE] => modules\restbox\table\Module Object
+ *RECURSION*
+                                                                )
+
+                                                        )
+
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.route
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.route
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.table] => modules\restbox\table\Module Object
+ *RECURSION*
+                                            [restbox.forms] => modules\restbox\forms\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_OBJ_BUF] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.forms
+                                                    [MODE] => use
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => ././modules/restbox.forms
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                            [restbox.session] => modules\restbox\session\Module Object
+                                                (
+                                                    [_CONF] => 
+                                                    [_EP] => 
+                                                    [_CONFIGS_AREA] => 
+                                                    [_NO_READ_CONFIG] => 
+                                                    [_CURR_CONF_DIR] => 
+                                                    [_CONF_PATH] => 
+                                                    [_SETTINGS] => 
+                                                    [_F_TYPES] => 
+                                                    [MLAM] => Core\MLAM Object
+ *RECURSION*
+                                                    [_MOD_NAME] => restbox.session
+                                                    [MODE] => 
+                                                    [_L_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                    [_PATH] => 
+                                                    [_DEF_SETTINGS] => Array
+                                                        (
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_SETTINGS] => Array
+                                        (
+                                            [enable_modules] => Array
+                                                (
+                                                    [0] => restbox.*
+                                                )
+
+                                            [mod_params] => Array
+                                                (
+                                                    [restbox] => Array
+                                                        (
+                                                            [rbdir] => ./restbox
+                                                            [rbrouter] => restbox.route
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [_MUST_SAVE] => Array
+                                        (
+                                        )
+
+                                    [_LOADING_QUEUE] => Array
+                                        (
+                                        )
+
+                                    [_MODULES_DIR] => ./modules
+                                )
+
+                            [_MOD_NAME] => restbox.table
+                            [MODE] => 
+                            [_L_SETTINGS] => Array
+                                (
+                                )
+
+                            [_PATH] => 
+                            [_DEF_SETTINGS] => Array
+                                (
+                                )
+
+                            [CFG_INFO] => Array
+                                (
+                                    [connections] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [drv] => pdo
+                                                    [prefix] => tms_
+                                                    [connstr] => mysql:host=localhost;dbname=tmsus;charset=utf8
+                                                    [user] => root
+                                                    [passw] => 
+                                                    [create_if_not_exists] => 1
+                                                    [charset] => utf8
+                                                    [collation] => utf8_general_ci
+                                                )
+
+                                        )
+
+                                    [usertable] => users
+                                    [CFG_DIR] => ./restbox/tms
+                                )
+
+                        )
+
+                    [isID] => 
+                )
+
+        )
+
+)
