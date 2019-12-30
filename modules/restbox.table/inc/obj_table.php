@@ -56,7 +56,7 @@ namespace modules\restbox\table {
         function build_info($info,$tname)
         {
             
-            $res = new TableMap($tname);
+            $res = new TableMap($tname); // table map from description
             foreach($info->_info['fields'] as $fld => $fldinfo)
             {
                 //$this->call_mod_func('')
@@ -129,7 +129,7 @@ namespace modules\restbox\table {
                     if($fld->fldname==$ID_fld->fldname) continue;                        
                     $item[$fld->fldname]=$_post_data[$fld->fldname];
                 }
-                print_dbg($info_obj);
+            //    print_dbg($info_obj);
                 $res = $this->call_mod_func('restbox.db', 'query_update',[
                     'item'=>$item,
                     'table'=>$_request['vars']['table'],
