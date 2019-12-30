@@ -14,8 +14,10 @@
         'status'=>new tfield('enum',['values'=>['student','prepod','admin'],'default'=>'student']),
         'birthday'=>new tfield('datetime'),
         'avatar'=>new tfield('file',['mode'=>'blob']),
-   
-    ]
+    ],
+    'beforeSave'=>function(&$row) {
+        
+    }
 ]);
 
 
