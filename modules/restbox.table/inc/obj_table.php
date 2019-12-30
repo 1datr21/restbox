@@ -142,7 +142,13 @@ namespace modules\restbox\table {
                     if($fld->fldname==$ID_fld->fldname) continue;
                     $item[$fld->fldname]=$_post_data[$fld->fldname];
                 }
-                print_dbg($info_obj);
+
+                //print_dbg($info_obj->_info['events']);
+
+                if(isset($info_obj->_info['events']['beforeSave']))
+                {
+                    $info_obj->_info['events']['beforeSave']($item);
+                }
                 $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table']]);
             }     
             return true;

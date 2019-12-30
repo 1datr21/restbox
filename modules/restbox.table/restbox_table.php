@@ -129,7 +129,7 @@ namespace modules\restbox\table {
 			}
 			return null;
 		}
-	}
+	}  
 
 	class tfield {
 		VAR $_info;

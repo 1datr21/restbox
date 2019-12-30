@@ -17,7 +17,7 @@
     ],
     'events'=>[
         'beforeSave'=>function(&$row) {
-            print_dbg("aaa");
+            print_dbg("aaa");  
         }
     ]
 ]);
