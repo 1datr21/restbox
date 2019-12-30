@@ -56,7 +56,7 @@ namespace modules\restbox\table {
         function build_info($info,$tname)
         {
             
-            $res = new TableMap($tname); // table map from description
+            $res = new TableMap($tname,$info); // table map from description
             foreach($info->_info['fields'] as $fld => $fldinfo)
             {
                 //$this->call_mod_func('')
@@ -113,9 +113,7 @@ namespace modules\restbox\table {
         }
 
         function save($_request,$_post_data=[])
-        {
-        //    print_dbg($_POST);
-            
+        {  
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             $arr_to_save=[];
@@ -157,9 +155,16 @@ namespace modules\restbox\table {
         VAR $TNAME;
         VAR $FIELDS = [];
 
-        function __construct($tbl_name)
+        function __construct($tbl_name,$_info_=[])
         {
             $this->TNAME = $tbl_name;
+            foreach($_info_ as $fld => $val)
+            {
+                if(!in_array($fld,['FIELDS']))
+                {
+                    $this->$fld = $val;
+                }
+            }
         }
 
         function getName()
