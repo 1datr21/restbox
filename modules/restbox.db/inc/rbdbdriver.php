@@ -253,10 +253,12 @@ namespace modules\restbox\db {
 		{
 			$table = $args['table'];
 			$item = $args['item'];
-			$_sql = "INSERT INTO `@+$table`(".xx_implode($item,',',"`{idx}`").") VALUES(".xx_implode($item,',','\'{%val}\'',function(&$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter){
+			$_sql = "INSERT INTO `@+$table`(".xx_implode($item,',',"`{idx}`").") VALUES(".xx_implode($item,',','\'{%val}\'',
+			function(&$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter) {
 			//	print_dbg($theval);
 				if(substr($theval['%val'],0,1)=='#')
 				{
+					$theval['%val'] = substr($theval['%val'],1);
 					$thetemplate = "{%val}";
 				}
 			}).")";
@@ -516,7 +518,9 @@ namespace modules\restbox\db {
 
         function prepare_query($sql)
         {
-            return strtr($sql,['@+'=>$this->_CONFIG['prefix']]);
+			$_pr_sql = strtr($sql,['@+'=>$this->_CONFIG['prefix']]);
+			//print_dbg($_pr_sql);
+			return $_pr_sql;
         }
 
         function exec_query($_query,$gen_error=true)

@@ -144,12 +144,19 @@ namespace modules\restbox\table {
                 }
 
                 //print_dbg($info_obj->_info['events']);
-
+                $save_it = true;
                 if(isset($info_obj->_info['events']['beforeSave']))
                 {
-                    $info_obj->_info['events']['beforeSave']($item);
+                    $info_obj->_info['events']['beforeSave']($item, $save_it);
                 }
-                $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table']]);
+                if($save_it)
+                {
+                    $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table']]);
+                    if(isset($info_obj->_info['events']['afterSave']))
+                    {
+                        $info_obj->_info['events']['afterSave']($item);
+                    }
+                }
             }     
             return true;
         }

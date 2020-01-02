@@ -13,11 +13,13 @@
         'passw'=>new tfield('password','require'),
         'status'=>new tfield('enum',['values'=>['student','prepod','admin'],'default'=>'student']),
         'birthday'=>new tfield('datetime'),
+        'regdate'=>new tfield('datetime'),
         'avatar'=>new tfield('file',['mode'=>'blob']),
     ],
     'events'=>[
-        'beforeSave'=>function(&$row) {
+        'beforeSave'=>function(&$row,&$save) {
             print_dbg("aaa");  
+            $row['regdate']='#NOW()';
         }
     ]
 ]);
