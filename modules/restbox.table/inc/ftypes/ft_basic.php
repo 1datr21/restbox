@@ -22,6 +22,27 @@ namespace modules\restbox\table {
 
         }
 
+        function BeforeInsert(&$params)
+        {
+
+        }
+
+        function AfterInsert(&$params)
+        {
+
+        }
+
+        function BeforeUpdate(&$params)
+        {
+
+        }
+
+        function AfterUpdate(&$params)
+        {
+
+        }
+
+
         function AfterConstruct()
         {
 
