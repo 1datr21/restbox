@@ -272,7 +272,17 @@ namespace modules\restbox\db {
 
 		function query_update($table,$item,$idval,$idfld='id')
 		{
-			$_sql = "UPDATE `@+{$table}` SET ".xx_implode($item,',',"`{idx}`='{%val}'")." WHERE  `{$idfld}`={$idval}";
+			$_sql = "UPDATE `@+{$table}` SET ".
+				xx_implode($item,',',"`{idx}`='{%val}'",
+					function(&$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter) {
+						//	print_dbg($theval);
+							if(substr($theval['%val'],0,1)=='#')
+							{
+								$theval['%val'] = substr($theval['%val'],1);
+								$thetemplate = "{%val}";
+							}
+						}).
+			" WHERE  `{$idfld}`={$idval}";
 			$this->query($_sql);
 				
 			/*
