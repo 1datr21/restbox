@@ -127,13 +127,34 @@ namespace modules\restbox\table {
                     if($fld->fldname==$ID_fld->fldname) continue;                        
                     $item[$fld->fldname]=$_post_data[$fld->fldname];
                 }
-              ///  print_dbg($info_obj);
-                $res = $this->call_mod_func('restbox.db', 'query_update',[
-                    'item'=>$item,
-                    'table'=>$_request['vars']['table'],
-                    'idval'=>$_post_data[$ID_fld->fldname],
-                    'idfld'=>$ID_fld->fldname,
-                    ]);
+              
+                //execute event Before Save
+                $save_it = true;
+                if(isset($info_obj->_info['events']['beforeSave']))
+                {
+                    $info_obj->_info['events']['beforeSave']($item, $save_it);
+                } 
+                if($save_it)
+                {
+                    // Event before insert
+                    foreach($info_obj->FIELDS as $fld)
+                    {
+                        $_params = ['datarow'=>&$item];
+                        $fld->BeforeInsert($_params);
+                    }
+
+                    $res = $this->call_mod_func('restbox.db', 'query_update',[
+                        'item'=>$item,
+                        'table'=>$_request['vars']['table'],
+                        'idval'=>$_post_data[$ID_fld->fldname],
+                        'idfld'=>$ID_fld->fldname,
+                        ]);
+                    //execute event After Save
+                    if(isset($info_obj->_info['events']['afterSave']))
+                    {
+                        $info_obj->_info['events']['afterSave']($item);
+                    }
+                }
             }
             else
             {
@@ -143,15 +164,22 @@ namespace modules\restbox\table {
                     $item[$fld->fldname]=$_post_data[$fld->fldname];
                 }
 
-                //print_dbg($info_obj->_info['events']);
+                //execute event Before Save
                 $save_it = true;
                 if(isset($info_obj->_info['events']['beforeSave']))
                 {
                     $info_obj->_info['events']['beforeSave']($item, $save_it);
-                }
+                }               
                 if($save_it)
                 {
+                     // Event before insert
+                    foreach($info_obj->FIELDS as $fld)
+                    {
+                        $_params = ['datarow'=>&$item];
+                        $fld->BeforeInsert($_params);
+                    }
                     $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table']]);
+                    //execute event After Save
                     if(isset($info_obj->_info['events']['afterSave']))
                     {
                         $info_obj->_info['events']['afterSave']($item);
