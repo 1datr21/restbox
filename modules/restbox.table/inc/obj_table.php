@@ -124,8 +124,11 @@ namespace modules\restbox\table {
                 $item = $this->load_by_id($_request['vars']['table'], $_post_data[$ID_fld->fldname]);
                 foreach($info_obj->FIELDS as $fld)
                 {
-                    if($fld->fldname==$ID_fld->fldname) continue;                        
-                    $item[$fld->fldname]=$_post_data[$fld->fldname];
+                    if($fld->fldname==$ID_fld->fldname) continue;  
+                    if(isset($_post_data[$fld->fldname]))
+                    {                      
+                        $item[$fld->fldname]=$_post_data[$fld->fldname];
+                    }
                 }
               
                 //execute event Before Save
