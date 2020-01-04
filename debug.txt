@@ -1,3 +1,14 @@
 
 				
-	01-04-2020 19:34:40.000000: aaa
+	01-04-2020 19:58:19.000000: Array
+(
+    [id] => 18
+    [login] => wasya2020
+    [email] => errr@ya.su
+    [passw] => 
+    [status] => 
+    [birthday] => 
+    [regdate] => 
+    [avatar] => 
+    [avatar_mime] => 
+)

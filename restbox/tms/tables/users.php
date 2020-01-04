@@ -18,8 +18,9 @@
     ],
     'events'=>[
         'beforeSave'=>function(&$row,&$save) {
-            print_dbg("aaa");  
-            $row['regdate']='#NOW()';
+            //print_dbg($row);  
+            if(empty($row['id']))
+                $row['regdate']='#NOW()';
         }
     ]
 ]);

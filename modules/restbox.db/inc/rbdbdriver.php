@@ -279,7 +279,7 @@ namespace modules\restbox\db {
 							if(substr($theval['%val'],0,1)=='#')
 							{
 								$theval['%val'] = substr($theval['%val'],1);
-								$thetemplate = "{%val}";
+								$thetemplate = "`{idx}`={%val}";
 							}
 						}).
 			" WHERE  `{$idfld}`={$idval}";
