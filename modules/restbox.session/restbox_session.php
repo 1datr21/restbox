@@ -29,9 +29,13 @@ namespace modules\restbox\session {
 
 		function gen_token()
 		{
-			
+			$sess_id = GenRandStr(10);
 		}
 
+		function save_session()
+		{
+			
+		}
 		
 	}
 
