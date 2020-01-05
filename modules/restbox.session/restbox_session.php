@@ -16,6 +16,8 @@ namespace modules\restbox\session {
 		VAR $_CONF_PATH;
 		VAR $_SETTINGS;
 		VAR $_F_TYPES;
+		VAR $sess_id;
+		VAR $_SESS_INFO;
 		
 		function __construct($_PARAMS)
 		{
@@ -29,12 +31,18 @@ namespace modules\restbox\session {
 
 		function gen_token()
 		{
-			$sess_id = GenRandStr(10);
+			$this->sess_id = GenRandStr(10);
+		}
+
+		function get_session_vars()
+		{
+			return $this->_SESS_INFO;
 		}
 
 		function save_session()
 		{
-			
+			$sess_file_name = $this->sess_id.".sess";
+			file_put_contents($sess_file_name,serialize($this->_SESS_INFO));
 		}
 		
 	}
