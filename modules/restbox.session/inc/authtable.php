@@ -15,11 +15,19 @@ namespace modules\restbox\session {
         static function GetRoutePatterns()
         {
             return [
-                    'auth/:table:'=>'auth',
-                /*    'tables/one/:table:/:id:'=>'item',
-                    'tables/save/:table:'=>'save',
-                    'tables/delete/:table:'=>'delete',*/
+                    'auth/[:table:]'=>'auth',
+                    'auth/logout'=>'logout',
                 ];
+        }
+
+        function auth($req)
+        {
+
+        }
+
+        function logout()
+        {
+            $this->P_MODULE->clear_session();
         }
    }
 

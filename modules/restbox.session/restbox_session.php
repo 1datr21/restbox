@@ -39,6 +39,11 @@ namespace modules\restbox\session {
 			return $this->_SESS_INFO;
 		}
 
+		function change_token()
+		{
+			
+		}
+
 		function save_session()
 		{
 			$sess_file_name = $this->sess_id.".sess";
