@@ -22,7 +22,7 @@ namespace modules\restbox\session {
 
         function auth($req)
         {
-
+            $this->P_MODULE->auth();
         }
 
         function logout()
