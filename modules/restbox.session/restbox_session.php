@@ -41,7 +41,12 @@ namespace modules\restbox\session {
 
 		function change_token()
 		{
-			
+
+		}
+
+		function sess_expired()
+		{
+			//filemtime()
 		}
 
 		function save_session()
