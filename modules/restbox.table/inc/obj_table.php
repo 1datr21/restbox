@@ -66,7 +66,7 @@ namespace modules\restbox\table {
             return $res;
         }
 
-        function view($_request)
+        function view($_request)  
         {
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             //print_dbg($info_obj);

@@ -25,7 +25,7 @@ namespace modules\restbox\session {
         //    $this->P_MODULE->auth();
         //    print_dbg($_request);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
-            return $table_info;  
+            return [true];  
         }
 
         function logout()
