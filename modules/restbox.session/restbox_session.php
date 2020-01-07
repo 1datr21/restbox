@@ -6,6 +6,8 @@ namespace modules\restbox\session {
 	use modules\restbox\AppObject;
 	use modules\restbox\RBModule as RBModule;
 
+	require_once '/inc/authtable.php';
+
 	class Module extends RBModule 
 	{
 		VAR $_CONF;
@@ -27,6 +29,13 @@ namespace modules\restbox\session {
 		function AfterLoad()
 		{
 		
+		}
+
+		function restbox_route_onquery(&$eargs)
+		{				
+			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
+			
+			return $obj_res;
 		}
 
 		function gen_token()
