@@ -20,9 +20,12 @@ namespace modules\restbox\session {
                 ];
         }
 
-        function auth($req)
+        function auth($_request)
         {
-            $this->P_MODULE->auth();  
+        //    $this->P_MODULE->auth();
+            print_dbg('auth');
+            $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
+            return $table_info;  
         }
 
         function logout()
