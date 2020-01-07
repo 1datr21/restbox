@@ -23,7 +23,7 @@ namespace modules\restbox\session {
         function auth($_request)
         {
         //    $this->P_MODULE->auth();
-            print_dbg('auth');
+        //    print_dbg($_request);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
             return $table_info;  
         }
