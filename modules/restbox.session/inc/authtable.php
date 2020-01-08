@@ -24,6 +24,8 @@ namespace modules\restbox\session {
         {
         //    $this->P_MODULE->auth();
         //    print_dbg($_request);
+            $info_cfg = $this->call_mod_func('restbox.table','get_conf_settings',1);
+            print_dbg($info_cfg);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
            // print_dbg($table_info);
             return [true];  

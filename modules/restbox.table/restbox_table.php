@@ -83,6 +83,11 @@ namespace modules\restbox\table {
 			//print_dbg($this->_F_TYPES);		
 		}
 
+		function get_conf_settings()
+		{
+			return $this->_CONF;
+		}
+
 		function load_table($_table)
 		{
 			//print_dbg($this);
