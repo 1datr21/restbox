@@ -24,11 +24,26 @@ namespace modules\restbox\session {
         {
         //    $this->P_MODULE->auth();
         //    print_dbg($_request);
-            $info_cfg = $this->call_mod_func('restbox.table','get_conf_settings',1);
-            print_dbg($info_cfg);
+            $info_cfg = $this->call_mod_func('restbox','get_settings',1);
+        //    print_dbg($info_cfg['usertable'] );
+            if(empty($_request['vars']['table']))
+            {
+                
+                if(is_array($info_cfg['usertable']))
+                {
+                //    print_dbg('is_array');
+                    $_request['vars']['table'] = $info_cfg['usertable'][0];
+                }
+                else
+                {
+                //    print_dbg('is_str');
+                    $_request['vars']['table'] = $info_cfg['usertable'];
+                }
+            }
+        //    print_dbg($_request);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
-           // print_dbg($table_info);
-            return [true];  
+            
+            return ['table'=>$_request['vars']['table']];  
         }
 
         function logout()
