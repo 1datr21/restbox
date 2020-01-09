@@ -22,7 +22,11 @@
             if(empty($row['id']))
                 $row['regdate']='#NOW()';
         }
-    ]
+    ],
+    'addinfo'=>['authroles'=>[
+        'login'=>'login',
+      //  'password'=>'passw',
+        'email'=>'email']]
 ]);
 
 
