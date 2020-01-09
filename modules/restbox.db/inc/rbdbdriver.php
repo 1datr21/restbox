@@ -132,7 +132,6 @@ namespace modules\restbox\db {
 					
 					$exst_field_list = assoc_array_cut($existing_fields,"Field");
 				
-				//	print_dbg($exst_field_list);
 					// add not existing fields
 					$fld_prev = null;
 					foreach($table_map->FIELDS as $fld => $finfo) 
@@ -152,12 +151,7 @@ namespace modules\restbox\db {
 							$this->add_column($finfo,$table_map,$fld_prev);
 						
 						$fld_prev = $fld;
-					}
-								
-			//print_dbg($sql);
-		//	$this->query($sql);
-
-			
+					}							
 				}
 			}
 		}
