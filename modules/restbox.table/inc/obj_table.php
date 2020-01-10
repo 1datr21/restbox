@@ -143,7 +143,7 @@ namespace modules\restbox\table {
                     foreach($info_obj->FIELDS as $fld)
                     {
                         $_params = ['datarow'=>&$item];
-                        $fld->BeforeInsert($_params);
+                        $fld->BeforeUpdate($_params);
                     }
 
                     $res = $this->call_mod_func('restbox.db', 'query_update',[

@@ -74,13 +74,17 @@ namespace modules\restbox\session {
                     $where = $this->authroles['login']."='{$_login}' OR {$this->authroles['email']}='$_email'";
                 };break;
             }
-            print_dbg($where);
+        //    print_dbg($where);
             $query_res = $this->call_mod_func('restbox.db', 'query_select',[ 
                 'table'=> $_request['vars']['table'], 
                 'where'=> $where,
                 '#table_params'=>$table_info
                 ]);
 
+            if($query_res['total_count']==0)
+            {
+                $this->call_mod_func('restbox','out_error',['mess'=>'Wrong login/e-mail or password ']);
+            }
             print_dbg($query_res);
 
             return ['table'=>$_request['vars']['table']];  
