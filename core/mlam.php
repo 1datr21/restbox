@@ -83,10 +83,11 @@ namespace Core {
 				$_param_arr[]='$params['.$idx.']';
 			}
 			$fun_res = null;
-			//print_dbg($params);
-			$str_eval = '$fun_res = $this->_MODULES_OBJS[$_mod]->$func('.implode(',',$_param_arr).');';
-			//print_dbg($str_eval);
-			eval($str_eval);
+			
+		//	print_dbg("{$_mod}(".get_class($this->_MODULES_OBJS[$_mod]).")->{$func}");
+			
+			$fun_res = call_user_func_array(array(&$this->_MODULES_OBJS[$_mod], $func), $params);
+			
 			return $fun_res;
 
 		}

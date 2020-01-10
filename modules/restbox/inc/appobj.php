@@ -22,6 +22,8 @@ namespace modules\restbox {
 
         function call_mod_func($mod, $func)
         {
+        //    print_dbg($this->P_MODULE);
+
             $args_str='';
             $args = func_get_args();
             $_arg_arr=[];

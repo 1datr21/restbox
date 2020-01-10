@@ -74,9 +74,34 @@ namespace modules\restbox\session {
                 ]);
 
             print_dbg($query_res);
-                
+
             return ['table'=>$_request['vars']['table']];  
         }
+
+        function connect_db($dbparams)  // connect the database
+        {
+         
+       //     print_dbg( 'exists: '.$this->call_mod_func('restbox.db','connection_exists',$this->_CONN_ID) );
+            if(! $this->call_mod_func('restbox.db','connection_exists',$this->_CONN_ID) )
+            {
+                
+                $this->call_mod_func('restbox.db','connect',$dbparams,$this->_CONN_ID);    
+            }
+        }
+
+        function beforeAction($_req_params)
+        {
+            $rb_info = $this->P_MODULE->exe_mod_func('restbox','get_settings');
+
+            def_options(['conn_id'=>0],$_req_params['vars']);
+            
+            $this->_CONN_ID = $_req_params['vars']['conn_id'];
+            $_db_info = $rb_info['connections'][$this->_CONN_ID];
+         //   print_dbg('connectingg');
+
+            $this->connect_db($_db_info);
+        }
+
 
         function search_fld_by_synonims($fldbuf,$syn_array)
         {

@@ -1,8 +1,0 @@
-
-				
-	01-09-2020 15:22:45.000000: Array
-(
-    [login] => login
-    [email] => email
-    [password] => passw
-)
