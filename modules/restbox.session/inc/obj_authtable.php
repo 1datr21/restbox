@@ -40,11 +40,13 @@ namespace modules\restbox\session {
             }
         //    print_dbg($_request);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
-            def_options(['mode'=>'full'],$this->authroles);
+                    
+            
             if(isset($table_info->_info['addinfo']['authroles']))
             {
                 $this->authroles = $table_info->_info['addinfo']['authroles'];
             }
+            def_options(['mode'=>'full'],$this->authroles);
             
             if(!isset($this->authroles['login']))
             {
@@ -61,12 +63,18 @@ namespace modules\restbox\session {
                 $this->authroles['email'] = $this->search_fld_by_synonims($table_info->_info['fields'],['email','e_mail','e-mail']);
             }
             //
-            if($this->authroles['mode']=='full')
+         //   print_dbg($this->authroles);
+            $where='';
+            switch($this->authroles['mode'])
             {
-                $_login = isset($post_data['login']) ? $post_data['login'] : $post_data[$this->authroles['login']];
-                $_email = isset($post_data['email']) ? $post_data['email'] : $post_data[$this->authroles['email']];
-                $where = $this->authroles['login']."='{$_login}' OR {$this->authroles['email']}=$_email";
+                case 'full':
+                {
+                    $_login = isset($post_data['login']) ? $post_data['login'] : $post_data[$this->authroles['login']];
+                    $_email = isset($post_data['email']) ? $post_data['email'] : $post_data[$this->authroles['email']];
+                    $where = $this->authroles['login']."='{$_login}' OR {$this->authroles['email']}='$_email'";
+                };break;
             }
+            print_dbg($where);
             $query_res = $this->call_mod_func('restbox.db', 'query_select',[ 
                 'table'=> $_request['vars']['table'], 
                 'where'=> $where,

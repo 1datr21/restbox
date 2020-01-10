@@ -1,0 +1,27 @@
+
+				
+	01-10-2020 12:12:24.000000: login='vasyan' OR email=''
+				
+	01-10-2020 12:12:24.000000: Array
+(
+    [items] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1
+                    [login] => vasyan
+                    [email] => thev@ya.ru
+                    [passw] => 122
+                    [status] => student
+                    [birthday] => 0000-00-00
+                    [regdate] => 0000-00-00
+                    [avatar] => 
+                    [avatar_mime] => 
+                )
+
+        )
+
+    [total_count] => 1
+    [page] => 1
+    [page_size] => 20
+)
