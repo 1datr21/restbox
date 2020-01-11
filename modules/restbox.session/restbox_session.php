@@ -43,6 +43,17 @@ namespace modules\restbox\session {
 			$this->sess_id = GenRandStr(25);
 		}
 
+		function find_this_token($token_str)
+		{
+			$handled = false;
+			$token_res = null;
+			$this->call_event('session_find',['token'=>$token_str,],['onhandle'=>function($modname,$ev_res,&$_continue) use ($handled,$token_res)
+			{
+				$handled=true;
+				$token_res = $ev_res;
+			}]);
+		}
+
 		function start_session()
 		{
 			$this->gen_token();
