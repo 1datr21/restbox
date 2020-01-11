@@ -16,18 +16,23 @@ namespace modules\restbox\table {
             ];
         }
 
+        function compare_password($row,$sended_passw)
+        {
+
+        }
+
         function BeforeInsert(&$item)
         {
-            if($this->PARAMS['mode']=='md5')
+            if($this->PARAMS['method']=='md5')
             {
                 $item['datarow'][$this->fldname] = md5($item['datarow'][$this->fldname]) ;
             }
-            //print_dbg($item);
+            //
         }
 
         function BeforeUpdate(&$item)
         {
-            if($this->PARAMS['mode']=='md5')
+            if($this->PARAMS['method']=='md5')
             {
                 $item['datarow'][$this->fldname] = md5($item['datarow'][$this->fldname]) ;
             }
