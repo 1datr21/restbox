@@ -98,7 +98,7 @@ namespace modules\restbox\session {
             {
                 $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
             }
-            return ['success'=>true];  
+            return ['success'=>true,'SESS_ID'=> $this->P_MODULE->start_session()];  
         }
 
         function connect_db($dbparams)  // connect the database

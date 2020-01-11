@@ -40,7 +40,13 @@ namespace modules\restbox\session {
 
 		function gen_token()
 		{
-			$this->sess_id = GenRandStr(10);
+			$this->sess_id = GenRandStr(25);
+		}
+
+		function start_session()
+		{
+			$this->gen_token();
+			return $this->sess_id ;
 		}
 
 		function get_session_vars()
