@@ -87,10 +87,10 @@ namespace modules\restbox\session {
                 $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
             }
 
-            print_dbg($table_info->_info['fields'][$this->authroles['password']]);
+         //   print_dbg($table_info->FIELDS);
 
             $_password = isset($post_data['password']) ? $post_data['password'] : $post_data[$this->authroles['password']];
-            $passw_cmp = $table_info->_info['fields'][$this->authroles['password']]->compare_password(
+            $passw_cmp = $table_info->FIELDS[$this->authroles['password']]->compare_password(
                 $query_res['items'][0],
                 $_password);
 
