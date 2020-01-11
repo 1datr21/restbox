@@ -52,6 +52,20 @@ namespace modules\restbox\session {
 				$handled=true;
 				$token_res = $ev_res;
 			}]);
+			if(!$handled)
+			{
+				return $this->_std_find_by_token($token_res);
+			}
+			else
+			{
+				return $token_res;
+			}
+		}
+
+		function _std_find_by_token($tkn_str)
+		{
+			$sess_file_name = "/sessions/{$tkn_str}.sess";
+			return file_exists($sess_file_name);
 		}
 
 		function start_session()
