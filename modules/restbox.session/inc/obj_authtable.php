@@ -81,13 +81,24 @@ namespace modules\restbox\session {
                 '#table_params'=>$table_info
                 ]);
 
+            $_login_err_text = 'Wrong login/e-mail or password';
             if($query_res['total_count']==0)
             {
-                $this->call_mod_func('restbox','out_error',['mess'=>'Wrong login/e-mail or password ']);
+                $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
             }
-            print_dbg($query_res);
 
-            return ['table'=>$_request['vars']['table']];  
+            print_dbg($table_info->_info['fields'][$this->authroles['password']]);
+
+            $_password = isset($post_data['password']) ? $post_data['password'] : $post_data[$this->authroles['password']];
+            $passw_cmp = $table_info->_info['fields'][$this->authroles['password']]->compare_password(
+                $query_res['items'][0],
+                $_password);
+
+            if(!$passw_cmp)
+            {
+                $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
+            }
+            return ['success'=>true];  
         }
 
         function connect_db($dbparams)  // connect the database

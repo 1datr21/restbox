@@ -16,9 +16,13 @@ namespace modules\restbox\table {
             ];
         }
 
-        function compare_password($row,$sended_passw)
+        public function compare_password($row,$sended_passw)
         {
-
+            switch($this->PARAMS['method'])
+            {
+                case 'simply': return ($row[$this->fldname]==$sended_passw);  break;
+                case 'md5': return ($row[$this->fldname]==md5($sended_passw));  break;
+            }
         }
 
         function BeforeInsert(&$item)
