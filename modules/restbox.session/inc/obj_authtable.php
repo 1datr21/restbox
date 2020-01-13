@@ -38,7 +38,7 @@ namespace modules\restbox\session {
                     $_request['vars']['table'] = $info_cfg['usertable'];
                 }
             }
-        //    print_dbg($_request);
+            print_dbg($post_data);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
                     
             
@@ -69,9 +69,9 @@ namespace modules\restbox\session {
             {
                 case 'full':
                 {
-                    $_login = isset($post_data['login']) ? $post_data['login'] : $post_data[$this->authroles['login']];
-                    $_email = isset($post_data['email']) ? $post_data['email'] : $post_data[$this->authroles['email']];
-                    $where = $this->authroles['login']."='{$_login}' OR {$this->authroles['email']}='$_email'";
+                    $_login_or_email = isset($post_data['login']) ? $post_data['login'] : $post_data[$this->authroles['login']];
+                   // $_email = isset($post_data['email']) ? $post_data['email'] : $post_data[$this->authroles['email']];
+                    $where = $this->authroles['login']."='{$_login_or_email}' OR {$this->authroles['email']}='$_login_or_email'";
                 };break;
             }
         //    print_dbg($where);

@@ -1,15 +1,35 @@
 <html>
     <head>
-        <script src="/js/jquery.min.js" />
-        <script src="/js/rbapi.js" />
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/jq_rbapi.js"></script>
         <script language="javascript">
-            $.ajax('')
+        var rb;
+        $( document ).ready(function() {
+            rb = new jq_rbapi("http://restbox");
+            
+            $( "#authForm" ).submit(function( event ) {
+            
+            // Stop form from submitting normally
+                    event.preventDefault();  
+                    
+                    var res = rb.auth(
+                            $('[name=login]').val(),
+                            $('[name=password]').val()
+                    ).then(function(r)
+                    {
+                    //    alert(r);
+                    }).catch(function(error) 
+                    {
+                        alert(error); // Error: Not Found
+                    });                      
+                });
+        });                     
         </script>
     </head>
 <body>
 <h3>Add new user</h3>
 <form method="post" action="http://restbox/?q=tables/save/users">
-    LOgin: <input type="text" name="login"  />
+    LOgin: <input type="text" name="loginx"  />
     email: <input type="text" name="email"  />
      passw: <input type="password" name="passw"  />
     <input type="submit" value="SAVE"/>
@@ -17,7 +37,7 @@
 
 <form method="post" action="http://restbox/?q=tables/save/users" id="load_one">
     <input type="text" name="id" value="1" />
-    LOgin: <input type="text" name="login" value="wasya"  />
+    LOgin: <input type="text" name="loginx" value="wasya"  />
     email: <input type="text" name="email"   />
     <input type="submit" value="SEND"/>
 </form>
@@ -28,7 +48,7 @@
 </form>
 
 <h3>AUTH</h3>
-<form method="post" action="http://restbox/?q=auth" >
+<form method="post" action="http://restbox/?q=auth" id="authForm" >
     <input type="text" name="login" value="vasyan" />
     <input type="password" name="password" value="" />
     <input type="submit" value="ENTER"/>
