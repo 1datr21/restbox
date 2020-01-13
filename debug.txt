@@ -1,0 +1,219 @@
+
+				
+	01-13-2020 17:52:49.000000: Array
+(
+    [HTTP_HOST] => restbox
+    [HTTP_X_REAL_IP] => 127.0.0.1
+    [HTTP_X_FORWARDED_PROTO] => http
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => ru,en-US;q=0.7,en;q=0.3
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_0] => A
+    [HTTP_1] => N
+    [HTTP_2] => Q
+    [HTTP_3] => Y
+    [HTTP_4] => b
+    [HTTP_5] => O
+    [HTTP_6] => c
+    [HTTP_7] => 3
+    [HTTP_8] => i
+    [HTTP_9] => M
+    [HTTP_10] => y
+    [HTTP_11] => y
+    [HTTP_12] => a
+    [HTTP_13] => 2
+    [HTTP_14] => X
+    [HTTP_15] => 5
+    [HTTP_16] => O
+    [HTTP_17] => g
+    [HTTP_18] => 5
+    [HTTP_19] => b
+    [HTTP_20] => m
+    [HTTP_21] => m
+    [HTTP_22] => z
+    [HTTP_23] => W
+    [HTTP_24] => N
+    [HTTP_X_REQUESTED_WITH] => XMLHttpRequest
+    [HTTP_REFERER] => http://restbox/post.html
+    [PATH] => e:\openserver\modules\php\PHP-5.5-x64\ext;e:\openserver\modules\php\PHP-5.5-x64\pear;e:\openserver\modules\php\PHP-5.5-x64\pear\bin;e:\openserver\modules\php\PHP-5.5-x64;e:\openserver\modules\imagemagick;e:\openserver\modules\wget\bin;e:\openserver\modules\git;e:\openserver\modules\git\bin;e:\openserver\modules\git\mingw\bin;e:\openserver\modules\git\cmd;e:\openserver\modules\database\MySQL-5.5\bin;e:\openserver\modules\http\Apache-2.4-x64+Nginx-1.10\bin;e:\openserver\modules\http\Apache-2.4-x64+Nginx-1.10;C:\Windows\system32;C:\Windows;C:\Windows\system32\Wbem;C:\Windows\SysWOW64
+    [SystemRoot] => C:\Windows
+    [COMSPEC] => C:\Windows\system32\cmd.exe
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    [WINDIR] => C:\Windows
+    [SERVER_SIGNATURE] => 
+    [SERVER_SOFTWARE] => Apache
+    [SERVER_NAME] => restbox
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => 127.0.0.1
+    [DOCUMENT_ROOT] => E:/OpenServer/domains/restbox
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => 
+    [CONTEXT_DOCUMENT_ROOT] => E:/OpenServer/domains/restbox
+    [SERVER_ADMIN] => [no address given]
+    [SCRIPT_FILENAME] => E:/OpenServer/domains/restbox/index.php
+    [REMOTE_PORT] => 12344
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [REQUEST_METHOD] => GET
+    [QUERY_STRING] => q=tables/users
+    [REQUEST_URI] => /?q=tables/users
+    [SCRIPT_NAME] => /index.php
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1578927169.512
+    [REQUEST_TIME] => 1578927169
+    [argv] => Array
+        (
+            [0] => q=tables/users
+        )
+
+    [argc] => 1
+)
+
+				
+	01-13-2020 17:53:33.000000: Array
+(
+    [HTTP_HOST] => restbox
+    [HTTP_X_REAL_IP] => 127.0.0.1
+    [HTTP_X_FORWARDED_PROTO] => http
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => ru,en-US;q=0.7,en;q=0.3
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_0] => A
+    [HTTP_1] => N
+    [HTTP_2] => Q
+    [HTTP_3] => Y
+    [HTTP_4] => b
+    [HTTP_5] => O
+    [HTTP_6] => c
+    [HTTP_7] => 3
+    [HTTP_8] => i
+    [HTTP_9] => M
+    [HTTP_10] => y
+    [HTTP_11] => y
+    [HTTP_12] => a
+    [HTTP_13] => 2
+    [HTTP_14] => X
+    [HTTP_15] => 5
+    [HTTP_16] => O
+    [HTTP_17] => g
+    [HTTP_18] => 5
+    [HTTP_19] => b
+    [HTTP_20] => m
+    [HTTP_21] => m
+    [HTTP_22] => z
+    [HTTP_23] => W
+    [HTTP_24] => N
+    [HTTP_X_REQUESTED_WITH] => XMLHttpRequest
+    [HTTP_REFERER] => http://restbox/post.html
+    [PATH] => e:\openserver\modules\php\PHP-5.5-x64\ext;e:\openserver\modules\php\PHP-5.5-x64\pear;e:\openserver\modules\php\PHP-5.5-x64\pear\bin;e:\openserver\modules\php\PHP-5.5-x64;e:\openserver\modules\imagemagick;e:\openserver\modules\wget\bin;e:\openserver\modules\git;e:\openserver\modules\git\bin;e:\openserver\modules\git\mingw\bin;e:\openserver\modules\git\cmd;e:\openserver\modules\database\MySQL-5.5\bin;e:\openserver\modules\http\Apache-2.4-x64+Nginx-1.10\bin;e:\openserver\modules\http\Apache-2.4-x64+Nginx-1.10;C:\Windows\system32;C:\Windows;C:\Windows\system32\Wbem;C:\Windows\SysWOW64
+    [SystemRoot] => C:\Windows
+    [COMSPEC] => C:\Windows\system32\cmd.exe
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    [WINDIR] => C:\Windows
+    [SERVER_SIGNATURE] => 
+    [SERVER_SOFTWARE] => Apache
+    [SERVER_NAME] => restbox
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => 127.0.0.1
+    [DOCUMENT_ROOT] => E:/OpenServer/domains/restbox
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => 
+    [CONTEXT_DOCUMENT_ROOT] => E:/OpenServer/domains/restbox
+    [SERVER_ADMIN] => [no address given]
+    [SCRIPT_FILENAME] => E:/OpenServer/domains/restbox/index.php
+    [REMOTE_PORT] => 12354
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [REQUEST_METHOD] => GET
+    [QUERY_STRING] => q=tables/users
+    [REQUEST_URI] => /?q=tables/users
+    [SCRIPT_NAME] => /index.php
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1578927213.601
+    [REQUEST_TIME] => 1578927213
+    [argv] => Array
+        (
+            [0] => q=tables/users
+        )
+
+    [argc] => 1
+)
+
+				
+	01-13-2020 17:53:45.000000: Array
+(
+    [HTTP_HOST] => restbox
+    [HTTP_X_REAL_IP] => 127.0.0.1
+    [HTTP_X_FORWARDED_PROTO] => http
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => ru,en-US;q=0.7,en;q=0.3
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_0] => A
+    [HTTP_1] => N
+    [HTTP_2] => Q
+    [HTTP_3] => Y
+    [HTTP_4] => b
+    [HTTP_5] => O
+    [HTTP_6] => c
+    [HTTP_7] => 3
+    [HTTP_8] => i
+    [HTTP_9] => M
+    [HTTP_10] => y
+    [HTTP_11] => y
+    [HTTP_12] => a
+    [HTTP_13] => 2
+    [HTTP_14] => X
+    [HTTP_15] => 5
+    [HTTP_16] => O
+    [HTTP_17] => g
+    [HTTP_18] => 5
+    [HTTP_19] => b
+    [HTTP_20] => m
+    [HTTP_21] => m
+    [HTTP_22] => z
+    [HTTP_23] => W
+    [HTTP_24] => N
+    [HTTP_X_REQUESTED_WITH] => XMLHttpRequest
+    [HTTP_REFERER] => http://restbox/post.html
+    [PATH] => e:\openserver\modules\php\PHP-5.5-x64\ext;e:\openserver\modules\php\PHP-5.5-x64\pear;e:\openserver\modules\php\PHP-5.5-x64\pear\bin;e:\openserver\modules\php\PHP-5.5-x64;e:\openserver\modules\imagemagick;e:\openserver\modules\wget\bin;e:\openserver\modules\git;e:\openserver\modules\git\bin;e:\openserver\modules\git\mingw\bin;e:\openserver\modules\git\cmd;e:\openserver\modules\database\MySQL-5.5\bin;e:\openserver\modules\http\Apache-2.4-x64+Nginx-1.10\bin;e:\openserver\modules\http\Apache-2.4-x64+Nginx-1.10;C:\Windows\system32;C:\Windows;C:\Windows\system32\Wbem;C:\Windows\SysWOW64
+    [SystemRoot] => C:\Windows
+    [COMSPEC] => C:\Windows\system32\cmd.exe
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+    [WINDIR] => C:\Windows
+    [SERVER_SIGNATURE] => 
+    [SERVER_SOFTWARE] => Apache
+    [SERVER_NAME] => restbox
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => 127.0.0.1
+    [DOCUMENT_ROOT] => E:/OpenServer/domains/restbox
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => 
+    [CONTEXT_DOCUMENT_ROOT] => E:/OpenServer/domains/restbox
+    [SERVER_ADMIN] => [no address given]
+    [SCRIPT_FILENAME] => E:/OpenServer/domains/restbox/index.php
+    [REMOTE_PORT] => 12356
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [REQUEST_METHOD] => GET
+    [QUERY_STRING] => q=tables/users
+    [REQUEST_URI] => /?q=tables/users
+    [SCRIPT_NAME] => /index.php
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1578927225.814
+    [REQUEST_TIME] => 1578927225
+    [argv] => Array
+        (
+            [0] => q=tables/users
+        )
+
+    [argc] => 1
+)

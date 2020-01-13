@@ -38,7 +38,7 @@ namespace modules\restbox\session {
                     $_request['vars']['table'] = $info_cfg['usertable'];
                 }
             }
-            print_dbg($post_data);
+       //     print_dbg($post_data);
             $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
                     
             

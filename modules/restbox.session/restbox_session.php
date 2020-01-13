@@ -28,7 +28,7 @@ namespace modules\restbox\session {
 
 		function AfterLoad()
 		{
-		
+			print_dbg($_SERVER);
 		}
 
 		function restbox_route_onquery(&$eargs)

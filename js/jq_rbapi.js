@@ -25,3 +25,29 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
     });
    
 }
+
+jq_rbapi.prototype.get = function(query)
+{
+    var deffered = $.Deferred();
+    var a = this;
+    $.ajax( this.base_url+"/?q="+query,{type : 'get', headers: this.token}).done(function( data ) 
+    {       
+            // то же что reject(new Error("o_O"))
+        if(data.hasOwnProperty("error"))
+            deffered.reject(new Error(data.error.mess));
+
+        else
+        {
+                //a.token = ;
+            deffered.resolve(data[0].response);
+        }
+    });
+      //  console.log(data );
+
+    return deffered;//.promise();
+}
+
+jq_rbapi.prototype.send = function(query,data)
+{
+
+}

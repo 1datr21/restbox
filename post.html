@@ -22,7 +22,17 @@
                     {
                         alert(error); // Error: Not Found
                     });                      
-                });
+            });
+
+            $("#userslist").click(function(e){
+                rb.get('tables/users').then(function(_data)
+                {
+                    console.log(_data);
+                }).catch(function(error) 
+                {
+                    alert(error); // Error: Not Found
+                });   ;
+            });
         });                     
         </script>
     </head>
@@ -31,22 +41,15 @@
 <form method="post" action="http://restbox/?q=tables/save/users">
     LOgin: <input type="text" name="loginx"  />
     email: <input type="text" name="email"  />
-     passw: <input type="password" name="passw"  />
+    passw: <input type="password" name="passw"  />
     <input type="submit" value="SAVE"/>
 </form>
 
-<form method="post" action="http://restbox/?q=tables/save/users" id="load_one">
-    <input type="text" name="id" value="1" />
-    LOgin: <input type="text" name="loginx" value="wasya"  />
-    email: <input type="text" name="email"   />
-    <input type="submit" value="SEND"/>
-</form>
-
-<form method="post" action="http://restbox/?q=tables/delete/users" >
-    <input type="text" name="id" value="2" />
-    <input type="submit" value="DELETE"/>
-</form>
-
+<div>
+<h4>USERS</h4><button id="userslist">GET </button>
+<table id="users">
+</table>
+</div>
 <h3>AUTH</h3>
 <form method="post" action="http://restbox/?q=auth" id="authForm" >
     <input type="text" name="login" value="vasyan" />
