@@ -7,14 +7,31 @@
         $( document ).ready(function() {
             rb = new jq_rbapi("http://restbox");
             
-            $( "#authForm" ).submit(function( event ) {
-            
+            $( "#authForm" ).submit(function( event ) {         
             // Stop form from submitting normally
                     event.preventDefault();  
                     
                     var res = rb.auth(
                             $('[name=login]').val(),
                             $('[name=password]').val()
+                    ).then(function(r)
+                    {
+                    //    alert(r);
+                    }).catch(function(error) 
+                    {
+                        alert(error); // Error: Not Found
+                    });                      
+            });
+
+            $( "#newtaskform" ).submit(function( event ) {         
+            // Stop form from submitting normally
+                    event.preventDefault();  
+                    
+                    var res = rb.send('tables/save/tasks',
+                        {
+                            'name' : $( "#newtaskform" ).find('[name="name"]').val(),
+                            'descr' : $( "#newtaskform" ).find('[name=descr]').val()
+                        }
                     ).then(function(r)
                     {
                     //    alert(r);
@@ -37,11 +54,10 @@
         </script>
     </head>
 <body>
-<h3>Add new user</h3>
-<form method="post" action="http://restbox/?q=tables/save/users">
-    LOgin: <input type="text" name="loginx"  />
-    email: <input type="text" name="email"  />
-    passw: <input type="password" name="passw"  />
+<h3>Add new task</h3>
+<form method="post" action="http://restbox/?q=tables/save/tasks" id="newtaskform">
+    Name: <input type="text" name="name"  /><br />
+    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
     <input type="submit" value="SAVE"/>
 </form>
 

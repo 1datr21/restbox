@@ -247,6 +247,10 @@ namespace modules\restbox\db {
 		{
 			$table = $args['table'];
 			$item = $args['item'];
+			
+			$table_map = $args['#table_params'];
+			$this->dispatch_table($table_map);
+
 			$_sql = "INSERT INTO `@+$table`(".xx_implode($item,',',"`{idx}`").") VALUES(".xx_implode($item,',','\'{%val}\'',
 			function(&$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter) {
 			//	print_dbg($theval);
@@ -264,8 +268,12 @@ namespace modules\restbox\db {
 			*/
 		}
 
-		function query_update($table,$item,$idval,$idfld='id')
+		function query_update($table,$item,$idval,$idfld='id',$table_map=null)
 		{
+			//$table_map = $args['#table_params'];
+			if($table_map!=null)
+				$this->dispatch_table($table_map);
+
 			$_sql = "UPDATE `@+{$table}` SET ".
 				xx_implode($item,',',"`{idx}`='{%val}'",
 					function(&$theval,&$idx,&$thetemplate,&$ctr,$thedelimeter) {

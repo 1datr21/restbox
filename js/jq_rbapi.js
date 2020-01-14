@@ -47,7 +47,31 @@ jq_rbapi.prototype.get = function(query)
     return deffered;//.promise();
 }
 
-jq_rbapi.prototype.send = function(query,data)
+jq_rbapi.prototype.send = function(query,formdata)
 {
+    var deffered = $.Deferred();
+    var a = this;
+    $.ajax( this.base_url+"/?q="+query,{type : 'post',data: formdata, headers: {rbtoken: this.token}}).done(function( data ) 
+    {       
+            // то же что reject(new Error("o_O"))
+        if(data.hasOwnProperty("error") )
+        {
+            deffered.reject(new Error(data.error.message));
+        }    
+        else 
+        {
+            if(Object.prototype.toString.call(data) === "[object String]")
+            {
+                deffered.reject(new Error(data));
+            }
+            else
+            {
+                    //a.token = ;
+                deffered.resolve(data[0].response);
+            }
+        }
+    });
+      //  console.log(data );
 
+    return deffered;//.promise();
 }
