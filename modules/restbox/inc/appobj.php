@@ -67,7 +67,8 @@ namespace modules\restbox {
             if(method_exists($this,$_action))
             {
                 $this->beforeAction($_req_params);
-                return $this->$_action($_req_params);
+                
+                return $this->$_action($_req_params);                
             }
             return null;
         }

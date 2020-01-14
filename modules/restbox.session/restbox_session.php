@@ -28,7 +28,7 @@ namespace modules\restbox\session {
 
 		function AfterLoad()
 		{
-			print_dbg($_SERVER);
+		//	print_dbg($_SERVER);
 		}
 
 		function get_rb_token()

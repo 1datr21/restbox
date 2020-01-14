@@ -69,29 +69,57 @@ namespace modules\restbox\table {
         function view($_request)  
         {
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
-            //print_dbg($info_obj);
-            return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'], '#table_params'=>$info_obj]);
             
+            $do_it = true;
+
+            if(isset($info_obj->_info['events']['onAccess']))
+            {
+                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE->MLAM, $do_it);
+            } 
+
+            //print_dbg($info_obj);
+            if($do_it)
+            {
+                return $this->call_mod_func('restbox.db', 'query_select',[ 'table'=> $_request['vars']['table'], '#table_params'=>$info_obj]);
+            }
+            else
+            {
+                $this->call_mod_func('restbox','out_error','Error 403 Access forbidden');
+            }
+
+            return null;            
         }
 
         function delete($_request, $_post_data=[])
         {
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
-            $id_fld = $info_obj->get_id_field();
-            $this->call_mod_func('restbox.db', 
-                'query_delete',
-                $_request['vars']['table'],
-                $id_fld->fldname.'='.$_POST[$id_fld->fldname]
-        );
+
+            $do_it = true;
+            if(isset($info_obj->_info['events']['onAccess']))
+            {
+                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE->MLAM, $do_it);
+            } 
+
+            if($do_it)
+            {
+                $id_fld = $info_obj->get_id_field();
+                $this->call_mod_func('restbox.db', 
+                    'query_delete',
+                    $_request['vars']['table'],
+                    $id_fld->fldname.'='.$_POST[$id_fld->fldname]
+                );
+            }
+            else
+            {
+                $this->call_mod_func('restbox','out_error','Error 403 Access forbidden');
+            }
              
             return [null];
         }
 
         function item($_request)
         {
-            //include $this->CFG_INFO['CFG_DIR']."/tables/".$_request['vars']['table'].".php";
-
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             $id_fld_name = $info_obj->get_id_field();
         //  get an item
@@ -116,6 +144,21 @@ namespace modules\restbox\table {
         {  
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
+
+            // call event to access
+            $do_it = true;
+            if(isset($info_obj->_info['events']['onAccess']))
+            {
+                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE->MLAM, $do_it);
+            } 
+            else
+            {
+                $this->call_mod_func('restbox','out_error','Error 403 Access forbidden');
+            }
+
+            if(!$do_it)
+                return false;
+
             $arr_to_save=[];
             $ID_fld = $info_obj->get_id_field();
             if(!empty($_post_data[$ID_fld->fldname]))

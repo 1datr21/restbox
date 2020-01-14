@@ -17,10 +17,22 @@
         'avatar'=>new tfield('file',['mode'=>'blob']),
     ],
     'events'=>[
-        'beforeSave'=>function(&$row,&$save) {
-      
+        'beforeSave'=>function(&$row,&$save) {      
             if(empty($row['id']))
-                $row['regdate']='#NOW()';
+                $row['regdate']='#NOW()';        
+        },
+        'onAccess'=>function($request,&$MLAM, &$do_it)
+        {            
+            $sess_id = $MLAM->_call_module('restbox.session','get_rb_token');
+            if($request['path']=='save')
+            {
+                if($sess_id==null)
+                {
+                    $do_it=false;
+                }
+            }
+            //print_dbg($request);
+            print_dbg($sess_id);
         }
     ],
     'addinfo'=>['authroles'=>[
