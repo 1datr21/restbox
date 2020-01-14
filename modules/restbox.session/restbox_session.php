@@ -31,6 +31,15 @@ namespace modules\restbox\session {
 			print_dbg($_SERVER);
 		}
 
+		function get_rb_token()
+		{
+			if(isset($_SERVER['HTTP_RBTOKEN']))
+			{
+				return $_SERVER['HTTP_RBTOKEN'];
+			}
+			return NULL;
+		}
+
 		function restbox_route_onquery(&$eargs)
 		{				
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');

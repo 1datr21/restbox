@@ -30,7 +30,7 @@ jq_rbapi.prototype.get = function(query)
 {
     var deffered = $.Deferred();
     var a = this;
-    $.ajax( this.base_url+"/?q="+query,{type : 'get', headers: this.token}).done(function( data ) 
+    $.ajax( this.base_url+"/?q="+query,{type : 'get', headers: {rbtoken: this.token}}).done(function( data ) 
     {       
             // то же что reject(new Error("o_O"))
         if(data.hasOwnProperty("error"))
