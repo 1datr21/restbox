@@ -31,13 +31,20 @@ namespace modules\restbox\session {
 		//	print_dbg($_SERVER);
 		}
 
-		function get_rb_token()
+		public function get_rb_token()
 		{
-			if(isset($_SERVER['HTTP_RBTOKEN']))
+			// print_dbg($_SERVER);
+			//print_dbg( rtrim(ltrim($_SERVER['HTTP_RBTOKEN'])) );
+			if(!empty(rtrim(ltrim($_SERVER['HTTP_RBTOKEN']))))
 			{
+			//	print_dbg('HTTP_RBTOKEN');
+			
+				//print_dbg($_SERVER['HTTP_RBTOKEN']);
+				if($_SERVER['HTTP_RBTOKEN']=="null")
+					return null;
 				return $_SERVER['HTTP_RBTOKEN'];
 			}
-			return NULL;
+			return null;
 		}
 
 		function restbox_route_onquery(&$eargs)

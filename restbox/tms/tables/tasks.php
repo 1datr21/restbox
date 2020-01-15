@@ -20,20 +20,16 @@
             if(empty($row['id']))
                 $row['createdate']='#NOW()';        
         },
-        'onAccess'=>function($request,&$MLAM, &$do_it)
+        'onAccess'=>function($request,&$PMODULE, &$do_it)
         {            
-            $sess_id = $MLAM->_call_module('restbox.session','get_rb_token');
+            $_sess_id = $PMODULE->exe_mod_func('restbox.session','get_rb_token');
             if($request['path']=='tables/save')
             {
-              //  print_dbg($sess_id);
-                if(empty($sess_id))
+                if($_sess_id==null)
                 {
                     $do_it=false;
-                ///    print_dbg($request);
                 }
             }
-            
-            //print_dbg($do_it);
         }
     ],
 ]);

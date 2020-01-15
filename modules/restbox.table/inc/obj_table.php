@@ -74,7 +74,7 @@ namespace modules\restbox\table {
 
             if(isset($info_obj->_info['events']['onAccess']))
             {
-                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE->MLAM, $do_it);
+                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE, $do_it);
             } 
 
             //print_dbg($info_obj);
@@ -98,7 +98,7 @@ namespace modules\restbox\table {
             $do_it = true;
             if(isset($info_obj->_info['events']['onAccess']))
             {
-                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE->MLAM, $do_it);
+                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE, $do_it);
             } 
 
             if($do_it)
@@ -149,15 +149,14 @@ namespace modules\restbox\table {
             $do_it = true;
             if(isset($info_obj->_info['events']['onAccess']))
             {
-                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE->MLAM, $do_it);
-            } 
-            else
-            {
-                $this->call_mod_func('restbox','out_error','Error 403 Access forbidden');
-            }
+                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE, $do_it);
+            }             
 
             if(!$do_it)
+            {
+                $this->call_mod_func('restbox','out_error',['message'=>'Error 403 Access forbidden']);
                 return false;
+            }
 
             $arr_to_save=[];
             $ID_fld = $info_obj->get_id_field();
@@ -230,6 +229,8 @@ namespace modules\restbox\table {
                     {
                         $info_obj->_info['events']['afterSave']($item);
                     }
+
+                    return $res;
                 }
             }     
             return true;
