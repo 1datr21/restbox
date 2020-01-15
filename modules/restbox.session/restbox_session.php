@@ -82,6 +82,7 @@ namespace modules\restbox\session {
 		function start_session()
 		{
 			$this->gen_token();
+			$this->save_session();
 			return $this->sess_id ;
 		}
 
@@ -102,7 +103,8 @@ namespace modules\restbox\session {
 
 		function save_session()
 		{
-			$sess_file_name = $this->sess_id.".sess";
+			$sess_file_name = "/sess/".$this->sess_id.".sess";
+			print_dbg($sess_file_name);
 			file_put_contents($sess_file_name,serialize($this->_SESS_INFO));
 		}
 		

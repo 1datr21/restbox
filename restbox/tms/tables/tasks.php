@@ -25,7 +25,7 @@
         'onAccess'=>function($request,&$rbenv,&$do_it)
         {            
             $_sess_id = $rbenv->exe_mod_func('restbox.session','get_rb_token');
-            //print_dbg($_sess_id);
+         
             if($request['path']=='tables/save')
             {
                 if($_sess_id==null)

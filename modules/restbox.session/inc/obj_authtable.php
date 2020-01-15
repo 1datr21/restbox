@@ -39,8 +39,7 @@ namespace modules\restbox\session {
                 }
             }
        //     print_dbg($post_data);
-            $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);
-                    
+            $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);                    
             
             if(isset($table_info->_info['addinfo']['authroles']))
             {
@@ -98,6 +97,8 @@ namespace modules\restbox\session {
             {
                 $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
             }
+
+           // $this->P_MODULE->save_session();
             return ['success'=>true,'SESS_ID'=> $this->P_MODULE->start_session()];  
         }
 
