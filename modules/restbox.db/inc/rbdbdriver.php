@@ -266,6 +266,7 @@ namespace modules\restbox\db {
 			/*
 			INSERT INTO `tmsus`.`tms_users` (`login`, `email`) VALUES ('vasyan', 'thev@ya.ru');  
 			*/
+			return $this->last_insert_id();
 		}
 
 		function query_update($table,$item,$idval,$idfld='id',$table_map=null)

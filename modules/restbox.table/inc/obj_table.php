@@ -1,6 +1,7 @@
 <?php
 namespace modules\restbox\table {
     use modules\restbox as restbox;
+    use modules\restbox\rbEnv as rbEnv;
     
 
    class ObjTable extends restbox\AppObject {
@@ -70,11 +71,12 @@ namespace modules\restbox\table {
         {
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
             
+            $rbenv = new rbEnv($this->P_MODULE);
             $do_it = true;
 
             if(isset($info_obj->_info['events']['onAccess']))
             {
-                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE, $do_it);
+                $info_obj->_info['events']['onAccess']($_request, $rbenv, $do_it);
             } 
 
             //print_dbg($info_obj);
@@ -95,10 +97,12 @@ namespace modules\restbox\table {
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
 
+            $rbenv = new rbEnv($this->P_MODULE);
+
             $do_it = true;
             if(isset($info_obj->_info['events']['onAccess']))
             {
-                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE, $do_it);
+                $info_obj->_info['events']['onAccess']($_request, $rbenv, $do_it);
             } 
 
             if($do_it)
@@ -145,18 +149,19 @@ namespace modules\restbox\table {
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
 
+            $rbenv = new rbEnv($this->P_MODULE);
             // call event to access
             $do_it = true;
             if(isset($info_obj->_info['events']['onAccess']))
             {
-                $info_obj->_info['events']['onAccess']($_request, $this->P_MODULE, $do_it);
+                $info_obj->_info['events']['onAccess']($_request, $rbenv, $do_it);
             }             
 
             if(!$do_it)
             {
                 $this->call_mod_func('restbox','out_error',['message'=>'Error 403 Access forbidden']);
                 return false;
-            }
+            }           
 
             $arr_to_save=[];
             $ID_fld = $info_obj->get_id_field();
@@ -177,7 +182,7 @@ namespace modules\restbox\table {
                 $save_it = true;
                 if(isset($info_obj->_info['events']['beforeSave']))
                 {
-                    $info_obj->_info['events']['beforeSave']($item, $save_it);
+                    $info_obj->_info['events']['beforeSave']($item, $rbenv, $save_it);
                 } 
                 if($save_it)
                 {
@@ -213,7 +218,7 @@ namespace modules\restbox\table {
                 $save_it = true;
                 if(isset($info_obj->_info['events']['beforeSave']))
                 {
-                    $info_obj->_info['events']['beforeSave']($item, $save_it);
+                    $info_obj->_info['events']['beforeSave']($item, $rbenv, $save_it);
                 }               
                 if($save_it)
                 {
@@ -227,7 +232,7 @@ namespace modules\restbox\table {
                     //execute event After Save
                     if(isset($info_obj->_info['events']['afterSave']))
                     {
-                        $info_obj->_info['events']['afterSave']($item);
+                        $info_obj->_info['events']['afterSave']($item,$rbenv);
                     }
 
                     return $res;

@@ -19,7 +19,7 @@ namespace modules\restbox\table {
         function OnConstruct(&$params_)
         {
             // mode : date, datetime, time, timestamp
-            def_options(['mode'=>'date','unsigned'=>false],$params_);
+            def_options(['mode'=>'datetime','unsigned'=>false],$params_);
         }
     }
 

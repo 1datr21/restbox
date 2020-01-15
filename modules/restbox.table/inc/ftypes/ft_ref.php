@@ -15,7 +15,7 @@ namespace modules\restbox\table {
             */
             $attr_str=($this->PARAMS['unsigned'] ? "UNSIGNED" : "");
             return [                
-                'fld_seg'=>"`{$this->fldname}` {$this->PARAMS['_type']} $attr_str NOT NULL ",
+                'fld_seg'=>"`{$this->fldname}` {$this->PARAMS['fld_type']} $attr_str NOT NULL ",
                 'add_queries'=>[]
             ];
         }
@@ -30,9 +30,13 @@ namespace modules\restbox\table {
         {
 
             $_table_info = $this->_P_MODULE->load_table($this->PARAMS['table']);
+            //print_dbg($_table_info);
+
             if(!empty($_table_info))
             {
                 $id_fld = $_table_info->get_id_field();
+                //print_dbg($id_fld);
+
                 if(!empty($id_fld))
                 {
                     def_options($id_fld->PARAMS, $this->PARAMS,['fld_type','size']);

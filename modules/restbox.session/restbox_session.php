@@ -33,13 +33,8 @@ namespace modules\restbox\session {
 
 		public function get_rb_token()
 		{
-			// print_dbg($_SERVER);
-			//print_dbg( rtrim(ltrim($_SERVER['HTTP_RBTOKEN'])) );
 			if(!empty(rtrim(ltrim($_SERVER['HTTP_RBTOKEN']))))
 			{
-			//	print_dbg('HTTP_RBTOKEN');
-			
-				//print_dbg($_SERVER['HTTP_RBTOKEN']);
 				if($_SERVER['HTTP_RBTOKEN']=="null")
 					return null;
 				return $_SERVER['HTTP_RBTOKEN'];

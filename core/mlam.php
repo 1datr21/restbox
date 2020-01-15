@@ -85,7 +85,6 @@ namespace Core {
 			$fun_res = null;
 			
 			//print_dbg("{$_mod}(".get_class($this->_MODULES_OBJS[$_mod]).")->{$func}");
-			//print_dbg()
 			
 			$fun_res = call_user_func_array(array(&$this->_MODULES_OBJS[$_mod], $func), $params);
 			

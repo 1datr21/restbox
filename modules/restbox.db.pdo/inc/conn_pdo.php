@@ -97,11 +97,6 @@ namespace modules\restbox\db\mysql {
         
         function exec_query($_query,$gen_error=true)
         {
-            /*
-            $stm  = $this->_CONNECTION->prepare($_query);
-            $stm->execute([]);
-            */
-            //try{
             try {
                 $res = $this->_CONNECTION->query($_query);
                 return $res;
@@ -110,7 +105,7 @@ namespace modules\restbox\db\mysql {
                 if($gen_error)
                 {                   
                     $this->gen_error("Error on query. ".$exc->getMessage());
-                 //   print_dbg("<< error ".$_query);
+                    print_dbg("<< error in sql \n\r{$_query}");
                     return false;
                 }
             }

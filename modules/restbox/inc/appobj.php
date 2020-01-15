@@ -79,4 +79,33 @@ namespace modules\restbox {
         }
     }
 
+    class rbEnv 
+    {
+        VAR $P_MODULE;
+        function __construct(&$_P_MODULE)
+        {
+            $this->P_MODULE = $_P_MODULE;
+        }
+
+        
+
+        function exe_mod_func($module,$func)
+        {
+            $args_str='';
+            $args = func_get_args();
+            $_arg_arr=[];
+            $new_args=[];
+			foreach($args as $idx => $val)
+			{
+                if($idx>=2)
+                {
+                    $_arg_arr[]='$args['.$idx.']';
+                    $new_args[]=$val;
+                }
+            }
+            $result = null;
+            $result = call_user_func_array(array($this->P_MODULE,'exe_mod_func'),$args);
+            return $result;
+        }
+    }
 }
