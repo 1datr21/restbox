@@ -17,7 +17,7 @@ namespace modules\restbox\session {
         {
             return [
                     'auth/[:table:]'=>'auth',
-                    'auth/logout'=>'logout',
+                    'logout'=>'logout',
                 ];
         }
 
@@ -160,6 +160,7 @@ namespace modules\restbox\session {
 
         function logout()
         {
+            print_dbg('logout');
             $this->P_MODULE->clear_session();
         }
    }

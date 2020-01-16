@@ -16,7 +16,8 @@
                             $('[name=password]').val()
                     ).then(function(r)
                     {
-                    //    alert(r);
+                        $('#panel_auth').toggle();  
+                        $('#panel_logout').toggle();
                     }).catch(function(error) 
                     {
                         alert(error); // Error: Not Found
@@ -45,7 +46,15 @@
                 load_tasks();
             });
 
-           
+            $("#btn_logout").click(function(e){
+                rb.logout().then(function(r){
+                    $('#panel_auth').toggle();  
+                    $('#panel_logout').toggle();
+                }).catch(function(error) 
+                {
+                    alert(error); // Error: Not Found
+                }); 
+            });
 
             load_tasks();
         });  
@@ -98,12 +107,18 @@
 <div id="tasks">
 </div>
 </div>
-<h3>AUTH</h3>
-<form method="post" action="http://restbox/?q=auth" id="authForm" >
-    <input type="text" name="login" value="vasyan" />
-    <input type="password" name="password" value="" />
-    <input type="submit" value="ENTER"/>
-</form>
+
+<div id="panel_auth">
+    <h3>AUTH</h3>
+    <form method="post" action="http://restbox/?q=auth" id="authForm" >
+        <input type="text" name="login" value="vasyan" />
+        <input type="password" name="password" value="" />
+        <input type="submit" value="ENTER"/>
+    </form>
+</div>
+<div id="panel_logout" style="display:none">
+    <button id="btn_logout">Logout</button>
+</div>
 
 </body>
 </html>

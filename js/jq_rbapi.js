@@ -33,6 +33,33 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
    
 }
 
+jq_rbapi.prototype.logout = function()
+{
+    return new Promise((resolve, reject) => {
+        var a = this;
+        $.ajax( this.base_url+"/?q=logout", {type : 'post', headers: {rbtoken: this.token}} ).done(function( data ) 
+        {       
+            // то же что reject(new Error("o_O"))
+            if(data.hasOwnProperty("error"))
+                reject(new Error(data.error.mess));
+
+            else
+            {
+                if(Object.prototype.toString.call(data) === "[object String]")
+                {
+                    reject(new Error(data));
+                }
+                else
+                {
+                    delete a.token;
+                    resolve();
+                }
+            }
+        });
+      //  console.log(data );
+    });
+}
+
 jq_rbapi.prototype.get = function(query)
 {
     var deffered = $.Deferred();
