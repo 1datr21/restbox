@@ -9,7 +9,7 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
   //  var deferred = $.Deferred();
     return new Promise((resolve, reject) => {
         var a = this;
-        $.post( this.base_url+"/?q=auth", { login: _login_or_email, password: passw }).done(function( data ) 
+        $.ajax( this.base_url+"/?q=auth", {type : 'post',data: { login: _login_or_email, password: passw }, headers: {rbtoken: this.token}} ).done(function( data ) 
         {       
             // то же что reject(new Error("o_O"))
             if(data.hasOwnProperty("error"))

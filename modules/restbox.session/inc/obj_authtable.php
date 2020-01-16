@@ -23,6 +23,12 @@ namespace modules\restbox\session {
 
         function auth($_request,$post_data=[])
         {
+            if($this->P_MODULE->sess_exists())
+            {
+                $this->call_mod_func('restbox','out_error',['mess'=>'You are allready authorized']);
+                return;
+            }
+
             $post_data=$_POST;
         //  get auth parameters
             $info_cfg = $this->call_mod_func('restbox','get_settings',1);

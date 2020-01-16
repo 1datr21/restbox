@@ -96,6 +96,12 @@ namespace modules\restbox\session {
 			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
 		}
 
+		function sess_exists()
+		{
+			$this->load_sess_saver();
+			return !is_null($this->sess_id);
+		}
+
 		function sess_vars()
 		{
 			$this->load_sess_saver();
@@ -143,6 +149,11 @@ namespace modules\restbox\session {
 		}
 
 		function rename($sid,$sid_new_name)
+		{
+
+		}
+
+		function garbage()
 		{
 
 		}
