@@ -29,10 +29,8 @@ namespace modules\restbox\session {
 
 		function AfterLoad()
 		{
-
-		//	print_dbg('init sess drv');
-			
-		//	print_dbg('init sess drv');
+			$this->load_sess_saver();
+			$this->_SSAVER->delete_garbage();
 		}
 
 		function load_sess_saver()
@@ -62,6 +60,11 @@ namespace modules\restbox\session {
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
 			
 			return $obj_res;
+		}
+
+		function clear_session()
+		{
+			$this->_SSAVER->destroy($this->sess_id);
 		}
 
 		function gen_token()
@@ -128,6 +131,13 @@ namespace modules\restbox\session {
 
 	class std_SessSaver{
 
+		VAR $exp_time;
+
+		function __construct($exp_time=13560)
+		{
+			$this->exp_time = $exp_time;
+		}
+
 		function sess_file_path($sid)
 		{			
 			return "./sess/{$sid}.sess";
@@ -135,11 +145,13 @@ namespace modules\restbox\session {
 
 		function save($sid,$vars)
 		{
+			$this->delete_garbage();
 			x_file_put_contents($this->sess_file_path($sid),serialize($vars));
 		}
 
 		function get($sid)
 		{
+			$this->delete_garbage();
 			if($this->exists($sid))
 			{
 				$ser_vars = file_get_contents($sess_path = $this->sess_file_path($sid));
@@ -153,9 +165,28 @@ namespace modules\restbox\session {
 
 		}
 
-		function garbage()
+		function delete_garbage() // delete garbage sessions
 		{
+			$sess_file_list = glob("./sess/*.sess"); 	
+			//print_dbg('garbage collecting');
+			foreach($sess_file_list as $sessfile)	
+			{
+				$mtime = filemtime($sessfile);
+				$delta = time()-$mtime;
+			//	print_dbg("$sessfile >> $delta");
+				if($delta>=$this->exp_time)
+				{
+				//	print_dbg($sessfile);
+					unlink($sessfile);
+				}
+			}	
+			//print_dbg($sess_list);
+		}
 
+		function destroy($sid)
+		{			
+			unlink($this->sess_file_path($sid));
+			$this->delete_garbage();
 		}
 
 		function exists($sid)
