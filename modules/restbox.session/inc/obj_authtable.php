@@ -98,8 +98,14 @@ namespace modules\restbox\session {
                 $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
             }
 
-           // $this->P_MODULE->save_session();
-            return ['success'=>true,'SESS_ID'=> $this->P_MODULE->start_session()];  
+            $userinfo = $query_res['items'][0];
+            $userinfo[$this->authroles['password']]=null;
+            //print_dbg('xxx');
+            $_SESS_ID = $this->P_MODULE->start_session();
+            $this->P_MODULE->set_sess_var('user_table_info',$userinfo);
+          //  print_dbg($table_info->get_id_field()->fldname);
+            $this->P_MODULE->set_sess_var('user_id',$userinfo[$table_info->get_id_field()->fldname]);
+            return ['success'=>true,'SESS_ID'=>$_SESS_ID];  
         }
 
         function connect_db($dbparams)  // connect the database

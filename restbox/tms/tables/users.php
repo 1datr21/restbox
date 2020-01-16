@@ -23,7 +23,7 @@
         },
         'onAccess'=>function($request,&$MLAM, &$do_it)
         {            
-            $sess_id = $MLAM->_call_module('restbox.session','get_rb_token');
+            $sess_id = $MLAM->exe_mod_func('restbox.session','get_rb_token');
             if($request['path']=='save')
             {
                 if($sess_id==null)

@@ -17,8 +17,15 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
 
             else
             {
-                a.token = data[0].response.SESS_ID;
-                resolve();
+                if(Object.prototype.toString.call(data) === "[object String]")
+                {
+                    reject(new Error(data));
+                }
+                else
+                {
+                    a.token = data[0].response.SESS_ID;
+                    resolve();
+                }
             }
         });
       //  console.log(data );

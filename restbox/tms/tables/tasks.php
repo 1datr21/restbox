@@ -20,6 +20,9 @@
             if(empty($row['id']))
             {
                 $row['createdate']='#NOW()'; 
+                $sess_vars = $rbenv->exe_mod_func('restbox.session','get_sess_vars'); 
+                //print_dbg($sess_vars);
+                $row['author']=$sess_vars['user_id'];
             }       
         },
         'onAccess'=>function($request,&$rbenv,&$do_it)

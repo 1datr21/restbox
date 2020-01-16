@@ -30,9 +30,11 @@ namespace Core {
 					
 				$mod_make_res = $this->load_module($mod);
 			}
+			//print_dbg("> AfterLoad");
 			// ������� ����� ��������
 			foreach ($this->_MODULES_OBJS as $_modname => $mod_obj)
 			{
+			//	print_dbg("$_modname : AfterLoad");
 				$this->_MODULES_OBJS[$_modname]->AfterLoad();
 			}
 		}

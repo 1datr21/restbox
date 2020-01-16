@@ -20,6 +20,7 @@ namespace modules\restbox\session {
 		VAR $_F_TYPES;
 		VAR $sess_id;
 		VAR $_SESS_INFO;
+		VAR $_SSAVER;
 		
 		function __construct($_PARAMS)
 		{
@@ -28,11 +29,23 @@ namespace modules\restbox\session {
 
 		function AfterLoad()
 		{
-		//	print_dbg($_SERVER);
+
+		//	print_dbg('init sess drv');
+			
+		//	print_dbg('init sess drv');
+		}
+
+		function load_sess_saver()
+		{
+			if(empty($this->sess_id))
+				$this->sess_id = $this->get_rb_token();
+			if(empty($this->_SSAVER))
+				$this->_SSAVER= new std_SessSaver();
 		}
 
 		public function get_rb_token()
 		{
+			//$this->load_sess_saver();
 			if(!empty(rtrim(ltrim($_SERVER['HTTP_RBTOKEN']))))
 			{
 				if($_SERVER['HTTP_RBTOKEN']=="null")
@@ -44,6 +57,8 @@ namespace modules\restbox\session {
 
 		function restbox_route_onquery(&$eargs)
 		{				
+			//print_dbg($eargs['route']);
+
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
 			
 			return $obj_res;
@@ -54,41 +69,37 @@ namespace modules\restbox\session {
 			$this->sess_id = GenRandStr(25);
 		}
 
-		function find_this_token($token_str)
-		{
-			$handled = false;
-			$token_res = null;
-			$this->call_event('session_find',['token'=>$token_str,],['onhandle'=>function($modname,$ev_res,&$_continue) use ($handled,$token_res)
-			{
-				$handled=true;
-				$token_res = $ev_res;
-			}]);
-			if(!$handled)
-			{
-				return $this->_std_find_by_token($token_res);
-			}
-			else
-			{
-				return $token_res;
-			}
-		}
-
-		function _std_find_by_token($tkn_str)
-		{
-			$sess_file_name = "/sessions/{$tkn_str}.sess";
-			return file_exists($sess_file_name);
-		}
-
 		function start_session()
 		{
+			$this->load_sess_saver();
+
 			$this->gen_token();
+			//print_dbg("sess = ".$this->sess_id);
+
 			$this->save_session();
 			return $this->sess_id ;
 		}
 
-		function get_session_vars()
+		function get_sess_vars()
 		{
-			return $this->_SESS_INFO;
+			$this->load_sess_saver();
+			return $this->_SSAVER->get($this->sess_id);
+		}
+
+		function set_sess_var($varname,$varval)
+		{
+			$this->load_sess_saver();
+			
+		//	print_dbg("sid:".$this->sess_id);
+
+			$this->_SESS_INFO[$varname]=$varval;
+			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
+		}
+
+		function sess_vars()
+		{
+			$this->load_sess_saver();
+			return $this->_SSAVER->get($this->sess_id);
 		}
 
 		function change_token()
@@ -101,15 +112,45 @@ namespace modules\restbox\session {
 			//filemtime()
 		}
 
+
 		function save_session()
-		{
-			$sess_file_name = "/sess/".$this->sess_id.".sess";
-			print_dbg($sess_file_name);
-			file_put_contents($sess_file_name,serialize($this->_SESS_INFO));
+		{			
+			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
 		}
 		
 	}
 
-	
+	class std_SessSaver{
+
+		function sess_file_path($sid)
+		{			
+			return "./sess/{$sid}.sess";
+		}
+
+		function save($sid,$vars)
+		{
+			x_file_put_contents($this->sess_file_path($sid),serialize($vars));
+		}
+
+		function get($sid)
+		{
+			if($this->exists($sid))
+			{
+				$ser_vars = file_get_contents($sess_path = $this->sess_file_path($sid));
+				return unserialize($ser_vars);
+			}
+			return null;
+		}
+
+		function rename($sid,$sid_new_name)
+		{
+
+		}
+
+		function exists($sid)
+		{
+			return file_exists($this->sess_file_path($sid));
+		}
+	}
 
 }
