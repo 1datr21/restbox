@@ -23,9 +23,9 @@ namespace modules\restbox\session {
 
         function auth($_request,$post_data=[])
         {
-            if($this->P_MODULE->sess_exists())
+            if($this->P_MODULE->get_var('user_table_info')!=null)
             {
-                $this->call_mod_func('restbox','out_error',['mess'=>'You are allready authorized']);
+                $this->call_mod_func('restbox','out_error',['message'=>'You are allready authorized','errno'=>101]);
                 return;
             }
 
@@ -89,7 +89,7 @@ namespace modules\restbox\session {
             $_login_err_text = 'Wrong login/e-mail or password';
             if($query_res['total_count']==0)
             {
-                $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
+                $this->call_mod_func('restbox','out_error',['message'=>$_login_err_text,'errno'=>100]);
             }
 
          //   print_dbg($table_info->FIELDS);
@@ -101,7 +101,7 @@ namespace modules\restbox\session {
 
             if(!$passw_cmp)
             {
-                $this->call_mod_func('restbox','out_error',['mess'=>$_login_err_text]);
+                $this->call_mod_func('restbox','out_error',['message'=>$_login_err_text,'errno'=>100]);
             }
 
             $userinfo = $query_res['items'][0];
@@ -159,7 +159,10 @@ namespace modules\restbox\session {
         function logout()
         {
          //   print_dbg('logout');
-            $this->P_MODULE->clear_session();
+            $this->P_MODULE->unset_var('user_table_info');
+            $this->P_MODULE->unset_var('user_id');
+
+        //    $this->P_MODULE->clear_session();
         }
    }
 

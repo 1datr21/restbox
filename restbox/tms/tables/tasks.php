@@ -26,12 +26,11 @@
             }       
         },
         'onAccess'=>function($request,&$rbenv,&$do_it)
-        {            
-            $_sess_id = $rbenv->exe_mod_func('restbox.session','get_rb_token');
-         
+        {  
             if($request['path']=='tables/save')
-            {
-                if($_sess_id==null)
+            {            
+                if(!$rbenv->exe_mod_func('restbox.session','var_exists','user_id'))
+//                if($_sess_id==null)
                 {
                     $do_it=false;
                 }

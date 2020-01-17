@@ -77,7 +77,8 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 
-			$this->gen_token();
+			if(!isset($this->sess_id))
+				$this->gen_token();
 			//print_dbg("sess = ".$this->sess_id);
 
 			$this->save_session();
@@ -87,16 +88,29 @@ namespace modules\restbox\session {
 		function get_sess_vars()
 		{
 			$this->load_sess_saver();
-			return $this->_SSAVER->get($this->sess_id);
+			$this->_SESS_INFO = $this->_SSAVER->get($this->sess_id);
+			return $this->_SESS_INFO;
+		}
+
+		function get_var($varname)
+		{
+			$this->get_sess_vars();
+			if(isset($this->_SESS_INFO[$varname]))
+				return null;
+			return $this->_SESS_INFO[$varname];
 		}
 
 		function set_sess_var($varname,$varval)
 		{
 			$this->load_sess_saver();
-			
-		//	print_dbg("sid:".$this->sess_id);
-
 			$this->_SESS_INFO[$varname]=$varval;
+			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
+		}
+
+		function unset_var($varname)
+		{
+			$this->load_sess_saver();
+			unset($this->_SESS_INFO[$varname]);
 			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
 		}
 
@@ -110,6 +124,12 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 			return $this->_SSAVER->get($this->sess_id);
+		}
+
+		function var_exists($varname)
+		{
+			$this->load_sess_saver();
+			return isset($this->_SESS_INFO[$varname]);
 		}
 
 		function change_token()

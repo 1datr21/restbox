@@ -168,6 +168,34 @@ function ximplode($delimeter,$array,$prefix,$suffix,$options=NULL)
 	}
 	return $str;
 }
+
+function multi_rename_key(&$array, $old_keys, $new_keys)
+{
+    if(!is_array($array)){
+        ($array=="") ? $array=array() : false;
+        return $array;
+    }
+	foreach($array as $key => &$arr_val)
+	{
+        if (is_array($old_keys))
+        {
+            foreach($new_keys as $k => $new_key)
+            {
+				if($old_keys[$k]==$key)
+				{
+					$array[$new_key] = $arr_val; 
+					unset($array[$old_keys[$k]]);
+				}
+            }
+		}
+		else
+		{
+            $arr[$new_keys] = (isset($array[$old_keys]) ? $array[$old_keys] : null);
+            unset($array[$old_keys]);
+        }
+    }
+    return $array;
+}
 /*
  *    $arr - ������, �������� �������������, �������� ��������
  * 	  $delimeter - �����������

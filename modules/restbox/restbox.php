@@ -74,9 +74,15 @@ namespace modules\restbox {
 			$this->result_out($res[ $this->_L_SETTINGS['rbrouter']]);
 		}
 
-		public function out_error($_err) // out errors
+		public function out_error($_err,$errno=null) // out errors
 		{
-			$_err_box=['error'=>$_err];
+			if(is_string($_err))
+				$_err_box=['error'=>['message'=>$_err,'errno'=>$errno]];
+			else
+			{
+				multi_rename_key($_err, ['mess'], ['message']);
+				$_err_box=['error'=>$_err];
+			}
 			$this->result_out($_err_box);
 			exit();
 		}
