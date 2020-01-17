@@ -19,6 +19,7 @@ namespace modules\restbox {
 		VAR $_CONFIG;
 		VAR $_CFG_DIR;
 		VAR $_CFG_INFO;
+		VAR $ExtOut;
 		
 		function __construct($_PARAMS)
 		{
@@ -26,6 +27,7 @@ namespace modules\restbox {
 			//echo "THIS IS RESTBOX";
 			def_options(['cfgpath'=>'./restbox'],$_PARAMS);
 			parent::__construct($_PARAMS);
+			$this->ExtOut=[];
 			
 			GLOBAL $_MUL_DBG_WORK;
 		//	print_r($_MUL_DBG_WORK);	
@@ -87,9 +89,23 @@ namespace modules\restbox {
 			exit();
 		}
 
+		function add_ext_data($_key,$_val)
+		{
+			
+
+			$this->ExtOut[$_key] = $_val;
+			print_dbg($this->ExtOut);
+		}
+
 		function result_out($_res)
 		{			
 			header("Content-type: application/json; charset=utf-8");
+			print_dbg('ExtOut');
+			print_dbg($this->ExtOut);
+			foreach($this->ExtOut as $key => $val)
+			{
+				$_res[(string)$key]=$val;
+			}
 			echo json_encode($_res);
 		}
 				

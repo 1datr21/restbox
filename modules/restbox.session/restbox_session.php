@@ -31,6 +31,8 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 			$this->_SSAVER->delete_garbage();
+			if(!empty($this->sess_id))
+				$this->watch_to_rename();
 		}
 
 		function load_sess_saver()
@@ -39,6 +41,7 @@ namespace modules\restbox\session {
 				$this->sess_id = $this->get_rb_token();
 			if(empty($this->_SSAVER))
 				$this->_SSAVER= new std_SessSaver();
+			
 		}
 
 		public function get_rb_token()
@@ -78,7 +81,10 @@ namespace modules\restbox\session {
 			$this->load_sess_saver();
 
 			if(!isset($this->sess_id))
+			{
 				$this->gen_token();
+				$this->_SESS_INFO['init_time']=time();
+			}
 			//print_dbg("sess = ".$this->sess_id);
 
 			$this->save_session();
@@ -98,6 +104,23 @@ namespace modules\restbox\session {
 			if(isset($this->_SESS_INFO[$varname]))
 				return null;
 			return $this->_SESS_INFO[$varname];
+		}
+
+		function watch_to_rename($exp_to_rename=12)
+		{
+			$time = $this->get_var('init_time');
+			//$time = $this->_SSAVER->get_create_time($this->sess_id);
+			print_dbg(time()-$time);
+			if(time()-$time >= $exp_to_rename)
+			{
+				$old_sid = $this->sess_id;
+				$this->gen_token();
+
+				print_dbg($this->sess_id);
+
+				$this->_SSAVER->rename($old_sid,$this->sess_id);
+				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$this->sess_id);
+			}
 		}
 
 		function set_sess_var($varname,$varval)
@@ -183,7 +206,17 @@ namespace modules\restbox\session {
 
 		function rename($sid,$sid_new_name)
 		{
+			print_dbg('rename');
+			rename($this->sess_file_path($sid), $this->sess_file_path($sid_new_name));
+		}
 
+		function get_modify_time($sid)
+		{
+			return filemtime($this->sess_file_path($sid));
+		}
+
+		function get_create_time($sid){
+			return filectime($this->sess_file_path($sid));
 		}
 
 		function delete_garbage() // delete garbage sessions
