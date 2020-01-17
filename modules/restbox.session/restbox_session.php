@@ -117,7 +117,7 @@ namespace modules\restbox\session {
 				$old_sid = $this->sess_id;
 				$new_sid = $this->gen_token();
 
-				print_dbg('rename session');
+			//	print_dbg("rename session $old_sid to $new_sid ");
 
 			//	$this->_SSAVER->rename($old_sid,$this->sess_id);
 				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$new_sid);
