@@ -64,6 +64,7 @@ namespace modules\restbox\session {
 
 		function clear_session()
 		{
+			$this->load_sess_saver();
 			$this->_SSAVER->destroy($this->sess_id);
 		}
 

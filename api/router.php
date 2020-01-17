@@ -13,6 +13,8 @@ namespace Core {
 		
 		function match($req_str)
 		{
+		//	print_dbg($req_str);
+
 			$_varlist=array();
 			
 			$pos_base = strpos($req_str, $this->_MAP['base']);
@@ -23,6 +25,12 @@ namespace Core {
 			$str_end = substr($req_str,strlen($this->_MAP['base'])+1);
 			$segments = explode('/',$str_end);
 			
+			//print_dbg($segments);
+			if(empty($segments[0]))
+			{
+				$segments=[];
+			}
+
 			if(count($segments)>count($this->_MAP['vars'] ))
 				return false;
 			foreach($segments as $seg)

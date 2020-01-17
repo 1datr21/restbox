@@ -106,10 +106,8 @@ namespace modules\restbox\session {
 
             $userinfo = $query_res['items'][0];
             $userinfo[$this->authroles['password']]=null;
-            //print_dbg('xxx');
             $_SESS_ID = $this->P_MODULE->start_session();
             $this->P_MODULE->set_sess_var('user_table_info',$userinfo);
-          //  print_dbg($table_info->get_id_field()->fldname);
             $this->P_MODULE->set_sess_var('user_id',$userinfo[$table_info->get_id_field()->fldname]);
             return ['success'=>true,'SESS_ID'=>$_SESS_ID];  
         }
@@ -160,7 +158,7 @@ namespace modules\restbox\session {
 
         function logout()
         {
-            print_dbg('logout');
+         //   print_dbg('logout');
             $this->P_MODULE->clear_session();
         }
    }
