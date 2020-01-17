@@ -58,10 +58,7 @@ namespace modules\restbox\session {
 
 		function restbox_route_onquery(&$eargs)
 		{				
-			//print_dbg($eargs['route']);
-
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
-			
 			return $obj_res;
 		}
 
