@@ -95,6 +95,10 @@ namespace modules\restbox\session {
 			return $this->_SESS_INFO;
 		}
 
+		function sess_vars(){
+			return $this->get_sess_vars();
+		}
+
 		function get_var($varname)
 		{
 			$this->get_sess_vars();
@@ -108,7 +112,7 @@ namespace modules\restbox\session {
 			$time = $this->get_var('init_time');
 			//$time = $this->_SSAVER->get_create_time($this->sess_id);
 			print_dbg(time()-$time);
-			if(time()-$time >= $exp_to_rename)
+		/*	if(time()-$time >= $exp_to_rename)
 			{
 				$old_sid = $this->sess_id;
 				$this->gen_token();
@@ -117,7 +121,7 @@ namespace modules\restbox\session {
 
 				$this->_SSAVER->rename($old_sid,$this->sess_id);
 				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$this->sess_id);
-			}
+			}*/
 		}
 
 		function set_sess_var($varname,$varval)
@@ -140,11 +144,7 @@ namespace modules\restbox\session {
 			return !is_null($this->sess_id);
 		}
 
-		function sess_vars()
-		{
-			$this->load_sess_saver();
-			return $this->_SSAVER->get($this->sess_id);
-		}
+		
 
 		function var_exists($varname)
 		{
