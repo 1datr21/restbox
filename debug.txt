@@ -1,102 +1,15 @@
 
 				
-	01-17-2020 22:41:59.000000: ExtOut
+	01-17-2020 23:12:00.000000: ExtOut
 				
-	01-17-2020 22:41:59.000000: Array
+	01-17-2020 23:12:00.000000: Array
 (
 )
 
 				
-	01-17-2020 22:41:59.000000: 1579290119
+	01-17-2020 23:12:00.000000: rename session
 				
-	01-17-2020 22:42:01.000000: Array
+	01-17-2020 23:12:00.000000: Array
 (
-    [init_time] => 1579290119
-    [user_table_info] => Array
-        (
-            [id] => 20
-            [login] => vasyan
-            [email] => vasyok@ya.ru
-            [passw] => 
-            [status] => 
-            [birthday] => 0000-00-00
-            [regdate] => 2020-01-11
-            [avatar] => 
-            [avatar_mime] => 
-        )
-
-    [user_id] => 20
+    [SESS_ID] => V214AIIShU80uUNEKtPq6OgF4
 )
-
-				
-	01-17-2020 22:42:01.000000: ExtOut
-				
-	01-17-2020 22:42:01.000000: Array
-(
-)
-
-				
-	01-17-2020 22:43:25.000000: Array
-(
-    [init_time] => 1579290119
-    [user_table_info] => Array
-        (
-            [id] => 20
-            [login] => vasyan
-            [email] => vasyok@ya.ru
-            [passw] => 
-            [status] => 
-            [birthday] => 0000-00-00
-            [regdate] => 2020-01-11
-            [avatar] => 
-            [avatar_mime] => 
-        )
-
-    [user_id] => 20
-)
-
-				
-	01-17-2020 22:43:25.000000: ExtOut
-				
-	01-17-2020 22:43:25.000000: Array
-(
-)
-
-				
-	01-17-2020 22:45:13.000000: Array
-(
-    [init_time] => 1579290119
-    [user_table_info] => Array
-        (
-            [id] => 20
-            [login] => vasyan
-            [email] => vasyok@ya.ru
-            [passw] => 
-            [status] => 
-            [birthday] => 0000-00-00
-            [regdate] => 2020-01-11
-            [avatar] => 
-            [avatar_mime] => 
-        )
-
-    [user_id] => 20
-)
-
-				
-	01-17-2020 22:45:13.000000: ExtOut
-				
-	01-17-2020 22:45:13.000000: Array
-(
-)
-
-				
-	01-17-2020 22:45:13.000000: 1579290313
-				
-	01-17-2020 22:45:13.000000: ExtOut
-				
-	01-17-2020 22:45:13.000000: Array
-(
-)
-
-				
-	01-17-2020 22:45:13.000000: 1579290313

@@ -90,9 +90,7 @@ namespace modules\restbox {
 		}
 
 		function add_ext_data($_key,$_val)
-		{
-			
-
+		{		
 			$this->ExtOut[$_key] = $_val;
 			print_dbg($this->ExtOut);
 		}

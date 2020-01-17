@@ -70,7 +70,7 @@ namespace modules\restbox\session {
 
 		function gen_token()
 		{
-			$this->sess_id = GenRandStr(25);
+			return GenRandStr(25);
 		}
 
 		function start_session()
@@ -79,7 +79,7 @@ namespace modules\restbox\session {
 
 			if(!isset($this->sess_id))
 			{
-				$this->gen_token();
+				$this->sess_id = $this->gen_token();
 				$this->_SESS_INFO['init_time']=time();
 			}
 			//print_dbg("sess = ".$this->sess_id);
@@ -111,17 +111,17 @@ namespace modules\restbox\session {
 		{
 			$time = $this->get_var('init_time');
 			//$time = $this->_SSAVER->get_create_time($this->sess_id);
-			print_dbg(time()-$time);
-		/*	if(time()-$time >= $exp_to_rename)
+		//	print_dbg(time()-$time);
+			if(time()-$time >= $exp_to_rename)
 			{
 				$old_sid = $this->sess_id;
-				$this->gen_token();
+				$new_sid = $this->gen_token();
 
-				print_dbg($this->sess_id);
+				print_dbg('rename session');
 
-				$this->_SSAVER->rename($old_sid,$this->sess_id);
-				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$this->sess_id);
-			}*/
+			//	$this->_SSAVER->rename($old_sid,$this->sess_id);
+				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$new_sid);
+			}
 		}
 
 		function set_sess_var($varname,$varval)
