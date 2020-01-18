@@ -60,8 +60,11 @@ namespace modules\restbox {
 			
 		function AfterLoad()
 		{
-			
 			$this->load_config();
+		}
+
+		function OnExe()
+		{	
 			//
 			$opts=[];
 			$_json_res=[];

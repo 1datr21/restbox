@@ -33,6 +33,11 @@ namespace Core {
 		{
 			$this->OnLoad();
 		}
+
+		public function OnExe()
+		{
+			
+		}
 		
 		public function set_load_settings($settings=NULL)
 		{
