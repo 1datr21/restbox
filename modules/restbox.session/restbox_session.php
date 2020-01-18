@@ -112,19 +112,21 @@ namespace modules\restbox\session {
 		function get_var($varname)
 		{
 			$this->get_sess_vars();
-			if(isset($this->_SESS_INFO[$varname]))
+			//print_dbg($this->_SESS_INFO);
+			if(!isset($this->_SESS_INFO[$varname]))
 				return null;
 			return $this->_SESS_INFO[$varname];
 		}
 
-		function watch_to_rename($exp_to_rename=12)
+		function watch_to_rename($exp_to_rename=100)
 		{
 			if(empty($this->sess_id))
 				return;
 			if($this->_renamed) return;
 			$time = $this->get_var('init_time');
-			//$time = $this->_SSAVER->get_create_time($this->sess_id);
-			print_dbg(time()-$time);
+
+			print_dbg("$time >> ".time()."==".(time()-$time));
+
 			if(time()-$time >= $exp_to_rename)
 			{
 				$old_sid = $this->sess_id;
@@ -132,7 +134,9 @@ namespace modules\restbox\session {
 
 				$this->set_sess_var('init_time',time());
 
-			//	print_dbg("rename session $old_sid to $new_sid ");
+				$this->_SSAVER->rename($old_sid,$new_sid);
+
+				print_dbg("rename session $old_sid to $new_sid ");
 
 				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$new_sid);
 				$this->_renamed = true;
@@ -143,7 +147,7 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 			$this->_SESS_INFO[$varname]=$varval;
-			print_dbg($this->_SESS_INFO);
+		//	print_dbg($this->_SESS_INFO);
 			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
 		}
 
@@ -191,7 +195,7 @@ namespace modules\restbox\session {
 
 		VAR $exp_time;
 
-		function __construct($exp_time=13560)
+		function __construct($exp_time=12360)
 		{
 			$this->exp_time = $exp_time;
 		}
@@ -220,7 +224,7 @@ namespace modules\restbox\session {
 
 		function rename($sid,$sid_new_name)
 		{
-			print_dbg('rename');
+		//	print_dbg('rename');
 			rename($this->sess_file_path($sid), $this->sess_file_path($sid_new_name));
 		}
 
@@ -241,7 +245,7 @@ namespace modules\restbox\session {
 			{
 				$mtime = filemtime($sessfile);
 				$delta = time()-$mtime;
-			//	print_dbg("$sessfile >> $delta");
+			//	print_dbg(time()." >> $mtime = $delta");
 				if($delta>=$this->exp_time)
 				{
 					print_dbg("Deleting $sessfile");

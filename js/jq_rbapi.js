@@ -8,6 +8,10 @@ function jq_rbapi(url,events=null)
 
 jq_rbapi.prototype.detect_errors = function(_data)
 {
+    if(_data.hasOwnProperty("SESS_ID"))
+    {
+        this.token = _data.SESS_ID;
+    }
     if(_data.hasOwnProperty("error"))
     {
         if(this.events.hasOwnProperty("onError"))
