@@ -37,6 +37,12 @@ namespace Core {
 			//	print_dbg("$_modname : AfterLoad");
 				$this->_MODULES_OBJS[$_modname]->AfterLoad();
 			}
+
+			foreach ($this->_MODULES_OBJS as $_modname => $mod_obj)
+			{
+			//	print_dbg("$_modname : AfterLoad");
+				$this->_MODULES_OBJS[$_modname]->OnExe();
+			}
 		}
 		
 		function _AfterLoad($_modname)
