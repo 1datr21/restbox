@@ -21,9 +21,11 @@ namespace modules\restbox\session {
 		VAR $sess_id;
 		VAR $_SESS_INFO;
 		VAR $_SSAVER;
+		VAR $_renamed = false;
 		
 		function __construct($_PARAMS)
 		{
+		
 		//	print_dbg(">> +++ ",true,true);
 		}
 
@@ -31,8 +33,7 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 			$this->_SSAVER->delete_garbage();
-			if(!empty($this->sess_id))
-				$this->watch_to_rename();
+			$this->watch_to_rename();
 		}
 
 		function load_sess_saver()
@@ -92,6 +93,7 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 			$this->_SESS_INFO = $this->_SSAVER->get($this->sess_id);
+			$this->watch_to_rename();
 			return $this->_SESS_INFO;
 		}
 
@@ -109,6 +111,9 @@ namespace modules\restbox\session {
 
 		function watch_to_rename($exp_to_rename=12)
 		{
+			if(empty($this->sess_id))
+				return;
+			if($this->_renamed) return;
 			$time = $this->get_var('init_time');
 			//$time = $this->_SSAVER->get_create_time($this->sess_id);
 		//	print_dbg(time()-$time);
@@ -121,6 +126,7 @@ namespace modules\restbox\session {
 
 			//	$this->_SSAVER->rename($old_sid,$this->sess_id);
 				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$new_sid);
+				$this->_renamed = true;
 			}
 		}
 
