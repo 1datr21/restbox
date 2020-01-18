@@ -100,7 +100,11 @@
         <input type="password" name="password" value="" />
         <input type="submit" value="ENTER"/>
     </form>
-</div>   
+</div> 
+
+<div id="panel_logout" style="display:none">
+    <button id="btn_logout">Logout</button>
+</div>
 
 <h3>Add new task</h3>
 <form method="post" action="http://restbox/?q=tables/save/tasks" id="newtaskform">
@@ -116,9 +120,7 @@
 </div>
 
 
-<div id="panel_logout" style="display:none">
-    <button id="btn_logout">Logout</button>
-</div>
+
 
 <div id="div_err"></div>
 

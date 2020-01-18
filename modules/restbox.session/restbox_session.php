@@ -31,7 +31,7 @@ namespace modules\restbox\session {
 
 		function AfterLoad()
 		{
-			print_dbg('watch_all');
+			//print_dbg('watch_all');
 			$this->WatchAll();
 		}
 
@@ -99,9 +99,9 @@ namespace modules\restbox\session {
 
 		function get_sess_vars()
 		{
-			$this->load_sess_saver();
+			
 			$this->_SESS_INFO = $this->_SSAVER->get($this->sess_id);
-			$this->watch_to_rename();
+	
 			return $this->_SESS_INFO;
 		}
 
@@ -111,7 +111,7 @@ namespace modules\restbox\session {
 
 		function get_var($varname)
 		{
-		//	$this->get_sess_vars();
+			$this->get_sess_vars();
 			if(isset($this->_SESS_INFO[$varname]))
 				return null;
 			return $this->_SESS_INFO[$varname];
@@ -124,7 +124,7 @@ namespace modules\restbox\session {
 			if($this->_renamed) return;
 			$time = $this->get_var('init_time');
 			//$time = $this->_SSAVER->get_create_time($this->sess_id);
-			//print_dbg(time()-$time);
+			print_dbg(time()-$time);
 			if(time()-$time >= $exp_to_rename)
 			{
 				$old_sid = $this->sess_id;
@@ -143,6 +143,7 @@ namespace modules\restbox\session {
 		{
 			$this->load_sess_saver();
 			$this->_SESS_INFO[$varname]=$varval;
+			print_dbg($this->_SESS_INFO);
 			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
 		}
 
