@@ -149,6 +149,7 @@ namespace modules\restbox\session {
 		function var_exists($varname)
 		{
 			$this->load_sess_saver();
+			$this->_SESS_INFO = $this->_SSAVER->get($this->sess_id);
 			return isset($this->_SESS_INFO[$varname]);
 		}
 

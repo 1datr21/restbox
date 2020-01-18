@@ -31,7 +31,6 @@
             {            
             //    print_dbg($rbenv->exe_mod_func('restbox.session','sess_vars'));
                 if(!$rbenv->exe_mod_func('restbox.session','var_exists','user_id'))
-//                if($_sess_id==null)
                 {
                     $do_it=false;
                 }
