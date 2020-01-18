@@ -95,14 +95,14 @@ namespace modules\restbox {
 		function add_ext_data($_key,$_val)
 		{		
 			$this->ExtOut[$_key] = $_val;
-			print_dbg($this->ExtOut);
+		//	print_dbg($this->ExtOut);
 		}
 
 		function result_out($_res)
 		{			
 			header("Content-type: application/json; charset=utf-8");
-			print_dbg('ExtOut');
-			print_dbg($this->ExtOut);
+		//	print_dbg('ExtOut');
+		//	print_dbg($this->ExtOut);
 			foreach($this->ExtOut as $key => $val)
 			{
 				$_res[(string)$key]=$val;

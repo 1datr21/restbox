@@ -124,17 +124,19 @@ namespace modules\restbox\session {
 			if($this->_renamed) return;
 			$time = $this->get_var('init_time');
 			//$time = $this->_SSAVER->get_create_time($this->sess_id);
-			print_dbg(time()-$time);
-		/*	if(time()-$time >= $exp_to_rename)
+			//print_dbg(time()-$time);
+			if(time()-$time >= $exp_to_rename)
 			{
 				$old_sid = $this->sess_id;
 				$new_sid = $this->gen_token();
 
-				print_dbg("rename session $old_sid to $new_sid ");
+				$this->set_sess_var('init_time',time());
+
+			//	print_dbg("rename session $old_sid to $new_sid ");
 
 				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$new_sid);
 				$this->_renamed = true;
-			}*/
+			}
 		}
 
 		function set_sess_var($varname,$varval)
@@ -241,7 +243,7 @@ namespace modules\restbox\session {
 			//	print_dbg("$sessfile >> $delta");
 				if($delta>=$this->exp_time)
 				{
-				//	print_dbg($sessfile);
+					print_dbg("Deleting $sessfile");
 					unlink($sessfile);
 				}
 			}	
