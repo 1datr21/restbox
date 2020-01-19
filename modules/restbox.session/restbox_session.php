@@ -41,9 +41,12 @@ namespace modules\restbox\session {
 			$this->_SSAVER->delete_garbage();
 			if(empty($this->sess_id))
 				$this->sess_id = $this->get_rb_token();
-			if(!$this->_SSAVER->exists($this->sess_id))
+			if(!empty($this->sess_id))
 			{
-				$this->call_user_func('restbox','')
+				if(!$this->_SSAVER->exists($this->sess_id))
+				{
+					$this->exe_mod_func('restbox','out_error',['message'=>'','errno'=>52]);
+				}
 			}
 			$this->watch_to_rename();
 		}
@@ -201,7 +204,7 @@ namespace modules\restbox\session {
 
 		VAR $exp_time;
 
-		function __construct($exp_time=12360)
+		function __construct($exp_time=123)
 		{
 			$this->exp_time = $exp_time;
 		}
