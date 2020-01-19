@@ -41,6 +41,10 @@ namespace modules\restbox\session {
 			$this->_SSAVER->delete_garbage();
 			if(empty($this->sess_id))
 				$this->sess_id = $this->get_rb_token();
+			if(!$this->_SSAVER->exists($this->sess_id))
+			{
+
+			}
 			$this->watch_to_rename();
 		}
 
