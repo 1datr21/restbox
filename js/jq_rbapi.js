@@ -18,7 +18,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
         {
             this.events.onError(_data.error.message);
         }
-        return _data.error.mess;
+        return _data.error.message;
     }
     else
     {
