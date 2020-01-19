@@ -59,6 +59,10 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
             else
             {
                 a.token = data[0].response.SESS_ID;
+                if(a.events.hasOwnProperty("onAuth"))
+                {
+                    a.events.onAuth(res);
+                }
                 resolve(data);
             }   
         });
@@ -78,7 +82,10 @@ jq_rbapi.prototype.logout = function()
             }
             else
             {
-               // a.token = data[0].response.SESS_ID;
+                if(a.events.hasOwnProperty("onLogout"))
+                {
+                    a.events.onLogout();
+                }
                 resolve(res);
             }
         });

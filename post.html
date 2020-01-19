@@ -12,7 +12,17 @@
                     {
                         $('#panel_auth').toggle();  
                         $('#panel_logout').toggle();
-                    }
+                    },
+                onAuth : function() 
+                    {
+                        $('#panel_auth').toggle();  
+                        $('#panel_logout').toggle();
+                    },
+                onLogout : function() 
+                    {
+                        $('#panel_auth').toggle();  
+                        $('#panel_logout').toggle();
+                    },
                 });
             
             $( "#authForm" ).submit(function( event ) {         
@@ -22,14 +32,7 @@
                     var res = rb.auth(
                             $('[name=login]').val(),
                             $('[name=password]').val()
-                    ).then(function(r)
-                    {
-                        $('#panel_auth').toggle();  
-                        $('#panel_logout').toggle();
-                    }).catch(function(error) 
-                    {
-                       
-                    });                      
+                    );                      
             });
 
             $( "#newtaskform" ).submit(function( event ) {         

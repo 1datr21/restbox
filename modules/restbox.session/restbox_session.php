@@ -206,7 +206,7 @@ namespace modules\restbox\session {
 
 		VAR $exp_time;
 
-		function __construct($exp_time=123)
+		function __construct($exp_time=723)
 		{
 			$this->exp_time = $exp_time;
 		}
