@@ -8,6 +8,11 @@
             rb = new jq_rbapi("http://restbox",{
                 onError : function(err) { alert(err); },
                 onUnhandledError : function(err) { $('#div_err').html(err); },
+                onLostAuth : function() 
+                    {
+                        $('#panel_auth').toggle();  
+                        $('#panel_logout').toggle();
+                    }
                 });
             
             $( "#authForm" ).submit(function( event ) {         

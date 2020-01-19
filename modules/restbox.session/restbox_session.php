@@ -45,9 +45,11 @@ namespace modules\restbox\session {
 			{
 				if(!$this->_SSAVER->exists($this->sess_id))
 				{
-					$this->exe_mod_func('restbox','out_error',['message'=>'Session expired','errno'=>52]);
+					//$this->exe_mod_func('restbox','out_error',['message'=>'Session expired','errno'=>52]);
+					$this->exe_mod_func('restbox','add_ext_data','SessExpired','true');
 				}
 			}
+			
 			$this->watch_to_rename();
 		}
 

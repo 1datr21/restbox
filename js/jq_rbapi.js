@@ -12,6 +12,13 @@ jq_rbapi.prototype.detect_errors = function(_data)
     {
         this.token = _data.SESS_ID;
     }
+    if(_data.hasOwnProperty("SessExpired"))
+    {
+        if(this.events.hasOwnProperty("onLostAuth"))
+        {
+            this.events.onLostAuth();
+        }
+    }
     if(_data.hasOwnProperty("error"))
     {
         if(this.events.hasOwnProperty("onError"))
