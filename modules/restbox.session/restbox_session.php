@@ -43,6 +43,7 @@ namespace modules\restbox\session {
 				$this->sess_id = $this->get_rb_token();
 			if(!empty($this->sess_id))
 			{
+				//print_dbg('sess lost');
 				if(!$this->_SSAVER->exists($this->sess_id))
 				{
 					//$this->exe_mod_func('restbox','out_error',['message'=>'Session expired','errno'=>52]);

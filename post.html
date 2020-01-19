@@ -55,10 +55,7 @@
             });
 
             $("#btn_logout").click(function(e){
-                rb.logout().then(function(r){
-                    $('#panel_auth').toggle();  
-                    $('#panel_logout').toggle();
-                }); 
+                rb.logout(); 
             });
 
             load_tasks();
