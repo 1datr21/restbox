@@ -69,6 +69,11 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
     });   
 }
 
+jq_rbapi.prototype.userinfo = function()
+{
+    return this.get('userinfo');
+}
+
 jq_rbapi.prototype.logout = function()
 {
     return new Promise((resolve, reject) => {
