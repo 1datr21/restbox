@@ -15,6 +15,10 @@
                     },
                 onAuth : function() 
                     {
+                        rb.userinfo().then(function(res)
+                        {
+                            $('#ulogin').html(res.login);    
+                        });
                         $('#panel_auth').toggle();  
                         $('#panel_logout').toggle();
                     },
@@ -107,6 +111,7 @@
 </div> 
 
 <div id="panel_logout" style="display:none">
+    Hello, <span id="ulogin"></span>
     <button id="btn_logout">Logout</button>
 </div>
 

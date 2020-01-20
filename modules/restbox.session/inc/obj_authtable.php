@@ -18,6 +18,7 @@ namespace modules\restbox\session {
             return [
                     'auth/[:table:]'=>'auth',
                     'logout'=>'logout',
+                    'userinfo'=>'userinfo',
                 ];
         }
 
@@ -110,6 +111,11 @@ namespace modules\restbox\session {
             $this->P_MODULE->set_sess_var('user_table_info',$userinfo);
             $this->P_MODULE->set_sess_var('user_id',$userinfo[$table_info->get_id_field()->fldname]);
             return ['success'=>true,'SESS_ID'=>$_SESS_ID];  
+        }
+
+        function userinfo()
+        {
+            return $this->P_MODULE->get_var('user_table_info');
         }
 
         function connect_db($dbparams)  // connect the database
