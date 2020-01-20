@@ -5,5 +5,9 @@ require_once "./dbconf.php";
 $cfg=[
     'connections'=>[ $dbconn ],
     'usertable'=>'users', 
+  /*  'session'=>[
+        'max-exp'=>1000,
+     //   'time-to-rename'=>25
+    ],*/
 
 ];

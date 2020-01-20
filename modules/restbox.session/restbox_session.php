@@ -22,6 +22,7 @@ namespace modules\restbox\session {
 		VAR $_SESS_INFO;
 		VAR $_SSAVER;
 		VAR $_renamed = false;
+		VAR $_sess_settings;
 		
 		function __construct($_PARAMS)
 		{
@@ -31,7 +32,17 @@ namespace modules\restbox\session {
 
 		function AfterLoad()
 		{
-			//print_dbg('watch_all');
+			$all_settings = $this->exe_mod_func('restbox','get_settings');
+			if(isset($all_settings['session']))
+			{
+				$this->_sess_settings = $all_settings['session'];
+			}
+			else
+			{
+				$this->_sess_settings = [];
+			}
+
+			def_options(['max-exp'=>1000,'time-to-rename'=>25,'rename_token'=>true], $this->_sess_settings);
 			$this->WatchAll();
 		}
 
@@ -59,7 +70,7 @@ namespace modules\restbox\session {
 			if(empty($this->sess_id))
 				$this->sess_id = $this->get_rb_token();
 			if(empty($this->_SSAVER))
-				$this->_SSAVER= new std_SessSaver();
+				$this->_SSAVER= new std_SessSaver($this->_sess_settings['max-exp']);
 			
 		}
 
@@ -132,14 +143,17 @@ namespace modules\restbox\session {
 
 		function watch_to_rename($exp_to_rename=50)
 		{
+			if(!$this->_sess_settings['rename_token'])
+			{
+				return;
+			}
+
 			if(empty($this->sess_id))
 				return;
 			if($this->_renamed) return;
-			$time = $this->get_var('init_time');
+			$time = $this->get_var('init_time');		
 
-		//	print_dbg("$time >> ".time()."==".(time()-$time));
-
-			if(time()-$time >= $exp_to_rename)
+			if(time()-$time >= $this->_sess_settings['time-to-rename'])
 			{
 				$old_sid = $this->sess_id;
 				$new_sid = $this->gen_token();
