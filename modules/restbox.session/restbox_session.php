@@ -260,7 +260,7 @@ namespace modules\restbox\session {
 			//	print_dbg(time()." >> $mtime = $delta");
 				if($delta>=$this->exp_time)
 				{
-					print_dbg("Deleting $sessfile");
+				//	print_dbg("Deleting $sessfile");
 					unlink($sessfile);
 				}
 			}	

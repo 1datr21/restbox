@@ -251,6 +251,28 @@ namespace modules\restbox\table {
         function __construct($tbl_name,$_info_=[])
         {
             $this->TNAME = $tbl_name;
+
+           // print_dbg($_info_);
+
+            if(is_object($_info_))
+            {
+            //    print_dbg($_info_->_info);
+
+                def_options(['onAccess'=>function($request,&$rbenv,&$do_it)
+                {
+                //    print_dbg('def event works');
+                    if(($request['path']=='tables/save') || ($request['path']=='tables/delete'))
+                    {            
+                    //    print_dbg($rbenv->exe_mod_func('restbox.session','sess_vars'));
+                        if(!$rbenv->exe_mod_func('restbox.session','var_exists','user_id'))
+                        {
+                            $do_it=false;
+                        }
+                    }
+                }],$_info_->_info['events']);   
+               // print_dbg('set the def event');
+            }
+
             foreach($_info_ as $fld => $val)
             {
                 if(!in_array($fld,['FIELDS']))
@@ -258,6 +280,8 @@ namespace modules\restbox\table {
                     $this->$fld = $val;
                 }
             }
+
+            //print_dbg();
         }
 
         function getName()
