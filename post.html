@@ -85,6 +85,8 @@
                             tr_el.append($('<td />').append(value));
                         });
 
+                        tr_el.append($('<td />').append('<a />').attr('href','javascript:rb.delete_item()').text('Delete'));
+
                         tasks_table.append(tr_el);
 
                         $('#tasks').append(tasks_table);
