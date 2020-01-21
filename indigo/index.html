@@ -1,11 +1,13 @@
 <html>
     <head>
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/jq_rbapi.js"></script>
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/jquery.loadTemplate-1.5.0.min.js"></script>
+        <script src="./js/jq_rbapi.js"></script>   
+           
         <script language="javascript">
         var rb;
-        $( document ).ready(function() {
-            rb = new jq_rbapi("http://restbox",{
+        $( document ).ready(function() { 
+            rb = new jq_rbapi("http://restbox/",{
                 onError : function(err) { alert(err); },
                 onUnhandledError : function(err) { $('#div_err').html(err); },
                 onLostAuth : function() 
@@ -65,7 +67,7 @@
             load_tasks();
         });  
 
-         function load_tasks()
+        function load_tasks()
             {
                 rb.get('tables/tasks').then(function(_data)
                 {
@@ -96,8 +98,30 @@
                         $('#tasks').append(tasks_table);
                     }
                 });
-            }                   
+            }   
+
+       
+        function load_tasks_std()
+        {
+            rb.get('tables/tasks').then(function(_data)
+            {
+                $('#TPL_tasks').tmpl(_data).appendTo('#tasks');
+            });  
+        }                
         </script>
+        <script id="TPL_tasks" type="text/x-jquery-tmpl">
+            <table>
+                <tbody>
+                {{each dataItems}}
+                    <tr>
+                        <td>${name}</td>
+                        <td>${descr}</td>
+                        <td>${author}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </script> 
     </head>
 <body>
 
