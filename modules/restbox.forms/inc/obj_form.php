@@ -16,8 +16,7 @@ namespace modules\restbox\session {
         static function GetRoutePatterns()
         {
             return [
-                    'auth/[:table:]'=>'auth',
-                    'logout'=>'logout',
+                    'forms/[:table:]'=>'auth',                    
                 ];
         }
 
