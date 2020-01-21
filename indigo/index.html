@@ -1,7 +1,7 @@
 <html>
     <head>
         <script src="./js/jquery.min.js"></script>
-        <script src="./js/jquery.loadTemplate-1.5.0.min.js"></script>
+        <script src="./js/jquery.Templates.js"></script>
         <script src="./js/jq_rbapi.js"></script>   
            
         <script language="javascript">
@@ -67,7 +67,7 @@
             load_tasks();
         });  
 
-        function load_tasks()
+        function load_tasks_std()
             {
                 rb.get('tables/tasks').then(function(_data)
                 {
@@ -101,7 +101,7 @@
             }   
 
        
-        function load_tasks_std()
+        function load_tasks()
         {
             rb.get('tables/tasks').then(function(_data)
             {
@@ -111,16 +111,15 @@
         </script>
         <script id="TPL_tasks" type="text/x-jquery-tmpl">
             <table>
-                <tbody>
-                {{each dataItems}}
-                    <tr>
-                        <td>${name}</td>
-                        <td>${descr}</td>
-                        <td>${author}</td>
-                    </tr>
-                {{/each}}
-                </tbody>
-            </table>
+            {{each items}}
+                <tr>
+                    <td>${name}</td>
+                    <td>${descr}</td>
+                    <td>${author}</td>
+                    <td><a href="javascript:rb.send('delete')">Delete</a></td>
+                </tr>
+            {{/each}}
+            </table>  
         </script> 
     </head>
 <body>
@@ -148,8 +147,10 @@
 
 <div>
 <h4>TASKS</h4><button id="tasklist">GET </button>
-<div id="tasks">
-</div>
+<table>
+    <tbody id="tasks">
+    </tbody>
+</table>
 </div>
 
 
