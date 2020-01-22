@@ -105,6 +105,7 @@
         {
             rb.get('tables/tasks').then(function(_data)
             {
+                $('#tasks').html('');
                 $('#TPL_tasks').tmpl(_data).appendTo('#tasks');
             });  
         }                
