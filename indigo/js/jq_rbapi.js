@@ -93,7 +93,7 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
                 a.set_sid(a.token);
                 if(a.events.hasOwnProperty("onAuth"))
                 {
-                    a.events.onAuth(res);
+                    a.events.onAuth(res); // on auth
                 }
                 resolve(data);
             }   

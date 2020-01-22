@@ -14,8 +14,8 @@
                 onUnhandledError : function(err) { $('#div_err').html(err); },
                 onLostAuth : function() 
                     {
-                        $('#panel_auth').toggle();  
-                        $('#panel_logout').toggle();
+                        $('#panel_auth').show();  
+                        $('#panel_logout').hide();
                     },
                 onAuth : function() 
                     {
@@ -23,13 +23,13 @@
                         {
                             $('#ulogin').html(res.login);    
                         });
-                        $('#panel_auth').toggle();  
-                        $('#panel_logout').toggle();
+                        $('#panel_auth').hide();  
+                        $('#panel_logout').show();
                     },
                 onLogout : function() 
                     {
-                        $('#panel_auth').toggle();  
-                        $('#panel_logout').toggle();
+                        $('#panel_auth').show();  
+                        $('#panel_logout').hide();
                     },
                 });
             
