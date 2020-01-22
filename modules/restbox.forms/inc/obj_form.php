@@ -1,6 +1,7 @@
 <?php
 namespace modules\restbox\session {
     use modules\restbox as restbox;
+    use Core\Router as Router;
     
 
    class ObjForm extends restbox\AppObject {
@@ -13,103 +14,20 @@ namespace modules\restbox\session {
             parent::__construct($_req_params,$cfg_info,$pmodule);
         }
 
-        static function GetRoutePatterns()
+        static function FindPattern($req_str,$ptrn_list)
         {
-            return [
-                    'forms/[:table:]'=>'auth',                    
-                ];
-        }
-
-        function auth($_request,$post_data=[])
-        {
-            if($this->P_MODULE->get_var('user_table_info')!=null)
+            
+            foreach($ptrn_list as $ptrn => $_action)
             {
-                $this->call_mod_func('restbox','out_error',['message'=>'You are allready authorized','errno'=>101]);
-                return;
-            }
-
-            $post_data=$_POST;
-        //  get auth parameters
-            $info_cfg = $this->call_mod_func('restbox','get_settings',1);
-            if(empty($_request['vars']['table']))
-            {
-                
-                if(is_array($info_cfg['usertable']))
+                $router = new Router($ptrn);
+                $_match = $router->match($req_str);
+                if($_match!==false)
                 {
-                    $_request['vars']['table'] = $info_cfg['usertable'][0];
-                }
-                else
-                {                
-                    $_request['vars']['table'] = $info_cfg['usertable'];
+                    return [ 'action'=>$_action, 'request' => $_match ];
                 }
             }
-       //     print_dbg($post_data);
-            $table_info = $this->call_mod_func('restbox.table', 'load_table', $_request['vars']['table']);                    
-            
-            if(isset($table_info->_info['addinfo']['authroles']))
-            {
-                $this->authroles = $table_info->_info['addinfo']['authroles'];
-            }
-            def_options(['mode'=>'full'],$this->authroles);
-            
-            if(!isset($this->authroles['login']))
-            {
-                $this->authroles['login'] = $this->search_fld_by_synonims($table_info->_info['fields'],'login');
-            }
-
-            if(!isset($this->authroles['password']))
-            {
-                $this->authroles['password'] = $this->search_fld_by_synonims($table_info->_info['fields'],['password','passw']);
-            }
-
-            if(!isset($this->authroles['email']))
-            {
-                $this->authroles['email'] = $this->search_fld_by_synonims($table_info->_info['fields'],['email','e_mail','e-mail']);
-            }
-            //
-         //   print_dbg($this->authroles);
-            $where='';
-            switch($this->authroles['mode'])
-            {
-                case 'full':
-                {
-                    $_login_or_email = isset($post_data['login']) ? $post_data['login'] : $post_data[$this->authroles['login']];
-                   // $_email = isset($post_data['email']) ? $post_data['email'] : $post_data[$this->authroles['email']];
-                    $where = $this->authroles['login']."='{$_login_or_email}' OR {$this->authroles['email']}='$_login_or_email'";
-                };break;
-            }
-        //    print_dbg($where);
-            $query_res = $this->call_mod_func('restbox.db', 'query_select',[ 
-                'table'=> $_request['vars']['table'], 
-                'where'=> $where,
-                '#table_params'=>$table_info
-                ]);
-
-            $_login_err_text = 'Wrong login/e-mail or password';
-            if($query_res['total_count']==0)
-            {
-                $this->call_mod_func('restbox','out_error',['message'=>$_login_err_text,'errno'=>100]);
-            }
-
-         //   print_dbg($table_info->FIELDS);
-
-            $_password = isset($post_data['password']) ? $post_data['password'] : $post_data[$this->authroles['password']];
-            $passw_cmp = $table_info->FIELDS[$this->authroles['password']]->compare_password(
-                $query_res['items'][0],
-                $_password);
-
-            if(!$passw_cmp)
-            {
-                $this->call_mod_func('restbox','out_error',['message'=>$_login_err_text,'errno'=>100]);
-            }
-
-            $userinfo = $query_res['items'][0];
-            $userinfo[$this->authroles['password']]=null;
-            $_SESS_ID = $this->P_MODULE->start_session();
-            $this->P_MODULE->set_sess_var('user_table_info',$userinfo);
-            $this->P_MODULE->set_sess_var('user_id',$userinfo[$table_info->get_id_field()->fldname]);
-            return ['success'=>true,'SESS_ID'=>$_SESS_ID];  
-        }
+            return false;
+        }        
 
         function connect_db($dbparams)  // connect the database
         {
