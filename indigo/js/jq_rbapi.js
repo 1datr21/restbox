@@ -1,9 +1,39 @@
-function jq_rbapi(url,events=null)
+function jq_rbapi(url,events=null,opts=null)
 {
     this.base_url = url;
     this.token = null;
+    this.opts = opts || { use_cookie : true };
     if(events==null) events={ };
     this.events = events;
+    if(this.opts.use_cookie)
+        this.load_sid();
+}
+
+jq_rbapi.prototype.load_sid = function() {
+    this.token = this.get_sid();
+    if(this.token!==undefined)
+    {
+        var a = this;
+        this.userinfo().then(function(uinfo){
+            if(uinfo)
+            {
+                a.events.onAuth();
+            }
+            else
+            {
+                a.events.onLogout();
+            }
+        });
+        
+    }
+}
+
+jq_rbapi.prototype.set_sid = function(_sid) {
+    $.cookie('rbtoken', _sid, { path: '/' });
+}
+
+jq_rbapi.prototype.get_sid = function() {
+    return $.cookie('rbtoken');
 }
 
 jq_rbapi.prototype.detect_errors = function(_data)
@@ -11,6 +41,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
     if(_data.hasOwnProperty("SESS_ID"))
     {
         this.token = _data.SESS_ID;
+        this.set_sid(this.token);
     }
     if(_data.hasOwnProperty("SessExpired"))
     {
@@ -59,6 +90,7 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
             else
             {
                 a.token = data[0].response.SESS_ID;
+                a.set_sid(a.token);
                 if(a.events.hasOwnProperty("onAuth"))
                 {
                     a.events.onAuth(res);
