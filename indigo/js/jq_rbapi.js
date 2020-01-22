@@ -47,6 +47,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
     {
         if(this.events.hasOwnProperty("onLostAuth"))
         {
+            $.removeCookie('rbtoken');
             this.events.onLostAuth();
         }
     }
