@@ -11,8 +11,9 @@ function jq_rbapi(url,events=null,opts=null)
 
 jq_rbapi.prototype.load_sid = function() {
     this.token = this.get_sid();
-    if(this.token!==undefined)
+    if(this.token)
     {
+        console.log("Token = "+this.token);
         var a = this;
         this.userinfo().then(function(uinfo){
             if(uinfo)
@@ -48,6 +49,8 @@ jq_rbapi.prototype.detect_errors = function(_data)
         if(this.events.hasOwnProperty("onLostAuth"))
         {
             $.removeCookie('rbtoken');
+            this.token = undefined;
+            console.log("Session is dead");
             this.events.onLostAuth();
         }
     }

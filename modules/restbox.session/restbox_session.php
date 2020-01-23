@@ -52,6 +52,9 @@ namespace modules\restbox\session {
 			$this->_SSAVER->delete_garbage();
 			if(empty($this->sess_id))
 				$this->sess_id = $this->get_rb_token();
+
+			print_dbg($this->sess_id);
+			
 			if(!empty($this->sess_id))
 			{
 				//print_dbg('sess lost');
@@ -251,7 +254,10 @@ namespace modules\restbox\session {
 		function rename($sid,$sid_new_name)
 		{
 		//	print_dbg('rename');
-			rename($this->sess_file_path($sid), $this->sess_file_path($sid_new_name));
+		/*	if(file_exists($this->sess_file_path($sid)))
+			{*/
+				rename($this->sess_file_path($sid), $this->sess_file_path($sid_new_name));
+		/*	}*/
 		}
 
 		function get_modify_time($sid)
