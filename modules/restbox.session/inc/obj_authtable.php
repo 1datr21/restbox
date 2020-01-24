@@ -115,7 +115,9 @@ namespace modules\restbox\session {
 
         function userinfo()
         {
-            return $this->P_MODULE->get_var('user_table_info');
+            $uinfo = $this->P_MODULE->get_var('user_table_info');
+         //  print_dbg($uinfo);
+            return $uinfo;
         }
 
         function connect_db($dbparams)  // connect the database

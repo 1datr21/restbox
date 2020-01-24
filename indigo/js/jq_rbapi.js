@@ -5,8 +5,10 @@ function jq_rbapi(url,events=null,opts=null)
     this.opts = opts || { use_cookie : true };
     if(events==null) events={ };
     this.events = events;
-    if(this.opts.use_cookie)
+    if(this.opts.use_cookie)    // need ready event
+    {
         this.load_sid();
+    }
 }
 
 jq_rbapi.prototype.load_sid = function() {
@@ -24,6 +26,7 @@ jq_rbapi.prototype.load_sid = function() {
             {
                 a.events.onLogout();
             }
+            a.events.ready();
         });
         
     }

@@ -31,6 +31,10 @@
                         $('#panel_auth').show();  
                         $('#panel_logout').hide();
                     },
+                ready: function()
+                    {
+                        load_tasks();
+                    }
                 });
             
             $( "#authForm" ).submit(function( event ) {         
@@ -66,7 +70,7 @@
                 rb.logout(); 
             });
 
-            load_tasks();
+         //   load_tasks();
         });  
 
         function load_tasks_std()
