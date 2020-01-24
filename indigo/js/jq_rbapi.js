@@ -15,7 +15,7 @@ jq_rbapi.prototype.load_sid = function() {
     this.token = this.get_sid();
     if(this.token)
     {
-        console.log("Token = "+this.token);
+    //    console.log("Token = "+this.token);
         var a = this;
         this.userinfo().then(function(uinfo){
             if(uinfo)

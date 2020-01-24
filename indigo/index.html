@@ -70,6 +70,10 @@
                 rb.logout(); 
             });
 
+            $("#btn_taskform").click(function(e){
+                taskform();            
+            });
+
          //   load_tasks();
         });  
 
@@ -115,6 +119,14 @@
                 $('#TPL_tasks').tmpl(_data).appendTo('#tasks');
             });  
         }                
+
+        function taskform()
+        {
+            rb.get('forms/task').then(function(fdata)
+            {
+
+            });
+        }
         </script>
         <script id="TPL_tasks" type="text/x-jquery-tmpl">
             <table>
@@ -159,7 +171,7 @@
     </tbody>
 </table>
 </div>
-
+<button id="btn_taskform">GET FORM </button>
 
 
 
