@@ -53,7 +53,7 @@ namespace modules\restbox\session {
 			if(empty($this->sess_id))
 				$this->sess_id = $this->get_rb_token();
 
-			print_dbg($this->sess_id);
+		//	print_dbg("sid detected ".$this->sess_id);
 			
 			if(!empty($this->sess_id))
 			{
@@ -116,6 +116,7 @@ namespace modules\restbox\session {
 			if(!isset($this->sess_id))
 			{
 				$this->sess_id = $this->gen_token();
+			//	print_dbg("session started ".$this->sess_id);
 				$this->_SESS_INFO['init_time']=time();
 			}
 
@@ -127,6 +128,9 @@ namespace modules\restbox\session {
 		{
 			
 			$this->_SESS_INFO = $this->_SSAVER->get($this->sess_id);
+		//	print_dbg('sid is '.$this->sess_id);
+		//	print_dbg('sess info');
+		//	print_dbg($this->_SESS_INFO);
 	
 			return $this->_SESS_INFO;
 		}
@@ -138,7 +142,7 @@ namespace modules\restbox\session {
 		function get_var($varname)
 		{
 			$this->get_sess_vars();
-			//print_dbg($this->_SESS_INFO);
+		//	print_dbg($this->_SESS_INFO);
 			if(!isset($this->_SESS_INFO[$varname]))
 				return null;
 			return $this->_SESS_INFO[$varname];
@@ -154,6 +158,10 @@ namespace modules\restbox\session {
 			if(empty($this->sess_id))
 				return;
 			if($this->_renamed) return;
+
+			if(!$this->_SSAVER->exists($this->sess_id))	// if session not exists - return
+				return;
+
 			$time = $this->get_var('init_time');		
 
 			if(time()-$time >= $this->_sess_settings['time-to-rename'])
@@ -166,6 +174,8 @@ namespace modules\restbox\session {
 				$this->_SSAVER->rename($old_sid,$new_sid);
 
 			//	print_dbg("rename session $old_sid to $new_sid ");
+
+				$this->sess_id = $new_sid;
 
 				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$new_sid);
 				$this->_renamed = true;

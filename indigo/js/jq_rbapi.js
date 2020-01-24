@@ -5,15 +5,17 @@ function jq_rbapi(url,events=null,opts=null)
     this.opts = opts || { use_cookie : true };
     if(events==null) events={ };
     this.events = events;
-    if(this.opts.use_cookie)
+    if(this.opts.use_cookie)    // need ready event
+    {
         this.load_sid();
+    }
 }
 
 jq_rbapi.prototype.load_sid = function() {
     this.token = this.get_sid();
     if(this.token)
     {
-        console.log("Token = "+this.token);
+    //    console.log("Token = "+this.token);
         var a = this;
         this.userinfo().then(function(uinfo){
             if(uinfo)
@@ -24,6 +26,7 @@ jq_rbapi.prototype.load_sid = function() {
             {
                 a.events.onLogout();
             }
+            a.events.ready();
         });
         
     }

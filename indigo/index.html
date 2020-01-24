@@ -31,6 +31,10 @@
                         $('#panel_auth').show();  
                         $('#panel_logout').hide();
                     },
+                ready: function()
+                    {
+                        load_tasks();
+                    }
                 });
             
             $( "#authForm" ).submit(function( event ) {         
@@ -66,7 +70,11 @@
                 rb.logout(); 
             });
 
-            load_tasks();
+            $("#btn_taskform").click(function(e){
+                taskform();            
+            });
+
+         //   load_tasks();
         });  
 
         function load_tasks_std()
@@ -111,6 +119,14 @@
                 $('#TPL_tasks').tmpl(_data).appendTo('#tasks');
             });  
         }                
+
+        function taskform()
+        {
+            rb.get('forms/task').then(function(fdata)
+            {
+
+            });
+        }
         </script>
         <script id="TPL_tasks" type="text/x-jquery-tmpl">
             <table>
@@ -155,7 +171,7 @@
     </tbody>
 </table>
 </div>
-
+<button id="btn_taskform">GET FORM </button>
 
 
 
