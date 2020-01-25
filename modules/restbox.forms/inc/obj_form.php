@@ -27,7 +27,7 @@ namespace modules\restbox\forms {
                     return [ 'action'=>$_action, 'request' => $_match ];
                 }
             }
-            return false;
+            return false;   
         }        
 
         function connect_db($dbparams)  // connect the database

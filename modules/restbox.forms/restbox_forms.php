@@ -21,7 +21,7 @@ namespace modules\restbox\forms {
 			
 		}
 
-		function call_obj($_route,$obj_class)
+		function call_obj($_route,$obj_class)   
 		{
 			$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
 
