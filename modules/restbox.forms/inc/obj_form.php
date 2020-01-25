@@ -1,5 +1,5 @@
 <?php
-namespace modules\restbox\session {
+namespace modules\restbox\forms {
     use modules\restbox as restbox;
     use Core\Router as Router;
     
@@ -16,8 +16,8 @@ namespace modules\restbox\session {
 
         static function FindPattern($req_str,$ptrn_list)
         {
-            print_dbg($req_str);
-            
+        //    print_dbg($req_str);
+
             foreach($ptrn_list as $ptrn => $_action)
             {
                 $router = new Router($ptrn);
