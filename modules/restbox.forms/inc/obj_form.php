@@ -14,6 +14,13 @@ namespace modules\restbox\forms {
             parent::__construct($_req_params,$cfg_info,$pmodule);
         }
 
+        static function GetRoutePatterns()
+        {
+            return [
+                    'forms/:table:'=>'view',
+                ];
+        }
+
         static function FindPattern($req_str,$ptrn_list)
         {
         //    print_dbg($req_str);

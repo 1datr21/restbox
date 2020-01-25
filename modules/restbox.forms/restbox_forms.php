@@ -23,7 +23,14 @@ namespace modules\restbox\forms {
 
 		function call_obj($_route,$obj_class)   
 		{
-			$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
+		//	print_dbg($_route);
+			$r_pieces = explode('/',$_route);
+			if($r_pieces[0]=='forms')
+			{
+				$form_name = $r_pieces[1];
+				print_dbg($form_name);
+			}
+		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
 
 			$_request = call_user_func($obj_class . '::FindPattern', $_route, $ptrn_list);
 			if($_request!=false)
@@ -43,6 +50,7 @@ namespace modules\restbox\forms {
 				$res_obj = $_obj->ExeAction($_request['action'],$_request['request']);
 				return $res_obj;
 			}
+			*/
 			return null;
 		}
 		
