@@ -16,6 +16,7 @@ namespace modules\restbox\session {
 
         static function FindPattern($req_str,$ptrn_list)
         {
+            print_dbg($req_str);
             
             foreach($ptrn_list as $ptrn => $_action)
             {
