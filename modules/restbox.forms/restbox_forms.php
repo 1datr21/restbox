@@ -29,7 +29,9 @@ namespace modules\restbox\forms {
 			if($r_pieces[0]=='forms')
 			{
 				$form_name = $r_pieces[1];
-				print_dbg($form_name);
+				array_unshift($r_pieces,0);
+				array_unshift($r_pieces,1);
+				print_dbg($r_pieces);
 			}
 		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
 
