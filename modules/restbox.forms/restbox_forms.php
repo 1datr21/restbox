@@ -31,7 +31,10 @@ namespace modules\restbox\forms {
 				$form_name = $r_pieces[1];
 				array_shift($r_pieces);
 				array_shift($r_pieces);
-				print_dbg($r_pieces);
+			//	print_dbg($r_pieces);
+				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+				$form_script = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
+				print_dbg($form_script ) ;
 			}
 		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
 
@@ -45,7 +48,7 @@ namespace modules\restbox\forms {
 				}
 				else
 				{
-					$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+					
 					$_obj = $this->exe_mod_func('restbox.route','add_obj', new $obj_class($_request['request'], $_cfg_info, $this), $_o_key);
 				}
 
