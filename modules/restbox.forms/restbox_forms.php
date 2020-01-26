@@ -24,6 +24,7 @@ namespace modules\restbox\forms {
 		function call_obj($_route,$obj_class)   
 		{
 		//	print_dbg($_route);
+			$map = [];
 			$r_pieces = explode('/',$_route);
 			if($r_pieces[0]=='forms')
 			{
