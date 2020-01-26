@@ -34,6 +34,10 @@ namespace modules\restbox\forms {
 			//	print_dbg($r_pieces);
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
 				$form_script = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
+				if(!file_exists($form_script))
+				{
+					$this->exe_mod_func('restbox','out_error',['message'=>"Form not with name $form_name exists",'errno'=>150]);
+				}
 				print_dbg($form_script ) ;
 			}
 		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
