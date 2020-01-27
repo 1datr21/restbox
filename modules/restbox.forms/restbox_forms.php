@@ -43,6 +43,13 @@ namespace modules\restbox\forms {
 		function load_form($f_info)
 		{
 			$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+			print_dbg($_cfg_info ) ;
+			$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$f_info['object']['name']).".php";
+			if(!file_exists($form_cfg))
+			{
+				$this->exe_mod_func('restbox','out_error',['message'=>"Form {$f_info['object']['name']} not exists",'errno'=>54]);
+			}
+			//print_dbg($form_cfg ) ;
 		}
 
 		function call_obj($_route,$obj_class)   
@@ -53,7 +60,7 @@ namespace modules\restbox\forms {
 			switch($obj_nfo['obj_class'])
 			{
 				case 'forms': {
-
+					$_obj_form = $this->load_form($obj_nfo);
 				} break;
 			}
 
