@@ -35,7 +35,8 @@ namespace modules\restbox {
 		
 		function load_config()
 		{	
-			include "./conf.php";
+			GLOBAL $_BASEDIR;
+			include url_seg_add($_BASEDIR,"/conf.php");
 			
 			$this->_SETTINGS = $settings;
 			$this->_CONFIG = $settings['curr_cfg'];
@@ -43,7 +44,7 @@ namespace modules\restbox {
 
 			$this->_CFG_DIR = url_seg_add($this->_L_SETTINGS['rbdir'],$this->_CONFIG);
 
-			include url_seg_add($this->_CFG_DIR,'index.php');
+			include url_seg_add($_BASEDIR,$this->_CFG_DIR,'index.php');
 			$this->_CFG_INFO = $cfg;
 
 			//mul_dbg($this->_CFG_INFO,true,true);
