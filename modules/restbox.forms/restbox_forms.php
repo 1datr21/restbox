@@ -27,8 +27,8 @@ namespace modules\restbox\forms {
 			$res=[];
 			try{
 				$r_pieces = explode('/',$_route);
-				$res['obj_class'] = $r_pieces[1];
-				$res['object']=['name'=>$r_pieces[2],'type'=>'config'];
+				$res['obj_class'] = $r_pieces[0];
+				$res['object']=['name'=>$r_pieces[1],'type'=>'config'];
 				array_shift($r_pieces);
 				array_shift($r_pieces);
 				$res['route_pieces'] = $r_pieces;
@@ -43,7 +43,7 @@ namespace modules\restbox\forms {
 		function load_form($f_info)
 		{
 			$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-			print_dbg($_cfg_info ) ;
+		//	print_dbg($_cfg_info ) ;
 			$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$f_info['object']['name']).".php";
 			if(!file_exists($form_cfg))
 			{
@@ -56,6 +56,7 @@ namespace modules\restbox\forms {
 		{
 		//	print_dbg($_route);			
 			$obj_nfo = $this->obj_info_by_route($_route);
+			//print_dbg($obj_nfo);
 
 			switch($obj_nfo['obj_class'])
 			{
