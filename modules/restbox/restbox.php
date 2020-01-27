@@ -25,7 +25,8 @@ namespace modules\restbox {
 		{
 		//	
 			//echo "THIS IS RESTBOX";
-			def_options(['cfgpath'=>'./restbox'],$_PARAMS);
+			GLOBAL $_BASEDIR;
+			def_options(['cfgpath'=>'./restbox','basedir'=>$_BASEDIR],$_PARAMS);
 			parent::__construct($_PARAMS);
 			$this->ExtOut=[];
 			
@@ -35,13 +36,14 @@ namespace modules\restbox {
 		
 		function load_config()
 		{	
-			include "./conf.php";
+			GLOBAL $_BASEDIR;
+			include url_seg_add($_BASEDIR,"/conf.php");
 			
 			$this->_SETTINGS = $settings;
 			$this->_CONFIG = $settings['curr_cfg'];
 
 
-			$this->_CFG_DIR = url_seg_add($this->_L_SETTINGS['rbdir'],$this->_CONFIG);
+			$this->_CFG_DIR = url_seg_add($_BASEDIR,$this->_L_SETTINGS['rbdir'],$this->_CONFIG);
 
 			include url_seg_add($this->_CFG_DIR,'index.php');
 			$this->_CFG_INFO = $cfg;

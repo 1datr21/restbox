@@ -122,9 +122,13 @@
 
         function taskform()
         {
-            rb.get('forms/task/1/2').then(function(fdata)
+            rb.get($('#form_url').val()).then(function(fdata)
             {
+<<<<<<< HEAD
                     
+=======
+                console.log(fdata);
+>>>>>>> 5a4bc383333d95b09c131625130d8041ae2e4818
             });
         }
         </script>
@@ -171,7 +175,7 @@
     </tbody>
 </table>
 </div>
-<button id="btn_taskform">GET FORM </button>
+<button id="btn_taskform">GET FORM </button><input type="text" id="form_url" value="forms/task/1/2" />
 
 
 

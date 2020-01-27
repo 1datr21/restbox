@@ -1,7 +1,8 @@
 <?php
 namespace modules\restbox\forms {
 	use Core;
-	use modules\restbox\RBModule as RBModule;
+    use Exception;
+    use modules\restbox\RBModule as RBModule;
 
 	class Module extends RBModule 
 	{
@@ -21,25 +22,73 @@ namespace modules\restbox\forms {
 			
 		}
 
+		function obj_info_by_route($_route)
+		{
+			$res=[];
+			try{
+				$r_pieces = explode('/',$_route);
+				$res['obj_class'] = $r_pieces[0];
+				$res['object']=['name'=>$r_pieces[1],'type'=>'config'];
+				array_shift($r_pieces);
+				array_shift($r_pieces);
+				$res['route_pieces'] = $r_pieces;
+			}
+			catch(Exception $exc)
+			{
+				$this->exe_mod_func('restbox','out_error',['message'=>"URL parsing error",'errno'=>55]);	
+			}
+			return $res;
+		}
+
+		function load_form($f_info)
+		{
+			$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+		//	print_dbg($_cfg_info ) ;
+			$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$f_info['object']['name']).".php";
+			if(!file_exists($form_cfg))
+			{
+				$this->exe_mod_func('restbox','out_error',['message'=>"Form {$f_info['object']['name']} not exists",'errno'=>54]);
+			}
+			//print_dbg($form_cfg ) ;
+		}
+
 		function call_obj($_route,$obj_class)   
 		{
-		//	print_dbg($_route);
-			$map = [];
-			$r_pieces = explode('/',$_route);
-			if($r_pieces[0]=='forms')
+		//	print_dbg($_route);			
+			$obj_nfo = $this->obj_info_by_route($_route);
+			//print_dbg($obj_nfo);
+
+			switch($obj_nfo['obj_class'])
+			{
+				case 'forms': {
+					$_obj_form = $this->load_form($obj_nfo);
+				} break;
+			}
+
+		/*	if($r_pieces[0]=='forms')
 			{
 				$form_name = $r_pieces[1];
 				array_shift($r_pieces);
 				array_shift($r_pieces);
 			//	print_dbg($r_pieces);
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+<<<<<<< HEAD
 				$form_script = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
 				if(!file_exists($form_script))
 				{
 					$this->exe_mod_func('restbox','out_error',['message'=>"Form not with name $form_name exists",'errno'=>150]);
 				}
 				print_dbg($form_script ) ;
+=======
+				$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
+				if(!file_exists($form_cfg))
+				{
+					$this->exe_mod_func('restbox','out_error',['message'=>"Form $form_name not exists",'errno'=>54]);
+				}
+				print_dbg($form_cfg ) ;
+>>>>>>> 5a4bc383333d95b09c131625130d8041ae2e4818
 			}
+		*/
 		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
 
 			$_request = call_user_func($obj_class . '::FindPattern', $_route, $ptrn_list);
