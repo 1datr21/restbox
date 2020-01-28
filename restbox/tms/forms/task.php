@@ -16,19 +16,11 @@ $info = new obj_description([
     'createdate'=>new ffield('datetime'),
     */
 ],
-'events'=>[
-    'beforeSave'=>function(&$row,&$rbenv,&$save) {      
-        if(empty($row['id']))
-        {
-            $row['createdate']='#NOW()'; 
-            $sess_vars = $rbenv->exe_mod_func('restbox.session','get_sess_vars'); 
-            //print_dbg($sess_vars);
-            $row['author']=$sess_vars['user_id'];
-        }       
-    },
-    'onAccess'=>function(&$row,&$rbenv,&$save) {  
 
-    }    
+'events'=>[
+    'OnSubmit'=>function() {      
+        print_dbg("The form is submited>>");
+    },
 ],
 ]);
 ?>

@@ -21,6 +21,14 @@ namespace modules\restbox\forms {
                 ];
         }
 
+        function exe_submit($data=null)
+        {
+            if($data==null)
+            {
+                $data=$_POST;
+            }
+        }
+
         static function FindPattern($req_str,$ptrn_list)
         {
         //    print_dbg($req_str);

@@ -59,6 +59,7 @@ namespace modules\restbox\forms {
 			
 			include $form_cfg;
 			$form_obj = new $obj_class_name($info);
+			//$form_obj->exe_submit($data);
 			return $form_obj;
 		}
 
