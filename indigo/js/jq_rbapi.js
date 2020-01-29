@@ -9,14 +9,19 @@ function jq_rbapi(url,events=null,opts=null)
     {
         this.load_sid();
     }
+    else
+    {
+        var a = this;
+        setTimeout(function(){ a.events.ready(); },0);
+    }
 }
 
 jq_rbapi.prototype.load_sid = function() {
     this.token = this.get_sid();
+    var a = this;
     if(this.token)
     {
-    //    console.log("Token = "+this.token);
-        var a = this;
+    //    console.log("Token = "+this.token);        
         this.userinfo().then(function(uinfo){
             if(uinfo)
             {
@@ -28,7 +33,13 @@ jq_rbapi.prototype.load_sid = function() {
             }
             a.events.ready();
         });
-        
+    }
+    else
+    {
+        setTimeout(function()
+        { 
+            a.events.ready(); 
+        },0);
     }
 }
 
