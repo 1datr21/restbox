@@ -93,15 +93,7 @@ namespace modules\restbox\forms {
             }
             return null;
         }
-
-        function logout()
-        {
-         //   print_dbg('logout');
-            $this->P_MODULE->unset_var('user_table_info');
-            $this->P_MODULE->unset_var('user_id');
-
-        //    $this->P_MODULE->clear_session();
-        }
+        
    }
 
 }

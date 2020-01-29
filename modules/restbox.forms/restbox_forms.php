@@ -95,7 +95,7 @@ namespace modules\restbox\forms {
 					//return $_obj_form;
 				} break;
 			}
-<<<<<<< HEAD
+
 
 		/*	if($r_pieces[0]=='forms')
 			{
@@ -104,21 +104,12 @@ namespace modules\restbox\forms {
 				array_shift($r_pieces);
 			//	print_dbg($r_pieces);
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-<<<<<<< HEAD
 				$form_script = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
 				if(!file_exists($form_script))
 				{
 					$this->exe_mod_func('restbox','out_error',['message'=>"Form not with name $form_name exists",'errno'=>150]);
 				}
 				print_dbg($form_script ) ;
-=======
-				$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
-				if(!file_exists($form_cfg))
-				{
-					$this->exe_mod_func('restbox','out_error',['message'=>"Form $form_name not exists",'errno'=>54]);
-				}
-				print_dbg($form_cfg ) ;
->>>>>>> 5a4bc383333d95b09c131625130d8041ae2e4818
 			}
 		*/
 		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
@@ -142,9 +133,7 @@ namespace modules\restbox\forms {
 				return $res_obj;
 			}
 			*/
-=======
-		
->>>>>>> f261128bfd1999e216c49472f3973adbc580f140
+
 			return null;
 		}
 		
