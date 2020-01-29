@@ -33,9 +33,28 @@ namespace modules\restbox\forms {
 			try{
 				$r_pieces = explode('/',$_route);
 				$res['obj_class'] = $r_pieces[0];
+				
 				$res['object']=['name'=>$r_pieces[1],'type'=>'config'];
+				$class_name = $this->_obj_map[$res['obj_class']];
+				$res['object']['class']=$class_name;
+				
 				array_shift($r_pieces);
 				array_shift($r_pieces);
+				// get the action
+				if(isset($r_pieces[0]))
+				{
+					$action_name = "A".ucfirst($r_pieces[0]);
+				}
+				
+				if(!method_exists($class_name, $action_name))
+				{
+					$action_name = $class_name::GetDefAction();
+				}
+				else
+				{
+					array_shift($r_pieces);
+				}
+				$res['action']=$action_name;
 				$res['route_pieces'] = $r_pieces;
 			}
 			catch(Exception $exc)
@@ -73,7 +92,7 @@ namespace modules\restbox\forms {
 			{
 				case 'forms': {
 					$_obj_form = $this->load_form($obj_nfo);
-					return $_obj_form;
+					//return $_obj_form;
 				} break;
 			}
 		

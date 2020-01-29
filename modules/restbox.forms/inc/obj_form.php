@@ -21,7 +21,12 @@ namespace modules\restbox\forms {
                 ];
         }
 
-        function exe_submit($data=null)
+        function AInfo()
+        {
+            
+        }
+
+        function ASubmit($data=null)
         {
             if($data==null)
             {
