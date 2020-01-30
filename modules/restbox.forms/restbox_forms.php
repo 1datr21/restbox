@@ -23,7 +23,7 @@ namespace modules\restbox\forms {
 			//echo "THIS IS RESTBOX";
 			parent::__construct($_PARAMS);
 			$this->_obj_map	= [
-				'forms'=>'modules\restbox\forms\ObjForm'
+				'forms'=>'\modules\restbox\forms\ObjForm'
 			];
 		}
 
@@ -33,7 +33,10 @@ namespace modules\restbox\forms {
 			try{
 				$r_pieces = explode('/',$_route);
 				$res['obj_class'] = $r_pieces[0];
-				
+				if(!isset($this->_obj_map[$res['obj_class']]))
+				{
+					return null;
+				}
 				$res['object']=['name'=>$r_pieces[1],'type'=>'config'];
 				$class_name = $this->_obj_map[$res['obj_class']];
 				$res['object']['class']=$class_name;
@@ -48,8 +51,9 @@ namespace modules\restbox\forms {
 				
 				if(!method_exists($class_name, $action_name))
 				{
-					//$action_name = $class_name::GetDefAction();
-					$action_name = call_user_func(array($class_name, '::GetDefAction'));
+					print_dbg($class_name.'::GetDefAction');
+					$action_name = call_user_func($class_name.'::GetDefAction');
+					// call_user_func(array($class_name, 'GetDefAction'));
 				}
 				else
 				{
@@ -96,45 +100,6 @@ namespace modules\restbox\forms {
 					//return $_obj_form;
 				} break;
 			}
-
-
-		/*	if($r_pieces[0]=='forms')
-			{
-				$form_name = $r_pieces[1];
-				array_shift($r_pieces);
-				array_shift($r_pieces);
-			//	print_dbg($r_pieces);
-				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-				$form_script = url_seg_add($_cfg_info['CFG_DIR'],'forms',$form_name).".php";
-				if(!file_exists($form_script))
-				{
-					$this->exe_mod_func('restbox','out_error',['message'=>"Form not with name $form_name exists",'errno'=>150]);
-				}
-				print_dbg($form_script ) ;
-			}
-		*/
-		/*	$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
-
-			$_request = call_user_func($obj_class . '::FindPattern', $_route, $ptrn_list);
-			if($_request!=false)
-			{
-				$_o_key = call_user_func($obj_class . '::getKey', $_request['request']);
-				if($this->exe_mod_func('restbox.route','obj_exists',$_o_key))
-				{
-					$_obj = $this->exe_mod_func('restbox.route','get_obj', $_o_key);
-				}
-				else
-				{
-					
-					$_obj = $this->exe_mod_func('restbox.route','add_obj', new $obj_class($_request['request'], $_cfg_info, $this), $_o_key);
-				}
-
-			//	print_dbg($_request);
-				$res_obj = $_obj->ExeAction($_request['action'],$_request['request']);
-				return $res_obj;
-			}
-			*/
-
 			return null;
 		}
 		
