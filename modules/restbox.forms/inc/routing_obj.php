@@ -7,7 +7,7 @@ namespace modules\restbox\forms {
    class RoutingObj extends restbox\AppObject {
 
         VAR $_CONN_ID;
-        VAR $authroles;
+        VAR $authroles;  
 
         function __construct($_req_params,$cfg_info=[],$pmodule=null)
         {
