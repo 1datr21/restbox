@@ -61,6 +61,11 @@ namespace modules\restbox\forms {
             }
         }
 
+        static function GetDefAction()
+        {
+            return "AInfo";
+        }
+        
         function beforeAction($_req_params)
         {
             $rb_info = $this->P_MODULE->exe_mod_func('restbox','get_settings');

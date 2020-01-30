@@ -48,7 +48,8 @@ namespace modules\restbox\forms {
 				
 				if(!method_exists($class_name, $action_name))
 				{
-					$action_name = $class_name::GetDefAction();
+					//$action_name = $class_name::GetDefAction();
+					$action_name = call_user_func(array($class_name, '::GetDefAction'));
 				}
 				else
 				{
