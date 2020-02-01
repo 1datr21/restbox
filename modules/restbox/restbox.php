@@ -26,8 +26,11 @@ namespace modules\restbox {
 		//	
 			//echo "THIS IS RESTBOX";
 			GLOBAL $_BASEDIR;
+			GLOBAL $_EP;
 			def_options(['cfgpath'=>'./restbox','basedir'=>$_BASEDIR],$_PARAMS);
 			parent::__construct($_PARAMS);
+			if(empty($_EP))	$this->_EP = 'frontend';
+			else $this->_EP = $_EP;
 			$this->ExtOut=[];
 			
 			GLOBAL $_MUL_DBG_WORK;
@@ -56,6 +59,7 @@ namespace modules\restbox {
 		function get_settings()
 		{
 			$stngs = $this->_CFG_INFO;
+			$stngs['_EP'] = $this->_EP;
 			$stngs['CFG_DIR'] = $this->_CFG_DIR;
 			return $stngs;
 		}
