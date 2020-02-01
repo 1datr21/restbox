@@ -73,9 +73,9 @@ namespace modules\restbox\forms {
 		function load_form($f_info)
 		{
 			$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-		//	print_dbg($_cfg_info ) ;
+			print_dbg($_cfg_info ) ;
 			$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],$_cfg_info['_EP'],'forms',$f_info['object']['name']).".php";
-			print_r($form_cfg);
+			print_dbg($form_cfg);
 			if(!file_exists($form_cfg))
 			{
 				$this->exe_mod_func('restbox','out_error',['message'=>"Form {$f_info['object']['name']} not exists",'errno'=>54]);
