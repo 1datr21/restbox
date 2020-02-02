@@ -83,7 +83,7 @@ namespace modules\restbox\forms {
 			}
 			$obj_class_name = $this->_obj_map[$f_info['obj_class']];
 			
-			include $form_cfg;
+			include $form_cfg; //commit 1  
 			$form_obj = new $obj_class_name($info);
 			//$form_obj->exe_submit($data);
 			return $form_obj;
