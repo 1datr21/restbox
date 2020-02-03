@@ -68,6 +68,14 @@ namespace modules\restbox\forms {
 			return $res;
 		}
 
+		function call_routed_obj($_route)
+		{
+			$obj_nfo = $this->obj_info_by_route($_route);
+			$obj_class_name = $this->_obj_map[$obj_nfo['obj_class']];
+			$obj = new $obj_class_name($obj_nfo,[],$this);
+			$res = $obj->exe_action($obj_nfo['action'],$obj_nfo['route_pieces']);
+		}
+
 		function load_form($f_info)
 		{
 			$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
@@ -105,7 +113,8 @@ namespace modules\restbox\forms {
 		function restbox_route_onquery(&$eargs)
 		{	
 		//	print_dbg(":::");			
-			$obj_res = $this->call_obj($eargs['route']);
+			//$obj_res = $this->call_obj($eargs['route']);
+			$obj_res = $this->call_routed_obj($eargs['route']);
 			
 			return $obj_res;
 		}	

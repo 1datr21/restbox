@@ -4,14 +4,38 @@ namespace modules\restbox\forms {
     use Core\Router as Router;
     
 
-   class ObjForm extends restbox\AppObject {
+   class ObjForm extends \RoutingObj {
 
         VAR $_CONN_ID;
         VAR $authroles;
+        VAR $_ROUTE_PARAMS;
 
         function __construct($_req_params,$cfg_info=[],$pmodule=null)
         {
             parent::__construct($_req_params,$cfg_info,$pmodule);
+            $this->_ROUTE_PARAMS = $_req_params;
+            $this->OnLoad();
+        }
+
+        function load_me()
+        {
+
+        }
+
+        function OnLoad()
+        {
+            $_cfg_info = $this->P_MODULE->exe_mod_func('restbox', 'get_settings');
+		//	print_dbg($_cfg_info ) ;
+			$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
+			if(!file_exists($form_cfg))
+			{
+				$this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
+				return;
+			}
+			$obj_class_name = $this->_obj_map[$this->_ROUTE_PARAMS['obj_class']];
+			
+			include $form_cfg;
+			$form_obj = new $obj_class_name($info);
         }
 
         static function GetRoutePatterns()
@@ -54,10 +78,10 @@ namespace modules\restbox\forms {
         {
          
        //     print_dbg( 'exists: '.$this->call_mod_func('restbox.db','connection_exists',$this->_CONN_ID) );
-            if(! $this->call_mod_func('restbox.db','connection_exists',$this->_CONN_ID) )
+            if(! $this->P_MODULE->call_mod_func('restbox.db','connection_exists',$this->_CONN_ID) )
             {
                 
-                $this->call_mod_func('restbox.db','connect',$dbparams,$this->_CONN_ID);    
+                $this->P_MODULE->call_mod_func('restbox.db','connect',$dbparams,$this->_CONN_ID);    
             }
         }
 
