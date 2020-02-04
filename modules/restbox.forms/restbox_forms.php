@@ -52,9 +52,11 @@ namespace modules\restbox\forms {
 				
 				if(!method_exists($class_name, $action_name))
 				{
+<<<<<<< HEAD
 				//	print_dbg($class_name.'::GetDefAction');
+=======
+>>>>>>> b8ec2874860b5564007eac44ce6c5ad332afdf7e
 					$action_name = call_user_func($class_name.'::GetDefAction');
-					// call_user_func(array($class_name, 'GetDefAction'));
 				}
 				else
 				{
@@ -68,6 +70,14 @@ namespace modules\restbox\forms {
 				$this->exe_mod_func('restbox','out_error',['message'=>"URL parsing error",'errno'=>55]);	
 			}
 			return $res;
+		}
+
+		function call_routed_obj($_route)
+		{
+			$obj_nfo = $this->obj_info_by_route($_route);
+			$obj_class_name = $this->_obj_map[$obj_nfo['obj_class']];
+			$obj = new $obj_class_name($obj_nfo,[],$this);
+			$res = $obj->exe_action($obj_nfo['action'],$obj_nfo['route_pieces']);
 		}
 
 		function load_form($f_info)
@@ -108,7 +118,8 @@ namespace modules\restbox\forms {
 		function restbox_route_onquery(&$eargs)
 		{	
 		//	print_dbg(":::");			
-			$obj_res = $this->call_obj($eargs['route']);
+			//$obj_res = $this->call_obj($eargs['route']);
+			$obj_res = $this->call_routed_obj($eargs['route']);
 			
 			return $obj_res;
 		}	
