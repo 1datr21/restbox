@@ -71,45 +71,14 @@ namespace modules\restbox\forms {
 		function call_routed_obj($_route)
 		{
 			$obj_nfo = $this->obj_info_by_route($_route);
+			if(!isset($this->_obj_map[$obj_nfo['obj_class']]))
+				return;
 			$obj_class_name = $this->_obj_map[$obj_nfo['obj_class']];
 			$obj = new $obj_class_name($obj_nfo,[],$this);
 			$res = $obj->exe_action($obj_nfo['action'],$obj_nfo['route_pieces']);
+			return $res;
 		}
-
-		function load_form($f_info)
-		{
-			$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-		//	print_dbg($_cfg_info ) ;
-			$form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$f_info['object']['name']).".php";
-			if(!file_exists($form_cfg))
-			{
-				$this->exe_mod_func('restbox','out_error',['message'=>"Form {$f_info['object']['name']} not exists",'errno'=>54]);
-				return;
-			}
-			$obj_class_name = $this->_obj_map[$f_info['obj_class']];
-			
-			include $form_cfg;
-			$form_obj = new $obj_class_name($info);
-			//$form_obj->exe_submit($data);
-			return $form_obj;
-		}
-
-		function call_obj($_route,$obj_class=null)   
-		{
-		//	print_dbg($_route);			
-			$obj_nfo = $this->obj_info_by_route($_route);
-			//print_dbg($obj_nfo);
-
-			switch($obj_nfo['obj_class'])
-			{
-				case 'forms': {
-					$_obj_form = $this->load_form($obj_nfo);
-					//return $_obj_form;
-				} break;
-			}
-			return null;
-		}
-		
+	
 		function restbox_route_onquery(&$eargs)
 		{	
 		//	print_dbg(":::");			
