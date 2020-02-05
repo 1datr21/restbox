@@ -18,7 +18,9 @@ namespace modules\restbox\forms {
 
         function exe_action($action,$_req_pieces)
         {
+            
 
+            return $this->$action($_req_pieces);
         }
 
         static function GetDefAction()

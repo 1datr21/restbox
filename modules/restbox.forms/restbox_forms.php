@@ -52,10 +52,7 @@ namespace modules\restbox\forms {
 				
 				if(!method_exists($class_name, $action_name))
 				{
-<<<<<<< HEAD
 				//	print_dbg($class_name.'::GetDefAction');
-=======
->>>>>>> b8ec2874860b5564007eac44ce6c5ad332afdf7e
 					$action_name = call_user_func($class_name.'::GetDefAction');
 				}
 				else
@@ -75,9 +72,12 @@ namespace modules\restbox\forms {
 		function call_routed_obj($_route)
 		{
 			$obj_nfo = $this->obj_info_by_route($_route);
+			if(!isset($this->_obj_map[$obj_nfo['obj_class']]))
+				return;
 			$obj_class_name = $this->_obj_map[$obj_nfo['obj_class']];
 			$obj = new $obj_class_name($obj_nfo,[],$this);
 			$res = $obj->exe_action($obj_nfo['action'],$obj_nfo['route_pieces']);
+			return $res;
 		}
 
 		function load_form($f_info)

@@ -7,6 +7,8 @@ use modules\restbox\table;
 
 $info = new obj_description([
 'fields'=>[
+    'name'=>'text',
+    'descr'=>'longtext'
 /*    'id'=>new ffield('hidden'),
     'name'=>new ffield('text',['maxlen'=>50]),
     'descr'=>new ffield('textbox',['maxlen'=>2500]),

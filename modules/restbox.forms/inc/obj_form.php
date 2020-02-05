@@ -4,11 +4,12 @@ namespace modules\restbox\forms {
     use Core\Router as Router;
     
 
-   class ObjForm extends \RoutingObj {
+   class ObjForm extends RoutingObj {
 
         VAR $_CONN_ID;
         VAR $authroles;
         VAR $_ROUTE_PARAMS;
+        VAR $_INFO;
 
         function __construct($_req_params,$cfg_info=[],$pmodule=null)
         {
@@ -32,10 +33,12 @@ namespace modules\restbox\forms {
 				$this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
 				return;
 			}
-			$obj_class_name = $this->_obj_map[$this->_ROUTE_PARAMS['obj_class']];
+		//	$obj_class_name = $this->_obj_map[$this->_ROUTE_PARAMS['obj_class']];
 			
-			include $form_cfg;
-			$form_obj = new $obj_class_name($info);
+            include $form_cfg;
+            $this->_INFO = $info;
+         //   print_dbg($this->_INFO);
+		//	$form_obj = new $obj_class_name($_cfg_info);
         }
 
         static function GetRoutePatterns()
@@ -47,7 +50,11 @@ namespace modules\restbox\forms {
 
         function AInfo()
         {
-            
+        //    print_dbg($this->_INFO->_info);
+            if(isset($this->_INFO->_info['fields'])) 
+            {
+                return $this->_INFO->_info['fields'];
+            }
         }
 
         function ASubmit($data=null)
@@ -55,6 +62,11 @@ namespace modules\restbox\forms {
             if($data==null)
             {
                 $data=$_POST;
+            }
+
+            if(isset($this->_INFO['_info']['events']['OnSubmit'])) 
+            {
+                return $this->_INFO['_info']['events']['OnSubmit']($data);
             }
         }
 
@@ -104,24 +116,7 @@ namespace modules\restbox\forms {
         }
 
 
-        function search_fld_by_synonims($fldbuf,$syn_array)
-        {
-            if(!is_array($syn_array))
-            {
-                $syn_array = [$syn_array];
-            }
-            foreach($fldbuf as $_fld_name => $fld)
-            {
-                foreach($syn_array as $syn)
-                {
-                    if(stristr($_fld_name,$syn)!=FALSE)
-                    {
-                        return $_fld_name;
-                    }
-                }
-            }
-            return null;
-        }
+       
         
    }
 
