@@ -51,6 +51,10 @@ jq_rbapi.prototype.get_sid = function() {
     return $.cookie('rbtoken');
 }
 
+jq_rbapi.prototype.sendform = function(form_el) {
+    return this.send($(form_el).attr('action'),new FormData($(form_el)));
+}
+
 jq_rbapi.prototype.detect_errors = function(_data)
 {
     if(_data.hasOwnProperty("SESS_ID"))
