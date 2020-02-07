@@ -20,8 +20,10 @@ $info = new obj_description([
 ],
 
 'events'=>[
-    'OnSubmit'=>function() {      
+    'OnSubmit'=>function($_p_data) {      
         print_dbg("The form is submited>>");
+        print_dbg($_p_data);
+        return $_p_data;
     },
 ],
 ]);

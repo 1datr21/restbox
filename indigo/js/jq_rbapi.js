@@ -52,7 +52,8 @@ jq_rbapi.prototype.get_sid = function() {
 }
 
 jq_rbapi.prototype.sendform = function(form_el) {
-    return this.send($(form_el).attr('action'),new FormData($(form_el)));
+    var fd = new FormData(form_el);
+    return this.send($(form_el).attr('action'),fd);
 }
 
 jq_rbapi.prototype.detect_errors = function(_data)
@@ -176,7 +177,12 @@ jq_rbapi.prototype.send = function(query,formdata)
 {
     var deffered = $.Deferred();
     var a = this;
-    $.ajax( this.base_url+"/?q="+query,{type : 'post',data: formdata, headers: {rbtoken: this.token}}).done(function( data ) 
+    var fullquery = query;
+    if(!query.match('/?q=')) 
+    {
+        fullquery = this.base_url+"/?q="+query;
+    }
+    $.ajax( fullquery, {type : 'post',data: formdata, headers: {rbtoken: this.token}}).done(function( data ) 
     {       
 
         var res = a.detect_errors(data); 

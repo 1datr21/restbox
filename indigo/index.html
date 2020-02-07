@@ -51,7 +51,7 @@
 
             $('#form_task').submit(function( event ) {   
                 event.preventDefault(); 
-                rb.sendform($('#form_task')).then(
+                rb.sendform($('#form_task').one()[0]).then(
                     function(r)
                     {
 
