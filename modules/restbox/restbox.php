@@ -27,13 +27,12 @@ namespace modules\restbox {
 			//echo "THIS IS RESTBOX";
 			GLOBAL $_BASEDIR;
 			GLOBAL $_EP;
-<<<<<<< HEAD
-=======
+
 			if(empty($_EP))
 				$this->_EP = 'frontend';
 			else
 				$this->_EP = $_EP;
->>>>>>> b8ec2874860b5564007eac44ce6c5ad332afdf7e
+
 			def_options(['cfgpath'=>'./restbox','basedir'=>$_BASEDIR],$_PARAMS);
 			parent::__construct($_PARAMS);
 			if(empty($_EP))	$this->_EP = 'frontend';
