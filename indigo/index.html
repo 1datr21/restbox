@@ -3,7 +3,9 @@
         <script src="./js/jquery.min.js"></script>
         <script src="./js/jquery.Templates.js"></script>
         <script src="./js/jquery.cookies.js"></script> 
+        <script src="./js/jquery.form.js"></script>
         <script src="./js/jq_rbapi.js"></script>   
+
         
            
         <script language="javascript">
@@ -45,6 +47,16 @@
                             $('[name=login]').val(),
                             $('[name=password]').val()
                     );                      
+            });
+
+            $('#form_task').submit(function( event ) {   
+                event.preventDefault(); 
+                rb.sendform($('#form_task').one()[0]).then(
+                    function(r)
+                    {
+
+                    }
+                );     
             });
 
             $( "#newtaskform" ).submit(function( event ) {         
@@ -124,12 +136,7 @@
     <button id="btn_logout">Logout</button>
 </div>
 
-<h3>Add new task</h3>
-<form method="post" action="http://restbox/?q=tables/save/tasks" id="newtaskform">
-    Name: <input type="text" name="name"  /><br />
-    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
-    <input type="submit" value="SAVE"/>
-</form>
+
 
 <div>
 <h4>TASKS</h4><button id="tasklist">GET </button>
@@ -140,7 +147,12 @@
 </div>
 <button id="btn_taskform">GET FORM </button><input type="text" id="form_url" value="forms/task/1/2" />
 
-
+<h3>Add new task</h3>
+<form method="post" action="http://restbox/?q=forms/task/submit" id="form_task">
+    Name: <input type="text" name="name"  /><br />
+    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
+    <input type="submit" value="SAVE"/>
+</form>
 
 <div id="div_err"></div>
 
