@@ -25,7 +25,7 @@ namespace modules\restbox\forms {
 
         static function GetDefAction()
         {
-            return "AInfo";
+            return "AInfo";  
         }
 
         function load_me()

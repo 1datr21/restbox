@@ -62,11 +62,11 @@ namespace modules\restbox\forms {
             {
                 $data=$_POST;
             }
-            print_dbg($this->_INFO);
+        //    print_dbg($this->_INFO->_info['events']);
 
-            if(isset($this->_INFO['_info']['events']['OnSubmit'])) 
+            if(isset($this->_INFO->_info['events']['OnSubmit'])) 
             {
-                return $this->_INFO['_info']['events']['OnSubmit']($data);
+                return $this->_INFO->_info['events']['OnSubmit']($data);
             }
         }
 
