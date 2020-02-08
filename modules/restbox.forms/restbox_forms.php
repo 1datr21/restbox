@@ -72,7 +72,9 @@ namespace modules\restbox\forms {
 		function call_routed_obj($_route)
 		{
 			$obj_nfo = $this->obj_info_by_route($_route);
-			//print_dbg($obj_nfo);
+			
+		//	print_dbg($obj_nfo);
+
 			if(!isset($this->_obj_map[$obj_nfo['obj_class']]))
 				return;
 			$obj_class_name = $this->_obj_map[$obj_nfo['obj_class']];

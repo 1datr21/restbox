@@ -26,20 +26,17 @@ namespace modules\restbox\forms {
         function OnLoad()
         {
             $_cfg_info = $this->P_MODULE->exe_mod_func('restbox', 'get_settings');
-		//	
-            $form_cfg = url_seg_add($_cfg_info['CFG_DIR'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
-            print_dbg($form_cfg ) ;
+		//	print_dbg($_cfg_info ) ;
+            $form_cfg = url_seg_add($_cfg_info['CFG_DIR'],$_cfg_info['_EP'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
+        //    print_dbg($form_cfg ) ;
 			if(!file_exists($form_cfg))
 			{
 				$this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
 				return;
-			}
-		//	$obj_class_name = $this->_obj_map[$this->_ROUTE_PARAMS['obj_class']];
-			
+			}			
             include $form_cfg;
+           // print_dbg($info ) ;
             $this->_INFO = $info;
-         //   print_dbg($this->_INFO);
-		//	$form_obj = new $obj_class_name($_cfg_info);
         }
 
         static function GetRoutePatterns()
@@ -60,10 +57,12 @@ namespace modules\restbox\forms {
 
         function ASubmit($data=null)
         {
+            //print_dbg("ASubmit");
             if($data==null)
             {
                 $data=$_POST;
             }
+            print_dbg($this->_INFO);
 
             if(isset($this->_INFO['_info']['events']['OnSubmit'])) 
             {
