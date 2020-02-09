@@ -26,7 +26,7 @@ $info = new obj_description([
         return $_p_data;
     },
     'OnValidate'=>function($_p_data) {
-        
+        print_dbg('Validating');
     }
 ],
 ]);
