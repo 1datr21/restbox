@@ -58,6 +58,9 @@ jq_rbapi.prototype.sendform = function(form_el) {
 
 jq_rbapi.prototype.validateform = function(form_el) {
     var serialized_data = $(form_el).serialize();
+    var theaction = $(form_el).attr('action');
+    var pieces = theaction.split('/');
+    pieces[2]='validate';
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
