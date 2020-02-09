@@ -18,13 +18,16 @@ $info = new obj_description([
     'createdate'=>new ffield('datetime'),
     */
 ],
-
+'table'=>'tasks',
 'events'=>[
     'OnSubmit'=>function($_p_data) {      
         print_dbg("The form is submited>>");
         print_dbg($_p_data);
         return $_p_data;
     },
+    'OnValidate'=>function($_p_data) {
+        
+    }
 ],
 ]);
 ?>
