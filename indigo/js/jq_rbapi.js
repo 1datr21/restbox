@@ -61,7 +61,8 @@ jq_rbapi.prototype.validateform = function(form_el) {
     var theaction = $(form_el).attr('action');
     var pieces = theaction.split('/');
     pieces[2]='validate';
-    return this.send($(form_el).attr('action'),serialized_data);
+    theaction =pieces.join("/");
+    return this.send(theaction,serialized_data);
 }
 
 jq_rbapi.prototype.detect_errors = function(_data)
