@@ -56,6 +56,11 @@ jq_rbapi.prototype.sendform = function(form_el) {
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
+jq_rbapi.prototype.forminfo = function(addr) // form info with csrf
+{
+
+}
+
 jq_rbapi.prototype.validateform = function(form_el) {
     var serialized_data = $(form_el).serialize();
     var theaction = $(form_el).attr('action');
