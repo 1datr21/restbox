@@ -139,12 +139,18 @@ namespace modules\restbox\session {
 			return $this->get_sess_vars();
 		}
 
-		function get_var($varname)
+		function get_var($varname,$defval=null)
 		{
 			$this->get_sess_vars();
-		//	print_dbg($this->_SESS_INFO);
+		//	print_dbg($this->_SESS_INFO);			
 			if(!isset($this->_SESS_INFO[$varname]))
+			{
+				if($defval!=null)
+				{
+					$this->set_sess_var($varname,$defval);
+				}
 				return null;
+			}
 			return $this->_SESS_INFO[$varname];
 		}
 
@@ -188,6 +194,11 @@ namespace modules\restbox\session {
 			$this->_SESS_INFO[$varname]=$varval;
 		//	print_dbg($this->_SESS_INFO);
 			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
+		}
+
+		function set_var($varname,$varval)
+		{
+			$this->set_sess_var($varname,$varval);
 		}
 
 		function unset_var($varname)

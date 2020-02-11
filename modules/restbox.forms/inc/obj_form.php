@@ -48,11 +48,15 @@ namespace modules\restbox\forms {
 
         function AInfo()
         {
-        //    print_dbg($this->_INFO->_info);
+            $finfo=[];
+
             if(isset($this->_INFO->_info['fields'])) 
             {
-                return $this->_INFO->_info['fields'];
+                $finfo['fields'] = $this->_INFO->_info['fields'];
             }
+
+            $finfo['csrf'] = $this->gen_token();
+            return $finfo;
         }
 
         function ASubmit($data=null)
@@ -85,6 +89,22 @@ namespace modules\restbox\forms {
             }
             return false;   
         }        
+
+        function gen_token()
+        {
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            // gen the id
+            do {
+                $csrf_id = GenRandStr(10);
+            }
+            while(isset($ftokens[$csrf_id]));
+
+            $csrf_val = GenRandStr(25);
+            $ftokens[$csrf_id]=$csrf_val;
+            $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
+
+            return ['csrf_id'=>$csrf_id,'csrf_val'=>$csrf_val];
+        }
 
         function connect_db($dbparams)  // connect the database
         {
