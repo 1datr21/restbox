@@ -147,6 +147,7 @@ namespace modules\restbox\session {
 			{
 				if($defval!=null)
 				{
+					$this->start_session();
 					$this->set_sess_var($varname,$defval);
 				}
 				return null;
@@ -274,11 +275,8 @@ namespace modules\restbox\session {
 
 		function rename($sid,$sid_new_name)
 		{
-		//	print_dbg('rename');
-		/*	if(file_exists($this->sess_file_path($sid)))
-			{*/
-				rename($this->sess_file_path($sid), $this->sess_file_path($sid_new_name));
-		/*	}*/
+		
+			rename($this->sess_file_path($sid), $this->sess_file_path($sid_new_name));
 		}
 
 		function get_modify_time($sid)
