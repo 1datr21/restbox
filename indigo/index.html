@@ -103,6 +103,7 @@
             rb.get($('#form_url').val()).then(function(fdata)
             {
                 console.log(fdata);
+                $('#form_task').append($('<input />').attr('type','hidden').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
                 // add hidden to form of task adding
             });
         }
