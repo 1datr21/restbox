@@ -103,8 +103,15 @@
             rb.get($('#form_url').val()).then(function(fdata)
             {
                 console.log(fdata);
-                $('#form_task').append($('<input />').attr('type','hidden').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
-                // add hidden to form of task adding
+                var csrf_input = $('#form_task input[type=hidden][role=csrf]').one();
+                if(csrf_input==null)
+                {
+                    $('#form_task').append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
+                }
+                else
+                {
+                    csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
+                }// add hidden to form of task adding
             });
         }
         </script>
