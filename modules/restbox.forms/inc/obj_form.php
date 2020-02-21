@@ -72,7 +72,7 @@ namespace modules\restbox\forms {
             {
                 return $this->_INFO->_info['events']['OnSubmit']($data);
             }
-        }
+        }        
 
         static function FindPattern($req_str,$ptrn_list)
         {
