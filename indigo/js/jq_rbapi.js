@@ -73,6 +73,14 @@ jq_rbapi.prototype.init_form = function(form_el) // form info with csrf
             });
 }
 
+jq_rbapi.prototype.form_url = function(form_el,action) {
+    var theaction = $(form_el).attr('action');
+    var pieces = theaction.split('/');
+    pieces[2]='validate';
+    theaction =pieces.join("/");
+    return '/?q='+theaction;
+}
+
 jq_rbapi.prototype.validateform = function(form_el) {
     var serialized_data = $(form_el).serialize();
     var theaction = $(form_el).attr('action');
