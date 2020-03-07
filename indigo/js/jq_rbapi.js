@@ -56,9 +56,21 @@ jq_rbapi.prototype.sendform = function(form_el) {
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
-jq_rbapi.prototype.forminfo = function(addr) // form info with csrf
+jq_rbapi.prototype.init_form = function(form_el) // form info with csrf
 {
-
+    rb.get($('#form_url').val()).then(function(fdata)
+            {
+                console.log(fdata);
+                var csrf_input = $('#form_task input[type=hidden][role=csrf]').one();
+                if(csrf_input==null)
+                {
+                    $('#form_task').append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
+                }
+                else
+                {
+                    csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
+                }// add hidden to form of task adding
+            });
 }
 
 jq_rbapi.prototype.validateform = function(form_el) {
