@@ -31,6 +31,7 @@ jq_rbapi.prototype.load_sid = function() {
             {
                 a.events.onLogout();
             }
+            a.load_rb_forms();
             a.events.ready();
         });
     }
@@ -38,10 +39,14 @@ jq_rbapi.prototype.load_sid = function() {
     {
         setTimeout(function()
         { 
+            // if session loaded
+            a.load_rb_forms();
             a.events.ready(); 
         },0);
     }
 }
+
+
 
 jq_rbapi.prototype.set_sid = function(_sid) {
     $.cookie('rbtoken', _sid, { path: '/' });
@@ -54,6 +59,15 @@ jq_rbapi.prototype.get_sid = function() {
 jq_rbapi.prototype.sendform = function(form_el) {
     var serialized_data = $(form_el).serialize();
     return this.send($(form_el).attr('action'),serialized_data);
+}
+
+jq_rbapi.prototype.load_rb_forms = function()
+{
+    var a = this;
+    $('form:not([norb])').each(function(idx)
+    {
+        a.loadform(this);
+    });    
 }
 
 jq_rbapi.prototype.loadform = function(form_el) // form info with csrf

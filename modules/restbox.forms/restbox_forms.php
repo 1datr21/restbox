@@ -100,9 +100,7 @@ namespace modules\restbox\forms {
 		
 		function restbox_route_onquery(&$eargs)
 		{	
-
-			$obj_res = $this->call_routed_obj($eargs['route']);
-			
+			$obj_res = $this->call_routed_obj($eargs['route']);			
 			return $obj_res;
 		}	
 			
