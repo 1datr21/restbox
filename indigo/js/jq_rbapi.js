@@ -85,6 +85,7 @@ jq_rbapi.prototype.form_url = function(form_el,action) {
     pieces[2]='validate';
     theaction =pieces.join("/");
     return '/?q='+theaction;
+}
 
 jq_rbapi.prototype.load_rb_forms = function()
 {
