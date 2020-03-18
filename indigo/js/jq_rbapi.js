@@ -61,7 +61,7 @@ jq_rbapi.prototype.sendform = function(form_el) {
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
-<<<<<<< HEAD
+
 jq_rbapi.prototype.init_form = function(form_el) // form info with csrf
 {
     rb.get($('#form_url').val()).then(function(fdata)
@@ -85,7 +85,7 @@ jq_rbapi.prototype.form_url = function(form_el,action) {
     pieces[2]='validate';
     theaction =pieces.join("/");
     return '/?q='+theaction;
-=======
+
 jq_rbapi.prototype.load_rb_forms = function()
 {
     var a = this;
@@ -122,7 +122,7 @@ jq_rbapi.prototype.loadform = function(form_el) // form info with csrf
             csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
         }// add hidden to form of task adding
     });
->>>>>>> f84fe077892904d1d0fa94db3bff5406495c08ba
+
 }
 
 jq_rbapi.prototype.validateform = function(form_el) {
