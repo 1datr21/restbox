@@ -101,6 +101,8 @@ namespace modules\restbox\forms {
 
             $csrf_val = GenRandStr(25);
             $ftokens[$csrf_id]=['token'=>$csrf_val,'_time'=>time()];
+            print_dbg('ftokens');
+            print_dbg($ftokens);
             $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
 
             return ['csrf_id'=>$csrf_id,'csrf_val'=>$csrf_val];
