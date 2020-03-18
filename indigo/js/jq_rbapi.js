@@ -31,6 +31,7 @@ jq_rbapi.prototype.load_sid = function() {
             {
                 a.events.onLogout();
             }
+            a.load_rb_forms();
             a.events.ready();
         });
     }
@@ -38,10 +39,14 @@ jq_rbapi.prototype.load_sid = function() {
     {
         setTimeout(function()
         { 
+            // if session loaded
+            a.load_rb_forms();
             a.events.ready(); 
         },0);
     }
 }
+
+
 
 jq_rbapi.prototype.set_sid = function(_sid) {
     $.cookie('rbtoken', _sid, { path: '/' });
@@ -56,6 +61,7 @@ jq_rbapi.prototype.sendform = function(form_el) {
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
+<<<<<<< HEAD
 jq_rbapi.prototype.init_form = function(form_el) // form info with csrf
 {
     rb.get($('#form_url').val()).then(function(fdata)
@@ -79,6 +85,44 @@ jq_rbapi.prototype.form_url = function(form_el,action) {
     pieces[2]='validate';
     theaction =pieces.join("/");
     return '/?q='+theaction;
+=======
+jq_rbapi.prototype.load_rb_forms = function()
+{
+    var a = this;
+    $('form:not([norb])').each(function(idx)
+    {
+        a.loadform(this);
+    });    
+}
+
+jq_rbapi.prototype.loadform = function(form_el) // form info with csrf
+{
+    var get_form_action = $(form_el).attr('forminfo');
+    var get_form_url = null;
+    if(get_form_action!==undefined)
+    {
+        get_form_url = get_form_action;
+    }
+    else
+    {
+        var get_form_url = $(form_el).attr('action');
+    }
+
+    rb.get(get_form_url).then(function(fdata)
+    {
+        console.log(fdata);
+
+        var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
+        if(csrf_input.length==0)
+        {
+            $(form_el).append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
+        }
+        else
+        {
+            csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
+        }// add hidden to form of task adding
+    });
+>>>>>>> f84fe077892904d1d0fa94db3bff5406495c08ba
 }
 
 jq_rbapi.prototype.validateform = function(form_el) {
@@ -186,11 +230,20 @@ jq_rbapi.prototype.logout = function()
     });
 }
 
+jq_rbapi.prototype.make_q_addr = function(query)
+{
+    if( /\?q\=/.test(query) )
+        return query;
+    else
+        return this.base_url+"/?q="+query;
+}
+
 jq_rbapi.prototype.get = function(query)
 {
     var deffered = $.Deferred();
     var a = this;
-    $.ajax( this.base_url+"/?q="+query,{type : 'get', headers: {rbtoken: this.token}}).done(function( data ) 
+    var query_real = this.make_q_addr(query);
+    $.ajax( this.make_q_addr(query),{type : 'get', headers: {rbtoken: this.token}}).done(function( data ) 
     {      
         var res = a.detect_errors(data); 
         if(res!==false)

@@ -71,9 +71,14 @@ namespace modules\restbox\session {
 		function load_sess_saver()
 		{
 			if(empty($this->sess_id))
-				$this->sess_id = $this->get_rb_token();
+			{
+				//$this->start_session();
+			//	$this->sess_id = $this->get_rb_token();
+			}
 			if(empty($this->_SSAVER))
+			{
 				$this->_SSAVER= new std_SessSaver($this->_sess_settings['max-exp']);
+			}
 			
 		}
 
@@ -116,6 +121,7 @@ namespace modules\restbox\session {
 			if(!isset($this->sess_id))
 			{
 				$this->sess_id = $this->gen_token();
+				$this->exe_mod_func('restbox','add_ext_data','SESS_ID',$this->sess_id);
 			//	print_dbg("session started ".$this->sess_id);
 				$this->_SESS_INFO['init_time']=time();
 			}
@@ -126,7 +132,7 @@ namespace modules\restbox\session {
 
 		function get_sess_vars()
 		{
-			
+			//print_dbg($this->sess_id);
 			$this->_SESS_INFO = $this->_SSAVER->get($this->sess_id);
 		//	print_dbg('sid is '.$this->sess_id);
 		//	print_dbg('sess info');
@@ -192,6 +198,7 @@ namespace modules\restbox\session {
 		function set_sess_var($varname,$varval)
 		{
 			$this->load_sess_saver();
+			$this->start_session();
 			$this->_SESS_INFO[$varname]=$varval;
 		//	print_dbg($this->_SESS_INFO);
 			$this->_SSAVER->save($this->sess_id,$this->_SESS_INFO);
