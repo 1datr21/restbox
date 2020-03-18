@@ -48,3 +48,28 @@
         )
 
 )
+
+				
+	03-18-2020 21:24:26.000000: ftokens
+				
+	03-18-2020 21:24:26.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [9WF2C46AD5] => Array
+        (
+            [token] => 2JHYewd6pZe1gS9BH1RgSqTHY
+            [_time] => 1584555866
+        )
+
+)
+
+				
+	03-18-2020 21:37:52.000000: The form is submited>>
+				
+	03-18-2020 21:37:52.000000: Array
+(
+    [name] => 
+    [descr] => 
+    [9WF2C46AD5] => 2JHYewd6pZe1gS9BH1RgSqTHY
+)
