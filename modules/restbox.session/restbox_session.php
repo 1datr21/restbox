@@ -94,12 +94,17 @@ namespace modules\restbox\session {
 			return null;
 		}
 
-		function restbox_route_onquery(&$eargs)
+		function login($eargs)
+		{
+			$obj_res = $this->call_obj('auth','modules\restbox\session\ObjAuthTable');
+			return $obj_res;
+		}
+	/*	function restbox_route_onquery(&$eargs)
 		{				
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
 			return $obj_res;
 		}
-
+	*/	
 		function clear_session()
 		{
 			$this->load_sess_saver();
