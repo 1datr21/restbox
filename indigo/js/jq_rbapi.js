@@ -64,25 +64,71 @@ jq_rbapi.prototype.sendform = function(form_el) {
 jq_rbapi.prototype.load_rb_forms = function()
 {
     var a = this;
-    $('form:not([norb])').each(function(idx)
-    {
-        a.loadform(this);
-    });    
+    var forms_to_load = Array.from($('form:not([norb])'));
+    var chunked = forms_to_load.chunk(2);
+    
+    this.load_chunks(chunked);
+  
 }
 
-jq_rbapi.prototype.loadform = function(form_el) // form info with csrf
+jq_rbapi.prototype.load_chunks = function(chunk_list,idx=0)
+{
+    if(idx<chunk_list.length-1)
+    {
+        var a = this;
+        this.loadchunk(chunk_list[idx], function()
+        {
+            a.load_chunks(chunk_list,idx+1);
+        });
+    }
+}
+
+jq_rbapi.prototype.loadchunk = function(forms_chunk,_ready) // load form chunk
+{
+    
+    var a = this;
+    var urls_str = this.make_q_addr( [].map.call(forms_chunk, function(el) {
+        return a.get_q_seg(a.form_info_url(el));
+      }).reverse().join(';') );
+    __ready=_ready;
+    this.get(urls_str).then(
+        function(fdata)
+        {
+            console.log(fdata);
+
+/*            var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
+            if(csrf_input.length==0)
+            {
+                $(form_el).append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
+            }
+            else
+            {
+                csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
+            }// add hidden to form of task adding
+            */
+            __ready();
+        }
+    );  
+}
+
+jq_rbapi.prototype.form_info_url = function(form_el) // form info with csrf
 {
     var get_form_action = $(form_el).attr('forminfo');
     var get_form_url = null;
     if(get_form_action!==undefined)
     {
-        get_form_url = get_form_action;
+        return get_form_action;
     }
     else
     {
-        var get_form_url = $(form_el).attr('action');
+        return $(form_el).attr('action');
     }
+    return null;
+}
 
+
+jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
+{
     rb.get(get_form_url).then(function(fdata)
     {
         console.log(fdata);
@@ -113,6 +159,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
     if(_data.hasOwnProperty("SESS_ID"))
     {
         this.token = _data.SESS_ID;
+        delete _data.SESS_ID;
         this.set_sid(this.token);
     }
     if(_data.hasOwnProperty("SessExpired"))
@@ -124,6 +171,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
             console.log("Session is dead");
             this.events.onLostAuth();
         }
+        delete _data.SessExpired;
     }
     if(_data.hasOwnProperty("error"))
     {
@@ -131,7 +179,11 @@ jq_rbapi.prototype.detect_errors = function(_data)
         {
             this.events.onError(_data.error.message);
         }
-        return _data.error.message;
+
+        var themes = _data.error.message;
+        delete _data.error;
+        
+        return themes;
     }
     else
     {
@@ -212,7 +264,38 @@ jq_rbapi.prototype.make_q_addr = function(query)
         return this.base_url+"/?q="+query;
 }
 
-jq_rbapi.prototype.get = function(query)
+
+jq_rbapi.prototype.get_q_seg = function(query)
+{
+    var re = /\?q\=(.*)/g;
+    var matches = re.exec(query);//.matchAll(/\?q\=(.*)/g);
+    if(matches!=null)
+    {
+        return matches[1];
+    }
+
+    return query;
+    /*
+    if( /\?q\=/.test(query) )
+        return query;
+    else
+        return this.base_url+"/?q="+query;
+    */
+}
+
+jq_rbapi.prototype.format_json = function(json_data,_format='object')
+{
+    switch(_format)
+    {
+        case 'object':
+            return json_data;
+        case 'array':
+
+            return json_data;
+    }
+}
+
+jq_rbapi.prototype.get = function(query,_format='object')
 {
     var deffered = $.Deferred();
     var a = this;
@@ -261,3 +344,12 @@ jq_rbapi.prototype.send = function(query,formdata)
 
     return deffered;//.promise();
 }
+
+Object.defineProperty(Array.prototype, 'chunk', {
+    value: function(chunkSize) {
+      var R = [];
+      for (var i = 0; i < this.length; i += chunkSize)
+        R.push(this.slice(i, i + chunkSize));
+      return R;
+    }
+  });
