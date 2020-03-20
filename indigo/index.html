@@ -122,7 +122,11 @@
 
 <div id="panel_auth">
     <h3>AUTH</h3>
+<<<<<<< HEAD
     <form method="post" action="http://restbox/?q=auth"  id="authForm" norb >
+=======
+    <form method="post" action="http://restbox/?q=forms/auth" id="authForm"  >
+>>>>>>> d57f839892a74e5165677291a5a33859df56b713
         <input type="text" name="login" value="vasyan" />
         <input type="password" name="password" value="" />
         <input type="submit" value="ENTER"/>
@@ -147,6 +151,24 @@
 
 <form method="post"  forminfo="forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task">
 
+    Name: <input type="text" name="name"  /><br />
+    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
+    <input type="submit" value="SAVE"/>
+</form>
+
+<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task2">
+    Name: <input type="text" name="name"  /><br />
+    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
+    <input type="submit" value="SAVE"/>
+</form>
+
+<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task3">
+    Name: <input type="text" name="name"  /><br />
+    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
+    <input type="submit" value="SAVE"/>
+</form>
+
+<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task4">
     Name: <input type="text" name="name"  /><br />
     Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
     <input type="submit" value="SAVE"/>

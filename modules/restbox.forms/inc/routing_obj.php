@@ -16,8 +16,6 @@ namespace modules\restbox\forms {
             $this->request = $_req_params;
         }
 
-        
-
         function exe_action($action,$_req_pieces)
         {
             
