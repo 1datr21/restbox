@@ -341,7 +341,7 @@ jq_rbapi.prototype.get = function(query,_format='object')
         else
         {
            // a.token = data[0].response.SESS_ID;
-           deffered.resolve(data[0].response);
+           deffered.resolve( a.format_json(data,_format));
         }              
     });
 
@@ -368,7 +368,7 @@ jq_rbapi.prototype.send = function(query,formdata)
         else
         {
            // a.token = data[0].response.SESS_ID;
-           deffered.resolve(data[0].response);
+           deffered.resolve(a.format_json(data));
         }
       
     });
