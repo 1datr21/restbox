@@ -321,8 +321,12 @@ jq_rbapi.prototype.format_json = function(json_data,_format='object')
         case 'object':
             return json_data;
         case 'array':
-
-            return json_data;
+            res = new Array();
+            for(key in json_data)
+            {
+                res.push(json_data[key].response);
+            }
+            return res;// json_data;
     }
 }
 
