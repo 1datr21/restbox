@@ -76,6 +76,7 @@ namespace modules\restbox\forms {
             }
         //    print_dbg($this->_INFO->_info['events']);
             // check csrf
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
             
 
             if(isset($this->_INFO->_info['events']['OnSubmit'])) 
