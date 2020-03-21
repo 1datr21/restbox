@@ -91,7 +91,7 @@ jq_rbapi.prototype.load_rb_forms = function()
 {
     var a = this;
     var forms_to_load = Array.from($('form:not([norb])'));
-    var chunked = forms_to_load.chunk(2);
+    var chunked = forms_to_load.chunk(20);
     
     this.load_chunks(chunked);
   
@@ -99,7 +99,7 @@ jq_rbapi.prototype.load_rb_forms = function()
 
 jq_rbapi.prototype.load_chunks = function(chunk_list,idx=0)
 {
-    if(idx<chunk_list.length-1)
+    if(idx<chunk_list.length)
     {
         var a = this;
         this.loadchunk(chunk_list[idx], function()
