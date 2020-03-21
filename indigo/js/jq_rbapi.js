@@ -125,17 +125,6 @@ jq_rbapi.prototype.loadchunk = function(forms_chunk,_ready) // load form chunk
             {
                 a.loadform(forms_chunk[idx],fdata[idx]);
             }
-
-/*            var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
-            if(csrf_input.length==0)
-            {
-                $(form_el).append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
-            }
-            else
-            {
-                csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
-            }// add hidden to form of task adding
-            */
             __ready();
         }
     );  
@@ -319,6 +308,12 @@ jq_rbapi.prototype.format_json = function(json_data,_format='object')
     switch(_format)
     {
         case 'object':
+            {
+                if(json_data.length===1)
+                {
+                    return json_data[0].response;
+                }
+            }
             return json_data;
         case 'array':
             res = new Array();

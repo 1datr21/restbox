@@ -596,3 +596,189 @@
         )
 
 )
+
+				
+	03-21-2020 19:48:10.000000: ftokens
+				
+	03-21-2020 19:48:10.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [oa48CQTr9y] => Array
+        (
+            [token] => nbgiGWJUSIsk2SI980kGKqwhM
+            [_time] => 1584809290
+        )
+
+)
+
+				
+	03-21-2020 19:48:10.000000: << D:/OpenServer/OSPanel/domains/restbox/modules/restbox.forms/inc/std/frontend/forms/auth.php
+				
+	03-21-2020 19:48:10.000000: ftokens
+				
+	03-21-2020 19:48:10.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [oa48CQTr9y] => Array
+        (
+            [token] => nbgiGWJUSIsk2SI980kGKqwhM
+            [_time] => 1584809290
+        )
+
+    [DWaixZ11j8] => Array
+        (
+            [token] => 7ClMG0yZl0eHtm23tmzSqi66j
+            [_time] => 1584809290
+        )
+
+)
+
+				
+	03-21-2020 19:48:46.000000: ftokens
+				
+	03-21-2020 19:48:46.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [oa48CQTr9y] => Array
+        (
+            [token] => nbgiGWJUSIsk2SI980kGKqwhM
+            [_time] => 1584809290
+        )
+
+    [DWaixZ11j8] => Array
+        (
+            [token] => 7ClMG0yZl0eHtm23tmzSqi66j
+            [_time] => 1584809290
+        )
+
+    [M8CXJlNnqy] => Array
+        (
+            [token] => AEdRrbCQEEPDTIE1um1n18eC9
+            [_time] => 1584809326
+        )
+
+)
+
+				
+	03-21-2020 19:48:46.000000: << D:/OpenServer/OSPanel/domains/restbox/modules/restbox.forms/inc/std/frontend/forms/auth.php
+				
+	03-21-2020 19:48:46.000000: ftokens
+				
+	03-21-2020 19:48:46.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [oa48CQTr9y] => Array
+        (
+            [token] => nbgiGWJUSIsk2SI980kGKqwhM
+            [_time] => 1584809290
+        )
+
+    [DWaixZ11j8] => Array
+        (
+            [token] => 7ClMG0yZl0eHtm23tmzSqi66j
+            [_time] => 1584809290
+        )
+
+    [M8CXJlNnqy] => Array
+        (
+            [token] => AEdRrbCQEEPDTIE1um1n18eC9
+            [_time] => 1584809326
+        )
+
+    [37UAO6EyTJ] => Array
+        (
+            [token] => gKQ7BOwbtSUH560UBEA7vGNOV
+            [_time] => 1584809326
+        )
+
+)
+
+				
+	03-21-2020 19:53:33.000000: ftokens
+				
+	03-21-2020 19:53:33.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [oa48CQTr9y] => Array
+        (
+            [token] => nbgiGWJUSIsk2SI980kGKqwhM
+            [_time] => 1584809290
+        )
+
+    [DWaixZ11j8] => Array
+        (
+            [token] => 7ClMG0yZl0eHtm23tmzSqi66j
+            [_time] => 1584809290
+        )
+
+    [M8CXJlNnqy] => Array
+        (
+            [token] => AEdRrbCQEEPDTIE1um1n18eC9
+            [_time] => 1584809326
+        )
+
+    [37UAO6EyTJ] => Array
+        (
+            [token] => gKQ7BOwbtSUH560UBEA7vGNOV
+            [_time] => 1584809326
+        )
+
+    [1zFygKXcbe] => Array
+        (
+            [token] => nQGwekfTp9e7xT7LzPa0Y06ec
+            [_time] => 1584809613
+        )
+
+)
+
+				
+	03-21-2020 19:53:33.000000: << D:/OpenServer/OSPanel/domains/restbox/modules/restbox.forms/inc/std/frontend/forms/auth.php
+				
+	03-21-2020 19:53:33.000000: ftokens
+				
+	03-21-2020 19:53:33.000000: Array
+(
+    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
+    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
+    [oa48CQTr9y] => Array
+        (
+            [token] => nbgiGWJUSIsk2SI980kGKqwhM
+            [_time] => 1584809290
+        )
+
+    [DWaixZ11j8] => Array
+        (
+            [token] => 7ClMG0yZl0eHtm23tmzSqi66j
+            [_time] => 1584809290
+        )
+
+    [M8CXJlNnqy] => Array
+        (
+            [token] => AEdRrbCQEEPDTIE1um1n18eC9
+            [_time] => 1584809326
+        )
+
+    [37UAO6EyTJ] => Array
+        (
+            [token] => gKQ7BOwbtSUH560UBEA7vGNOV
+            [_time] => 1584809326
+        )
+
+    [1zFygKXcbe] => Array
+        (
+            [token] => nQGwekfTp9e7xT7LzPa0Y06ec
+            [_time] => 1584809613
+        )
+
+    [sujMAMHqTz] => Array
+        (
+            [token] => 1RISUuUxPPmc5uiicXSfEglCn
+            [_time] => 1584809613
+        )
+
+)

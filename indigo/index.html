@@ -22,8 +22,8 @@
                 onAuth : function() 
                     {
                         rb.userinfo().then(function(res)
-                        {
-                            $('#ulogin').html(res.login);    
+                        {                            
+                            $('#ulogin').html(res.login);                           
                         });
                         $('#panel_auth').hide();  
                         $('#panel_logout').show();
