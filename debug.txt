@@ -1,24 +1,10 @@
 
 				
-	03-21-2020 21:58:25.000000: existing ftokens
+	03-21-2020 22:24:05.000000: The form is submited>>
 				
-	03-21-2020 21:58:26.000000: 
-				
-	03-21-2020 21:58:26.000000: existing ftokens
-				
-	03-21-2020 21:58:26.000000: Array
+	03-21-2020 22:24:05.000000: Array
 (
-    [lWN2cFXzOS] => Array
-        (
-            [token] => alMcpuu2mPBvE8DqLeO2OTFnd
-            [_time] => 1584817106
-        )
-
-)
-
-				
-	03-21-2020 21:58:26.000000: Array
-(
-    [token] => alMcpuu2mPBvE8DqLeO2OTFnd
-    [_time] => 1584817106
+    [name] => qeeee
+    [descr] => weerakochah
+    [9CUNjWcHsr] => L6qDCWnbanja9LDLWdO4XM3z3
 )

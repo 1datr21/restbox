@@ -132,11 +132,11 @@ namespace modules\restbox\forms {
             $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
             $token_exp_time = 5000;
             $save=false;
-            print_dbg('existing ftokens');
-            print_dbg($ftokens);
+           // print_dbg('existing ftokens');
+           // print_dbg(is_array($ftokens));
             foreach($ftokens as $tkey => $tinfo)
             {
-                print_dbg($tinfo);
+            //    print_dbg($tinfo);
                 if(time()-$tinfo['_time'] > $token_exp_time)
                 {
                     unset($ftokens[$tkey]);
