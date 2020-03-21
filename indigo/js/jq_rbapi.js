@@ -309,7 +309,8 @@ jq_rbapi.prototype.format_json = function(json_data,_format='object')
     {
         case 'object':
             {
-                if(json_data.length===1)
+                var dkeys = Object.keys(json_data);
+                if(dkeys.length===1)
                 {
                     return json_data[0].response;
                 }

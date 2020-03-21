@@ -76,14 +76,30 @@ namespace modules\restbox\forms {
             }
         //    print_dbg($this->_INFO->_info['events']);
             // check csrf
-            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
-            
+            if(!$this->check_csrf($data))
+            {
+                $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                return;    
+            }            
 
             if(isset($this->_INFO->_info['events']['OnSubmit'])) 
             {
                 return $this->_INFO->_info['events']['OnSubmit']($data);
             }
         }        
+
+        function check_csrf($formdata)
+        {
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            foreach($ftokens as $tkey => $tval)
+            {
+                if(isset($formdata[$tkey]))
+                {
+                    return ($formdata[$tkey]==$tval);
+                }
+            }
+            return false;
+        }
 
         static function FindPattern($req_str,$ptrn_list)
         {
