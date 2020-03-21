@@ -91,7 +91,7 @@ namespace modules\restbox\forms {
         function check_csrf($formdata)
         {
           //  print_dbg('check csrf');
-            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            $ftokens = $this->get_token_list();
          //   print_dbg($ftokens);
             foreach($ftokens as $tkey => $tval)
             {
@@ -132,9 +132,12 @@ namespace modules\restbox\forms {
             $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
             $token_exp_time = 5000;
             $save=false;
+            print_dbg('existing ftokens');
+            print_dbg($ftokens);
             foreach($ftokens as $tkey => $tinfo)
             {
-                if(time()-$tinfo['time'] > $token_exp_time)
+                print_dbg($tinfo);
+                if(time()-$tinfo['_time'] > $token_exp_time)
                 {
                     unset($ftokens[$tkey]);
                     $save=true;
@@ -142,13 +145,14 @@ namespace modules\restbox\forms {
             }
             if($save)
             {
-                
+                $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
             }
+            return $ftokens;
         }
 
         function gen_token()
         {
-            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            $ftokens = $this->get_token_list();
             // gen the id
             do {
                 $csrf_id = GenRandStr(10);

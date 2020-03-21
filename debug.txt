@@ -1,194 +1,24 @@
 
 				
-	03-21-2020 20:31:16.000000: ftokens
+	03-21-2020 21:58:25.000000: existing ftokens
 				
-	03-21-2020 20:31:16.000000: Array
+	03-21-2020 21:58:26.000000: 
+				
+	03-21-2020 21:58:26.000000: existing ftokens
+				
+	03-21-2020 21:58:26.000000: Array
 (
-    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
-    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
-    [ln3qiPlTxR] => Array
+    [lWN2cFXzOS] => Array
         (
-            [token] => tjqUKI4lpuZek6Qxuhmcbede3
-            [_time] => 1584811586
-        )
-
-    [Ry295KcsQt] => Array
-        (
-            [token] => El94sgjffjaFkakN5c0fKJB57
-            [_time] => 1584811587
-        )
-
-    [yzJEPUALPM] => Array
-        (
-            [token] => mB6fCjUdW8X3G2wgrCc82ORFz
-            [_time] => 1584811749
-        )
-
-    [777tfKGx1q] => Array
-        (
-            [token] => otvX9BQaqRL3K20bFfO1c2e11
-            [_time] => 1584811750
-        )
-
-    [X44taBdmNC] => Array
-        (
-            [token] => u4d6Bt4vA3nwqcJPddEZb7Cjp
-            [_time] => 1584811876
+            [token] => alMcpuu2mPBvE8DqLeO2OTFnd
+            [_time] => 1584817106
         )
 
 )
 
 				
-	03-21-2020 20:31:16.000000: << D:/OpenServer/OSPanel/domains/restbox/modules/restbox.forms/inc/std/frontend/forms/auth.php
-				
-	03-21-2020 20:31:16.000000: ftokens
-				
-	03-21-2020 20:31:16.000000: Array
+	03-21-2020 21:58:26.000000: Array
 (
-    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
-    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
-    [ln3qiPlTxR] => Array
-        (
-            [token] => tjqUKI4lpuZek6Qxuhmcbede3
-            [_time] => 1584811586
-        )
-
-    [Ry295KcsQt] => Array
-        (
-            [token] => El94sgjffjaFkakN5c0fKJB57
-            [_time] => 1584811587
-        )
-
-    [yzJEPUALPM] => Array
-        (
-            [token] => mB6fCjUdW8X3G2wgrCc82ORFz
-            [_time] => 1584811749
-        )
-
-    [777tfKGx1q] => Array
-        (
-            [token] => otvX9BQaqRL3K20bFfO1c2e11
-            [_time] => 1584811750
-        )
-
-    [X44taBdmNC] => Array
-        (
-            [token] => u4d6Bt4vA3nwqcJPddEZb7Cjp
-            [_time] => 1584811876
-        )
-
-    [ar4CO0DqF8] => Array
-        (
-            [token] => rvaME8dAcLTmL4WVwLreYnOa0
-            [_time] => 1584811876
-        )
-
-)
-
-				
-	03-21-2020 20:45:31.000000: The form is submited>>
-				
-	03-21-2020 20:45:31.000000: Array
-(
-    [name] => saa
-    [descr] => eee
-    [ar4CO0DqF8] => rvaME8dAcLTmL4WVwLreYnOa0
-)
-
-				
-	03-21-2020 20:47:29.000000: ftokens
-				
-	03-21-2020 20:47:29.000000: Array
-(
-    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
-    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
-    [ln3qiPlTxR] => Array
-        (
-            [token] => tjqUKI4lpuZek6Qxuhmcbede3
-            [_time] => 1584811586
-        )
-
-    [Ry295KcsQt] => Array
-        (
-            [token] => El94sgjffjaFkakN5c0fKJB57
-            [_time] => 1584811587
-        )
-
-    [yzJEPUALPM] => Array
-        (
-            [token] => mB6fCjUdW8X3G2wgrCc82ORFz
-            [_time] => 1584811749
-        )
-
-    [777tfKGx1q] => Array
-        (
-            [token] => otvX9BQaqRL3K20bFfO1c2e11
-            [_time] => 1584811750
-        )
-
-    [X44taBdmNC] => Array
-        (
-            [token] => u4d6Bt4vA3nwqcJPddEZb7Cjp
-            [_time] => 1584811876
-        )
-
-    [9UmILQ5aUD] => Array
-        (
-            [token] => RoAT9FyJmOoBvr8yF6F73ussM
-            [_time] => 1584812849
-        )
-
-)
-
-				
-	03-21-2020 20:47:29.000000: << D:/OpenServer/OSPanel/domains/restbox/modules/restbox.forms/inc/std/frontend/forms/auth.php
-				
-	03-21-2020 20:47:29.000000: ftokens
-				
-	03-21-2020 20:47:30.000000: Array
-(
-    [RsPTI8FSLd] => OpuBXcz0AUAeLtt9ot79HAm4M
-    [oxWY5Rtfac] => svPgvDj63o4rLllXpC5hsGecS
-    [ln3qiPlTxR] => Array
-        (
-            [token] => tjqUKI4lpuZek6Qxuhmcbede3
-            [_time] => 1584811586
-        )
-
-    [Ry295KcsQt] => Array
-        (
-            [token] => El94sgjffjaFkakN5c0fKJB57
-            [_time] => 1584811587
-        )
-
-    [yzJEPUALPM] => Array
-        (
-            [token] => mB6fCjUdW8X3G2wgrCc82ORFz
-            [_time] => 1584811749
-        )
-
-    [777tfKGx1q] => Array
-        (
-            [token] => otvX9BQaqRL3K20bFfO1c2e11
-            [_time] => 1584811750
-        )
-
-    [X44taBdmNC] => Array
-        (
-            [token] => u4d6Bt4vA3nwqcJPddEZb7Cjp
-            [_time] => 1584811876
-        )
-
-    [9UmILQ5aUD] => Array
-        (
-            [token] => RoAT9FyJmOoBvr8yF6F73ussM
-            [_time] => 1584812849
-        )
-
-    [5LWsUgeNsj] => Array
-        (
-            [token] => BqMHEbNujc8SmhTT4IKr4hy1Q
-            [_time] => 1584812849
-        )
-
+    [token] => alMcpuu2mPBvE8DqLeO2OTFnd
+    [_time] => 1584817106
 )

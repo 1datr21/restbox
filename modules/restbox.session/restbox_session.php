@@ -160,6 +160,7 @@ namespace modules\restbox\session {
 				{
 					$this->start_session();
 					$this->set_sess_var($varname,$defval);
+					return $defval;
 				}
 				return null;
 			}
