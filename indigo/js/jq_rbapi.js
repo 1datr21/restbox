@@ -117,10 +117,14 @@ jq_rbapi.prototype.loadchunk = function(forms_chunk,_ready) // load form chunk
         return a.get_q_seg(a.form_info_url(el));
       }).reverse().join(';') );
     __ready=_ready;
-    this.get(urls_str).then(
+    this.get(urls_str,'array').then(
         function(fdata)
         {
             console.log(fdata);
+            for(idx=0;idx<fdata.length;idx++)
+            {
+                a.loadform(forms_chunk[idx],fdata[idx]);
+            }
 
 /*            var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
             if(csrf_input.length==0)
@@ -155,8 +159,8 @@ jq_rbapi.prototype.form_info_url = function(form_el) // form info with csrf
 
 jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 {
-    rb.get(get_form_url).then(function(fdata)
-    {
+    /*rb.get(get_form_url).then(function(fdata)
+    {*/
         console.log(fdata);
 
         var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
@@ -168,7 +172,7 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
         {
             csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
         }// add hidden to form of task adding
-    });
+   // });
 
 }
 
