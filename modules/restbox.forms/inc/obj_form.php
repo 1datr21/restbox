@@ -75,6 +75,8 @@ namespace modules\restbox\forms {
                 $data=$_POST;
             }
         //    print_dbg($this->_INFO->_info['events']);
+            // check csrf
+            
 
             if(isset($this->_INFO->_info['events']['OnSubmit'])) 
             {
