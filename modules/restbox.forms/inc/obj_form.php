@@ -129,7 +129,21 @@ namespace modules\restbox\forms {
 
         function get_token_list()
         {
-            
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            $token_exp_time = 5000;
+            $save=false;
+            foreach($ftokens as $tkey => $tinfo)
+            {
+                if(time()-$tinfo['time'] > $token_exp_time)
+                {
+                    unset($ftokens[$tkey]);
+                    $save=true;
+                }
+            }
+            if($save)
+            {
+                
+            }
         }
 
         function gen_token()
