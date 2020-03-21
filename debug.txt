@@ -1,0 +1,10 @@
+
+				
+	03-21-2020 18:22:29.000000: The form is submited>>
+				
+	03-21-2020 18:22:29.000000: Array
+(
+    [name] => уу
+    [descr] => ууаууу
+    [Xp8UhgEdJo] => 6Zi9uRIUjozRsbItk5DEAhCt1
+)
