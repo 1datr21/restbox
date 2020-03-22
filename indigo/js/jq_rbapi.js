@@ -56,24 +56,33 @@ jq_rbapi.prototype.get_sid = function() {
     return $.cookie('rbtoken');
 }
 
+jq_rbapi.prototype.set_form_errors = function(err_data,form_el) {
+
+}
+
 jq_rbapi.prototype.sendform = function(form_el) {
     var serialized_data = $(form_el).serialize();
     var form_action = $(form_el).attr('action');
     var _action = this.get_q_seg(form_action);
     var q_validate = this.make_q_addr(this.action_seg_change(_action,'validate'));
     var q_submit = this.make_q_addr(this.action_seg_change(_action,'submit'));
+    var a =  this;
   //  var q_total = q_validate+';'+q_submit);
     this.send(q_validate,serialized_data).then(
         function(qres)
         {
-            console.log(qres);
+            
             if(qres==null)
             {
-                this.send(q_submit,serialized_data).then(
+                a.send(q_submit,serialized_data).then(
                     function(qres)
                     {
-
+                       // console.log(qres);    
                     });    
+            }
+            else
+            {
+                a.set_form_errors(qres,form_el);
             }
         }
     );

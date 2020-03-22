@@ -1,7 +1,14 @@
 
 				
-	03-22-2020 22:30:05.000000: Validating
+	03-22-2020 22:53:01.000000: Validated
 				
-	03-22-2020 22:30:22.000000: Validating
+	03-22-2020 22:53:01.000000: The form is submited>>
 				
-	03-22-2020 22:32:59.000000: Validating
+	03-22-2020 22:53:01.000000: Array
+(
+    [name] => dududu
+    [descr] => XeXeX
+eXeXe
+XeXeX
+    [bT3Lg3ujTp] => djddXO5TBess0OToQqn7AKUxU
+)
