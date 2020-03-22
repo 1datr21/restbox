@@ -67,6 +67,25 @@ namespace modules\restbox\forms {
             return $finfo;
         }
 
+        function AValidate($data=null)
+        {
+            if($data==null)
+            {
+                $data=$_POST;
+            }
+            // check csrf
+            if(!$this->check_csrf($data))
+            {
+                $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                return;    
+            }  
+
+            if(isset($this->_INFO->_info['events']['OnValidate'])) 
+            {
+                return $this->_INFO->_info['events']['OnValidate']($data);
+            }
+        }
+
         function ASubmit($data=null)
         {
             //print_dbg("ASubmit");
@@ -132,8 +151,7 @@ namespace modules\restbox\forms {
             $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
             $token_exp_time = 5000;
             $save=false;
-           // print_dbg('existing ftokens');
-           // print_dbg(is_array($ftokens));
+         
             foreach($ftokens as $tkey => $tinfo)
             {
             //    print_dbg($tinfo);
