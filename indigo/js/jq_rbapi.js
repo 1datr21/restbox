@@ -59,6 +59,7 @@ jq_rbapi.prototype.get_sid = function() {
 jq_rbapi.prototype.sendform = function(form_el) {
     var serialized_data = $(form_el).serialize();
     var form_action = $(form_el).attr('action');
+    var query = this.get_q_seg(form_action);
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
