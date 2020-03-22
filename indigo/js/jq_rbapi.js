@@ -67,7 +67,14 @@ jq_rbapi.prototype.sendform = function(form_el) {
         function(qres)
         {
             console.log(qres);
-            
+            if(qres==null)
+            {
+                this.send(q_submit,serialized_data).then(
+                    function(qres)
+                    {
+
+                    });    
+            }
         }
     );
 }
