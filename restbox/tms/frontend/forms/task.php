@@ -26,7 +26,13 @@ $info = new obj_description([
         return $_p_data;
     },
     'OnValidate'=>function($_p_data) {
+        $_res=[];
+        if(empty($_p_data['name']))
+        {
+            $_res['name']='Name could not be empty';
+        }
         print_dbg('Validating');
+        return $_res;
     }
 ],
 ]);
