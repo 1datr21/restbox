@@ -58,6 +58,7 @@ jq_rbapi.prototype.get_sid = function() {
 
 jq_rbapi.prototype.sendform = function(form_el) {
     var serialized_data = $(form_el).serialize();
+    var form_action = $(form_el).attr('action');
     return this.send($(form_el).attr('action'),serialized_data);
 }
 
@@ -93,6 +94,11 @@ jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
         parent_el = document;
     var a = this;
     var forms_to_load = Array.from($(parent_el).find('form:not([norb])'));
+
+    $(parent_el).find('form:not([norb])').on('submit',function(){
+        
+    });
+
     var chunked = forms_to_load.chunk(20);
     
     this.load_chunks(chunked);
@@ -159,6 +165,14 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
     {
         csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
     }// add hidden to form of task adding
+}
+
+jq_rbapi.prototype.action_seg_change = function(theaction,newseg,segno=2) {
+ 
+    var pieces = theaction.split('/');
+    pieces[segno]='newseg';
+    return pieces.join("/");
+    
 }
 
 jq_rbapi.prototype.validateform = function(form_el) {
