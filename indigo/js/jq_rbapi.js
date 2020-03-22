@@ -294,13 +294,7 @@ jq_rbapi.prototype.get_q_seg = function(query)
         return matches[1];
     }
 
-    return query;
-    /*
-    if( /\?q\=/.test(query) )
-        return query;
-    else
-        return this.base_url+"/?q="+query;
-    */
+    return query;    
 }
 
 jq_rbapi.prototype.format_json = function(json_data,_format='object')
