@@ -74,7 +74,7 @@ namespace modules\restbox\forms {
                 $data=$_POST;
             }
             // check csrf
-            if(!$this->check_csrf($data))
+            if(!$this->check_csrf($data,false))
             {
                 $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
                 return;    
@@ -107,7 +107,7 @@ namespace modules\restbox\forms {
             }
         }        
 
-        function check_csrf($formdata)
+        function check_csrf($formdata,$delete_token=true)
         {
           //  print_dbg('check csrf');
             $ftokens = $this->get_token_list();
@@ -118,7 +118,7 @@ namespace modules\restbox\forms {
                 {                    
 
                     $res = ($formdata[$tkey]==$tval['token']);
-                    if($res)
+                    if($res && $delete_token)
                     {
                         unset($ftokens[$tkey]);  
                         $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);  

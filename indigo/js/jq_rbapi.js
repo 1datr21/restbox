@@ -61,7 +61,7 @@ jq_rbapi.prototype.sendform = function(form_el) {
     var form_action = $(form_el).attr('action');
     var _action = this.get_q_seg(form_action);
     var q_validate = this.action_seg_change(_action,'validate');
-    var q_submit = this.action_seg_change(_action,'validate');
+    var q_submit = this.action_seg_change(_action,'submit');
     var q_total = this.make_q_addr(q_validate+';'+q_submit);
     return this.send(q_total,serialized_data);
 }
@@ -174,7 +174,7 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 jq_rbapi.prototype.action_seg_change = function(theaction,newseg,segno=2) {
  
     var pieces = theaction.split('/');
-    pieces[segno]='newseg';
+    pieces[segno]=newseg;
     return pieces.join("/");
     
 }
