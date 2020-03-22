@@ -195,6 +195,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
     }
     if(_data.hasOwnProperty("csrf_changed"))
     {
+        delete _data.csrf_changed; 
     }
     if(_data.hasOwnProperty("error"))
     {

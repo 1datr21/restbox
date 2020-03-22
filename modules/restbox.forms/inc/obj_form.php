@@ -115,8 +115,7 @@ namespace modules\restbox\forms {
             foreach($ftokens as $tkey => $tval)
             {
                 if(isset($formdata[$tkey]))
-                {
-                    
+                {                    
 
                     $res = ($formdata[$tkey]==$tval['token']);
                     if($res)
