@@ -193,6 +193,9 @@ jq_rbapi.prototype.detect_errors = function(_data)
         }
         delete _data.SessExpired;
     }
+    if(_data.hasOwnProperty("csrf_changed"))
+    {
+    }
     if(_data.hasOwnProperty("error"))
     {
         if(this.events.hasOwnProperty("onError"))
