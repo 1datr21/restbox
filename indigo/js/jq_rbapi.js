@@ -87,10 +87,12 @@ jq_rbapi.prototype.form_url = function(form_el,action) {
     return '/?q='+theaction;
 }
 
-jq_rbapi.prototype.load_rb_forms = function()
+jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
 {
+    if(parent_el==null)
+        parent_el = document;
     var a = this;
-    var forms_to_load = Array.from($('form:not([norb])'));
+    var forms_to_load = Array.from($(parent_el).find('form:not([norb])'));
     var chunked = forms_to_load.chunk(20);
     
     this.load_chunks(chunked);
@@ -147,22 +149,16 @@ jq_rbapi.prototype.form_info_url = function(form_el) // form info with csrf
 
 
 jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
-{
-    /*rb.get(get_form_url).then(function(fdata)
-    {*/
-        console.log(fdata);
-
-        var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
-        if(csrf_input.length==0)
-        {
-            $(form_el).append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
-        }
-        else
-        {
-            csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
-        }// add hidden to form of task adding
-   // });
-
+{ 
+    var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
+    if(csrf_input.length==0)
+    {
+        $(form_el).append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
+    }
+    else
+    {
+        csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
+    }// add hidden to form of task adding
 }
 
 jq_rbapi.prototype.validateform = function(form_el) {
@@ -365,7 +361,6 @@ jq_rbapi.prototype.send = function(query,formdata)
         }
         else
         {
-           // a.token = data[0].response.SESS_ID;
            deffered.resolve(a.format_json(data));
         }
       
