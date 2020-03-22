@@ -80,7 +80,7 @@ namespace modules\restbox\forms {
                 return;    
             }  
 
-            if(isset($this->_INFO->_info['events']['OnValidate'])) 
+            if(isset($this->_INFO->_info['events']['OnValidate']))   
             {
                 return $this->_INFO->_info['events']['OnValidate']($data);
             }
