@@ -62,7 +62,8 @@ jq_rbapi.prototype.sendform = function(form_el) {
     var _action = this.get_q_seg(form_action);
     var q_validate = this.action_seg_change(_action,'validate');
     var q_submit = this.action_seg_change(_action,'validate');
-    return this.send($(form_el).attr('action'),serialized_data);
+    var q_total = this.make_q_addr(q_validate+';'+q_submit);
+    return this.send(q_total,serialized_data);
 }
 
 
