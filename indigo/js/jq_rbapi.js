@@ -57,7 +57,16 @@ jq_rbapi.prototype.get_sid = function() {
 }
 
 jq_rbapi.prototype.set_form_errors = function(err_data,form_el) {
+    for(key in err_data)
+    {
+        $(form_el).find('[field='+key+'][role=error]').text(err_data[key]);
+    }
+}
 
+jq_rbapi.prototype.clear_form_errors = function(form_el) {
+    
+    $(form_el).find('[role=error]').text('');
+    
 }
 
 jq_rbapi.prototype.sendform = function(form_el) {
@@ -67,7 +76,8 @@ jq_rbapi.prototype.sendform = function(form_el) {
     var q_validate = this.make_q_addr(this.action_seg_change(_action,'validate'));
     var q_submit = this.make_q_addr(this.action_seg_change(_action,'submit'));
     var a =  this;
-  //  var q_total = q_validate+';'+q_submit);
+  
+    this.clear_form_errors(form_el);
     this.send(q_validate,serialized_data).then(
         function(qres)
         {
