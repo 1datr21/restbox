@@ -85,9 +85,13 @@ jq_rbapi.prototype.sendform = function(form_el) {
             if(qres==null)
             {
                 a.send(q_submit,serialized_data).then(
-                    function(qres)
+                    function(qres)  // successfull send form
                     {
-                       // console.log(qres);    
+                        if(getattr(form_el,'autoclear',true))
+                        {
+                            a.autoclear_form(form_el);
+                        }
+                        exe_event(form_el,'aftersubmit',qres)
                     });    
             }
             else
@@ -98,6 +102,14 @@ jq_rbapi.prototype.sendform = function(form_el) {
     );
 }
 
+jq_rbapi.prototype.autoclear_form = function(form_el) { 
+    var elements = $(form_el).find('input[type=text],textarea');
+    for(idx=0;idx<elements.length;idx++)
+    {
+        var emptyval = getattr(elements[idx], 'defval','');
+        $(elements[idx]).val(emptyval);
+    }
+}
 
 jq_rbapi.prototype.init_form = function(form_el) // form info with csrf
 {
@@ -244,9 +256,7 @@ jq_rbapi.prototype.detect_errors = function(_data)
         for(idx=0;idx<_data.csrf_changed.length;idx++)
         {
             var token_fld = $('input[type=hidden][role=csrf][name='+_data.csrf_changed[idx].token_old+']');
-            $(token_fld).attr('name',_data.csrf_changed[idx].token_new).attr('value',_data.csrf_changed[idx].token_new_val);
-
-            //<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));  
+            $(token_fld).attr('name',_data.csrf_changed[idx].token_new).attr('value',_data.csrf_changed[idx].token_new_val); 
         }
         delete _data.csrf_changed; 
     }
@@ -434,3 +444,22 @@ Object.defineProperty(Array.prototype, 'chunk', {
       return R;
     }
   });
+
+function exe_event(element,event,params)
+{
+    var attr_ev = $(element).attr(event);
+    if(attr_ev!=null)
+    {
+        attr_ev(params);
+    }
+    
+    $(element).trigger(event, params);
+}
+
+function getattr(instance,attrname,defval=null)
+{
+    var avalue = $(instance).attr(attrname);
+    if(avalue==null)
+        return defval;
+    return avalue;
+}

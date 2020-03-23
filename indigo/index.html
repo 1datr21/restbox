@@ -124,7 +124,7 @@
 
 <div id="panel_auth">
     <h3>AUTH</h3>
-    <form method="post" action="http://restbox/?q=forms/auth" id="authForm"  >
+    <form method="post" action="http://restbox/?q=forms/auth" id="authForm" >
         <input type="text" name="login" value="vasyan" />
         <input type="password" name="password" value="" />
         <input type="submit" value="ENTER"/>
@@ -147,7 +147,7 @@
 
 <h3>Add new task</h3>
 
-<form method="post"  forminfo="forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task">
+<form method="post"  forminfo="forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task"  aftersubmit="load_tasks" >
 
     Name: <input type="text" name="name"  /><span style="color:red;" role="error" field="name"></span><br />
     Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
