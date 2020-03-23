@@ -17,8 +17,8 @@
     $db = 'tmsus';
     $charset='utf8';
     $user='root';    
-    $passw='';    
-//    $passw='123456';
+    //$passw='';    
+    $passw='123456';
     $dbconn = [
         'drv'=>'pdo',
         'prefix' =>"tms_",

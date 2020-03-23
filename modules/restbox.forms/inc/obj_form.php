@@ -74,12 +74,21 @@ namespace modules\restbox\forms {
                 $data=$_POST;
             }
             // check csrf
-            if(!$this->check_csrf($data,false))
+            $csrf_key = '';
+            if(!$this->check_csrf($data,$csrf_key,false))
             {
                 $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
                 return;    
             }  
 
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            
+        //    print_dbg("current key is ".$csrf_key);
+
+            $ftokens[$csrf_key]['validated'] = true;
+            
+            $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
+                        
             if(isset($this->_INFO->_info['events']['OnValidate']))   
             {
                 return $this->_INFO->_info['events']['OnValidate']($data);
@@ -95,19 +104,55 @@ namespace modules\restbox\forms {
             }
         //    print_dbg($this->_INFO->_info['events']);
             // check csrf
-            if(!$this->check_csrf($data))
+            $csrf_key = '';
+            if(!$this->check_csrf($data,$csrf_key,false))
             {
                 $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
                 return;    
             }            
 
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+
+        //    print_dbg($ftokens);
+        //    print_dbg($csrf_key);
+            if(!$ftokens[$csrf_key]['validated'])
+            {
+                $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                return null;
+            }
+
             if(isset($this->_INFO->_info['events']['OnSubmit'])) 
             {
-                return $this->_INFO->_info['events']['OnSubmit']($data);
-            }
-        }        
+                $res = $this->_INFO->_info['events']['OnSubmit']($data);
 
-        function check_csrf($formdata,$delete_token=true)
+                $this->change_token($csrf_key);
+            }
+        }       
+        
+        function change_token($token_old)
+        {
+          
+            $newtoken = $this->gen_token();
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            unset($ftokens[$token_old]);
+            $ftokens[$newtoken['csrf_id']] = ['token'=>$newtoken['csrf_val'],'_time'=>time(),'validated'=>false];// [ $newtoken['csrf_val']];
+            $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
+
+            $changed = $this->call_mod_func('restbox','get_ext_data','csrf_changed',[]);
+            $changed[]=[ 
+                'token_old'=>$token_old, 
+                'token_new'=>$newtoken['csrf_id'], 
+                'token_new_val'=>$newtoken['csrf_val'],
+            ];
+            $this->call_mod_func('restbox','add_ext_data','csrf_changed',$changed );
+        }
+
+        function delete_token($token)
+        {
+
+        }
+
+        function check_csrf($formdata,&$curr_key,$delete_token=true)
         {
           //  print_dbg('check csrf');
             $ftokens = $this->get_token_list();
@@ -116,7 +161,7 @@ namespace modules\restbox\forms {
             {
                 if(isset($formdata[$tkey]))
                 {                    
-
+                    $curr_key = $tkey;
                     $res = ($formdata[$tkey]==$tval['token']);
                     if($res && $delete_token)
                     {

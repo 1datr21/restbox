@@ -106,6 +106,16 @@ namespace modules\restbox {
 			exit();
 		}
 
+		function get_ext_data($_key,$defval=null)
+		{		
+			if(!isset($this->ExtOut[$_key]))
+			{
+				return $defval;
+			}
+			return $this->ExtOut[$_key];
+		//	print_dbg($this->ExtOut);
+		}
+
 		function add_ext_data($_key,$_val)
 		{		
 			$this->ExtOut[$_key] = $_val;
