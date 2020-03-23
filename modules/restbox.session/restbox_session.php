@@ -156,10 +156,12 @@ namespace modules\restbox\session {
 		//	print_dbg($this->_SESS_INFO);			
 			if(!isset($this->_SESS_INFO[$varname]))
 			{
-				if($defval!=null)
+				if($defval!==null)  
 				{
 					$this->start_session();
 					$this->set_sess_var($varname,$defval);
+				//	print_dbg('return defval');
+					return $defval;
 				}
 				return null;
 			}

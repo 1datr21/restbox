@@ -56,13 +56,77 @@ jq_rbapi.prototype.get_sid = function() {
     return $.cookie('rbtoken');
 }
 
-jq_rbapi.prototype.sendform = function(form_el) {
-    var serialized_data = $(form_el).serialize();
-    return this.send($(form_el).attr('action'),serialized_data);
+jq_rbapi.prototype.set_form_errors = function(err_data,form_el) {
+    for(key in err_data)
+    {
+        $(form_el).find('[field='+key+'][role=error]').text(err_data[key]);
+    }
 }
 
-jq_rbapi.prototype.load_rb_forms = function()
+jq_rbapi.prototype.clear_form_errors = function(form_el) {
+    
+    $(form_el).find('[role=error]').text('');
+    
+}
+
+jq_rbapi.prototype.sendform = function(form_el) {
+    var serialized_data = $(form_el).serialize();
+    var form_action = $(form_el).attr('action');
+    var _action = this.get_q_seg(form_action);
+    var q_validate = this.make_q_addr(this.action_seg_change(_action,'validate'));
+    var q_submit = this.make_q_addr(this.action_seg_change(_action,'submit'));
+    var a =  this;
+  
+    this.clear_form_errors(form_el);
+    this.send(q_validate,serialized_data).then(
+        function(qres)
+        {
+            
+            if(qres==null)
+            {
+                a.send(q_submit,serialized_data).then(
+                    function(qres)
+                    {
+                       // console.log(qres);    
+                    });    
+            }
+            else
+            {
+                a.set_form_errors(qres,form_el);
+            }
+        }
+    );
+}
+
+
+jq_rbapi.prototype.init_form = function(form_el) // form info with csrf
 {
+    rb.get($('#form_url').val()).then(function(fdata)
+    {    
+        var csrf_input = $('#form_task input[type=hidden][role=csrf]').one();
+        if(csrf_input==null)
+        {
+            $('#form_task').append($('<input />').attr('type','hidden').attr('role','csrf').attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val));
+        }
+        else
+        {
+            csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
+        }// add hidden to form of task adding
+    });
+}
+
+jq_rbapi.prototype.form_url = function(form_el,action) {
+    var theaction = $(form_el).attr('action');
+    var pieces = theaction.split('/');
+    pieces[2]='validate';
+    theaction =pieces.join("/");
+    return '/?q='+theaction;
+}
+
+jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
+{
+    if(parent_el==null)
+        parent_el = document;
     var a = this;
     var forms_to_load = Array.from($('form:not([norb])'));
     var chunked = forms_to_load.chunk(12);
@@ -161,6 +225,10 @@ jq_rbapi.prototype.detect_errors = function(_data)
             this.events.onLostAuth();
         }
         delete _data.SessExpired;
+    }
+    if(_data.hasOwnProperty("csrf_changed"))
+    {
+        delete _data.csrf_changed; 
     }
     if(_data.hasOwnProperty("error"))
     {
@@ -263,13 +331,7 @@ jq_rbapi.prototype.get_q_seg = function(query)
         return matches[1];
     }
 
-    return query;
-    /*
-    if( /\?q\=/.test(query) )
-        return query;
-    else
-        return this.base_url+"/?q="+query;
-    */
+    return query;    
 }
 
 jq_rbapi.prototype.format_json = function(json_data,_format='object')
@@ -278,25 +340,20 @@ jq_rbapi.prototype.format_json = function(json_data,_format='object')
     {
         case 'object':
             {
-                if(json_data.length===1)
+                var dkeys = Object.keys(json_data);
+                if(dkeys.length===1)
                 {
                     return json_data[0].response;
                 }
-                else
-                {
-                    
-                }
-                return json_data;
             }
+            return json_data;
         case 'array':
+            res = new Array();
+            for(key in json_data)
             {
-                var res = new Array();
-                for (var k in json_data) 
-                {
-                    res.push( json_data[k].response);
-                }
-                return res;
+                res.push(json_data[key].response);
             }
+            return res;// json_data;
     }
 }
 
@@ -315,8 +372,7 @@ jq_rbapi.prototype.get = function(query,_format='object')
         else
         {
            // a.token = data[0].response.SESS_ID;
-           
-           deffered.resolve(a.format_json(data,_format));
+           deffered.resolve( a.format_json(data,_format));
         }              
     });
 
@@ -342,9 +398,7 @@ jq_rbapi.prototype.send = function(query,formdata)
         }
         else
         {
-           // a.token = data[0].response.SESS_ID;
-           //deffered.resolve(data[0].response);
-           deffered.resolve(a.format_json(data,_format));
+           deffered.resolve(a.format_json(data));
         }
       
     });

@@ -33,7 +33,7 @@ namespace modules\restbox\forms {
 			if(!file_exists($form_cfg))
 			{
                 $form_cfg = url_seg_add(__DIR__,'std',$_cfg_info['_EP'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
-                print_dbg("<< ".$form_cfg ) ;
+         //       print_dbg("<< ".$form_cfg ) ;
                 if(!file_exists($form_cfg))
                 {	
                     $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
@@ -67,6 +67,25 @@ namespace modules\restbox\forms {
             return $finfo;
         }
 
+        function AValidate($data=null)
+        {
+            if($data==null)
+            {
+                $data=$_POST;
+            }
+            // check csrf
+            if(!$this->check_csrf($data,false))
+            {
+                $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                return;    
+            }  
+
+            if(isset($this->_INFO->_info['events']['OnValidate']))   
+            {
+                return $this->_INFO->_info['events']['OnValidate']($data);
+            }
+        }
+
         function ASubmit($data=null)
         {
             //print_dbg("ASubmit");
@@ -75,12 +94,40 @@ namespace modules\restbox\forms {
                 $data=$_POST;
             }
         //    print_dbg($this->_INFO->_info['events']);
+            // check csrf
+            if(!$this->check_csrf($data))
+            {
+                $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                return;    
+            }            
 
             if(isset($this->_INFO->_info['events']['OnSubmit'])) 
             {
                 return $this->_INFO->_info['events']['OnSubmit']($data);
             }
         }        
+
+        function check_csrf($formdata,$delete_token=true)
+        {
+          //  print_dbg('check csrf');
+            $ftokens = $this->get_token_list();
+         //   print_dbg($ftokens);
+            foreach($ftokens as $tkey => $tval)
+            {
+                if(isset($formdata[$tkey]))
+                {                    
+
+                    $res = ($formdata[$tkey]==$tval['token']);
+                    if($res && $delete_token)
+                    {
+                        unset($ftokens[$tkey]);  
+                        $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);  
+                    }
+                    return $res;
+                }
+            }
+            return false;
+        }
 
         static function FindPattern($req_str,$ptrn_list)
         {
@@ -98,9 +145,31 @@ namespace modules\restbox\forms {
             return false;   
         }        
 
-        function gen_token()
+        function get_token_list()
         {
             $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            $token_exp_time = 5000;
+            $save=false;
+         
+            foreach($ftokens as $tkey => $tinfo)
+            {
+            //    print_dbg($tinfo);
+                if(time()-$tinfo['_time'] > $token_exp_time)
+                {
+                    unset($ftokens[$tkey]);
+                    $save=true;
+                }
+            }
+            if($save)
+            {
+                $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
+            }
+            return $ftokens;
+        }
+
+        function gen_token()
+        {
+            $ftokens = $this->get_token_list();
             // gen the id
             do {
                 $csrf_id = GenRandStr(10);
@@ -108,7 +177,9 @@ namespace modules\restbox\forms {
             while(isset($ftokens[$csrf_id]));
 
             $csrf_val = GenRandStr(25);
-            $ftokens[$csrf_id]=['token'=>$csrf_val,'_time'=>time()];
+            $ftokens[$csrf_id]=['token'=>$csrf_val,'_time'=>time(),'validated'=>false];
+        //    print_dbg('ftokens');
+        //    print_dbg($ftokens);
             $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
 
             return ['csrf_id'=>$csrf_id,'csrf_val'=>$csrf_val];

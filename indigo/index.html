@@ -22,8 +22,8 @@
                 onAuth : function() 
                     {
                         rb.userinfo().then(function(res)
-                        {
-                            $('#ulogin').html(res.login);    
+                        {                            
+                            $('#ulogin').html(res.login);                           
                         });
                         $('#panel_auth').hide();  
                         $('#panel_logout').show();
@@ -50,6 +50,7 @@
                     );                      
             });
 
+            /*
             $('#form_task').submit(function( event ) {   
                 event.preventDefault(); 
                 rb.sendform($('#form_task')).then(
@@ -59,6 +60,7 @@
                     }
                 );     
             });
+            */
 
             $( "#newtaskform" ).submit(function( event ) {         
             // Stop form from submitting normally
@@ -144,29 +146,14 @@
 <button id="btn_taskform">GET FORM </button><input type="text" id="form_url" value="forms/task/1/2" />
 
 <h3>Add new task</h3>
-<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task">
-    Name: <input type="text" name="name"  /><br />
+
+<form method="post"  forminfo="forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task">
+
+    Name: <input type="text" name="name"  /><span style="color:red;" role="error" field="name"></span><br />
     Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
     <input type="submit" value="SAVE"/>
 </form>
 
-<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task2">
-    Name: <input type="text" name="name"  /><br />
-    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
-    <input type="submit" value="SAVE"/>
-</form>
-
-<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task3">
-    Name: <input type="text" name="name"  /><br />
-    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
-    <input type="submit" value="SAVE"/>
-</form>
-
-<form method="post"  forminfo="http://restbox/?q=forms/task/1/2"  action="http://restbox/?q=forms/task/submit"  id="form_task4">
-    Name: <input type="text" name="name"  /><br />
-    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
-    <input type="submit" value="SAVE"/>
-</form>
 
 <div id="div_err"></div>
 
