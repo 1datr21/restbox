@@ -31,7 +31,7 @@ $info = new obj_description([
         {
             $_res['name']='Name could not be empty';
         }
-        print_dbg('Validated');
+    //    print_dbg('Validated');
         return $_res;
     }
 ],
