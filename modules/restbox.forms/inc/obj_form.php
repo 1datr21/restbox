@@ -28,6 +28,7 @@ namespace modules\restbox\forms {
             $_cfg_info = $this->P_MODULE->exe_mod_func('restbox', 'get_settings');
           //  print_dbg($_cfg_info ) ;
             $form_info = $this->P_MODULE->call_form_info($this->_ROUTE_PARAMS);
+            print_dbg($form_info);
             if($form_info!=null)
             {
                 $form_cfg = $form_info['cfg_file'];

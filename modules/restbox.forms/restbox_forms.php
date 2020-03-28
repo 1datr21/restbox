@@ -87,7 +87,7 @@ namespace modules\restbox\forms {
 			
 			$opts=['query'=>$_ROUTE_PARAMS,'onhandle'=>function($modname,$ev_res,$_continue) use (&$qres)
 			{
-			//	print_r($ev_res);
+				print_r($ev_res);
 				if($ev_res!=null)
 				{
 					//$_continue = false;

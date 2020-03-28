@@ -170,10 +170,15 @@ namespace modules\restbox\session {
 
 		function restbox_forms_oncallform($eparams)
 		{
-			
+			//print_dbg('objname : '.$eparams['route']['object']['name']);
 			if($eparams['route']['object']['name']=='auth')
 			{
-				print_dbg($eparams);
+				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+				$form_cfg =[
+					'cfg_file'=> url_seg_add(__DIR__,'std',$_cfg_info['_EP'],'forms',$eparams['route']['object']['name']).".php"
+				];
+				//	print_dbg('obj name => '.$eparams['route']['object']['name']);
+				return $form_cfg;
 			}
 			return null;
 		}

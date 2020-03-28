@@ -1,22 +1,16 @@
 
 				
-	03-29-2020 00:36:13.000000: Array
+	03-29-2020 01:00:12.000000: 
+				
+	03-29-2020 01:00:12.000000: Array
 (
-    [route] => Array
-        (
-            [obj_class] => forms
-            [object] => Array
-                (
-                    [name] => auth
-                    [type] => config
-                    [class] => \modules\restbox\forms\ObjForm
-                )
+    [cfg_file] => D:/OpenServer/OSPanel/domains/restbox/modules/restbox.session/std/frontend/forms/auth.php
+)
 
-            [action] => AInfo
-            [route_pieces] => Array
-                (
-                )
-
-        )
-
+				
+	03-29-2020 01:03:11.000000: 
+				
+	03-29-2020 01:03:11.000000: Array
+(
+    [cfg_file] => D:/OpenServer/OSPanel/domains/restbox/modules/restbox.session/std/frontend/forms/auth.php
 )
