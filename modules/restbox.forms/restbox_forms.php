@@ -81,6 +81,11 @@ namespace modules\restbox\forms {
 			return $res;
 		}
 
+		function call_form_info($_ROUTE_PARAMS)
+		{
+
+		}
+
 		function call_obj($_route,$obj_class=null)   
 		{
 	
