@@ -90,7 +90,7 @@ namespace modules\restbox\forms {
 			//	print_r($ev_res);
 				if($ev_res!=null)
 				{
-					$_continue = false;
+					//$_continue = false;
 					$qres = $ev_res;
 				}
 			}];

@@ -168,6 +168,16 @@ namespace modules\restbox\session {
 			return $this->_SESS_INFO[$varname];
 		}
 
+		function restbox_forms_oncallform($eparams)
+		{
+			
+			if($eparams['route']['object']['name']=='auth')
+			{
+				print_dbg($eparams);
+			}
+			return null;
+		}
+
 		function watch_to_rename($exp_to_rename=50)
 		{
 			if(!$this->_sess_settings['rename_token'])
