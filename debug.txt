@@ -1,0 +1,22 @@
+
+				
+	03-29-2020 00:36:13.000000: Array
+(
+    [route] => Array
+        (
+            [obj_class] => forms
+            [object] => Array
+                (
+                    [name] => auth
+                    [type] => config
+                    [class] => \modules\restbox\forms\ObjForm
+                )
+
+            [action] => AInfo
+            [route_pieces] => Array
+                (
+                )
+
+        )
+
+)
