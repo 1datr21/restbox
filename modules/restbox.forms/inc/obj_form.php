@@ -31,7 +31,7 @@ namespace modules\restbox\forms {
         //    print_dbg($form_info);
             if($form_info!=null)
             {
-                $form_cfg = $form_info['cfg_file'];
+                $form_cfg = $form_info['form_cfg_file'];
             }
             else
             {
