@@ -174,11 +174,12 @@ namespace modules\restbox\session {
 			if($eparams['route']['object']['name']=='auth')
 			{
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-				$form_cfg =[
-					'form_cfg_file'=> url_seg_add(__DIR__,'std',$_cfg_info['_EP'],'forms',$eparams['route']['object']['name']).".php"
-				];
-				//	print_dbg('obj name => '.$eparams['route']['object']['name']);
-				return $form_cfg;
+				$form_script = url_seg_add('./inc/std',$_cfg_info['_EP'],'forms',$eparams['route']['object']['name']).".php";
+				include $form_script;
+				
+				print_dbg($info);
+				
+				return $info;
 			}
 			return null;
 		}

@@ -31,7 +31,16 @@ namespace modules\restbox\forms {
         //    print_dbg($form_info);
             if($form_info!=null)
             {
-                $form_cfg = $form_info['form_cfg_file'];
+                if(isset($form_info['form_cfg_file']))
+                {
+                    $form_cfg = $form_info['form_cfg_file'];
+                    include $form_cfg;
+                    $this->_INFO = $info;
+                }
+                else 
+                {
+                    $this->_INFO = $form_info;
+                }
             }
             else
             {
@@ -44,11 +53,14 @@ namespace modules\restbox\forms {
                     $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
                     return;	
             }
+            else
+            {
+                include $form_cfg;
+                $this->_INFO = $info;
+            }
 
             		
-            include $form_cfg;
-           // print_dbg($info ) ;
-            $this->_INFO = $info;
+            
         }
 
         static function GetRoutePatterns()
