@@ -40,13 +40,9 @@ namespace modules\restbox\forms {
                print_dbg("<< ".$form_cfg ) ;
 			if(!file_exists($form_cfg))
 			{
-         //       $form_cfg = url_seg_add(__DIR__,'std',$_cfg_info['_EP'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
-         //       print_dbg("<< ".$form_cfg ) ;
-         /*       if(!file_exists($form_cfg))
-                {	*/
+
                     $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
-                    return;
-         //       }	
+                    return;	
             }
 
             		
