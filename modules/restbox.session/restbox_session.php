@@ -99,7 +99,7 @@ namespace modules\restbox\session {
 			$obj_res = $this->call_obj('auth','modules\restbox\session\ObjAuthTable');
 			return $obj_res;
 		}
-		
+
 		function restbox_route_onquery(&$eargs)
 		{				
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
@@ -177,9 +177,13 @@ namespace modules\restbox\session {
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
 				$form_script = url_seg_add('/inc/std',$_cfg_info['_EP'],'forms',$eparams['route']['object']['name']).".php";
 				include $form_script;
-				
-			//	print_dbg($info);
-
+				return $info;
+			}
+			elseif($eparams['route']['object']['name']=='logout')
+			{
+				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
+				$form_script = url_seg_add('/inc/std/all','forms',$eparams['route']['object']['name']).".php";
+				include $form_script;
 				return $info;
 			}
 			return null;

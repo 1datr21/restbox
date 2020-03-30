@@ -18,10 +18,8 @@ $info = new obj_description([
 ],
 //'table'=>'tasks',
 'events'=>[
-    'OnSubmit'=>function($env,$_p_data) {      
-        print_dbg("log in >>");
-        print_dbg($_p_data);
-        return $_p_data;
+    'OnSubmit'=>function($env,$_p_data) { 
+        return $env->P_MODULE->exe_mod_func('restbox.session','clear_session');   
     },
     'OnValidate'=>function($env,$_p_data) {
        // print_dbg('Validating form');

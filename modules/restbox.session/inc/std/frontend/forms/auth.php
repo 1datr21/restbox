@@ -19,12 +19,9 @@ $info = new obj_description([
 ],
 //'table'=>'tasks',
 'events'=>[
-    'OnSubmit'=>function($env,$_p_data) {  
-        print_dbg(">> log in >>");
-        $auth_res = $env->P_MODULE->exe_mod_func('restbox.session','login',$_p_data);
-        //->login($_p_data);   
-        print_dbg($auth_res);
-      //  print_dbg($_p_data);
+    'OnSubmit'=>function($env,$_p_data) 
+    {  
+        $auth_res = $env->P_MODULE->exe_mod_func('restbox.session','login',$_p_data);   
         return $auth_res;
     },
     'OnValidate'=>function($env,$_p_data) {
