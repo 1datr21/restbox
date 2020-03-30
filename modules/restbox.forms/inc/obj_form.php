@@ -27,9 +27,6 @@ namespace modules\restbox\forms {
         {
             $_cfg_info = $this->P_MODULE->exe_mod_func('restbox', 'get_settings');
           //  print_dbg($_cfg_info ) ;
-            
-           
-            //   print_dbg("<< ".$form_cfg ) ;
             $form_cfg = url_seg_add($_cfg_info['CFG_DIR'],$_cfg_info['_EP'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
  
 			if(!file_exists($form_cfg))
@@ -44,14 +41,15 @@ namespace modules\restbox\forms {
                         {
                             $form_cfg = $form_info['form_cfg_file'];
                             include $form_cfg;
-                            $this->_INFO = $info;
+                        //    $this->_INFO = $info;
+                            $this->init_form_info($info);
                             return;
                         }
                     }
                     else 
                     {
-                    //    print_dbg("@@>");
-                        $this->_INFO = $form_info;
+                    //    print_dbg("@@>");                       
+                        $this->init_form_info($form_info);
                         return;
                     }
                 }
@@ -62,11 +60,15 @@ namespace modules\restbox\forms {
             else
             {
                 include $form_cfg;
-                $this->_INFO = $info;
-            }
-
-            		
+                $this->init_form_info($info);
+                //$this->_INFO = $info;
+            } 		
             
+        }
+
+        function init_form_info($finfo)
+        {
+            $this->_INFO = $finfo;
         }
 
         static function GetRoutePatterns()
