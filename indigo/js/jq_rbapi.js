@@ -96,6 +96,10 @@ jq_rbapi.prototype.sendform = function(form_el) {
                         {
                             a.exe_login(qres);
                         }
+                        else if( ($(form_el).hasAttr('rblogout')) && (getattr(form_el,'rblogout',false)!==false))
+                        {    
+                            a.exe_logout(qres);
+                        }
                         exe_event(form_el,'aftersubmit',qres)
                     });    
             }
@@ -325,6 +329,15 @@ jq_rbapi.prototype.exe_login = function(res)
     resolve(data);
 }
 
+jq_rbapi.prototype.exe_logout = function(res)
+{
+    if(this.events.hasOwnProperty("onLogout"))
+    {
+        this.events.onLogout();
+    }
+    resolve(res);
+}
+
 jq_rbapi.prototype.userinfo = function()
 {
     return this.get('userinfo');
@@ -343,11 +356,7 @@ jq_rbapi.prototype.logout = function()
             }
             else
             {
-                if(a.events.hasOwnProperty("onLogout"))
-                {
-                    a.events.onLogout();
-                }
-                resolve(res);
+                a.exe_logout(res);            
             }
         });
     });
