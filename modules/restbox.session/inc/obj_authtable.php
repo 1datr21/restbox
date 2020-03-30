@@ -31,6 +31,7 @@ namespace modules\restbox\session {
             }
 
             $post_data=$_POST;
+            print_dbg($post_data);
         //  get auth parameters
             $info_cfg = $this->call_mod_func('restbox','get_settings',1);
             if(empty($_request['vars']['table']))
