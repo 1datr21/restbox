@@ -91,7 +91,8 @@ jq_rbapi.prototype.sendform = function(form_el) {
                         {
                             a.autoclear_form(form_el);
                         }
-                        if(getattr(form_el,'rblogin',true))
+                        //if( $(form_el).hasAttr('rblogin') && getattr(form_el,'rblogin',false))
+                        if( ($(form_el).hasAttr('rblogin')) && (getattr(form_el,'rblogin',false)!==false))
                         {
                             a.exe_login(qres);
                         }
@@ -317,9 +318,9 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
 
 jq_rbapi.prototype.exe_login = function(res)
 {
-    if(a.events.hasOwnProperty("onAuth"))
+    if(this.events.hasOwnProperty("onAuth"))
     {
-        a.events.onAuth(res); // on auth
+        this.events.onAuth(res); // on auth
     }
     resolve(data);
 }
@@ -453,6 +454,10 @@ Object.defineProperty(Array.prototype, 'chunk', {
       return R;
     }
   });
+
+  $.fn.hasAttr = function(name) {  
+    return this.attr(name) !== undefined;
+ };
 
 function exe_event(element,event,params)
 {
