@@ -104,8 +104,14 @@ namespace modules\restbox\session {
 
 		function restbox_route_onquery(&$eargs)
 		{				
-			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
-			return $obj_res;
+		//	print_dbg($eargs);
+
+			if(in_array($eargs['route'],['userinfo']))
+			{
+				$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
+				return $obj_res;
+			}
+			return null;
 		}
 		
 		function clear_session()

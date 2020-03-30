@@ -16,7 +16,7 @@ namespace modules\restbox\session {
         static function GetRoutePatterns()
         {
             return [
-                //    'auth/[:table:]'=>'auth',
+                    'auth/[:table:]'=>'auth',
                 //    'logout'=>'logout',
                     'userinfo'=>'userinfo',
                 ];
@@ -80,12 +80,14 @@ namespace modules\restbox\session {
                     $where = $this->authroles['login']."='{$_login_or_email}' OR {$this->authroles['email']}='$_login_or_email'";
                 };break;
             }
-        //    print_dbg($where);
+        //    
             $query_res = $this->call_mod_func('restbox.db', 'query_select',[ 
                 'table'=> $_request['vars']['table'], 
                 'where'=> $where,
                 '#table_params'=>$table_info
                 ]);
+            
+            print_dbg($query_res); 
 
             $_login_err_text = 'Wrong login/e-mail or password';
             if($query_res['total_count']==0)
