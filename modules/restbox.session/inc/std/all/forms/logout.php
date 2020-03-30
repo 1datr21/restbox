@@ -18,12 +18,12 @@ $info = new obj_description([
 ],
 //'table'=>'tasks',
 'events'=>[
-    'OnSubmit'=>function($_p_data) {      
+    'OnSubmit'=>function($env,$_p_data) {      
         print_dbg("log in >>");
         print_dbg($_p_data);
         return $_p_data;
     },
-    'OnValidate'=>function($_p_data) {
+    'OnValidate'=>function($env,$_p_data) {
        // print_dbg('Validating form');
     }
 ],

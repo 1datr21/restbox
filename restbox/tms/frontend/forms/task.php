@@ -20,12 +20,12 @@ $info = new obj_description([
 ],
 'table'=>'tasks',
 'events'=>[
-    'OnSubmit'=>function($_p_data) {      
+    'OnSubmit'=>function($env,$_p_data) {      
         print_dbg("The form is submited>>");
         print_dbg($_p_data);
         return $_p_data;
     },
-    'OnValidate'=>function($_p_data) {
+    'OnValidate'=>function($env,$_p_data) {
         $_res=[];
         if(empty($_p_data['name']))
         {

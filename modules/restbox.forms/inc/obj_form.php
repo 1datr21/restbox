@@ -69,6 +69,7 @@ namespace modules\restbox\forms {
         function init_form_info($finfo)
         {
             $this->_INFO = $finfo;
+            $this->_INFO->set_p_module($this);
         }
 
         static function GetRoutePatterns()
@@ -115,7 +116,7 @@ namespace modules\restbox\forms {
                         
             if(isset($this->_INFO->_info['events']['OnValidate']))   
             {
-                return $this->_INFO->_info['events']['OnValidate']($data);
+                return $this->_INFO->_info['events']['OnValidate']($this, $data);
             }
         }
 
@@ -147,7 +148,7 @@ namespace modules\restbox\forms {
 
             if(isset($this->_INFO->_info['events']['OnSubmit'])) 
             {
-                $res = $this->_INFO->_info['events']['OnSubmit']($data);
+                $res = $this->_INFO->_info['events']['OnSubmit']($this, $data);
 
                 $this->change_token($csrf_key);
             }

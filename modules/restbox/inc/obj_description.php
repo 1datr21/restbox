@@ -9,6 +9,11 @@ namespace modules\restbox {
             $this->_info = $__info;
         }
 
+        function set_p_module($_module)
+        {
+            $this->P_MODULE = $_module;
+        }
+
         function getInfo()
         {
             return $this->_info;
