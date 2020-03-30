@@ -124,16 +124,20 @@
 
 <div id="panel_auth">
     <h3>AUTH</h3>
-    <form method="post" action="http://restbox/?q=forms/auth" id="authForm" >
+    <form method="post" action="http://restbox/?q=forms/auth" rblogin id="authForm" >
         <input type="text" name="login" value="vasyan" />
         <input type="password" name="password" value="" />
         <input type="submit" value="ENTER"/>
     </form>
 </div> 
 
-<div id="panel_logout" style="display:none">
+<div id="panel_logout" style="display:none" >
+    
     Hello, <span id="ulogin"></span>
-    <button id="btn_logout">Logout</button>
+    <form method="post" action="http://restbox/?q=forms/logout" rblogout>
+        <button id="btn_logout">Logout</button>
+    </form>
+    
 </div>
 
 <div>

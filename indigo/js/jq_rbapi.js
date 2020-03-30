@@ -91,6 +91,10 @@ jq_rbapi.prototype.sendform = function(form_el) {
                         {
                             a.autoclear_form(form_el);
                         }
+                        if(getattr(form_el,'rblogin',true))
+                        {
+                            a.exe_login(qres);
+                        }
                         exe_event(form_el,'aftersubmit',qres)
                     });    
             }
@@ -305,14 +309,19 @@ jq_rbapi.prototype.auth = function(_login_or_email,passw)
             {
                 a.token = data[0].response.SESS_ID;
                 a.set_sid(a.token);
-                if(a.events.hasOwnProperty("onAuth"))
-                {
-                    a.events.onAuth(res); // on auth
-                }
-                resolve(data);
+                a.exe_login(res);
             }   
         });
     });   
+}
+
+jq_rbapi.prototype.exe_login = function(res)
+{
+    if(a.events.hasOwnProperty("onAuth"))
+    {
+        a.events.onAuth(res); // on auth
+    }
+    resolve(data);
 }
 
 jq_rbapi.prototype.userinfo = function()

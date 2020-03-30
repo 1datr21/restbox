@@ -16,8 +16,8 @@ namespace modules\restbox\session {
         static function GetRoutePatterns()
         {
             return [
-                    'auth/[:table:]'=>'auth',
-                    'logout'=>'logout',
+                //    'auth/[:table:]'=>'auth',
+                //    'logout'=>'logout',
                     'userinfo'=>'userinfo',
                 ];
         }
@@ -116,7 +116,8 @@ namespace modules\restbox\session {
         function userinfo()
         {
             $uinfo = $this->P_MODULE->get_var('user_table_info');
-         //  print_dbg($uinfo);
+        //    print_dbg('userinfo');
+        //   print_dbg($uinfo);
             return $uinfo;
         }
 
