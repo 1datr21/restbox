@@ -158,7 +158,7 @@ jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
 
     var chunked = forms_to_load.chunk(20);
     
-    this.load_chunks(chunked);
+    this.load_chunks(chunked);  
   
 }
 
