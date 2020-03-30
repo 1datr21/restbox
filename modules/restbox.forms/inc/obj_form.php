@@ -27,37 +27,37 @@ namespace modules\restbox\forms {
         {
             $_cfg_info = $this->P_MODULE->exe_mod_func('restbox', 'get_settings');
           //  print_dbg($_cfg_info ) ;
-            $form_info = $this->P_MODULE->call_form_info($this->_ROUTE_PARAMS);
+            
+           
+            //   print_dbg("<< ".$form_cfg ) ;
+            $form_cfg = url_seg_add($_cfg_info['CFG_DIR'],$_cfg_info['_EP'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
+ 
+			if(!file_exists($form_cfg))
+			{
+                $form_info = $this->P_MODULE->call_form_info($this->_ROUTE_PARAMS);
         //   print_dbg($form_info);
-            if($form_info!=null)
-            {
-                if(is_array($form_info))
+                if($form_info!=null)
                 {
-                    if(isset($form_info['form_cfg_file']))
+                    if(is_array($form_info))
                     {
-                        $form_cfg = $form_info['form_cfg_file'];
-                        include $form_cfg;
-                        $this->_INFO = $info;
+                        if(isset($form_info['form_cfg_file']))
+                        {
+                            $form_cfg = $form_info['form_cfg_file'];
+                            include $form_cfg;
+                            $this->_INFO = $info;
+                            return;
+                        }
+                    }
+                    else 
+                    {
+                    //    print_dbg("@@>");
+                        $this->_INFO = $form_info;
                         return;
                     }
                 }
-                else 
-                {
-                //    print_dbg("@@>");
-                    $this->_INFO = $form_info;
-                    return;
-                }
-            }
-            else
-            {
-                $form_cfg = url_seg_add($_cfg_info['CFG_DIR'],$_cfg_info['_EP'],'forms',$this->_ROUTE_PARAMS['object']['name']).".php";
-            }
-            //   print_dbg("<< ".$form_cfg ) ;
-			if(!file_exists($form_cfg))
-			{
-
-                    $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
-                    return;	
+                
+                $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Form {$this->_ROUTE_PARAMS['object']['name']} not exists",'errno'=>54]);
+                return;	
             }
             else
             {
