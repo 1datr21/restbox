@@ -102,6 +102,14 @@ namespace modules\restbox\session {
 			return $obj_res;
 		}
 
+		function logout($eargs)
+		{
+		//	print_dbg('call login');
+		//	print_dbg($eargs);
+			$obj_res = $this->call_obj('logout','modules\restbox\session\ObjAuthTable');
+			return $obj_res;
+		}
+
 		function restbox_route_onquery(&$eargs)
 		{				
 		//	print_dbg($eargs);

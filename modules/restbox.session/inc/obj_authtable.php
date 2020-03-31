@@ -17,7 +17,7 @@ namespace modules\restbox\session {
         {
             return [
                     'auth/[:table:]'=>'auth',
-                //    'logout'=>'logout',
+                    'logout'=>'logout',
                     'userinfo'=>'userinfo',
                 ];
         }
