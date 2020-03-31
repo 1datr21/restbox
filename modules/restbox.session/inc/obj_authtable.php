@@ -31,7 +31,7 @@ namespace modules\restbox\session {
             }
 
             $post_data=$_POST;
-            print_dbg($post_data);
+        //    print_dbg($post_data);
         //  get auth parameters
             $info_cfg = $this->call_mod_func('restbox','get_settings',1);
             if(empty($_request['vars']['table']))
@@ -87,7 +87,7 @@ namespace modules\restbox\session {
                 '#table_params'=>$table_info
                 ]);
             
-            print_dbg($query_res); 
+        //    print_dbg($query_res); 
 
             $_login_err_text = 'Wrong login/e-mail or password';
             if($query_res['total_count']==0)
