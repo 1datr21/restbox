@@ -112,8 +112,8 @@ namespace modules\restbox\session {
             $_SESS_ID = $this->P_MODULE->start_session();
             $this->P_MODULE->set_sess_var('user_table_info',$userinfo);
             $this->P_MODULE->set_sess_var('user_id',$userinfo[$table_info->get_id_field()->fldname]);
-            print_dbg($userinfo[$table_info->get_id_field()->fldname]);
-            print_dbg($_SESS_ID);
+        //    print_dbg($userinfo[$table_info->get_id_field()->fldname]);
+        //    print_dbg($_SESS_ID);
             return ['success'=>true,'SESS_ID'=>$_SESS_ID];  
         }
 
