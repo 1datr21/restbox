@@ -96,16 +96,12 @@ namespace modules\restbox\session {
 
 		function login($eargs)
 		{
-		//	print_dbg('call login');
-		//	print_dbg($eargs);
 			$obj_res = $this->call_obj('auth','modules\restbox\session\ObjAuthTable');
 			return $obj_res;
 		}
 
 		function logout($eargs)
 		{
-		//	print_dbg('call login');
-		//	print_dbg($eargs);
 			$obj_res = $this->call_obj('logout','modules\restbox\session\ObjAuthTable');
 			return $obj_res;
 		}
