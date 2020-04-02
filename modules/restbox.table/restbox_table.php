@@ -109,7 +109,7 @@ namespace modules\restbox\table {
 		function restbox_forms_oncallform($eparams)
 		{
 			print_dbg($eparams);
-			$res = $this->call_obj($eparams['route'],'modules\restbox\table\ObjTable');
+	//		$res = $this->call_obj($eparams['route'],'modules\restbox\table\ObjTable');
 		/*	if($eparams['route']['object']['name']=='auth')
 			{
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');

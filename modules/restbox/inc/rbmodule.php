@@ -7,9 +7,9 @@ namespace modules\restbox {
     
     class RBModule extends \Core\Module {
 
-        function call_obj($_route,$obj_class)
+        function call_obj($_route,$obj_class,$rmode=null)
 		{
-			$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns');
+			$ptrn_list = call_user_func($obj_class .'::GetRoutePatterns',$rmode);
 
 			$_request = call_user_func($obj_class . '::FindPattern', $_route, $ptrn_list);
 			if($_request!=false)

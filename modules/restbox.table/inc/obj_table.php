@@ -20,7 +20,7 @@ namespace modules\restbox\table {
             return "tables/".$_req_params['vars']['table'];
         }
 
-        static function GetRoutePatterns()
+        static function GetRoutePatterns($mode=1)
         {
             return [
                     'tables/:table:'=>'view',
@@ -33,7 +33,7 @@ namespace modules\restbox\table {
 
         function tform($_request)
         {
-            
+
         }
 
         function connect_db($dbparams)  // connect the database
