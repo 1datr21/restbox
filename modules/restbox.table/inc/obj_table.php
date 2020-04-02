@@ -24,14 +24,13 @@ namespace modules\restbox\table {
         {
             $ptrns = [
                 'tables/:table:'=>'view',
-                'tables/one/:table:/:id:'=>'item',
-                'tables/save/:table:'=>'save',
-                'tables/delete/:table:'=>'delete',
-                
+                'tables/one/:table:/:id:'=>'item',                
+                'tables/delete/:table:'=>'delete',                
             ];
             if($mode==2)
             {
                 $ptrns['tables/:table:/[:id:]']='tform';
+                $ptrns['tables/save/:table:']='save';
             }
             return $ptrns;
         }
