@@ -29,6 +29,7 @@ namespace modules\restbox\table {
             ];
             if($mode==2)
             {
+                $ptrns['tables/:table:']='tform';
                 $ptrns['tables/:table:/[:id:]']='tform';
                 $ptrns['tables/save/:table:']='save';
             }
@@ -37,6 +38,7 @@ namespace modules\restbox\table {
 
         function tform($_request)
         {
+        //    print_dbg('tform>>');
             return new obj_description([
                 'fields'=>[
                     'id'=>new tfield('id'),
