@@ -1,3 +1,29 @@
 
 				
-	04-02-2020 22:10:35.000000: tform>>
+	04-02-2020 23:42:56.000000: 
+				
+	04-02-2020 23:43:46.000000: 
+				
+	04-02-2020 23:48:11.000000: Array
+(
+    [route] => Array
+        (
+            [obj_class] => forms
+            [object] => Array
+                (
+                    [name] => tasks
+                    [type] => config
+                    [class] => \modules\restbox\forms\ObjForm
+                )
+
+            [action] => AInfo
+            [route_pieces] => Array
+                (
+                )
+
+        )
+
+)
+
+				
+	04-02-2020 23:48:11.000000: 

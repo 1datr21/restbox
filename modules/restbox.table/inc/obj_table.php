@@ -38,30 +38,9 @@ namespace modules\restbox\table {
 
         function tform($_request)
         {
-        //    print_dbg('tform>>');
-            return new obj_description([
-                'fields'=>[
-                    'id'=>new tfield('id'),
-                    'name'=>new tfield('text',['maxlen'=>50]),
-                    'descr'=>new tfield('bigtext',['maxlen'=>2500]),
-                    'options'=>new tfield('set',['values'=>['important','attached','group','slow'],'default'=>['slow','attached']]),
-                    'active'=>new tfield('bool'),
-                    'author'=>new tfield('ref',['table'=>'users']),
-                    'createdate'=>new tfield('datetime'),
-                ],
-                'events'=>[
-                    'beforeSave'=>function(&$row,&$rbenv,&$save) {      
-                        if(empty($row['id']))
-                        {
-                            $row['createdate']='#NOW()'; 
-                            $sess_vars = $rbenv->exe_mod_func('restbox.session','get_sess_vars'); 
-                            //print_dbg($sess_vars);
-                            $row['author']=$sess_vars['user_id'];
-                        }       
-                    },
-                    
-                ],
-            ]);
+            include "../std/all/forms/formtable.php";
+            print_dbg($info);
+            return $info;
         }
 
         function connect_db($dbparams)  // connect the database
