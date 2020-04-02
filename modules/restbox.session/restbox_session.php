@@ -183,7 +183,8 @@ namespace modules\restbox\session {
 
 		function restbox_forms_oncallform($eparams)
 		{
-			//print_dbg('objname : '.$eparams['route']['object']['name']);
+		//	print_dbg('objname : '.$eparams['route']['object']['name']);
+			
 			if($eparams['route']['object']['name']=='auth')
 			{
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');

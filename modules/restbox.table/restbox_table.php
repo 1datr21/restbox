@@ -111,7 +111,7 @@ namespace modules\restbox\table {
 		//	print_dbg($eparams);
 			if($this->load_table($eparams['route']['object']['name'])!=null)
 			{
-				$res = $this->call_obj('tables/'.$eparams['route']['object']['name'].'','modules\restbox\table\ObjTable',2);
+			//	$res = $this->call_obj('tables/'.$eparams['route']['object']['name'].'','modules\restbox\table\ObjTable',2);
 				return $res;
 			}
 			/*	if($eparams['route']['object']['name']=='auth')

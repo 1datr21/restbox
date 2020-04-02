@@ -87,17 +87,19 @@ namespace modules\restbox\forms {
 			
 			$opts=['query'=>$_ROUTE_PARAMS,'onhandle'=>function($modname,$ev_res,$_continue) use (&$qres)
 			{
-				print_dbg($modname);
-				print_dbg($ev_res);
+			//	print_dbg($modname."::");
+			//	print_dbg($ev_res);
 				if($ev_res!=null)
 				{
 					//$_continue = false;
+				//	print_dbg($ev_res);
 					$qres = $ev_res;
 				}
 			}];
 			$_json_res=[];
 			$args=['route'=>$_ROUTE_PARAMS];
 			$query_res = $this->call_event('oncallform',$args,$opts);
+		//	print_dbg($qres);
 			return $qres;
 		}
 
