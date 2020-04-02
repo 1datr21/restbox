@@ -22,13 +22,18 @@ namespace modules\restbox\table {
 
         static function GetRoutePatterns($mode=1)
         {
-            return [
-                    'tables/:table:'=>'view',
-                    'tables/one/:table:/:id:'=>'item',
-                    'tables/save/:table:'=>'save',
-                    'tables/delete/:table:'=>'delete',
-                    'tables/:table:/[:id:]'=>'tform',
-                ];
+            $ptrns = [
+                'tables/:table:'=>'view',
+                'tables/one/:table:/:id:'=>'item',
+                'tables/save/:table:'=>'save',
+                'tables/delete/:table:'=>'delete',
+                
+            ];
+            if($mode==2)
+            {
+                $ptrns['tables/:table:/[:id:]']='tform';
+            }
+            return $ptrns;
         }
 
         function tform($_request)
