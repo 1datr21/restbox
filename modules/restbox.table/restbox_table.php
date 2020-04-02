@@ -124,7 +124,7 @@ namespace modules\restbox\table {
 				include $form_script;
 				return $info;
 			}*/
-			return null;
+			return $res;
 		}
 
 		function build_info($info,$tname)
