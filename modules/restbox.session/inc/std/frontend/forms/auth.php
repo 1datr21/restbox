@@ -22,7 +22,7 @@ $info = new obj_description([
     'OnSubmit'=>function($env,$_p_data) 
     {  
         $auth_res = $env->P_MODULE->exe_mod_func('restbox.session','login',$_p_data);   
-        print_dbg($auth_res);
+    //    print_dbg($auth_res);
         return $auth_res;
     },
     'OnValidate'=>function($env,$_p_data) {
