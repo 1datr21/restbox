@@ -13,7 +13,7 @@ namespace modules\restbox\session {
             parent::__construct($_req_params,$cfg_info,$pmodule);
         }
 
-        static function GetRoutePatterns()
+        static function GetRoutePatterns($mode=1)
         {
             return [
                     'auth/[:table:]'=>'auth',
