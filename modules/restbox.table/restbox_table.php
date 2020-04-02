@@ -111,23 +111,11 @@ namespace modules\restbox\table {
 		//	print_dbg($eparams);
 			if($this->load_table($eparams['route']['object']['name'])!=null)
 			{
-			//	$res = $this->call_obj('tables/'.$eparams['route']['object']['name'].'','modules\restbox\table\ObjTable',2);
+				$res = $this->call_obj('tables/'.$eparams['route']['object']['name'].'','modules\restbox\table\ObjTable',2);
+				print_dbg($res);
 				return $res;
 			}
-			/*	if($eparams['route']['object']['name']=='auth')
-			{
-				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-				$form_script = url_seg_add('/inc/std',$_cfg_info['_EP'],'forms',$eparams['route']['object']['name']).".php";
-				include $form_script;
-				return $info;
-			}
-			elseif($eparams['route']['object']['name']=='logout')
-			{
-				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
-				$form_script = url_seg_add('/inc/std/all','forms',$eparams['route']['object']['name']).".php";
-				include $form_script;
-				return $info;
-			}*/
+			
 			return null;
 		}
 

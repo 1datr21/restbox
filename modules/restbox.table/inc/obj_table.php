@@ -38,8 +38,8 @@ namespace modules\restbox\table {
 
         function tform($_request)
         {
-            include "../std/all/forms/formtable.php";
-            print_dbg($info);
+            include "/std/all/forms/formtable.php";
+            //print_dbg($info);
             return $info;
         }
 
