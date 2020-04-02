@@ -27,7 +27,13 @@ namespace modules\restbox\table {
                     'tables/one/:table:/:id:'=>'item',
                     'tables/save/:table:'=>'save',
                     'tables/delete/:table:'=>'delete',
+                    'tables/:table:/[:id:]'=>'tform',
                 ];
+        }
+
+        function tform($_request)
+        {
+            
         }
 
         function connect_db($dbparams)  // connect the database
