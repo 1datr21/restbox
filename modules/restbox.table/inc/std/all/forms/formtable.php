@@ -20,9 +20,13 @@ $info = new obj_description([
 'events'=>[
     'OnInit'=>function($env)
     {
-      $row = $env->get_new_row();
-      
-      return $row;
+        if(count($env->_ROUTE_PARAMS['route_pieces'])==0)
+        {
+            return $env->get_new_row();
+        }
+        // [_ROUTE_PARAMS]  [object]  [name]
+        
+        return [];
       //print_dbg($env);
     },
     'OnSubmit'=>function($env,$_p_data) { 

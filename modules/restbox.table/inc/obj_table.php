@@ -313,6 +313,19 @@ namespace modules\restbox\table {
             
         }
 
+        function get_new_row()
+        {
+            $res=[];
+            foreach($this->FIELDS as $fld => $fld_obj)
+            {
+                if(!$fld_obj->isID())
+                {
+                    print_dbg($fld_obj);
+                }
+            } 
+            return $res;
+        }
+
         function get_id_field()
         {
             foreach($this->FIELDS as $fld => $fld_obj)
