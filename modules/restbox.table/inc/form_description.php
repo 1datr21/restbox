@@ -9,7 +9,17 @@
 
         function __construct($__info)
         {
-            parent::construct($__info);
+            parent::__construct($__info);
+        }
+
+        function ASubmit()
+        {
+
+        }
+
+        function AInfo()
+        {
+            
         }
     }
 
