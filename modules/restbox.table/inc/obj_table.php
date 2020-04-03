@@ -7,6 +7,7 @@ namespace modules\restbox\table {
    class ObjTable extends restbox\AppObject {
    
         VAR $_CONN_ID;
+        VAR $_TABLE;
 
         function __construct($_req_params,$cfg_info=[],$pmodule=null)
         {
