@@ -25,6 +25,11 @@ namespace modules\restbox\table {
                 'add_queries'=>[]
             ];
         }
+
+        function ValueList()
+        {
+            return  $this->PARAMS['values'];
+        }
     }
 
 
