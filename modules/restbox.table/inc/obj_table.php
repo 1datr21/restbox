@@ -33,8 +33,14 @@ namespace modules\restbox\table {
                 $ptrns['tables/:table:']='tform';
                 $ptrns['tables/:table:/[:id:]']='tform';
                 $ptrns['tables/save/:table:']='save';
+                $ptrns['tables/:table:/newrow']='save';
             }
             return $ptrns;
+        }
+
+        function get_new_row()
+        {
+
         }
 
         function tform($_request)
@@ -318,9 +324,10 @@ namespace modules\restbox\table {
             $res=[];
             foreach($this->FIELDS as $fld => $fld_obj)
             {
+            //    print_dbg($fld_obj);
                 if(!$fld_obj->isID())
                 {
-                    print_dbg($fld_obj);
+                    
                 }
             } 
             return $res;

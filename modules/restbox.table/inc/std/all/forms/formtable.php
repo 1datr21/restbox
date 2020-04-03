@@ -22,7 +22,12 @@ $info = new obj_description([
     {
         if(count($env->_ROUTE_PARAMS['route_pieces'])==0)
         {
-            return $env->get_new_row();
+            $_table = $env->_ROUTE_PARAMS['object']['name'];
+            $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
+          //  print_dbg($table_map);
+            $newrow = $table_map->get_new_row();
+            print_dbg($newrow);
+            return $newrow;
         }
         // [_ROUTE_PARAMS]  [object]  [name]
         
