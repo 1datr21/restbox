@@ -1,0 +1,45 @@
+
+				
+	04-03-2020 21:06:54.000000: Array
+(
+    [name] => Array
+        (
+            [defval] => 
+        )
+
+    [descr] => Array
+        (
+            [defval] => 
+        )
+
+    [state] => Array
+        (
+            [defval] => primary
+        )
+
+    [options] => Array
+        (
+            [defval] => Array
+                (
+                    [0] => slow
+                    [1] => attached
+                )
+
+        )
+
+    [active] => Array
+        (
+            [defval] => 
+        )
+
+    [author] => Array
+        (
+            [defval] => 
+        )
+
+    [createdate] => Array
+        (
+            [defval] => 
+        )
+
+)

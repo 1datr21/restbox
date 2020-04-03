@@ -321,10 +321,10 @@ namespace modules\restbox\table {
             $res=[];
             foreach($this->FIELDS as $fld => $fld_obj)
             {
-           //    print_dbg($fld_obj);
+             //  print_dbg($fld_obj);
                 if(!$fld_obj->isID())
                 {
-                   $res[$fld] = ['defval' => $fld_obj->_info['default'] ]; 
+                   $res[$fld] = ['defval' => $fld_obj->getDefault() ]; 
                 }
             } 
             return $res;

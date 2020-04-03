@@ -63,6 +63,15 @@ namespace modules\restbox\table {
             return $this->OnCreateTable_std($_args);
         }
 
+        public function getDefault()
+        {
+            if(isset($this->PARAMS['default']))
+            {
+                return $this->PARAMS['default'];
+            }
+            return null;
+        }
+
         function OnCreateTable_std($_args)
         {
             
