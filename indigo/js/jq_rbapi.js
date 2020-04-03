@@ -222,6 +222,18 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
     {
         csrf_input.attr('name',fdata.csrf.csrf_id).attr('value',fdata.csrf.csrf_val);
     }// add hidden to form of task adding
+
+    if(fdata.hasOwnProperty('addinfo'))
+    {
+        for(fld in fdata.addinfo)
+        {
+            var def = fdata.addinfo[fld].defdata;
+            if(fdata.addinfo[fld].hasOwnProperty('valuelist'))
+            {
+
+            }
+        }
+    }
 }
 
 jq_rbapi.prototype.action_seg_change = function(theaction,newseg,segno=2) {
