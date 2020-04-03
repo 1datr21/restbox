@@ -20,7 +20,10 @@ $info = new obj_description([
 'events'=>[
     'OnInit'=>function($env)
     {
+      $row = $env->get_new_row();
       
+      return $row;
+      //print_dbg($env);
     },
     'OnSubmit'=>function($env,$_p_data) { 
       //  return $env->P_MODULE->exe_mod_func('restbox.session','logout');   
