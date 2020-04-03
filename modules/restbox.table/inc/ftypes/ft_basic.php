@@ -72,6 +72,11 @@ namespace modules\restbox\table {
             return null;
         }
 
+        public function ValueList()
+        {
+            return null;
+        }
+
         function OnCreateTable_std($_args)
         {
             

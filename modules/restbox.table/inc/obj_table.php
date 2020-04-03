@@ -324,7 +324,14 @@ namespace modules\restbox\table {
              //  print_dbg($fld_obj);
                 if(!$fld_obj->isID())
                 {
-                   $res[$fld] = ['defval' => $fld_obj->getDefault() ]; 
+                    $arr = ['defval' => $fld_obj->getDefault() ];
+                    $vl = $fld_obj->ValueList();
+                    if(!empty($vl))
+                    {
+                        $arr['valuelist']=$vl;
+                    }
+                    $res[$fld] = $arr; 
+
                 }
             } 
             return $res;
