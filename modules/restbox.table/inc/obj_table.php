@@ -38,10 +38,7 @@ namespace modules\restbox\table {
             return $ptrns;
         }
 
-        function get_new_row()
-        {
-
-        }
+       
 
         function tform($_request)
         {
@@ -324,7 +321,7 @@ namespace modules\restbox\table {
             $res=[];
             foreach($this->FIELDS as $fld => $fld_obj)
             {
-               print_dbg($fld_obj);
+           //    print_dbg($fld_obj);
                 if(!$fld_obj->isID())
                 {
                    $res[$fld] = ['defval' => $fld_obj->_info['default'] ]; 
