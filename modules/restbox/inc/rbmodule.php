@@ -25,7 +25,7 @@ namespace modules\restbox {
 					$_obj = $this->exe_mod_func('restbox.route','add_obj', new $obj_class($_request['request'], $_cfg_info, $this), $_o_key);
 				}
 
-			//	print_dbg($_request);
+				print_dbg($_obj);
 				$res_obj = $_obj->ExeAction($_request['action'],$_request['request']);
 				return $res_obj;
 			}

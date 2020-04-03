@@ -112,7 +112,7 @@ namespace modules\restbox\table {
 			if($this->load_table($eparams['route']['object']['name'])!=null)
 			{
 				$res = $this->call_obj('tables/'.$eparams['route']['object']['name'].'','modules\restbox\table\ObjTable',2);
-				print_dbg($res);
+			//	print_dbg($res);
 				return $res;
 			}
 			

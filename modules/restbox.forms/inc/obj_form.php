@@ -90,6 +90,10 @@ namespace modules\restbox\forms {
             }
 
             $finfo['csrf'] = $this->gen_token();
+            if(isset($this->_INFO->_info['events']['OnInit']))   
+            {
+                $finfo['addinfo'] = $this->_INFO->_info['events']['OnInit']($this);
+            }
             return $finfo;
         }
 

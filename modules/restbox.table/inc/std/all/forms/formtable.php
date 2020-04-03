@@ -18,6 +18,10 @@ $info = new obj_description([
 ],
 //'table'=>'tasks',
 'events'=>[
+    'OnInit'=>function($env)
+    {
+      
+    },
     'OnSubmit'=>function($env,$_p_data) { 
       //  return $env->P_MODULE->exe_mod_func('restbox.session','logout');   
     },
