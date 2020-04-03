@@ -10,6 +10,7 @@
         'id'=>new tfield('id'),
         'name'=>new tfield('text',['maxlen'=>50]),
         'descr'=>new tfield('bigtext',['maxlen'=>2500]),
+        'state'=>new tfield('set',['values'=>['primary','agreed','usual','_important','emergency'],'default'=>'primary']),
         'options'=>new tfield('set',['values'=>['important','attached','group','slow'],'default'=>['slow','attached']]),
         'active'=>new tfield('bool'),
         'author'=>new tfield('ref',['table'=>'users']),
