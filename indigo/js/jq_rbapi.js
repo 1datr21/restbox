@@ -242,9 +242,9 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 jq_rbapi.prototype.set_def_val(form_el,fld,fld_val) // set value of element of the form marked fld 
 {
     var the_element = $(form_el).find('[field='+fld+']');
-    if(the_element!==null)
+    if(the_element!=null)
     {
-        
+
     }
     //.val()
 }
