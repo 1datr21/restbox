@@ -174,7 +174,7 @@ jq_rbapi.prototype.load_chunks = function(chunk_list,idx=0)
     }
 }
 
-jq_rbapi.prototype.loadchunk = function(forms_chunk,_ready) // load form chunk
+jq_rbapi.prototype.loadchunk = function(forms_chunk,_ready) // load one form chunk
 {
     
     var a = this;
@@ -228,12 +228,20 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
         for(fld in fdata.addinfo)
         {
             var def = fdata.addinfo[fld].defdata;
+
+            this.set_def_val(form_el,fld,fld_val)
+        
             if(fdata.addinfo[fld].hasOwnProperty('valuelist'))
             {
 
             }
         }
     }
+}
+
+jq_rbapi.prototype.set_def_val(form_el,fld,fld_val) // set value of element of the form marked fld 
+{
+
 }
 
 jq_rbapi.prototype.action_seg_change = function(theaction,newseg,segno=2) {
