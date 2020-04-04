@@ -229,7 +229,7 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
         {
             var def = fdata.addinfo[fld].defdata;
 
-            this.set_def_val(form_el,fld,fld_val)
+            this.set_def_val(form_el,fld,def);
         
             if(fdata.addinfo[fld].hasOwnProperty('valuelist'))
             {
@@ -241,7 +241,8 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 
 jq_rbapi.prototype.set_def_val(form_el,fld,fld_val) // set value of element of the form marked fld 
 {
-
+    var the_element = $(form_el).find('[field='+fld+']');
+    //.val()
 }
 
 jq_rbapi.prototype.action_seg_change = function(theaction,newseg,segno=2) {
