@@ -91,7 +91,10 @@
                 taskform();            
             });
 
-            
+            $('.edit_task').click(function(e){
+           //     $('#form_task_edit').load_form
+            });
+            //
         });        
        
         function load_tasks()
@@ -116,6 +119,7 @@
                     <td>${descr}</td>
                     <td>${author}</td>
                     <td><a href="javascript:rb.send('delete')">Delete</a></td>
+                    <td><a class="edit_task">Edit</a></td>
                 </tr>
             {{/each}}
             </table>  
@@ -161,7 +165,7 @@
     <input type="submit" value="SAVE"/>
 </form>
 
-<form method="post"  forminfo="forms/tasks/" noautoload  action="http://restbox/?q=forms/task/submit"
+<form method="post"  forminfo="forms/tasks/" noautoload  action="http://restbox/?q=forms/task/submit" 
  style="display: block; top:30px; left:500px; position: fixed;"  id="form_task_edit"  aftersubmit="load_tasks" >
 
     <input type="hidden" name="id" field="id" />

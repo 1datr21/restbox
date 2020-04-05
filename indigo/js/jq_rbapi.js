@@ -146,12 +146,19 @@ jq_rbapi.prototype.form_url = function(form_el,action) {
 
 jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
 {
+    var form_selector = 'form:not([norb]):not([noautoload])'; 
     if(parent_el==null)
+    {
         parent_el = document;
+    }
+    else
+    {
+        form_selector = 'form:not([norb])'; 
+    }
     var a = this;
-    var forms_to_load = Array.from($(parent_el).find('form:not([norb])'));
+    var forms_to_load = Array.from($(parent_el).find(form_selector));
 
-    $(parent_el).on('submit','form:not([norb]):not([noautoload])',function(e) {
+    $(parent_el).on('submit',form_selector,function(e) {
         e.preventDefault();
         a.sendform($(e.target));
     });
