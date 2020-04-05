@@ -180,12 +180,12 @@ jq_rbapi.prototype.loadchunk = function(forms_chunk,_ready) // load one form chu
     var a = this;
     var urls_str = this.make_q_addr( [].map.call(forms_chunk, function(el) {
         return a.get_q_seg(a.form_info_url(el));
-      }).reverse().join(';') );
+      }).join(';') );
     __ready=_ready;
     this.get(urls_str,'array').then(
         function(fdata)
         {
-            console.log(fdata);
+        //    console.log(fdata);
             for(idx=0;idx<fdata.length;idx++)
             {
                 a.loadform(forms_chunk[idx],fdata[idx]);

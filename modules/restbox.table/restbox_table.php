@@ -93,7 +93,10 @@ namespace modules\restbox\table {
 			//print_dbg($this);
 			try{
 				$this->CFG_INFO = $this->exe_mod_func('restbox','get_settings');
-				include $this->CFG_INFO['CFG_DIR']."/tables/{$_table}.php";
+				$table_file = $this->CFG_INFO['CFG_DIR']."/tables/{$_table}.php";
+				if(!file_exists($table_file))
+					return null;
+				include $table_file;
 				//    
 				$info_obj = $this->build_info($info,$_table);
 
