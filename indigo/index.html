@@ -155,8 +155,9 @@
 
 <form method="post"  forminfo="forms/tasks"  action="http://restbox/?q=forms/task/submit"  id="form_task"  aftersubmit="load_tasks" >
 
-    Name: <input type="text" name="name"  /><span style="color:red;" role="error" field="name"></span><br />
-    Description: <textarea name="descr" rows="5" cols="12" ></textarea>    
+    Name: <input type="text" name="name" field="name" /><span style="color:red;" role="error" field="name"></span><br />
+    Description: <textarea name="descr" field="descr" rows="5" cols="12" ></textarea>    
+    State: <select field="state" name="state"></select>
     <input type="submit" value="SAVE"/>
 </form>
 

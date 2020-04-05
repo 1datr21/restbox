@@ -242,12 +242,27 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 
 jq_rbapi.prototype.set_def_settings = function(form_el,fld,fld_val) // set value of element of the form marked fld 
 {
-    var the_element = $(form_el).find('[field='+fld+']');
-    if(the_element!=null) // 
+    // inputs
+    var inputs = $(form_el).find('input[field='+fld+']');
+    if(inputs.length>0) // 
     {
-
+        $(inputs).attr('defval',fld_val);
+        $(inputs).val(fld_val);      
     }
-    
+    // textareas
+    var inputs = $(form_el).find('textarea[field='+fld+']');
+    if(inputs.length>0) // 
+    {
+        $(inputs).attr('defval',fld_val);
+        $(inputs).val(fld_val);      
+    }
+    // selects
+    var selects = $(form_el).find('select[field='+fld+']');
+    if(selects.length>0) // 
+    {
+        $(inputs).attr('defval',fld_val);
+        $(inputs).val(fld_val);      
+    }
     //.val()
 }
 
