@@ -244,7 +244,15 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 
 jq_rbapi.prototype.set_valuelist = function(form_el,fld,valuelist) 
 {
-
+    var selects = $(form_el).find('select[field='+fld+']');
+    if(selects.length>0) // 
+    {
+        selects.find('option').remove();
+        for(idx in valuelist)
+        {
+            selects.append($('<option />').attr('value',valuelist[idx]).text(valuelist[idx]));
+        }
+    }
 }
 
 jq_rbapi.prototype.set_def_settings = function(form_el,fld,fld_val) // set value of element of the form marked fld 
@@ -267,8 +275,9 @@ jq_rbapi.prototype.set_def_settings = function(form_el,fld,fld_val) // set value
     var selects = $(form_el).find('select[field='+fld+']');
     if(selects.length>0) // 
     {
-        $(inputs).attr('defval',fld_val);
-        $(inputs).val(fld_val);      
+        $(selects).find('option').removeAttr('selected');
+        var option = $(selects).find('option[value='+fld_val+']');
+        $(option).attr('selected');      
     }
     //.val()
 }
