@@ -227,7 +227,7 @@ jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
     {
         for(fld in fdata.addinfo)
         {
-            var def = fdata.addinfo[fld].defdata;
+            var def = fdata.addinfo[fld].defval;
 
             if(fdata.addinfo[fld].hasOwnProperty('valuelist'))
             {
