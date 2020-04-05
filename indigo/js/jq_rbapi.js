@@ -151,7 +151,7 @@ jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
     var a = this;
     var forms_to_load = Array.from($(parent_el).find('form:not([norb])'));
 
-    $(parent_el).on('submit','form:not([norb])',function(e) {
+    $(parent_el).on('submit','form:not([norb]):not([noautoload])',function(e) {
         e.preventDefault();
         a.sendform($(e.target));
     });
@@ -160,6 +160,11 @@ jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
     
     this.load_chunks(chunked);  
   
+}
+
+jq_rbapi.prototype.init_rb_form(form_el)
+{
+
 }
 
 jq_rbapi.prototype.load_chunks = function(chunk_list,idx=0)

@@ -161,7 +161,8 @@
     <input type="submit" value="SAVE"/>
 </form>
 
-<form method="post"  forminfo="forms/tasks"  action="http://restbox/?q=forms/task/submit"  id="form_task_edit"  aftersubmit="load_tasks" >
+<form method="post"  forminfo="forms/tasks/" noautoload  action="http://restbox/?q=forms/task/submit"
+ style="display: block; top:30px; left:500px; position: fixed;"  id="form_task_edit"  aftersubmit="load_tasks" >
 
     <input type="hidden" name="id" field="id" />
     Name: <input type="text" name="name" field="name" /><span style="color:red;" role="error" field="name"></span><br />
