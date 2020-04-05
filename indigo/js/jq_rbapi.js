@@ -169,7 +169,7 @@ jq_rbapi.prototype.load_rb_forms = function(parent_el=null)
   
 }
 
-jq_rbapi.prototype.init_rb_form(form_el)
+jq_rbapi.prototype.init_rb_form = function(form_el)
 {
 
 }
