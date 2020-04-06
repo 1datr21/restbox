@@ -225,6 +225,14 @@ jq_rbapi.prototype.form_info_url = function(form_el) // form info with csrf
 
 jq_rbapi.prototype.loadform = function(form_el, fdata) // form info with csrf
 { 
+    if(typeof fdata === 'string')
+    {
+        var a = this;
+        this.get(fdata).then(function(_form_info){
+            a.loadform(form_el,_form_info);
+        })
+    }
+
     var csrf_input = $(form_el).find('input[type=hidden][role=csrf]').one();
     if(csrf_input.length==0)
     {

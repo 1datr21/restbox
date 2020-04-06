@@ -91,11 +91,17 @@
                 taskform();            
             });
 
-        /*    $('.edit_task').click(function(e){
-           //     $('#form_task_edit').load_form
-            });
-            */
+        
         });        
+
+        function edit_task(tid)
+        {
+            rb.loadform($('#form_task_edit'),'forms/tasks/'+tid).then(function(_data)
+            {
+
+            });
+
+        }
        
         function load_tasks()
         {
@@ -119,7 +125,7 @@
                     <td>${descr}</td>
                     <td>${author}</td>
                     <td><a href="javascript:rb.send('delete')">Delete</a></td>
-                    <td><a class="edit_task">Edit</a></td>
+                    <td><a href="javascript:edit_task(${id})">Edit</a></td>
                 </tr>
             {{/each}}
             </table>  
