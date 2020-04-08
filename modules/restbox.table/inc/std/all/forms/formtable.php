@@ -29,6 +29,10 @@ $info = new obj_description([
         //    print_dbg($newrow);
             return $newrow;
         }
+        else
+        {
+            print_dbg($env->_ROUTE_PARAMS);
+        }
         // [_ROUTE_PARAMS]  [object]  [name]
         
         return [];
