@@ -31,7 +31,7 @@ $info = new obj_description([
         }
         else
         {
-            print_dbg($env->_ROUTE_PARAMS);
+            print_dbg($env->_ROUTE_PARAMS); // the id
         }
         // [_ROUTE_PARAMS]  [object]  [name]
         
