@@ -297,7 +297,7 @@ jq_rbapi.prototype.set_def_settings = function(form_el,fld,fld_val) // set value
     {
         $(selects).find('option').removeAttr('selected');
         var option = $(selects).find('option[value='+fld_val+']');
-        $(option).attr('selected');      
+        $(option).prop('selected', true);     
     }
     //.val()
 }
