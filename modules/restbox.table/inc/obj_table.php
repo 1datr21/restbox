@@ -311,9 +311,26 @@ namespace modules\restbox\table {
             $this->FIELDS[$fldname] = $finfo;
         }
 
+        public function get_item($id_val)
+        {
+            $id_fld_name = $this->get_id_field();
+            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_table}` WHERE {$id_fld_name}={$_id_val}");
+            if($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            {
+                return $row;
+            }   
+            return null;
+        }
+
         function OnDropField()
         {
-            
+            $id_fld_name = $this->get_id_field();
+            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_table}` WHERE {$id_fld_name}={$_id_val}");
+            if($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            {
+                return $row;
+            }   
+            return null;
         }
 
         function get_new_row()
