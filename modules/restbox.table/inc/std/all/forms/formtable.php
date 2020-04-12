@@ -54,6 +54,7 @@ $info = new obj_description([
     },
     'OnValidate'=>function($env,$_p_data) {
        // print_dbg('Validating form');
+       print_dbg($env->_ROUTE_PARAMS);
     }
 ],
 ]);
