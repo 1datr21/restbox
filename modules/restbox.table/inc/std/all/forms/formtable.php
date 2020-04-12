@@ -34,7 +34,15 @@ $info = new obj_description([
             $_id = $env->_ROUTE_PARAMS['route_pieces'][0];
             $_table = $env->_ROUTE_PARAMS['object']['name'];
             $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
-            print_dbg($_id); // the id
+            $item = $table_map->get_item($_id);
+          //  print_dbg($item);
+            if($item==null)
+            {
+              // generate error
+              $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Page is not exists",'errno'=>404]);	
+            }
+            return $item;
+            //print_dbg($_id); // the id
         }
         // [_ROUTE_PARAMS]  [object]  [name]
         

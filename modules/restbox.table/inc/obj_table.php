@@ -263,12 +263,13 @@ namespace modules\restbox\table {
     class TableMap {
 
         VAR $TNAME;
+        VAR $_P_MODULE;
         VAR $FIELDS = [];
 
-        function __construct($tbl_name,$_info_=[])
+        function __construct($tbl_name,$_info_=[],$_P_MODULE=null)
         {
             $this->TNAME = $tbl_name;
-
+            $this->_P_MODULE = $_P_MODULE;
            // print_dbg($_info_);
 
             if(is_object($_info_))
@@ -311,13 +312,31 @@ namespace modules\restbox\table {
             $this->FIELDS[$fldname] = $finfo;
         }
 
-        public function get_item($id_val)
+        public function get_item($_id_val)
         {
             $id_fld_name = $this->get_id_field();
-            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_table}` WHERE {$id_fld_name}={$_id_val}");
-            if($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            //print_dbg($id_fld_name);
+            $res = $this->_P_MODULE->exe_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$this->TNAME}` WHERE {$id_fld_name->fldname}={$_id_val}");
+            if($row = $this->_P_MODULE->exe_mod_func('restbox.db', 'fetch_object',$res))
             {
-                return $row;
+             //   return $row;
+                $res = [];
+                foreach($this->FIELDS as $fld => $fld_obj)
+                {
+                //  print_dbg($fld_obj);
+                    if(!$fld_obj->isID())
+                    {
+                        $arr = ['defval' => $row[$fld] ];
+                        $vl = $fld_obj->ValueList();
+                        if(!empty($vl))
+                        {
+                            $arr['valuelist']=$vl;
+                        }
+                        $res[$fld] = $arr; 
+
+                    }
+                } 
+                return $res;
             }   
             return null;
         }
@@ -325,8 +344,8 @@ namespace modules\restbox\table {
         function OnDropField()
         {
             $id_fld_name = $this->get_id_field();
-            $res = $this->call_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_table}` WHERE {$id_fld_name}={$_id_val}");
-            if($row = $this->call_mod_func('restbox.db', 'fetch_object',$res))
+            $res = $this->_P_MODULE->exe_mod_func('restbox.db', 'query',"SELECT * FROM `@+{$_table}` WHERE {$id_fld_name}={$_id_val}");
+            if($row = $this->_P_MODULE->exe_mod_func('restbox.db', 'fetch_object',$res))
             {
                 return $row;
             }   
