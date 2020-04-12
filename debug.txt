@@ -1,19 +1,5 @@
 
 				
-	04-08-2020 23:09:16.000000: Array
-(
-    [obj_class] => forms
-    [object] => Array
-        (
-            [name] => tasks
-            [type] => config
-            [class] => \modules\restbox\forms\ObjForm
-        )
-
-    [action] => AInfo
-    [route_pieces] => Array
-        (
-            [0] => 16
-        )
-
-)
+	04-12-2020 11:40:02.000000: 
+				
+	04-12-2020 11:40:21.000000: 16

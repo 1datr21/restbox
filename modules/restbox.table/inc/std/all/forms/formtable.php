@@ -31,7 +31,10 @@ $info = new obj_description([
         }
         else
         {
-            print_dbg($env->_ROUTE_PARAMS); // the id
+            $_id = $env->_ROUTE_PARAMS['route_pieces'][0];
+            $_table = $env->_ROUTE_PARAMS['object']['name'];
+            $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
+            print_dbg($_id); // the id
         }
         // [_ROUTE_PARAMS]  [object]  [name]
         
