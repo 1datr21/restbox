@@ -348,7 +348,10 @@ namespace modules\restbox\session {
 				if($delta>=$this->exp_time)
 				{
 				//	print_dbg("Deleting $sessfile");
-					unlink($sessfile);
+					if(file_exists($sessfile))
+					{
+						unlink($sessfile);
+					}
 				}
 			}	
 			//print_dbg($sess_list);

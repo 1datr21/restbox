@@ -335,6 +335,10 @@ namespace modules\restbox\table {
                         $res[$fld] = $arr; 
 
                     }
+                    else
+                    {
+                        $res[$fld] = ['defval' => $row[$fld] ];                        
+                    }
                 } 
                 return $res;
             }   
