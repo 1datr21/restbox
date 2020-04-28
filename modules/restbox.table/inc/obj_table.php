@@ -312,6 +312,11 @@ namespace modules\restbox\table {
             $this->FIELDS[$fldname] = $finfo;
         }
 
+        public function validate($_data)
+        {
+
+        }
+
         public function get_item($_id_val)
         {
             $id_fld_name = $this->get_id_field();

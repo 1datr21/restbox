@@ -24,9 +24,7 @@ $info = new obj_description([
         {
             $_table = $env->_ROUTE_PARAMS['object']['name'];
             $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
-          //  print_dbg($table_map);
             $newrow = $table_map->get_new_row();
-        //    print_dbg($newrow);
             return $newrow;
         }
         else
@@ -35,26 +33,32 @@ $info = new obj_description([
             $_table = $env->_ROUTE_PARAMS['object']['name'];
             $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
             $item = $table_map->get_item($_id);
-          //  print_dbg($item);
+        
             if($item==null)
             {
               // generate error
               $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Page is not exists",'errno'=>404]);	
             }
             return $item;
-            //print_dbg($_id); // the id
+            
         }
-        // [_ROUTE_PARAMS]  [object]  [name]
         
         return [];
       //print_dbg($env);
     },
     'OnSubmit'=>function($env,$_p_data) { 
-      //  return $env->P_MODULE->exe_mod_func('restbox.session','logout');   
+      //  return $env->P_MODULE->exe_mod_func('restbox.session','logout');  
+        $_table = $env->_ROUTE_PARAMS['object']['name'];
+       // print_dbg('table:'.$_table);
+        $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table); 
     },
     'OnValidate'=>function($env,$_p_data) {
        // print_dbg('Validating form');
-       print_dbg($env->_ROUTE_PARAMS);
+        $_table = $env->_ROUTE_PARAMS['object']['name'];
+      //  print_dbg('validating');
+        $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
+        $table_map->validate($_p_data);
+      //  print_dbg($table_map);
     }
 ],
 ]);
