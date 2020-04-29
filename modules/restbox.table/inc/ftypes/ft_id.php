@@ -26,6 +26,15 @@ namespace modules\restbox\table {
                 ]
             ];
         }
+
+        function validate($_a_value)
+        {
+            if(empty($_a_value))
+            {
+                return "Id could not be empty";
+            }
+            return null;
+        }
     }
 
 

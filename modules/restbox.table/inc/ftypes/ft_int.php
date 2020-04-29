@@ -20,6 +20,15 @@ namespace modules\restbox\table {
         {
             def_options(['_type'=>'bigint','_size'=>20,'unsigned'=>false],$params_);
         }
+
+        function validate($_a_value)
+        {
+            if(empty($_a_value))
+            {
+                return "Id could not be empty";
+            }
+            return null;
+        }
     }
 
 }

@@ -312,9 +312,33 @@ namespace modules\restbox\table {
             $this->FIELDS[$fldname] = $finfo;
         }
 
-        public function validate($_data)
+        public function validate($_data,$with_id=false)
         {
+            function exe_validate($fld,$fld_obj,$_data,&$res_arr)
+            {
+                $res = $fld_obj->validate($_data[$fld]);
+                if($res!=null)
+                {
+                    $res_arr[$fld]=$res;
+                }
+            }
 
+            $res_arr=[];
+            foreach($this->FIELDS as $fld => $fld_obj)
+            {
+                if($fld_obj->isID())
+                {
+                    if($with_id)
+                    {
+                        exe_validate($fld,$fld_obj,$_data,$res_arr);
+                    }
+                }
+                else
+                {
+                    exe_validate($fld,$fld_obj,$_data,$res_arr);
+                }
+            }
+            return $res_arr;
         }
 
         public function get_item($_id_val)

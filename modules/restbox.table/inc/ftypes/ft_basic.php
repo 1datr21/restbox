@@ -77,6 +77,11 @@ namespace modules\restbox\table {
             return null;
         }
 
+        public function validate($_a_value)
+        {
+            return null;
+        }
+
         function OnCreateTable_std($_args)
         {
             
