@@ -11,7 +11,7 @@ namespace modules\restbox\table {
             */
             $attr_str=($this->PARAMS['unsigned'] ? "UNSIGNED" : "");
             return [                
-                'fld_seg'=>"`{$this->fldname}` {$this->PARAMS['_type']} $attr_str NOT NULL ",
+                'fld_seg'=>"`{$this->fldname}` {$this->PARAMS['_type']} $attr_str {$this->str_required()} ",
                 'add_queries'=>[]
             ];
         }
@@ -21,14 +21,7 @@ namespace modules\restbox\table {
             def_options(['_type'=>'bigint','_size'=>20,'unsigned'=>false],$params_);
         }
 
-        function validate($_a_value)
-        {
-            if(empty($_a_value))
-            {
-                return "Id could not be empty";
-            }
-            return null;
-        }
+        
     }
 
 }

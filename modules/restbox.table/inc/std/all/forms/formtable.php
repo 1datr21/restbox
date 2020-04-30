@@ -47,18 +47,13 @@ $info = new obj_description([
       //print_dbg($env);
     },
     'OnSubmit'=>function($env,$_p_data) { 
-      //  return $env->P_MODULE->exe_mod_func('restbox.session','logout');  
         $_table = $env->_ROUTE_PARAMS['object']['name'];
-       // print_dbg('table:'.$_table);
         $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table); 
     },
     'OnValidate'=>function($env,$_p_data) {
-       // print_dbg('Validating form');
         $_table = $env->_ROUTE_PARAMS['object']['name'];
-      //  print_dbg('validating');
         $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table);
-        $table_map->validate($_p_data);
-      //  print_dbg($table_map);
+        return $table_map->validate($_p_data);
     }
 ],
 ]);

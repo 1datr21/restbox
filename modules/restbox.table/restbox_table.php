@@ -124,18 +124,20 @@ namespace modules\restbox\table {
 
 		function build_info($info,$tname)
         {
-            
+			//print_dbg($info);
+			
             $res = new TableMap($tname,$info,$this);
             foreach($info->_info['fields'] as $fld => $fldinfo)
             {
-                //$this->call_mod_func('')
+			//	print_dbg($fldinfo);
+				
                $fld_obj = $this->load_ftype($fld,$fldinfo);
                $res->add_field($fld,$fld_obj);
             }
             return $res;
         }
 
-		function load_ftype($ftname,$ftparams)
+		function load_ftype($ftname,$ftparams,$required=true)
 		{			
 			$this->gather_ftypes();	
 

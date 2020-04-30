@@ -7,14 +7,24 @@ namespace modules\restbox\table {
         VAR $PARAMS;
         VAR $_P_MODULE;
         VAR $isID = false;
+        VAR $required = false;
 
         function __construct($_params=[],$_fldname,$_p_module=null)
         {
             $this->OnConstruct($_params);
             $this->fldname = $_fldname;
-            $this->PARAMS = $_params;    
+            $this->PARAMS = $_params;  
+            
+            def_options($this->def_params(),$this->PARAMS);
+            
+
             $this->_P_MODULE =$_p_module;
             $this->AfterConstruct();
+        }
+
+        function def_params()
+        {
+            return ['require'=>false];
         }
 
         function OnConstruct(&$params_)
@@ -42,6 +52,13 @@ namespace modules\restbox\table {
 
         }
 
+        function str_required()
+        {
+            if($this->PARAMS['require'])
+                return " NOT NULL ";
+            
+            return " NULL ";
+        }
 
         function AfterConstruct()
         {
@@ -77,8 +94,19 @@ namespace modules\restbox\table {
             return null;
         }
 
-        public function validate($_a_value)
+        function validate($_a_value)
         {
+            if($this->required())
+            {
+                if(empty($_a_value))
+                {
+                    return "field {$this->fldname} could not be empty";
+                }
+            }
+            if(isset($this->PARAMS['onvalidate']))
+            {
+                return $this->PARAMS['onvalidate']($_a_value,$this);
+            }
             return null;
         }
 
@@ -90,6 +118,11 @@ namespace modules\restbox\table {
         function OnChangeFld_std($_args)
         {
             return $this->OnCreateTable_std($_args);
+        }
+
+        function required()
+        {
+            return $this->PARAMS['require'];
         }
 
         function compare_fld($fld_map)

@@ -8,7 +8,7 @@
     $info = new obj_description([
     'fields'=>[
         'id'=>new tfield('id'),
-        'name'=>new tfield('text',['maxlen'=>50]),
+        'name'=>new tfield('text',['maxlen'=>50],'required'),
         'descr'=>new tfield('bigtext',['maxlen'=>2500]),
         'state'=>new tfield('enum',['values'=>['primary','agreed','usual','_important','emergency'],'default'=>'primary']),
         'options'=>new tfield('set',['values'=>['important','attached','group','slow'],'default'=>['slow','attached']]),
