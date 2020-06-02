@@ -3,7 +3,7 @@
 
 namespace modules\restbox\db\mysql {
 
-	require_once '/inc/conn_mysqli.php';
+	require_once 'inc/conn_mysqli.php';
 	
 	use Core;
 	use Exception;

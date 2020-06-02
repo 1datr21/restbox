@@ -11,7 +11,7 @@ namespace modules\restbox\table {
         function OnCreateTable_std($_args)
         {
             return [
-                'fld_seg'=>"`{$this->fldname}` text NOT NULL ",
+                'fld_seg'=>"`{$this->fldname}` text  {$this->str_required()} ",
                 'add_queries'=>[]
             ];
         }

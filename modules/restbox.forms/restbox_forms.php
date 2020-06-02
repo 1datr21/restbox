@@ -103,7 +103,7 @@ namespace modules\restbox\forms {
 			return $qres;
 		}
 
-		function call_obj($_route,$obj_class=null)   
+		function call_obj($_route,$obj_class=null,$rmode = NULL)   
 		{
 	
 			$obj_nfo = $this->obj_info_by_route($_route);

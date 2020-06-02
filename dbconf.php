@@ -14,11 +14,11 @@
    */
   
     $host = 'localhost';
-    $db = 'tmsus';
+    $db = 'tms';
     $charset='utf8';
     $user='root';    
    // $passw='';    
-    $passw='123456';
+    $passw='root';
     $dbconn = [
         'drv'=>'pdo',
         'prefix' =>"tms_",

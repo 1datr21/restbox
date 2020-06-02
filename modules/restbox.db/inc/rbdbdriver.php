@@ -5,7 +5,7 @@ namespace modules\restbox\db {
     use Exception;
 	use modules\restbox\RBModule as RBModule;
 	
-	require_once '/sqlbuilder.php';
+	require_once 'sqlbuilder.php';
 
 	class RBDBDriver extends RBModule 
     {

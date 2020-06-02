@@ -96,6 +96,7 @@ namespace modules\restbox\session {
 
 		function login($eargs)
 		{
+			print_dbg('*** login ***');
 			$obj_res = $this->call_obj('auth','modules\restbox\session\ObjAuthTable');
 			return $obj_res;
 		}
@@ -183,10 +184,11 @@ namespace modules\restbox\session {
 
 		function restbox_forms_oncallform($eparams)
 		{
-		//	print_dbg('objname : '.$eparams['route']['object']['name']);
+			//print_dbg('objname : '.$eparams['route']['object']['name']);
 			
 			if($eparams['route']['object']['name']=='auth')
 			{
+				//print_dbg("фгеращкь");
 				$_cfg_info = $this->exe_mod_func('restbox', 'get_settings');
 				$form_script = url_seg_add('/inc/std',$_cfg_info['_EP'],'forms',$eparams['route']['object']['name']).".php";
 				include $form_script;

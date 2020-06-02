@@ -6,8 +6,8 @@ namespace modules\restbox\table {
         function OnCreateTable_std($_args)
         {
             switch($this->PARAMS['mode']){
-                case 'blob' : $seg = "`{$this->fldname}` longblob NOT NULL , `{$this->fldname}_mime` text NOT NULL ";break;
-                case 'url' : $seg = "`{$this->fldname}` text NOT NULL ";break;
+                case 'blob' : $seg = "`{$this->fldname}` longblob  {$this->str_required()} , `{$this->fldname}_mime` text  {$this->str_required()} ";break;
+                case 'url' : $seg = "`{$this->fldname}` text  {$this->str_required()} ";break;
             }
             return [
                 'fld_seg'=>$seg,
@@ -20,10 +20,10 @@ namespace modules\restbox\table {
             $q_add = [];
             switch($this->PARAMS['mode']){
                 case 'blob' :
-                    $q_add[]= "ALTER TABLE `@+[table]` ADD COLUMN `{$this->fldname}_mime` text NOT NULL AFTER `{$this->fldname}`";
-                    $seg = "`{$this->fldname}` longblob NOT NULL  ";
+                    $q_add[]= "ALTER TABLE `@+[table]` ADD COLUMN `{$this->fldname}_mime` text  {$this->str_required()} AFTER `{$this->fldname}`";
+                    $seg = "`{$this->fldname}` longblob  {$this->str_required()}  ";
                     break;
-                case 'url' : $seg = "`{$this->fldname}` text NOT NULL ";break;
+                case 'url' : $seg = "`{$this->fldname}` text  {$this->str_required()} ";break;
             }
             return [
                 'fld_seg'=>$seg,

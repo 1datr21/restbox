@@ -3,7 +3,7 @@
 
 namespace modules\restbox\db\pdo {
 
-	require_once '/inc/conn_pdo.php';
+	require_once 'inc/conn_pdo.php';
 	
 	use Core;
 	use Exception;

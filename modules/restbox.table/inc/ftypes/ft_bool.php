@@ -9,7 +9,7 @@ namespace modules\restbox\table {
            ALTER TABLE `tms_tasks` ADD `active` BOOLEAN NOT NULL AFTER `options`;
             
             */
-            $seg = "`{$this->fldname}` {$this->PARAMS['_type']} NOT NULL DEFAULT '".($this->PARAMS['default'] ? 1 : 0)."'";
+            $seg = "`{$this->fldname}` {$this->PARAMS['_type']}  {$this->str_required()} DEFAULT '".($this->PARAMS['default'] ? 1 : 0)."'";
             return [                
                 'fld_seg'=>$seg,
                 'add_queries'=>[]

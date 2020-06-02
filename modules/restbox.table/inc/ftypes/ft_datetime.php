@@ -11,7 +11,7 @@ namespace modules\restbox\table {
             $attr_str=($this->PARAMS['unsigned'] ? "UNSIGNED" : "");
             $_type = ucwords($this->PARAMS['mode']);
             return [                
-                'fld_seg'=>"`{$this->fldname}` {$_type} $attr_str NOT NULL ",
+                'fld_seg'=>"`{$this->fldname}` {$_type} $attr_str  {$this->str_required()} ",
                 'add_queries'=>[]
             ];
         }

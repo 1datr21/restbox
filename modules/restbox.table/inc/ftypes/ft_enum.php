@@ -14,7 +14,7 @@ namespace modules\restbox\table {
 
         function OnCreateTable_std($_args)
         {
-            $seg = "`{$this->fldname}` ENUM(".implode(',',transform_array( $this->PARAMS['values'] ,"'{%val}'")).") NOT NULL";
+            $seg = "`{$this->fldname}` ENUM(".implode(',',transform_array( $this->PARAMS['values'] ,"'{%val}'")).")  {$this->str_required()}";
             if(isset($this->PARAMS['default']))
             {
                 $seg = $seg." DEFAULT '{$this->PARAMS['default']}'";

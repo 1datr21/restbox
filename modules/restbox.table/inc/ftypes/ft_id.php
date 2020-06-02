@@ -15,10 +15,15 @@ namespace modules\restbox\table {
             $this->isID = true;
         }
 
+        function def_params()
+        {
+            return ['require'=>true];
+        }
+
         function OnCreateTable_std($_args)
         {
             return [
-                'fld_seg'=>"`{$this->fldname}` bigint(20) NOT NULL",
+                'fld_seg'=>"`{$this->fldname}` bigint(20)  {$this->str_required()}",
                 'add_queries'=>[
                     "ALTER TABLE `@+[table]` ADD PRIMARY KEY (`{$this->fldname}`);",
                     "ALTER TABLE `@+[table]` MODIFY `{$this->fldname}` bigint(20) NOT NULL AUTO_INCREMENT",
