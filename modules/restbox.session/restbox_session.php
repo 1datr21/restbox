@@ -96,8 +96,10 @@ namespace modules\restbox\session {
 
 		function login($eargs)
 		{
-			print_dbg('*** login ***');
+		//	print_dbg('*** login ***');
 			$obj_res = $this->call_obj('auth','modules\restbox\session\ObjAuthTable');
+		//	print_dbg('obj_res : ');
+		//	print_dbg($obj_res);
 			return $obj_res;
 		}
 
@@ -109,9 +111,9 @@ namespace modules\restbox\session {
 
 		function restbox_route_onquery(&$eargs)
 		{				
-		//	print_dbg($eargs);
+			//print_dbg($eargs);
 
-			if(in_array($eargs['route'],['userinfo']))
+			if(in_array($eargs['route'],['userinfo','auth','logout']))
 			{
 				$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');
 				return $obj_res;
