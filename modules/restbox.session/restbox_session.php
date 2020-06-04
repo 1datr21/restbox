@@ -109,10 +109,8 @@ namespace modules\restbox\session {
 			return $obj_res;
 		}
 
-		function restbox_route_onquery(&$eargs)
+		function restbox_route_onquery(&$eargs) // bind all routes to object routes
 		{				
-			//print_dbg($eargs);
-
 			if(in_array($eargs['route'],['userinfo','auth','logout']))
 			{
 				$obj_res = $this->call_obj($eargs['route'],'modules\restbox\session\ObjAuthTable');

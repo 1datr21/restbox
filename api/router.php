@@ -33,6 +33,7 @@ namespace Core {
 
 			if(count($segments)>count($this->_MAP['vars'] ))
 				return false;
+		//	print_dbg($segments);
 			foreach($segments as $seg)
 			{
 				$_pieces = explode(':',$seg);
@@ -40,7 +41,9 @@ namespace Core {
 				if(count($_pieces)>1)
 				{
 					if(isset($this->_MAP['vars'][$_pieces[0]]))
+					{
 						$_varlist[$_pieces[0]]=$_pieces[1];
+					}
 				}
 				else
 				{

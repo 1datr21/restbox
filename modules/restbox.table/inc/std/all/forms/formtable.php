@@ -46,9 +46,24 @@ $info = new obj_description([
         return [];
       //print_dbg($env);
     },
-    'OnSubmit'=>function($env,$_p_data) { 
+    'OnSubmit'=>function($env,$_p_data) { // add or edit object
         $_table = $env->_ROUTE_PARAMS['object']['name'];
         $table_map = $env->P_MODULE->exe_mod_func('restbox.table', 'load_table',$_table); 
+        $id_fld_name =  $table_map->get_id_field();
+        if(isset($_p_data[$id_fld_name]))// existing object
+        {
+            $obj = $table_map->get_item($_p_data[$id_fld_name]);
+         //   print_dbg($obj);
+        }
+        else
+        {
+           $newobj = $table_map->save($_p_data);
+           //print_dbg($newobj);
+        }
+     //   print_dbg($id_fld_name);
+        //print_dbg($_p_data);
+        //print_dbg($table_map);
+        //$table_map->get_item($_id_val);
     },
     'OnValidate'=>function($env,$_p_data) {
         $_table = $env->_ROUTE_PARAMS['object']['name'];

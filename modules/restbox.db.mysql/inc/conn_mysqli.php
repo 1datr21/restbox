@@ -58,7 +58,7 @@ namespace modules\restbox\db\mysql {
         
         function exec_query($_query,$gen_error=true)
         {
-             print_dbg($_query);
+            // print_dbg($_query);
             $res = $this->_CONNECTION->query($_query);
             return $res;
  		}

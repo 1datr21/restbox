@@ -163,6 +163,7 @@ namespace modules\restbox\table {
 
         function save($_request,$_post_data=[])
         {  
+         //   print_dbg('+++ saving +++');
             $_post_data=$_POST;
             $info_obj = $this->P_MODULE->load_table($_request['vars']['table']);
 
@@ -339,6 +340,13 @@ namespace modules\restbox\table {
                 }
             }
             return $res_arr;
+        }
+
+        public function save($_post_data=[])
+        {
+          //  $this->call_obj('tables/'.$this->getName().'','modules\restbox\table\ObjTable',2);
+            $newobj = $this->_P_MODULE->exe_mod_func('restbox.table','save',$this->getName(),$_post_data);
+            return $newobj;
         }
 
         public function get_item($_id_val)

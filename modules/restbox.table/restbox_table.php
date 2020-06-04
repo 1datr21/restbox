@@ -36,12 +36,22 @@ namespace modules\restbox\table {
 		
 		}
 
-		function restbox_route_onquery(&$eargs)
+		function restbox_route_onquery(&$eargs)// bind all routes to object routes
 		{				
 			$obj_res = $this->call_obj($eargs['route'],'modules\restbox\table\ObjTable');
 			
 			return $obj_res;
-		}	
+		}
+		
+		function save($table,$rec_data)
+		{
+			$obj = $this->make_obj_or_return('modules\restbox\table\ObjTable', $table);
+			//print_dbg($obj);
+			$obj->save(['vars'=>['table'=>$table]],$rec_data);
+			//$obj_res = $this->call_obj('tables/save/'.$table,'modules\restbox\table\ObjTable',2);
+			
+			return $obj_res;
+		}
 
 		function gather_ftypes()
 		{

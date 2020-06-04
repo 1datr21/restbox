@@ -43,29 +43,7 @@
                     }
                 });
             
-         /*   
-         $( "#authForm" ).submit(function( event ) {         
-            // Stop form from submitting normally
-                    event.preventDefault();  
-                    
-                    var res = rb.auth(
-                            $('[name=login]').val(),
-                            $('[name=password]').val()
-                    );                      
-            });
-*/
-            /*
-            $('#form_task').submit(function( event ) {   
-                event.preventDefault(); 
-                rb.sendform($('#form_task')).then(
-                    function(r)
-                    {
-
-                    }
-                );     
-            });
-            */
-
+        
             $( "#newtaskform" ).submit(function( event ) {         
             // Stop form from submitting normally
                     event.preventDefault();  
@@ -84,11 +62,6 @@
             $("#tasklist").click(function(e){
                 load_tasks();
             });
-/*
-            $("#btn_logout").click(function(e){
-                rb.logout(); 
-            });
-*/
 
             $("#btn_taskform").click(function(e){
                 taskform();            
