@@ -257,8 +257,10 @@ namespace modules\restbox\db {
 			{
 				if(empty($_val))
 				{
-					if(!empty($table_map->FIELDS[$_fld_key]->PARAMS['default']))
-						$item[$_fld_key] = $table_map->FIELDS[$_fld_key]->PARAMS['default'];
+					$_def = $table_map->FIELDS[$_fld_key]->get_default();
+					print_dbg('def is '.$_def);
+					if(!empty($_def))
+						$item[$_fld_key] = $_def;//PARAMS['default'];
 				}
 			}
 

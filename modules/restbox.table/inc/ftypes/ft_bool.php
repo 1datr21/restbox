@@ -25,6 +25,19 @@ namespace modules\restbox\table {
         {
             return ['require'=>false,'default'=>0];
         }
+
+        function get_default()
+        {
+            
+
+            if(isset($this->PARAMS['default']))
+            {
+            //    print_dbg($this->PARAMS);
+            //    print_dbg(':::');
+                return (string)$this->PARAMS['default'];
+            }
+            return null;
+        }
     }
 
 }

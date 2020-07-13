@@ -129,5 +129,13 @@ namespace modules\restbox\table {
         {
 
         }
+
+        function get_default()
+        {
+            if(isset($this->PARAMS['default']))
+                return $this->PARAMS['default'];
+            
+            return null;
+        }
     }
 }

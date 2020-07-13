@@ -30,6 +30,18 @@ namespace modules\restbox\table {
             ];
         }
 
+        function get_default()
+        {
+            if(isset($this->PARAMS['default']))
+            {
+                if(is_array($this->PARAMS['default']))
+                    return "".implode(',',$this->PARAMS['default'])."";    
+                else
+                    return $this->PARAMS['default'];
+            }
+            return null;
+        }
+
         function ValueList()
         {
             return  $this->PARAMS['values'];

@@ -26,6 +26,8 @@ namespace modules\restbox\table {
             ];
         }
 
+        
+
         function ValueList()
         {
             return  $this->PARAMS['values'];
