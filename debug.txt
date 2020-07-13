@@ -1,3 +1,12 @@
 
-
-
+				
+	07-13-2020 17:45:45.000000: << error in sql 
+INSERT INTO `tms_tasks`(`name`,`descr`,`state`,`options`,`active`,`author`,`createdate`) VALUES('7878','78tt
+678gt','primary','{%val}','','2',NOW())
+				
+	07-13-2020 17:45:58.000000: << error in sql 
+INSERT INTO `tms_tasks`(`name`,`descr`,`state`,`options`,`active`,`author`,`createdate`) VALUES('7878','78tt
+678gt','primary','{%val}','','2',NOW())
+				
+	07-13-2020 17:46:19.000000: << error in sql 
+INSERT INTO `tms_tasks`(`name`,`descr`,`state`,`options`,`active`,`author`,`createdate`) VALUES('7878','78tt//678gt','primary','{%val}','','2',NOW())

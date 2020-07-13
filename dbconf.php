@@ -23,11 +23,14 @@
         'drv'=>'pdo',
         'prefix' =>"tms_",
         'connstr'=>"mysql:host=$host;dbname=$db;charset=$charset",
+        //'connstr'=>"mysql:host=$host;dbname=$db",
         'user'=>$user,
         'passw'=>$passw,
         'create_if_not_exists'=>true,
         'charset'=>"utf8",
+       // 'charset'=>"utf8mb4",
         'collation'=>'utf8_general_ci',
+        //'collation'=>'utf8mb4_0900_ai_ci',
     ];
     
 ?>

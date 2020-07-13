@@ -107,7 +107,7 @@ namespace modules\restbox\db {
 			{
 				if( !$this->table_exists($table_map->getName()) )
 				{
-				//	print_dbg('table not exists');
+					print_dbg('table not exists');
 					$this->create_table($table_map);
 				}
 				else
@@ -247,8 +247,21 @@ namespace modules\restbox\db {
 		{
 			$table = $args['table'];
 			$item = $args['item'];
+
+				
 			
 			$table_map = $args['#table_params'];
+			//print_dbg($table_map->FIELDS);	
+
+			foreach($item as $_fld_key => $_val)
+			{
+				if(empty($_val))
+				{
+					if(!empty($table_map->FIELDS[$_fld_key]->PARAMS['default']))
+						$item[$_fld_key] = $table_map->FIELDS[$_fld_key]->PARAMS['default'];
+				}
+			}
+
 			$this->dispatch_table($table_map);
 
 			$_sql = "INSERT INTO `@+$table`(".xx_implode($item,',',"`{idx}`").") VALUES(".xx_implode($item,',','\'{%val}\'',

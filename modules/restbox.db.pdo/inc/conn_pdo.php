@@ -59,7 +59,7 @@ namespace modules\restbox\db\mysql {
             }
             catch(Exception $exc)
             {
-              //  print_dbg("eeerrrrorr:".$exc->getMessage());
+                print_dbg("eeerrrrorr:".$exc->getMessage());
                 $this->_curr_ERROR = true;
                 $this->gen_error("Connection failed ".$exc->getMessage());
                 

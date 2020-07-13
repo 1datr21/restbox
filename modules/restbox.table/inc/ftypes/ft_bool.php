@@ -18,7 +18,12 @@ namespace modules\restbox\table {
 
         function OnConstruct(&$params_)
         {
-            def_options(['_type'=>'BOOLEAN','default'=>false],$params_);
+            def_options(['_type'=>'BOOLEAN','default'=>0],$params_);
+        }
+
+        function def_params()
+        {
+            return ['require'=>false,'default'=>0];
         }
     }
 

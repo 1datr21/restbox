@@ -245,6 +245,7 @@ namespace modules\restbox\table {
                     {
                         $_params = ['datarow'=>&$item];
                         $fld->BeforeInsert($_params);
+                   //     print_dbg($fld);
                     }
                     $res = $this->call_mod_func('restbox.db', 'query_insert',['item'=>$item,'table'=>$_request['vars']['table'],'#table_params'=>$info_obj]);
                     //execute event After Save
