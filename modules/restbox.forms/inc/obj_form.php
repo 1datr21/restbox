@@ -84,6 +84,18 @@ namespace modules\restbox\forms {
         {
             $finfo=[];
 
+            // check access
+        /*    if(isset($this->_INFO->_info['events']['OnAccess'])) 
+            {
+                $res = $this->_INFO->_info['events']['OnAccess']($this, []);
+
+                if(!is_null($res))
+                {
+                    $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                    return; 
+                } 
+            }*/
+
             if(isset($this->_INFO->_info['fields'])) 
             {
                 $finfo['fields'] = $this->_INFO->_info['fields'];
@@ -111,10 +123,20 @@ namespace modules\restbox\forms {
                 return;    
             }  
 
+            // check access
+            if(isset($this->_INFO->_info['events']['OnAccess'])) 
+            {
+                $res = $this->_INFO->_info['events']['OnAccess']($this, []);
+
+                if(!is_null($res))
+                {
+                    $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                    return; 
+                }
+            }
+
             $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
             
-        //    print_dbg("current key is ".$csrf_key);
-
             $ftokens[$csrf_key]['validated'] = true;
             
             $this->call_mod_func('restbox.session','set_var','FORM_TOKENS',$ftokens);
@@ -141,8 +163,20 @@ namespace modules\restbox\forms {
                 return;    
             }            
 
-            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            // check access
+            if(isset($this->_INFO->_info['events']['OnAccess'])) 
+            {
+                $res = $this->_INFO->_info['events']['OnAccess']($this, []);
 
+                if(!is_null($res))
+                {
+                    $this->P_MODULE->exe_mod_func('restbox','out_error',['message'=>"Access forbidden",'errno'=>403]);
+                    return; 
+                }
+            }
+
+            $ftokens = $this->call_mod_func('restbox.session','get_var','FORM_TOKENS',[]);
+            
         //    print_dbg($ftokens);
         //    print_dbg($csrf_key);
             if(!$ftokens[$csrf_key]['validated'])

@@ -275,6 +275,10 @@ namespace modules\restbox\db {
 					$theval['%val'] = substr($theval['%val'],1);
 					$thetemplate = "{%val}";
 				}
+				elseif(is_null($theval['%val']))
+				{
+					$thetemplate="NULL";
+				}
 			}).")";
 
 		//	print_dbg($_sql);

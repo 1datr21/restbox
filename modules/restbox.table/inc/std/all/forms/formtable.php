@@ -44,7 +44,10 @@ $info = new obj_description([
         }
         
         return [];
-      //print_dbg($env);
+    },
+    'OnAccess'=>function($module, $_data=[])
+    {
+
     },
     'OnSubmit'=>function($env,$_p_data) { // add or edit object
         $_table = $env->_ROUTE_PARAMS['object']['name'];
