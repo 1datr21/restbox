@@ -1,8 +1,0 @@
-
-				
-	07-13-2020 18:38:37.000000: def is slow,attached
-				
-	07-13-2020 18:38:37.000000: def is 0
-				
-	07-13-2020 18:38:37.000000: << error in sql 
-INSERT INTO `tms_tasks`(`name`,`descr`,`state`,`options`,`active`,`author`,`createdate`) VALUES('е45у3у2','545454ене665','primary','slow,attached','','2',NOW())

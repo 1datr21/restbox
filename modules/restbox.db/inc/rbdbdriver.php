@@ -255,15 +255,16 @@ namespace modules\restbox\db {
 
 			foreach($item as $_fld_key => $_val)
 			{
-				if(empty($_val))
+				if(is_null($_val))
 				{
 					$_def = $table_map->FIELDS[$_fld_key]->get_default();
-					print_dbg('def is '.$_def);
-					if(!empty($_def))
+					//print_dbg('def is '.$_def." _=_".empty($_def));
+					if(!is_null($_def))
 						$item[$_fld_key] = $_def;//PARAMS['default'];
 				}
 			}
-
+			//print_dbg($item);
+			
 			$this->dispatch_table($table_map);
 
 			$_sql = "INSERT INTO `@+$table`(".xx_implode($item,',',"`{idx}`").") VALUES(".xx_implode($item,',','\'{%val}\'',

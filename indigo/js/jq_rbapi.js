@@ -552,7 +552,8 @@ function exe_event(element,event,params)
     var attr_ev = $(element).attr(event);
     if(attr_ev!=null)
     {
-        attr_ev(params);
+        eval(attr_ev+"(params);");
+        
     }
     
     $(element).trigger(event, params);

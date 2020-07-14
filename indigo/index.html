@@ -11,7 +11,6 @@
         <script language="javascript">
         var rb;
         $( document ).ready(function() { 
-           // rb = new jq_rbapi("http://restbox:8080/",{
             rb = new jq_rbapi("../",{
                 onError : function(err) { alert(err); },
                 onUnhandledError : function(err) { $('#div_err').html(err); },
