@@ -45,9 +45,12 @@ $info = new obj_description([
         
         return [];
     },
-    'OnAccess'=>function($module, $_data=[])
+    'OnAccess'=>function(&$rbenv, $_data=[])
     {
+        $sess_vars = $rbenv->P_MODULE->exe_mod_func('restbox.session','get_sess_vars'); 
 
+        if(!isset($sess_vars['user_id']))
+            return true;
     },
     'OnSubmit'=>function($env,$_p_data) { // add or edit object
         $_table = $env->_ROUTE_PARAMS['object']['name'];
